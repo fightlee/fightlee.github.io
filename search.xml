@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Day01_初识Java</title>
+    <title>Part1·初识Java(图文并茂)</title>
     <url>/2019/12/19/01-java/</url>
     <content><![CDATA[<p>Hello,各位小朋友,不知道在前面的网页制作课程中有没有提升大家对编程的兴趣和信心?从现在开始我们将要进入到<strong>Java</strong>的学习中来了.废话不多说,直接上手.</p>
 <h2 id="Java环境搭建"><a href="#Java环境搭建" class="headerlink" title="Java环境搭建"></a>Java环境搭建</h2><p>相信大家在学校的课程中,已经通过老师的讲解已经知道Java是什么?用来干嘛的?在这里我将直接从Java的环境搭建开始.这里主要以windows10为例:</p>
 <h4 id="1-jdk的安装"><a href="#1-jdk的安装" class="headerlink" title="1. jdk的安装"></a>1. jdk的安装</h4><p>​    在安装jdk之前,还是先介绍一下jdk的作用.</p>
 <p>​    <strong>jdk</strong> :  Java Development Kit 是<strong>Java</strong>语言的软件开发工具包.鲁迅先生曾经说过:<strong>想要建高楼,先得学会使锤子,锤子都不会用,还建个锤子的高楼</strong>(:smile:是不是鲁迅说的我就不知道了) . 在jdk中的bin目录中存放着我们在开发一幢高楼<strong>(Java应用程序</strong>)中要使用到的一些锤子(<strong>工具</strong>)，比如javac.exe(将源文件<strong>.java</strong>文件编译成<strong>.class</strong>文件),java.exe（运行<strong>.class</strong>文件）等工具.</p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/1.png" alt="1"></p>
+<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/1.png" alt="1"> <a id="more"></a> </p>
 <p>​    <strong>jre</strong> :  Java Runtime Environment <strong>Java程序的运行环境</strong>.也就是说咱们开发的Java程序想要运行起来就得依靠jre的支持,你想想我们人类是不是也得靠地球这个大环境才能生存呢？在jre中有<strong>Java虚拟机(JVM)</strong>,Java核心类库和一些支持文件.</p>
 <p>​    <strong>jvm</strong> :   Java Virtual Machine <strong>Java虚拟机</strong> ，有了Java虚拟机,Java语言在不同平台上运行时不需要重新编译 .也就是说有了虚拟机，咱们就可以把Java程序运行在各种不同的平台，让Java具备了跨平台性.</p>
 <h5 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤:"></a>安装步骤:</h5><p>​    好了，介绍完一些基本概念，咱们开始正式安装，首先我们得去官网下载一个jdk，现在市面主流还是以jdk8为主 所以我这里提供8的链接给各位同学下载  链接地址 :  <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a> . 进入页面后往下翻就能看到下面图片，按照图片说明进行下载，我这里以windows 64位为例，如果是32位系统 就选择上面的x86下载即可.</p>
@@ -36,32 +36,81 @@
 <h5 id="如果又出现下方界面-勾选-Remember-accepted-licenese-再点击-Accept即可"><a href="#如果又出现下方界面-勾选-Remember-accepted-licenese-再点击-Accept即可" class="headerlink" title="如果又出现下方界面 勾选 Remember accepted licenese 再点击 Accept即可"></a>如果又出现下方界面 勾选 Remember accepted licenese 再点击 Accept即可</h5><p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/9.png" alt="9"></p>
 <h4 id="4-创建第一个Java应用程序"><a href="#4-创建第一个Java应用程序" class="headerlink" title="4. 创建第一个Java应用程序"></a>4. 创建第一个Java应用程序</h4><h5 id="创建Java程序"><a href="#创建Java程序" class="headerlink" title="创建Java程序"></a>创建Java程序</h5><p>​    好了,到了激动人心的时刻了.在创建Java程序之前我们先打开Eclipse对工具进行简单的设置和页面的介绍</p>
 <ol>
-<li><h5 id="设置字体大小"><a href="#设置字体大小" class="headerlink" title="设置字体大小"></a>设置字体大小</h5><p>在打开后的Eclipse界面中.</p>
+<li><h5 id="设置字体大小和切换工作面板"><a href="#设置字体大小和切换工作面板" class="headerlink" title="设置字体大小和切换工作面板"></a>设置字体大小和切换工作面板</h5><p>在打开后的Eclipse界面中.</p>
 <p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/10.png" alt="10"></p>
+<p>图中的Workspace对应的路径是工作空间的路径,就是我们编写代码存放的目录.设置好后点击Launch启动Eclipse.         <strong>注意</strong>:我们在安装软件的过程中或者创建的文件夹目录都尽量不要有中文路径和特殊符号.</p>
 </li>
-<li></li>
 </ol>
+<pre><code>启动后关闭welcome界面,在Eclipse的上方菜单栏中找到Window修改字体样式和大小![a1](https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a1.png)![g1](https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/g1.gif)
+
+
+
+修改完字体后还需要将Eclipse当前的工作面板切换成普通Java的面板,因为现在默认安装的是JavaEE的开发面板![g2](https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/g2.gif)
+
+留下如图所示3块空白区域即可.</code></pre><ol start="2">
+<li><h5 id="创建Java程序-1"><a href="#创建Java程序-1" class="headerlink" title="创建Java程序"></a>创建Java程序</h5><p>在左侧 Package Explorer 中右键选择new Java Project即可</p>
+<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a2.png" alt="a2"></p>
+</li>
+</ol>
+<pre><code>在弹出的窗口中填写Java工程的名称.这里Project:工程的意思(**在前面我们提过写代码就像建高楼,建楼是一个工程,敲代码亦如此**.)
+
+![a3](https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a3.png)
+
+
+
+填写完工程名点击Finish,在Package Explorer中出现工程
+
+![a4](https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a4.png)
+
+Package Explorer : 包资源管理器.在这里我们可以认为这是用来管理当前工程中的各种文件的.
+
+上图中的src文件夹就是我们放置java源代码文件的根目录.
+
+
+
+创建好工程后,我们可以去观察下我们之前的工作空间目录下会有一个新建的目录就是我们当前的工程,以后我们每次创建的工程都可以在此处找到.
+
+![a5](https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a5.png)
+
+
+
+继续右键选中src文件夹选择new --&gt; Package,然后填写 Package名称,名称的格式一般为公司域名的倒写+模块名.   如   xxx.xxx.xxx.xx,  com.java.firstlearn.p1.创建好package后,观察原项目会发现在src下创建了对应层级的文件夹目录,这样的好处就是我们可以**方便的对当前工程下的不同作用类型的java源文件进行分类管理**.
+
+
+
+![g3](https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/g3.gif)
+
+
+
+创建好Package后继续选中对应的package 右键 new --&gt; Class 
+
+![g4](https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/g4.gif)
+
+
+
+这里我们再去工程下的p1文件夹下查看是否有FirstLearn1.java源文件
+
+![a6](https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a6.png)
+
+
+
+好了,终于到了最后一步了,编写Java代码,查看运行效果.根据如下图所示输入代码.
+
+![g5](https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/g5.gif)
+
+代码如下: </code></pre><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.java.firstlearn.p1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstLearn01</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"Hello World!"</span>);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    <strong>注意 :</strong> 虽然给出了代码,但是一定要自己手动的操作几遍加深印象.代码是什么意思不需要理解我们下节课再分解.</p>
+<p>但是代码的</p>
+<p><strong>英文大小写</strong>和<strong>空格</strong>还有<strong>中英文符号</strong>的问题</p>
+<p><strong>英文大小写</strong>和<strong>空格</strong>还有<strong>中英文符号</strong>的问题</p>
+<p><strong>英文大小写</strong>和<strong>空格</strong>还有<strong>中英文符号</strong>的问题</p>
+<p>一定要注意(<strong>重要的事情一定得强调三遍</strong>)</p>
+<p>就是大家在敲代码的时候一定要把输入法调成英文输入来进行编写.代码的缩进处理可以使用 <strong>Tab</strong>键来进行缩进 大家可以试一下.下节课我会继续给大家讲解Eclipse的具体使用.今天就到这,同学们再把前面的操作回顾一下,我们下章再见.</p>
+<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a7.png" alt="a7"></p>
 ]]></content>
       <tags>
         <tag>java</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2019/12/19/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
   </entry>
 </search>
