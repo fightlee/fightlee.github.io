@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>FightLee</title>
   
-  
+  <subtitle>Keep fighting,Keep your mind,Be patient,Never give up </subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-12-18T17:14:12.143Z</updated>
+  <updated>2019-12-19T06:22:31.893Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>&#39;01_java&#39;</title>
+    <link href="http://yoursite.com/2019/12/19/01-java/"/>
+    <id>http://yoursite.com/2019/12/19/01-java/</id>
+    <published>2019-12-19T03:45:10.000Z</published>
+    <updated>2019-12-19T06:22:31.893Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Hello,各位小朋友,不知道在前面的网页制作课程中有没有提升大家对编程的兴趣和信心?从现在开始我们将要进入到&lt;strong&gt;Java&lt;/strong&gt;的学习中来了.废话不多说,直接上手.&lt;/p&gt;
+&lt;h2 id=&quot;Java环境搭建&quot;&gt;&lt;a href=&quot;#Java环境搭建&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
