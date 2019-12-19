@@ -84,23 +84,13 @@
 <p>​    <strong>jvm</strong> :   Java Virtual Machine <strong>Java虚拟机</strong> ，有了Java虚拟机,Java语言在不同平台上运行时不需要重新编译 .也就是说有了虚拟机，咱们就可以把Java程序运行在各种不同的平台，让Java具备了跨平台性.</p>
 <h5 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤:"></a>安装步骤:</h5><p>​    好了，介绍完一些基本概念，咱们开始正式安装，首先我们得去官网下载一个jdk，现在市面主流还是以jdk8为主 所以我这里提供8的链接给各位同学下载  链接地址 :  <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a> . 进入页面后往下翻就能看到下面图片，按照图片说明进行下载，我这里以windows 64位为例，如果是32位系统 就选择上面的x86下载即可.</p>
 <p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/2.png" alt="2"></p>
-<p>​    下载完毕后，双击安装，建议一直<strong>下一步</strong>（next）即可。直到安装（finish）完毕.</p>
-<h4 id="2-环境变量的配置"><a href="#2-环境变量的配置" class="headerlink" title="2. 环境变量的配置"></a>2. 环境变量的配置</h4><p>​    1. 安装好jdk之后，我们还需要配置一下系统环境变量，右键<strong>我的电脑</strong>/<strong>此电脑</strong>/<strong>计算机</strong>，如果桌面的计算机图标被删除的话进入到文件夹中左侧<strong>此电脑</strong>右键也可以。然后选择<strong>属性</strong></p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/1.gif" alt="1"></p>
-<p>​    2. 在属性中选择左侧的<strong>高级系统设置</strong>然后选择<strong>高级</strong>选项卡，再点击<strong>环境变量</strong>按钮.</p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/2.gif" alt="2"></p>
-<ol start="3">
-<li><p>点击按钮后,在下面的系统变量中新建JAVA_HOME,记住最后一定要点<strong>确定</strong><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/3.gif" alt="3"></p>
-</li>
-<li><p>查找CLASSPATH,如没有就新建.    <strong>.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar;</strong>    前面的点别忘了<img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/4.gif" alt="4"></p>
-</li>
-<li><p>找到Path变量进行编辑,添加 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin” , <strong>最后别忘了点确定哦!</strong></p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/3.png" alt="3"></p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/4.png" alt="4"></p>
-<ol start="6">
-<li>最后测试环境变量是否配置成功.win + r 输入cmd 回车 打开 cmd界面 输入 javac , 如果没有报错(出现error)或者出现以下界面均配置OK<img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/5.png" alt="5" style="zoom: 80%;" /></li>
-</ol>
-</li>
+<h5 id="下载完毕后，双击安装，建议一直下一步（next）即可。直到安装（finish）完毕"><a href="#下载完毕后，双击安装，建议一直下一步（next）即可。直到安装（finish）完毕" class="headerlink" title="下载完毕后，双击安装，建议一直下一步（next）即可。直到安装（finish）完毕."></a>下载完毕后，双击安装，建议一直<strong>下一步</strong>（next）即可。直到安装（finish）完毕.</h5><h4 id="2-环境变量的配置"><a href="#2-环境变量的配置" class="headerlink" title="2. 环境变量的配置"></a>2. 环境变量的配置</h4><ol>
+<li><h5 id="安装好jdk之后，我们还需要配置一下系统环境变量，右键我的电脑-此电脑-计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性"><a href="#安装好jdk之后，我们还需要配置一下系统环境变量，右键我的电脑-此电脑-计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性" class="headerlink" title="安装好jdk之后，我们还需要配置一下系统环境变量，右键我的电脑/此电脑/计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性"></a>安装好jdk之后，我们还需要配置一下系统环境变量，右键<strong>我的电脑</strong>/<strong>此电脑</strong>/<strong>计算机</strong>，如果桌面的计算机图标被删除的话进入到文件夹中左侧<strong>此电脑</strong>右键也可以。然后选择<strong>属性</strong><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/1.gif" alt="1"></h5></li>
+<li><h5 id="在属性中选择左侧的高级系统设置然后选择高级选项卡，再点击环境变量按钮"><a href="#在属性中选择左侧的高级系统设置然后选择高级选项卡，再点击环境变量按钮" class="headerlink" title="在属性中选择左侧的高级系统设置然后选择高级选项卡，再点击环境变量按钮."></a>在属性中选择左侧的<strong>高级系统设置</strong>然后选择<strong>高级</strong>选项卡，再点击<strong>环境变量</strong>按钮.<img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/2.gif" alt="2"></h5></li>
+<li><h5 id="点击按钮后-在下面的系统变量中新建JAVA-HOME-记住最后一定要点确定"><a href="#点击按钮后-在下面的系统变量中新建JAVA-HOME-记住最后一定要点确定" class="headerlink" title="点击按钮后,在下面的系统变量中新建JAVA_HOME,记住最后一定要点确定"></a>点击按钮后,在下面的系统变量中新建JAVA_HOME,记住最后一定要点<strong>确定</strong><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/3.gif" alt="3"></h5></li>
+<li><h5 id="查找CLASSPATH-如没有就新建-JAVA-HOME-lib-JAVA-HOME-lib-tools-jar-前面的点别忘了"><a href="#查找CLASSPATH-如没有就新建-JAVA-HOME-lib-JAVA-HOME-lib-tools-jar-前面的点别忘了" class="headerlink" title="查找CLASSPATH,如没有就新建.    .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar;    前面的点别忘了"></a>查找CLASSPATH,如没有就新建.    <strong>.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar;</strong>    前面的点别忘了<img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/4.gif" alt="4"></h5></li>
+<li><h5 id="找到Path变量进行编辑-添加-JAVA-HOME-bin-JAVA-HOME-jre-bin”-最后别忘了点确定哦"><a href="#找到Path变量进行编辑-添加-JAVA-HOME-bin-JAVA-HOME-jre-bin”-最后别忘了点确定哦" class="headerlink" title="找到Path变量进行编辑,添加 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin” , 最后别忘了点确定哦!)"></a>找到Path变量进行编辑,添加 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin” , <strong>最后别忘了点确定哦!</strong><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/3.png" alt="3">)<img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/4.png" alt="4"></h5></li>
+<li><h5 id="最后测试环境变量是否配置成功-win-r-输入cmd-回车-打开-cmd界面-输入-javac-如果没有报错-出现error-或者出现以下界面均配置OK"><a href="#最后测试环境变量是否配置成功-win-r-输入cmd-回车-打开-cmd界面-输入-javac-如果没有报错-出现error-或者出现以下界面均配置OK" class="headerlink" title="最后测试环境变量是否配置成功.win + r 输入cmd 回车 打开 cmd界面 输入 javac , 如果没有报错(出现error)或者出现以下界面均配置OK"></a>最后测试环境变量是否配置成功.win + r 输入cmd 回车 打开 cmd界面 输入 javac , 如果没有报错(出现error)或者出现以下界面均配置OK<img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/5.png" alt="5" style="zoom: 80%;" /></h5></li>
 </ol>
 <h4 id="3-开发工具的介绍"><a href="#3-开发工具的介绍" class="headerlink" title="3. 开发工具的介绍"></a>3. 开发工具的介绍</h4><p>​    配置好jdk之后.就开始安装我们的Java开发工具了,孔子曾说过: <strong>工欲善其事,必先利其器</strong>.那我们想要开发自己的Java应用程序,选择一款合适的开发工具肯定会事半功倍.</p>
 <p>这里我要给各位同学提几点要求.在学习的阶段要对自己狠一点,学习是一个长久,循序渐进的过程,不能三天打鱼两天晒网.所以当我们做好准备开始学习就需要严格要求自己每天都吸收一点新知识和回顾之前的内容,一开始接触Java肯定是比较困难的,但是也有无数个成功的例子,而这些成功的人无疑是每天都在努力,所以,如果大家对Java或者编程感兴趣的话,坚持下去,你就能成功!</p>
@@ -109,24 +99,16 @@
 <p>有了自己的笔记本后,我这里还是推荐大家直接从Idea开始入门,但是没有Idea的同学也不用太担心,工具只是工具,就算你有高达,你不会写代码拿Idea有什么用呢?所以还是要以Java核心内容学习为主,工具为辅.</p>
 <p>根据上面的说明,简单来说,现在大部分还是以Idea为主,但是不是说Eclipse就被完全淘汰了,很多公司很多项目还是在使用Eclipse甚至MyEclipse的.所以学习2个工具的使用我觉得还是很有必要哦.好了先来介绍Eclipse的使用.</p>
 <h5 id="Eclipse的安装-如果大学机房有的话可以省略此步骤-但是可以在自己笔记本上安装试一试-环境变量也是一样"><a href="#Eclipse的安装-如果大学机房有的话可以省略此步骤-但是可以在自己笔记本上安装试一试-环境变量也是一样" class="headerlink" title="Eclipse的安装 : (如果大学机房有的话可以省略此步骤,但是可以在自己笔记本上安装试一试,环境变量也是一样)"></a>Eclipse的安装 : (如果大学机房有的话可以省略此步骤,但是可以在自己笔记本上安装试一试,环境变量也是一样)</h5><ol>
-<li><p>下载</p>
-<p>直接官网 <a href="https://www.eclipse.org/downloads/" target="_blank" rel="noopener">https://www.eclipse.org/downloads/</a> 点击 Download 下载即可.</p>
-<ol start="2">
-<li>安装 选择 <strong>Eclipse IDE for Enterprise Java Developers</strong> </li>
-</ol>
-</li>
+<li><h5 id="下载-直接官网-https-www-eclipse-org-downloads-点击-Download-下载即可"><a href="#下载-直接官网-https-www-eclipse-org-downloads-点击-Download-下载即可" class="headerlink" title="下载 直接官网 https://www.eclipse.org/downloads/ 点击 Download 下载即可."></a>下载 直接官网 <a href="https://www.eclipse.org/downloads/" target="_blank" rel="noopener">https://www.eclipse.org/downloads/</a> 点击 Download 下载即可.</h5></li>
+<li><h5 id="安装-选择-Eclipse-IDE-for-Enterprise-Java-Developers"><a href="#安装-选择-Eclipse-IDE-for-Enterprise-Java-Developers" class="headerlink" title="安装 选择 Eclipse IDE for Enterprise Java Developers"></a>安装 选择 <strong>Eclipse IDE for Enterprise Java Developers</strong></h5></li>
 </ol>
 <p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/6.png" alt="6"></p>
-<p>选择你要安装的路径 然后点击 Install 即可  </p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/7.png" alt="7"></p>
-<p>如果出现以下界面 点击 AcceptNow 即可</p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/8.png" alt="8"></p>
-<p>如果又出现下方界面 勾选 Remember accepted licenese 再点击 Accept即可</p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/9.png" alt="9"></p>
+<h5 id="选择你要安装的路径-然后点击-Install-即可"><a href="#选择你要安装的路径-然后点击-Install-即可" class="headerlink" title="选择你要安装的路径 然后点击 Install 即可"></a>选择你要安装的路径 然后点击 Install 即可</h5><p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/7.png" alt="7"></p>
+<h5 id="如果出现以下界面-点击-AcceptNow-即可"><a href="#如果出现以下界面-点击-AcceptNow-即可" class="headerlink" title="如果出现以下界面 点击 AcceptNow 即可"></a>如果出现以下界面 点击 AcceptNow 即可</h5><p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/8.png" alt="8"></p>
+<h5 id="如果又出现下方界面-勾选-Remember-accepted-licenese-再点击-Accept即可"><a href="#如果又出现下方界面-勾选-Remember-accepted-licenese-再点击-Accept即可" class="headerlink" title="如果又出现下方界面 勾选 Remember accepted licenese 再点击 Accept即可"></a>如果又出现下方界面 勾选 Remember accepted licenese 再点击 Accept即可</h5><p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/9.png" alt="9"></p>
 <h4 id="4-创建第一个Java应用程序"><a href="#4-创建第一个Java应用程序" class="headerlink" title="4. 创建第一个Java应用程序"></a>4. 创建第一个Java应用程序</h4><h5 id="创建Java程序"><a href="#创建Java程序" class="headerlink" title="创建Java程序"></a>创建Java程序</h5><p>​    好了,到了激动人心的时刻了.在创建Java程序之前我们先打开Eclipse对工具进行简单的设置和页面的介绍</p>
 <ol>
-<li><p>设置字体大小</p>
-<p>在打开后的Eclipse界面中.</p>
+<li><h5 id="设置字体大小"><a href="#设置字体大小" class="headerlink" title="设置字体大小"></a>设置字体大小</h5><p>在打开后的Eclipse界面中.</p>
 <p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/10.png" alt="10"></p>
 </li>
 <li></li>
