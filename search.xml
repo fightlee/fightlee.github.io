@@ -3,18 +3,20 @@
   <entry>
     <title>Part6·面向对象编程(图文并茂)</title>
     <url>/2019/12/20/02-java/</url>
-    <content><![CDATA[<p><img src="C:%5CUsers%5Cpotti%5CDesktop%5Cxiao1.jpg" alt="xiao1"></p>
+    <content><![CDATA[<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/xiao1.jpg" alt="xiao1"></p>
+<a id="more"></a>
+
 <p>OK!今天咱们正式进入到Java的核心思想的学习了.标题的面向对象编程是什么意思呢?是不是这样呢?</p>
-<img src="C:\Users\potti\Desktop\xiao2.jpeg" alt="xiao2" style="zoom:67%;" />
+<img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/xiao2.jpeg" alt="xiao2" style="zoom:67%;" />
 
 
 
 <p>开个玩笑了,那什么是面向对象编程呢?要搞清楚面向对象是什么?首先我们得知道什么是对象?在学Java的当中90%的人应该都听说过一句话 : <strong>万物皆对象</strong></p>
-<p><img src="C:%5CUsers%5Cpotti%5CDesktop%5Cxiao3.png" alt="xiao3"></p>
+<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/xiao3.png" alt="xiao3"></p>
 <p><b style="color:red">万物皆对象</b> :  故名思意 , 世间万物在Java中我们都可以认为是一个对象,比如一花一草,一人一物,具体点的,比如从你眼前驶过的车辆,无论是小汽车还是公共汽车还是货车,还是从你头上飞过的飞禽,燕子,乌鸦,鸽子,还是从你脚边跑过的走兽,哈士奇,萨摩耶,橘猫,等等…. 这些都可以称之为<strong>对象</strong>,也就是对象就是一些实际存在于我们生活中的个体</p>
 <p>了解了对象的概念后,我们再来思考,大部分对象之间是不是都有一些共同的特征,我们人类再对这些具有共同的特征的对象统一归类,比如说刚才我们提到的燕子,乌鸦,鸽子,这些物种都具备<b style="color:red">飞的行为</b>,还有他们都有体重,大小,和年龄的一些<b style="color:red">特征</b>,所以我们人类都将具备此类对象相同的<b style="color:red">行为和属性</b>归纳成鸟类.同样的还有无论是哈士奇还是萨摩耶还是阿拉斯加,他们也有着相同的<b style="color:red">特征</b>比如,他们的主要生活地点都是寒冷区域,也有体重,性别,身高,体重等,还具备着拉雪橇,看家,打猎等<b style="color:red">行为</b>,我们人类也将具备此类对象相同的行为的属性归纳成狗类.</p>
 <p>注意上一段中我大量的引用到了2个词,<b style="color:red">行为</b>和<b style="color:red">属性特征</b>,也就是说我们将根据一些对象相同的行为或者属性特征描述成了某一类事物,并且只要具备了该事物的行为和属性特征的具体的实例对象都是属于同一类事物.再来看图说话.</p>
-<p><img src="C:%5CUsers%5Cpotti%5CDesktop%5Cb1.png" alt="b1"></p>
+<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/b1.png" alt="b1"></p>
 <p>那我们在Java中如何来描述以上这一归纳成狗类的过程呢?</p>
 <p>在Java中 我们用并不陌生的一个关键字 <b style="color: red;font-size: 20px;">class </b>来描述一类事物,接下来我们用代码来演示如何通过一个事物的属性和行为描述一个类.</p>
 <p>在工程中src文件夹对应的package中创建Dog类    new –&gt; Class –&gt; 名称为 Dog</p>
