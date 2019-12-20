@@ -37,7 +37,7 @@
     
       <category term="JavaSE" scheme="http://yoursite.com/tags/JavaSE/"/>
     
-      <category term="面向对象" scheme="http://yoursite.com/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+      <category term="面向对象" scheme="http://yoursite.com/tags/oop/"/>
     
   </entry>
   
