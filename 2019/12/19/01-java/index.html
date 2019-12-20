@@ -46,12 +46,12 @@
   };
 </script>
 
-  <meta name="description" content="Hello,各位小朋友,不知道在前面的网页制作课程中有没有提升大家对编程的兴趣和信心?从现在开始我们将要进入到Java的学习中来了.废话不多说,直接上手. Java环境搭建相信大家在学校的课程中,已经通过老师的讲解已经知道Java是什么?用来干嘛的?在这里我将直接从Java的环境搭建开始.这里主要以windows10为例: 1. jdk的安装​    在安装jdk之前,还是先介绍一下jdk的作用.">
+  <meta name="description" content="Hello,各位小朋友,不知道在前面的网页制作课程中有没有提升大家对编程的兴趣和信心?从现在开始我们将要进入到Java的学习中来了.废话不多说,直接上手. Java 环境搭建相信大家在学校的课程中,已经通过老师的讲解已经知道 Java 是什么?用来干嘛的?在这里我将直接从 Java 的环境搭建开始.这里主要以 windows10 为例: 1. jdk 的安装​ 在安装 jdk 之前,还是先介绍一下">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Part1·初识Java(图文并茂)">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;19&#x2F;01-java&#x2F;index.html">
 <meta property="og:site_name" content="Here is Lee Blog.">
-<meta property="og:description" content="Hello,各位小朋友,不知道在前面的网页制作课程中有没有提升大家对编程的兴趣和信心?从现在开始我们将要进入到Java的学习中来了.废话不多说,直接上手. Java环境搭建相信大家在学校的课程中,已经通过老师的讲解已经知道Java是什么?用来干嘛的?在这里我将直接从Java的环境搭建开始.这里主要以windows10为例: 1. jdk的安装​    在安装jdk之前,还是先介绍一下jdk的作用.">
+<meta property="og:description" content="Hello,各位小朋友,不知道在前面的网页制作课程中有没有提升大家对编程的兴趣和信心?从现在开始我们将要进入到Java的学习中来了.废话不多说,直接上手. Java 环境搭建相信大家在学校的课程中,已经通过老师的讲解已经知道 Java 是什么?用来干嘛的?在这里我将直接从 Java 的环境搭建开始.这里主要以 windows10 为例: 1. jdk 的安装​ 在安装 jdk 之前,还是先介绍一下">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;fightlee-1300950641.cos.ap-guangzhou.myqcloud.com&#x2F;fightlee&#x2F;1.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;fightlee-1300950641.cos.ap-guangzhou.myqcloud.com&#x2F;fightlee&#x2F;2.png">
@@ -82,9 +82,11 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;fightlee-1300950641.cos.ap-guangzhou.myqcloud.com&#x2F;fightlee&#x2F;g5.gif">
 <meta property="og:image" content="https:&#x2F;&#x2F;fightlee-1300950641.cos.ap-guangzhou.myqcloud.com&#x2F;fightlee&#x2F;a7.png">
 <meta property="article:published_time" content="2019-12-19T03:45:10.000Z">
-<meta property="article:modified_time" content="2019-12-19T15:19:15.269Z">
+<meta property="article:modified_time" content="2019-12-20T15:22:49.798Z">
 <meta property="article:author" content="Lee">
 <meta property="article:tag" content="java">
+<meta property="article:tag" content="jdk">
+<meta property="article:tag" content="eclipse">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;fightlee-1300950641.cos.ap-guangzhou.myqcloud.com&#x2F;fightlee&#x2F;1.png">
 
@@ -263,9 +265,26 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-12-19 11:45:10 / 修改时间：23:19:15" itemprop="dateCreated datePublished" datetime="2019-12-19T11:45:10+08:00">2019-12-19</time>
+              <time title="创建时间：2019-12-19 11:45:10" itemprop="dateCreated datePublished" datetime="2019-12-19T11:45:10+08:00">2019-12-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-20 23:22:49" itemprop="dateModified" datetime="2019-12-20T23:22:49+08:00">2019-12-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
             </span>
 
           
@@ -301,72 +320,72 @@
 
       
         <p>Hello,各位小朋友,不知道在前面的网页制作课程中有没有提升大家对编程的兴趣和信心?从现在开始我们将要进入到<strong>Java</strong>的学习中来了.废话不多说,直接上手.</p>
-<h2 id="Java环境搭建"><a href="#Java环境搭建" class="headerlink" title="Java环境搭建"></a>Java环境搭建</h2><p>相信大家在学校的课程中,已经通过老师的讲解已经知道Java是什么?用来干嘛的?在这里我将直接从Java的环境搭建开始.这里主要以windows10为例:</p>
-<h4 id="1-jdk的安装"><a href="#1-jdk的安装" class="headerlink" title="1. jdk的安装"></a>1. jdk的安装</h4><p>​    在安装jdk之前,还是先介绍一下jdk的作用.</p>
-<p>​    <strong>jdk</strong> :  Java Development Kit 是<strong>Java</strong>语言的软件开发工具包.鲁迅先生曾经说过:<strong>想要建高楼,先得学会使锤子,锤子都不会用,还建个锤子的高楼</strong>(:smile:是不是鲁迅说的我就不知道了) . 在jdk中的bin目录中存放着我们在开发一幢高楼<strong>(Java应用程序</strong>)中要使用到的一些锤子(<strong>工具</strong>)，比如javac.exe(将源文件<strong>.java</strong>文件编译成<strong>.class</strong>文件),java.exe（运行<strong>.class</strong>文件）等工具.</p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/1.png" alt="1"> <a id="more"></a> </p>
-<p>​    <strong>jre</strong> :  Java Runtime Environment <strong>Java程序的运行环境</strong>.也就是说咱们开发的Java程序想要运行起来就得依靠jre的支持,你想想我们人类是不是也得靠地球这个大环境才能生存呢？在jre中有<strong>Java虚拟机(JVM)</strong>,Java核心类库和一些支持文件.</p>
-<p>​    <strong>jvm</strong> :   Java Virtual Machine <strong>Java虚拟机</strong> ，有了Java虚拟机,Java语言在不同平台上运行时不需要重新编译 .也就是说有了虚拟机，咱们就可以把Java程序运行在各种不同的平台，让Java具备了跨平台性.</p>
-<h5 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤:"></a>安装步骤:</h5><p>​    好了，介绍完一些基本概念，咱们开始正式安装，首先我们得去官网下载一个jdk，现在市面主流还是以jdk8为主 所以我这里提供8的链接给各位同学下载  链接地址 :  <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a> . 进入页面后往下翻就能看到下面图片，按照图片说明进行下载，我这里以windows 64位为例，如果是32位系统 就选择上面的x86下载即可.</p>
+<h2 id="Java-环境搭建"><a href="#Java-环境搭建" class="headerlink" title="Java 环境搭建"></a>Java 环境搭建</h2><p>相信大家在学校的课程中,已经通过老师的讲解已经知道 Java 是什么?用来干嘛的?在这里我将直接从 Java 的环境搭建开始.这里主要以 windows10 为例:</p>
+<h4 id="1-jdk-的安装"><a href="#1-jdk-的安装" class="headerlink" title="1. jdk 的安装"></a>1. jdk 的安装</h4><p>​ 在安装 jdk 之前,还是先介绍一下 jdk 的作用.</p>
+<p>​ <strong>jdk</strong> : Java Development Kit 是<strong>Java</strong>语言的软件开发工具包.鲁迅先生曾经说过:<strong>想要建高楼,先得学会使锤子,锤子都不会用,还建个锤子的高楼</strong>(:smile:是不是鲁迅说的我就不知道了) . 在 jdk 中的 bin 目录中存放着我们在开发一幢高楼<strong>(Java 应用程序</strong>)中要使用到的一些锤子(<strong>工具</strong>)，比如 javac.exe(将源文件<strong>.java</strong>文件编译成<strong>.class</strong>文件),java.exe（运行<strong>.class</strong>文件）等工具.</p>
+<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/1.png" alt="1"> <a id="more"></a></p>
+<p>​ <strong>jre</strong> : Java Runtime Environment <strong>Java 程序的运行环境</strong>.也就是说咱们开发的 Java 程序想要运行起来就得依靠 jre 的支持,你想想我们人类是不是也得靠地球这个大环境才能生存呢？在 jre 中有<strong>Java 虚拟机(JVM)</strong>,Java 核心类库和一些支持文件.</p>
+<p>​ <strong>jvm</strong> : Java Virtual Machine <strong>Java 虚拟机</strong> ，有了 Java 虚拟机,Java 语言在不同平台上运行时不需要重新编译 .也就是说有了虚拟机，咱们就可以把 Java 程序运行在各种不同的平台，让 Java 具备了跨平台性.</p>
+<h5 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤:"></a>安装步骤:</h5><p>​ 好了，介绍完一些基本概念，咱们开始正式安装，首先我们得去官网下载一个 jdk，现在市面主流还是以 jdk8 为主 所以我这里提供 8 的链接给各位同学下载 链接地址 : <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a> . 进入页面后往下翻就能看到下面图片，按照图片说明进行下载，我这里以 windows 64 位为例，如果是 32 位系统 就选择上面的 x86 下载即可.</p>
 <p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/2.png" alt="2"></p>
 <h5 id="下载完毕后，双击安装，建议一直下一步（next）即可。直到安装（finish）完毕"><a href="#下载完毕后，双击安装，建议一直下一步（next）即可。直到安装（finish）完毕" class="headerlink" title="下载完毕后，双击安装，建议一直下一步（next）即可。直到安装（finish）完毕."></a>下载完毕后，双击安装，建议一直<strong>下一步</strong>（next）即可。直到安装（finish）完毕.</h5><h4 id="2-环境变量的配置"><a href="#2-环境变量的配置" class="headerlink" title="2. 环境变量的配置"></a>2. 环境变量的配置</h4><ol>
-<li><h5 id="安装好jdk之后，我们还需要配置一下系统环境变量，右键我的电脑-此电脑-计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性"><a href="#安装好jdk之后，我们还需要配置一下系统环境变量，右键我的电脑-此电脑-计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性" class="headerlink" title="安装好jdk之后，我们还需要配置一下系统环境变量，右键我的电脑/此电脑/计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性"></a>安装好jdk之后，我们还需要配置一下系统环境变量，右键<strong>我的电脑</strong>/<strong>此电脑</strong>/<strong>计算机</strong>，如果桌面的计算机图标被删除的话进入到文件夹中左侧<strong>此电脑</strong>右键也可以。然后选择<strong>属性</strong><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/1.gif" alt="1"></h5></li>
+<li><h5 id="安装好-jdk-之后，我们还需要配置一下系统环境变量，右键我的电脑-此电脑-计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性"><a href="#安装好-jdk-之后，我们还需要配置一下系统环境变量，右键我的电脑-此电脑-计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性" class="headerlink" title="安装好 jdk 之后，我们还需要配置一下系统环境变量，右键我的电脑/此电脑/计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性"></a>安装好 jdk 之后，我们还需要配置一下系统环境变量，右键<strong>我的电脑</strong>/<strong>此电脑</strong>/<strong>计算机</strong>，如果桌面的计算机图标被删除的话进入到文件夹中左侧<strong>此电脑</strong>右键也可以。然后选择<strong>属性</strong><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/1.gif" alt="1"></h5></li>
 <li><h5 id="在属性中选择左侧的高级系统设置然后选择高级选项卡，再点击环境变量按钮"><a href="#在属性中选择左侧的高级系统设置然后选择高级选项卡，再点击环境变量按钮" class="headerlink" title="在属性中选择左侧的高级系统设置然后选择高级选项卡，再点击环境变量按钮."></a>在属性中选择左侧的<strong>高级系统设置</strong>然后选择<strong>高级</strong>选项卡，再点击<strong>环境变量</strong>按钮.<img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/2.gif" alt="2"></h5></li>
-<li><h5 id="点击按钮后-在下面的系统变量中新建JAVA-HOME-记住最后一定要点确定"><a href="#点击按钮后-在下面的系统变量中新建JAVA-HOME-记住最后一定要点确定" class="headerlink" title="点击按钮后,在下面的系统变量中新建JAVA_HOME,记住最后一定要点确定"></a>点击按钮后,在下面的系统变量中新建JAVA_HOME,记住最后一定要点<strong>确定</strong><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/3.gif" alt="3"></h5></li>
-<li><h5 id="查找CLASSPATH-如没有就新建-JAVA-HOME-lib-JAVA-HOME-lib-tools-jar-前面的点别忘了"><a href="#查找CLASSPATH-如没有就新建-JAVA-HOME-lib-JAVA-HOME-lib-tools-jar-前面的点别忘了" class="headerlink" title="查找CLASSPATH,如没有就新建.    .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar;    前面的点别忘了"></a>查找CLASSPATH,如没有就新建.    <strong>.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar;</strong>    前面的点别忘了<img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/4.gif" alt="4"></h5></li>
-<li><h5 id="找到Path变量进行编辑-添加-JAVA-HOME-bin-JAVA-HOME-jre-bin”-最后别忘了点确定哦"><a href="#找到Path变量进行编辑-添加-JAVA-HOME-bin-JAVA-HOME-jre-bin”-最后别忘了点确定哦" class="headerlink" title="找到Path变量进行编辑,添加 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin” , 最后别忘了点确定哦!)"></a>找到Path变量进行编辑,添加 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin” , <strong>最后别忘了点确定哦!</strong><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/3.png" alt="3">)<img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/4.png" alt="4"></h5></li>
-<li><h5 id="最后测试环境变量是否配置成功-win-r-输入cmd-回车-打开-cmd界面-输入-javac-如果没有报错-出现error-或者出现以下界面均配置OK"><a href="#最后测试环境变量是否配置成功-win-r-输入cmd-回车-打开-cmd界面-输入-javac-如果没有报错-出现error-或者出现以下界面均配置OK" class="headerlink" title="最后测试环境变量是否配置成功.win + r 输入cmd 回车 打开 cmd界面 输入 javac , 如果没有报错(出现error)或者出现以下界面均配置OK"></a>最后测试环境变量是否配置成功.win + r 输入cmd 回车 打开 cmd界面 输入 javac , 如果没有报错(出现error)或者出现以下界面均配置OK<img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/5.png" alt="5" style="zoom: 80%;" /></h5></li>
+<li><h5 id="点击按钮后-在下面的系统变量中新建-JAVA-HOME-记住最后一定要点确定"><a href="#点击按钮后-在下面的系统变量中新建-JAVA-HOME-记住最后一定要点确定" class="headerlink" title="点击按钮后,在下面的系统变量中新建 JAVA_HOME,记住最后一定要点确定"></a>点击按钮后,在下面的系统变量中新建 JAVA_HOME,记住最后一定要点<strong>确定</strong><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/3.gif" alt="3"></h5></li>
+<li><h5 id="查找-CLASSPATH-如没有就新建-JAVA-HOME-lib-JAVA-HOME-lib-tools-jar-前面的点别忘了"><a href="#查找-CLASSPATH-如没有就新建-JAVA-HOME-lib-JAVA-HOME-lib-tools-jar-前面的点别忘了" class="headerlink" title="查找 CLASSPATH,如没有就新建. .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar; 前面的点别忘了"></a>查找 CLASSPATH,如没有就新建. <strong>.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar;</strong> 前面的点别忘了<img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/4.gif" alt="4"></h5></li>
+<li><h5 id="找到-Path-变量进行编辑-添加-JAVA-HOME-bin-JAVA-HOME-jre-bin”-最后别忘了点确定哦"><a href="#找到-Path-变量进行编辑-添加-JAVA-HOME-bin-JAVA-HOME-jre-bin”-最后别忘了点确定哦" class="headerlink" title="找到 Path 变量进行编辑,添加 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin” , 最后别忘了点确定哦!)"></a>找到 Path 变量进行编辑,添加 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin” , <strong>最后别忘了点确定哦!</strong><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/3.png" alt="3">)<img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/4.png" alt="4"></h5></li>
+<li><h5 id="最后测试环境变量是否配置成功-win-r-输入-cmd-回车-打开-cmd-界面-输入-javac-如果没有报错-出现-error-或者出现以下界面均配置-OK"><a href="#最后测试环境变量是否配置成功-win-r-输入-cmd-回车-打开-cmd-界面-输入-javac-如果没有报错-出现-error-或者出现以下界面均配置-OK" class="headerlink" title="最后测试环境变量是否配置成功.win + r 输入 cmd 回车 打开 cmd 界面 输入 javac , 如果没有报错(出现 error)或者出现以下界面均配置 OK"></a>最后测试环境变量是否配置成功.win + r 输入 cmd 回车 打开 cmd 界面 输入 javac , 如果没有报错(出现 error)或者出现以下界面均配置 OK<img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/5.png" alt="5" style="zoom: 80%;" /></h5></li>
 </ol>
-<h4 id="3-开发工具的介绍"><a href="#3-开发工具的介绍" class="headerlink" title="3. 开发工具的介绍"></a>3. 开发工具的介绍</h4><p>​    配置好jdk之后.就开始安装我们的Java开发工具了,孔子曾说过: <strong>工欲善其事,必先利其器</strong>.那我们想要开发自己的Java应用程序,选择一款合适的开发工具肯定会事半功倍.</p>
-<p>这里我要给各位同学提几点要求.在学习的阶段要对自己狠一点,学习是一个长久,循序渐进的过程,不能三天打鱼两天晒网.所以当我们做好准备开始学习就需要严格要求自己每天都吸收一点新知识和回顾之前的内容,一开始接触Java肯定是比较困难的,但是也有无数个成功的例子,而这些成功的人无疑是每天都在努力,所以,如果大家对Java或者编程感兴趣的话,坚持下去,你就能成功!</p>
-<p>现在市面上的Java开发工具主流无非2种,Eclipse <img src="https://dss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2712477069,1146026712&fm=179&app=42&f=JPEG?w=56&h=56" alt="img"> 和Idea  <img src="https://dss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2995446634,2852731158&amp;fm=179&amp;app=42&amp;f=JPG?w=121&amp;h=140" alt="img" style="zoom:50%;" /> </p>
-<p><strong>说明</strong> :  我这个博客针对的人群可能在校大学生居多,这样有一些大学生在校期间没有自己的电脑,这样工具的选择就会很尴尬,因为有一些大学机房里都装的是Eclipse,Idea没有,那这样的话我们学起来肯定有差别,所以我接下来的课程还是以Eclipse为主,到了JavaEE阶段我们再更换成Idea来进行开发,这样我们就学会使用了2种工具,而在校期间同学如果对Java很感兴趣,那可以在学习的后期跟父母沟通或者自己勤工俭学来获取一台自己的笔记本,笔记本的购买我这里也建议一下,最好还是8G内存为主,最好有固态硬盘,显卡不用太好,cpu可以好一点即可.具体的购买,大家可以参考各种笔记本网站的推荐即可.</p>
-<p>有了自己的笔记本后,我这里还是推荐大家直接从Idea开始入门,但是没有Idea的同学也不用太担心,工具只是工具,就算你有高达,你不会写代码拿Idea有什么用呢?所以还是要以Java核心内容学习为主,工具为辅.</p>
-<p>根据上面的说明,简单来说,现在大部分还是以Idea为主,但是不是说Eclipse就被完全淘汰了,很多公司很多项目还是在使用Eclipse甚至MyEclipse的.所以学习2个工具的使用我觉得还是很有必要哦.好了先来介绍Eclipse的使用.</p>
-<h5 id="Eclipse的安装-如果大学机房有的话可以省略此步骤-但是可以在自己笔记本上安装试一试-环境变量也是一样"><a href="#Eclipse的安装-如果大学机房有的话可以省略此步骤-但是可以在自己笔记本上安装试一试-环境变量也是一样" class="headerlink" title="Eclipse的安装 : (如果大学机房有的话可以省略此步骤,但是可以在自己笔记本上安装试一试,环境变量也是一样)"></a>Eclipse的安装 : (如果大学机房有的话可以省略此步骤,但是可以在自己笔记本上安装试一试,环境变量也是一样)</h5><ol>
+<h4 id="3-开发工具的介绍"><a href="#3-开发工具的介绍" class="headerlink" title="3. 开发工具的介绍"></a>3. 开发工具的介绍</h4><p>​ 配置好 jdk 之后.就开始安装我们的 Java 开发工具了,孔子曾说过: <strong>工欲善其事,必先利其器</strong>.那我们想要开发自己的 Java 应用程序,选择一款合适的开发工具肯定会事半功倍.</p>
+<p>这里我要给各位同学提几点要求.在学习的阶段要对自己狠一点,学习是一个长久,循序渐进的过程,不能三天打鱼两天晒网.所以当我们做好准备开始学习就需要严格要求自己每天都吸收一点新知识和回顾之前的内容,一开始接触 Java 肯定是比较困难的,但是也有无数个成功的例子,而这些成功的人无疑是每天都在努力,所以,如果大家对 Java 或者编程感兴趣的话,坚持下去,你就能成功!</p>
+<p>现在市面上的 Java 开发工具主流无非 2 种,Eclipse <img src="https://dss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2712477069,1146026712&fm=179&app=42&f=JPEG?w=56&h=56" alt="img"> 和 Idea <img src="https://dss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2995446634,2852731158&amp;fm=179&amp;app=42&amp;f=JPG?w=121&amp;h=140" alt="img" style="zoom:50%;" /></p>
+<p><strong>说明</strong> : 我这个博客针对的人群可能在校大学生居多,这样有一些大学生在校期间没有自己的电脑,这样工具的选择就会很尴尬,因为有一些大学机房里都装的是 Eclipse,Idea 没有,那这样的话我们学起来肯定有差别,所以我接下来的课程还是以 Eclipse 为主,到了 JavaEE 阶段我们再更换成 Idea 来进行开发,这样我们就学会使用了 2 种工具,而在校期间同学如果对 Java 很感兴趣,那可以在学习的后期跟父母沟通或者自己勤工俭学来获取一台自己的笔记本,笔记本的购买我这里也建议一下,最好还是 8G 内存为主,最好有固态硬盘,显卡不用太好,cpu 可以好一点即可.具体的购买,大家可以参考各种笔记本网站的推荐即可.</p>
+<p>有了自己的笔记本后,我这里还是推荐大家直接从 Idea 开始入门,但是没有 Idea 的同学也不用太担心,工具只是工具,就算你有高达,你不会写代码拿 Idea 有什么用呢?所以还是要以 Java 核心内容学习为主,工具为辅.</p>
+<p>根据上面的说明,简单来说,现在大部分还是以 Idea 为主,但是不是说 Eclipse 就被完全淘汰了,很多公司很多项目还是在使用 Eclipse 甚至 MyEclipse 的.所以学习 2 个工具的使用我觉得还是很有必要哦.好了先来介绍 Eclipse 的使用.</p>
+<h5 id="Eclipse-的安装-如果大学机房有的话可以省略此步骤-但是可以在自己笔记本上安装试一试-环境变量也是一样"><a href="#Eclipse-的安装-如果大学机房有的话可以省略此步骤-但是可以在自己笔记本上安装试一试-环境变量也是一样" class="headerlink" title="Eclipse 的安装 : (如果大学机房有的话可以省略此步骤,但是可以在自己笔记本上安装试一试,环境变量也是一样)"></a>Eclipse 的安装 : (如果大学机房有的话可以省略此步骤,但是可以在自己笔记本上安装试一试,环境变量也是一样)</h5><ol>
 <li><h5 id="下载-直接官网-https-www-eclipse-org-downloads-点击-Download-下载即可"><a href="#下载-直接官网-https-www-eclipse-org-downloads-点击-Download-下载即可" class="headerlink" title="下载 直接官网 https://www.eclipse.org/downloads/ 点击 Download 下载即可."></a>下载 直接官网 <a href="https://www.eclipse.org/downloads/" target="_blank" rel="noopener">https://www.eclipse.org/downloads/</a> 点击 Download 下载即可.</h5></li>
 <li><h5 id="安装-选择-Eclipse-IDE-for-Enterprise-Java-Developers"><a href="#安装-选择-Eclipse-IDE-for-Enterprise-Java-Developers" class="headerlink" title="安装 选择 Eclipse IDE for Enterprise Java Developers"></a>安装 选择 <strong>Eclipse IDE for Enterprise Java Developers</strong></h5></li>
 </ol>
 <p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/6.png" alt="6"></p>
 <h5 id="选择你要安装的路径-然后点击-Install-即可"><a href="#选择你要安装的路径-然后点击-Install-即可" class="headerlink" title="选择你要安装的路径 然后点击 Install 即可"></a>选择你要安装的路径 然后点击 Install 即可</h5><p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/7.png" alt="7"></p>
 <h5 id="如果出现以下界面-点击-AcceptNow-即可"><a href="#如果出现以下界面-点击-AcceptNow-即可" class="headerlink" title="如果出现以下界面 点击 AcceptNow 即可"></a>如果出现以下界面 点击 AcceptNow 即可</h5><p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/8.png" alt="8"></p>
-<h5 id="如果又出现下方界面-勾选-Remember-accepted-licenese-再点击-Accept即可"><a href="#如果又出现下方界面-勾选-Remember-accepted-licenese-再点击-Accept即可" class="headerlink" title="如果又出现下方界面 勾选 Remember accepted licenese 再点击 Accept即可"></a>如果又出现下方界面 勾选 Remember accepted licenese 再点击 Accept即可</h5><p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/9.png" alt="9"></p>
-<h4 id="4-创建第一个Java应用程序"><a href="#4-创建第一个Java应用程序" class="headerlink" title="4. 创建第一个Java应用程序"></a>4. 创建第一个Java应用程序</h4><h5 id="创建Java程序"><a href="#创建Java程序" class="headerlink" title="创建Java程序"></a>创建Java程序</h5><p>​    好了,到了激动人心的时刻了.在创建Java程序之前我们先打开Eclipse对工具进行简单的设置和页面的介绍</p>
+<h5 id="如果又出现下方界面-勾选-Remember-accepted-licenese-再点击-Accept-即可"><a href="#如果又出现下方界面-勾选-Remember-accepted-licenese-再点击-Accept-即可" class="headerlink" title="如果又出现下方界面 勾选 Remember accepted licenese 再点击 Accept 即可"></a>如果又出现下方界面 勾选 Remember accepted licenese 再点击 Accept 即可</h5><p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/9.png" alt="9"></p>
+<h4 id="4-创建第一个-Java-应用程序"><a href="#4-创建第一个-Java-应用程序" class="headerlink" title="4. 创建第一个 Java 应用程序"></a>4. 创建第一个 Java 应用程序</h4><h5 id="创建-Java-程序"><a href="#创建-Java-程序" class="headerlink" title="创建 Java 程序"></a>创建 Java 程序</h5><p>​ 好了,到了激动人心的时刻了.在创建 Java 程序之前我们先打开 Eclipse 对工具进行简单的设置和页面的介绍</p>
 <ol>
-<li><h5 id="设置字体大小和切换工作面板"><a href="#设置字体大小和切换工作面板" class="headerlink" title="设置字体大小和切换工作面板"></a>设置字体大小和切换工作面板</h5><p>在打开后的Eclipse界面中.</p>
+<li><h5 id="设置字体大小和切换工作面板"><a href="#设置字体大小和切换工作面板" class="headerlink" title="设置字体大小和切换工作面板"></a>设置字体大小和切换工作面板</h5><p>在打开后的 Eclipse 界面中.</p>
 </li>
 </ol>
 <p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/10.png" alt="10"></p>
-<p>图中的Workspace对应的路径是工作空间的路径,就是我们编写代码存放的目录.设置好后点击Launch启动Eclipse.         <strong>注意</strong>:我们在安装软件的过程中或者创建的文件夹目录都尽量不要有中文路径和特殊符号. </p>
-<p>启动后关闭welcome界面,在Eclipse的上方菜单栏中找到Window修改字体样式和大小</p>
+<p>图中的 Workspace 对应的路径是工作空间的路径,就是我们编写代码存放的目录.设置好后点击 Launch 启动 Eclipse. <strong>注意</strong>:我们在安装软件的过程中或者创建的文件夹目录都尽量不要有中文路径和特殊符号.</p>
+<p>启动后关闭 welcome 界面,在 Eclipse 的上方菜单栏中找到 Window 修改字体样式和大小</p>
 <p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a1.png" alt="a1"></p>
 <p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/g1.gif" alt="g1"></p>
-<p>修改完字体后还需要将Eclipse当前的工作面板切换成普通Java的面板,因为现在默认安装的是JavaEE的开发面板</p>
+<p>修改完字体后还需要将 Eclipse 当前的工作面板切换成普通 Java 的面板,因为现在默认安装的是 JavaEE 的开发面板</p>
 <p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/g2.gif" alt="g2"></p>
-<p>留下如图所示3块空白区域即可.</p>
+<p>留下如图所示 3 块空白区域即可.</p>
 <ol start="2">
-<li><h5 id="创建Java程序-1"><a href="#创建Java程序-1" class="headerlink" title="创建Java程序"></a>创建Java程序</h5></li>
+<li><h5 id="创建-Java-程序-1"><a href="#创建-Java-程序-1" class="headerlink" title="创建 Java 程序"></a>创建 Java 程序</h5></li>
 </ol>
-<p>在左侧 Package Explorer 中右键选择new Java Project即可</p>
+<p>在左侧 Package Explorer 中右键选择 new Java Project 即可</p>
 <p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a2.png" alt="a2"></p>
-<p>在弹出的窗口中填写Java工程的名称.这里Project:工程的意思(<strong>在前面我们提过写代码就像建高楼,建楼是一个工程,敲代码亦如此</strong>.)</p>
+<p>在弹出的窗口中填写 Java 工程的名称.这里 Project:工程的意思(<strong>在前面我们提过写代码就像建高楼,建楼是一个工程,敲代码亦如此</strong>.)</p>
 <p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a3.png" alt="a3"></p>
-<p>填写完工程名点击Finish,在Package Explorer中出现工程</p>
+<p>填写完工程名点击 Finish,在 Package Explorer 中出现工程</p>
 <p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a4.png" alt="a4"></p>
 <p>Package Explorer : 包资源管理器.在这里我们可以认为这是用来管理当前工程中的各种文件的.</p>
-<p>上图中的src文件夹就是我们放置java源代码文件的根目录.</p>
+<p>上图中的 src 文件夹就是我们放置 java 源代码文件的根目录.</p>
 <p>创建好工程后,我们可以去观察下我们之前的工作空间目录下会有一个新建的目录就是我们当前的工程,以后我们每次创建的工程都可以在此处找到.</p>
 <p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a5.png" alt="a5"></p>
-<p>继续右键选中src文件夹选择new –&gt; Package,然后填写 Package名称,名称的格式一般为公司域名的倒写+模块名.   如   xxx.xxx.xxx.xx,  com.java.firstlearn.p1.创建好package后,观察原项目会发现在src下创建了对应层级的文件夹目录,这样的好处就是我们可以<strong>方便的对当前工程下的不同作用类型的java源文件进行分类管理</strong>.</p>
+<p>继续右键选中 src 文件夹选择 new –&gt; Package,然后填写 Package 名称,名称的格式一般为公司域名的倒写+模块名. 如 xxx.xxx.xxx.xx, com.java.firstlearn.p1.创建好 package 后,观察原项目会发现在 src 下创建了对应层级的文件夹目录,这样的好处就是我们可以<strong>方便的对当前工程下的不同作用类型的 java 源文件进行分类管理</strong>.</p>
 <p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/g3.gif" alt="g3"></p>
-<p>创建好Package后继续选中对应的package 右键 new –&gt; Class </p>
+<p>创建好 Package 后继续选中对应的 package 右键 new –&gt; Class</p>
 <p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/g4.gif" alt="g4"></p>
-<p>这里我们再去工程下的p1文件夹下查看是否有FirstLearn1.java源文件</p>
+<p>这里我们再去工程下的 p1 文件夹下查看是否有 FirstLearn1.java 源文件</p>
 <p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a6.png" alt="a6"></p>
-<p>好了,终于到了最后一步了,编写Java代码,查看运行效果.根据如下图所示输入代码.</p>
+<p>好了,终于到了最后一步了,编写 Java 代码,查看运行效果.根据如下图所示输入代码.</p>
 <p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/g5.gif" alt="g5"></p>
-<p>代码如下: </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.java.firstlearn.p1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstLearn01</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"Hello World!"</span>);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.java.firstlearn.p1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstLearn01</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">"Hello World!"</span>);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>注意 :</strong> 虽然给出了代码,但是一定要自己手动的操作几遍加深印象.代码是什么意思不需要理解我们下节课再分解.</p>
 <p>但是代码的</p>
@@ -374,7 +393,7 @@
 <p><strong>英文大小写</strong>和<strong>空格</strong>还有<strong>中英文符号</strong>的问题</p>
 <p><strong>英文大小写</strong>和<strong>空格</strong>还有<strong>中英文符号</strong>的问题</p>
 <p>一定要注意(<strong>重要的事情一定得强调三遍</strong>)</p>
-<p>就是大家在敲代码的时候一定要把输入法调成英文输入来进行编写.代码的缩进处理可以使用 <strong>Tab</strong>键来进行缩进 大家可以试一下.下节课我会继续给大家讲解Eclipse的具体使用.今天就到这,同学们再把前面的操作回顾一下,我们下章再见.</p>
+<p>就是大家在敲代码的时候一定要把输入法调成英文输入来进行编写.代码的缩进处理可以使用 <strong>Tab</strong>键来进行缩进 大家可以试一下.下节课我会继续给大家讲解 Eclipse 的具体使用.今天就到这,同学们再把前面的操作回顾一下,我们下章再见.</p>
 <p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a7.png" alt="a7"></p>
 
     </div>
@@ -386,6 +405,8 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/java/" rel="tag"># java</a>
+              <a href="/tags/jdk/" rel="tag"># jdk</a>
+              <a href="/tags/eclipse/" rel="tag"># eclipse</a>
           </div>
 
         
@@ -458,7 +479,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java环境搭建"><span class="nav-number">1.</span> <span class="nav-text">Java环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-jdk的安装"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. jdk的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装步骤"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">安装步骤:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#下载完毕后，双击安装，建议一直下一步（next）即可。直到安装（finish）完毕"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">下载完毕后，双击安装，建议一直下一步（next）即可。直到安装（finish）完毕.</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-环境变量的配置"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 环境变量的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装好jdk之后，我们还需要配置一下系统环境变量，右键我的电脑-此电脑-计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">安装好jdk之后，我们还需要配置一下系统环境变量，右键我的电脑&#x2F;此电脑&#x2F;计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在属性中选择左侧的高级系统设置然后选择高级选项卡，再点击环境变量按钮"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">在属性中选择左侧的高级系统设置然后选择高级选项卡，再点击环境变量按钮.</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#点击按钮后-在下面的系统变量中新建JAVA-HOME-记住最后一定要点确定"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">点击按钮后,在下面的系统变量中新建JAVA_HOME,记住最后一定要点确定</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查找CLASSPATH-如没有就新建-JAVA-HOME-lib-JAVA-HOME-lib-tools-jar-前面的点别忘了"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">查找CLASSPATH,如没有就新建.    .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar;    前面的点别忘了</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#找到Path变量进行编辑-添加-JAVA-HOME-bin-JAVA-HOME-jre-bin”-最后别忘了点确定哦"><span class="nav-number">1.0.2.5.</span> <span class="nav-text">找到Path变量进行编辑,添加 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin” , 最后别忘了点确定哦!)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#最后测试环境变量是否配置成功-win-r-输入cmd-回车-打开-cmd界面-输入-javac-如果没有报错-出现error-或者出现以下界面均配置OK"><span class="nav-number">1.0.2.6.</span> <span class="nav-text">最后测试环境变量是否配置成功.win + r 输入cmd 回车 打开 cmd界面 输入 javac , 如果没有报错(出现error)或者出现以下界面均配置OK</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-开发工具的介绍"><span class="nav-number">1.0.3.</span> <span class="nav-text">3. 开发工具的介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Eclipse的安装-如果大学机房有的话可以省略此步骤-但是可以在自己笔记本上安装试一试-环境变量也是一样"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">Eclipse的安装 : (如果大学机房有的话可以省略此步骤,但是可以在自己笔记本上安装试一试,环境变量也是一样)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#下载-直接官网-https-www-eclipse-org-downloads-点击-Download-下载即可"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">下载 直接官网 https:&#x2F;&#x2F;www.eclipse.org&#x2F;downloads&#x2F; 点击 Download 下载即可.</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装-选择-Eclipse-IDE-for-Enterprise-Java-Developers"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">安装 选择 Eclipse IDE for Enterprise Java Developers</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#选择你要安装的路径-然后点击-Install-即可"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">选择你要安装的路径 然后点击 Install 即可</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如果出现以下界面-点击-AcceptNow-即可"><span class="nav-number">1.0.3.5.</span> <span class="nav-text">如果出现以下界面 点击 AcceptNow 即可</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如果又出现下方界面-勾选-Remember-accepted-licenese-再点击-Accept即可"><span class="nav-number">1.0.3.6.</span> <span class="nav-text">如果又出现下方界面 勾选 Remember accepted licenese 再点击 Accept即可</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-创建第一个Java应用程序"><span class="nav-number">1.0.4.</span> <span class="nav-text">4. 创建第一个Java应用程序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建Java程序"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">创建Java程序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#设置字体大小和切换工作面板"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">设置字体大小和切换工作面板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建Java程序-1"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">创建Java程序</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-环境搭建"><span class="nav-number">1.</span> <span class="nav-text">Java 环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-jdk-的安装"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. jdk 的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装步骤"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">安装步骤:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#下载完毕后，双击安装，建议一直下一步（next）即可。直到安装（finish）完毕"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">下载完毕后，双击安装，建议一直下一步（next）即可。直到安装（finish）完毕.</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-环境变量的配置"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 环境变量的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装好-jdk-之后，我们还需要配置一下系统环境变量，右键我的电脑-此电脑-计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">安装好 jdk 之后，我们还需要配置一下系统环境变量，右键我的电脑&#x2F;此电脑&#x2F;计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在属性中选择左侧的高级系统设置然后选择高级选项卡，再点击环境变量按钮"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">在属性中选择左侧的高级系统设置然后选择高级选项卡，再点击环境变量按钮.</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#点击按钮后-在下面的系统变量中新建-JAVA-HOME-记住最后一定要点确定"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">点击按钮后,在下面的系统变量中新建 JAVA_HOME,记住最后一定要点确定</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查找-CLASSPATH-如没有就新建-JAVA-HOME-lib-JAVA-HOME-lib-tools-jar-前面的点别忘了"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">查找 CLASSPATH,如没有就新建. .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar; 前面的点别忘了</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#找到-Path-变量进行编辑-添加-JAVA-HOME-bin-JAVA-HOME-jre-bin”-最后别忘了点确定哦"><span class="nav-number">1.0.2.5.</span> <span class="nav-text">找到 Path 变量进行编辑,添加 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin” , 最后别忘了点确定哦!)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#最后测试环境变量是否配置成功-win-r-输入-cmd-回车-打开-cmd-界面-输入-javac-如果没有报错-出现-error-或者出现以下界面均配置-OK"><span class="nav-number">1.0.2.6.</span> <span class="nav-text">最后测试环境变量是否配置成功.win + r 输入 cmd 回车 打开 cmd 界面 输入 javac , 如果没有报错(出现 error)或者出现以下界面均配置 OK</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-开发工具的介绍"><span class="nav-number">1.0.3.</span> <span class="nav-text">3. 开发工具的介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Eclipse-的安装-如果大学机房有的话可以省略此步骤-但是可以在自己笔记本上安装试一试-环境变量也是一样"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">Eclipse 的安装 : (如果大学机房有的话可以省略此步骤,但是可以在自己笔记本上安装试一试,环境变量也是一样)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#下载-直接官网-https-www-eclipse-org-downloads-点击-Download-下载即可"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">下载 直接官网 https:&#x2F;&#x2F;www.eclipse.org&#x2F;downloads&#x2F; 点击 Download 下载即可.</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装-选择-Eclipse-IDE-for-Enterprise-Java-Developers"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">安装 选择 Eclipse IDE for Enterprise Java Developers</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#选择你要安装的路径-然后点击-Install-即可"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">选择你要安装的路径 然后点击 Install 即可</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如果出现以下界面-点击-AcceptNow-即可"><span class="nav-number">1.0.3.5.</span> <span class="nav-text">如果出现以下界面 点击 AcceptNow 即可</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如果又出现下方界面-勾选-Remember-accepted-licenese-再点击-Accept-即可"><span class="nav-number">1.0.3.6.</span> <span class="nav-text">如果又出现下方界面 勾选 Remember accepted licenese 再点击 Accept 即可</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-创建第一个-Java-应用程序"><span class="nav-number">1.0.4.</span> <span class="nav-text">4. 创建第一个 Java 应用程序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建-Java-程序"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">创建 Java 程序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#设置字体大小和切换工作面板"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">设置字体大小和切换工作面板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建-Java-程序-1"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">创建 Java 程序</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -478,9 +499,17 @@
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
-      <div class="site-state-item site-state-tags">
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
         <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">标签</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
