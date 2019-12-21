@@ -53,24 +53,25 @@
 </li>
 <li><p>方法的调用</p>
 <ol>
-<li><p>有参数 比如 void plus(int a,int b) 那在调用时,就必须传入对应参数列表的参数,第一个参数是 int 类型,那就要传入 int 类型数据,第二个类型如果是 String 那就要传入 String. 该 plus 方法 2 个参数都是 int 类型,那么我们调用的时候应该这么调用</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">对象.plus(<span class="number">1</span>,<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
-
+<li><strong>有参数</strong> 比如 void plus(int a,int b) 那在调用时,就必须传入对应参数列表的参数,第一个参数是 int 类型,那就要传入 int 类型数据,第二个类型如果是 String 那就要传入 String. 该 plus 方法 2 个参数都是 int 类型, </li>
+</ol>
+<ul>
+<li>调用方式 : <strong>对象.plus(1,2);</strong></li>
+</ul>
+<ol start="2">
+<li><strong>有返回值</strong> 比如 int plus(int a,int b) 那在调用时,我们就能通过 对应的返回值类型来接收数据</li>
+</ol>
+<ul>
+<li>调用方式 : <strong>int sum = 对象.plus(3,4);</strong></li>
+</ul>
 </li>
 </ol>
-</li>
-</ol>
-<p>2)  有返回值 比如 int plus(int a,int b) 那在调用时,我们就能通过 对应的返回值类型来接收数据</p>
-<pre><code><figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> sum = 对象.plus(<span class="number">3</span>,<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
-
-
-  ![](https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/baodao.gif)
+<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/baodao.gif" />
 
 
 
-
-
-  &lt;center&gt;&lt;b&gt;END&lt;/b&gt;&lt;/center&gt;</code></pre>]]></content>
+  <center><b>END</b></center>
+]]></content>
       <categories>
         <category>后台</category>
       </categories>
