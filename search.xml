@@ -3,18 +3,18 @@
   <entry>
     <title>Part6·面向对象编程(图文并茂)</title>
     <url>/2019/12/20/02-java/</url>
-    <content><![CDATA[<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/xiao1.jpg" alt="xiao1"></p>
+    <content><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/xiao1.jpg" alt=""></p>
 <a id="more"></a>
 
 <p>OK!今天咱们正式进入到 Java 的核心思想的学习了.标题的面向对象编程是什么意思呢?是不是这样呢?</p>
-<img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/xiao2.jpeg" alt="xiao2" style="zoom:67%;" />
+<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/xiao2.jpeg" alt="xiao2" style="zoom:67%;" />
 
 <p>开个玩笑了,那什么是面向对象编程呢?要搞清楚面向对象是什么?首先我们得知道什么是对象?在学 Java 的当中 90%的人应该都听说过一句话 : <strong>万物皆对象</strong></p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/xiao3.png" alt="xiao3"></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/xiao3.png" alt=""></p>
 <p><b style="color:red">万物皆对象</b> : 故名思意 , 世间万物在 Java 中我们都可以认为是一个对象,比如一花一草,一人一物,具体点的,比如从你眼前驶过的车辆,无论是小汽车还是公共汽车还是货车,还是从你头上飞过的飞禽,燕子,乌鸦,鸽子,还是从你脚边跑过的走兽,哈士奇,萨摩耶,橘猫,等等…. 这些都可以称之为<strong>对象</strong>,也就是对象就是一些实际存在于我们生活中的个体</p>
 <p>了解了对象的概念后,我们再来思考,大部分对象之间是不是都有一些共同的特征,我们人类再对这些具有共同的特征的对象统一归类,比如说刚才我们提到的燕子,乌鸦,鸽子,这些物种都具备<b style="color:red">飞的行为</b>,还有他们都有体重,大小,和年龄的一些<b style="color:red">特征</b>,所以我们人类都将具备此类对象相同的<b style="color:red">行为和属性</b>归纳成鸟类.同样的还有无论是哈士奇还是萨摩耶还是阿拉斯加,他们也有着相同的<b style="color:red">特征</b>比如,他们的主要生活地点都是寒冷区域,也有体重,性别,身高,体重等,还具备着拉雪橇,看家,打猎等<b style="color:red">行为</b>,我们人类也将具备此类对象相同的行为的属性归纳成狗类.</p>
 <p>注意上一段中我大量的引用到了 2 个词,<b style="color:red">行为</b>和<b style="color:red">属性特征</b>,也就是说我们将根据一些对象相同的行为或者属性特征描述成了某一类事物,并且只要具备了该事物的行为和属性特征的具体的实例对象都是属于同一类事物.再来看图说话.</p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/b1.png" alt="b1"></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/b1.png" alt=""></p>
 <p>那我们在 Java 中如何来描述以上这一归纳成狗类的过程呢?</p>
 <p>在 Java 中 我们用并不陌生的一个关键字 <b style="color: red;font-size: 20px;">class </b>来描述一类事物,接下来我们用代码来演示如何通过一个事物的属性和行为描述一个类.</p>
 <p>在工程中 src 文件夹对应的 package 中创建 Dog 类 new –&gt; Class –&gt; 名称为 Dog</p>
@@ -42,18 +42,18 @@
 <h2 id="Java-环境搭建"><a href="#Java-环境搭建" class="headerlink" title="Java 环境搭建"></a>Java 环境搭建</h2><p>相信大家在学校的课程中,已经通过老师的讲解已经知道 Java 是什么?用来干嘛的?在这里我将直接从 Java 的环境搭建开始.这里主要以 windows10 为例:</p>
 <h4 id="1-jdk-的安装"><a href="#1-jdk-的安装" class="headerlink" title="1. jdk 的安装"></a>1. jdk 的安装</h4><p>​ 在安装 jdk 之前,还是先介绍一下 jdk 的作用.</p>
 <p>​ <strong>jdk</strong> : Java Development Kit 是<strong>Java</strong>语言的软件开发工具包.鲁迅先生曾经说过:<strong>想要建高楼,先得学会使锤子,锤子都不会用,还建个锤子的高楼</strong>(:smile:是不是鲁迅说的我就不知道了) . 在 jdk 中的 bin 目录中存放着我们在开发一幢高楼<strong>(Java 应用程序</strong>)中要使用到的一些锤子(<strong>工具</strong>)，比如 javac.exe(将源文件<strong>.java</strong>文件编译成<strong>.class</strong>文件),java.exe（运行<strong>.class</strong>文件）等工具.</p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/1.png" alt="1"> <a id="more"></a></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/1.png" alt=""> <a id="more"></a></p>
 <p>​ <strong>jre</strong> : Java Runtime Environment <strong>Java 程序的运行环境</strong>.也就是说咱们开发的 Java 程序想要运行起来就得依靠 jre 的支持,你想想我们人类是不是也得靠地球这个大环境才能生存呢？在 jre 中有<strong>Java 虚拟机(JVM)</strong>,Java 核心类库和一些支持文件.</p>
 <p>​ <strong>jvm</strong> : Java Virtual Machine <strong>Java 虚拟机</strong> ，有了 Java 虚拟机,Java 语言在不同平台上运行时不需要重新编译 .也就是说有了虚拟机，咱们就可以把 Java 程序运行在各种不同的平台，让 Java 具备了跨平台性.</p>
 <h5 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤:"></a>安装步骤:</h5><p>​ 好了，介绍完一些基本概念，咱们开始正式安装，首先我们得去官网下载一个 jdk，现在市面主流还是以 jdk8 为主 所以我这里提供 8 的链接给各位同学下载 链接地址 : <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a> . 进入页面后往下翻就能看到下面图片，按照图片说明进行下载，我这里以 windows 64 位为例，如果是 32 位系统 就选择上面的 x86 下载即可.</p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/2.png" alt="2"></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/2.png" alt=""></p>
 <h5 id="下载完毕后，双击安装，建议一直下一步（next）即可。直到安装（finish）完毕"><a href="#下载完毕后，双击安装，建议一直下一步（next）即可。直到安装（finish）完毕" class="headerlink" title="下载完毕后，双击安装，建议一直下一步（next）即可。直到安装（finish）完毕."></a>下载完毕后，双击安装，建议一直<strong>下一步</strong>（next）即可。直到安装（finish）完毕.</h5><h4 id="2-环境变量的配置"><a href="#2-环境变量的配置" class="headerlink" title="2. 环境变量的配置"></a>2. 环境变量的配置</h4><ol>
-<li><h5 id="安装好-jdk-之后，我们还需要配置一下系统环境变量，右键我的电脑-此电脑-计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性"><a href="#安装好-jdk-之后，我们还需要配置一下系统环境变量，右键我的电脑-此电脑-计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性" class="headerlink" title="安装好 jdk 之后，我们还需要配置一下系统环境变量，右键我的电脑/此电脑/计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性"></a>安装好 jdk 之后，我们还需要配置一下系统环境变量，右键<strong>我的电脑</strong>/<strong>此电脑</strong>/<strong>计算机</strong>，如果桌面的计算机图标被删除的话进入到文件夹中左侧<strong>此电脑</strong>右键也可以。然后选择<strong>属性</strong><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/1.gif" alt="1"></h5></li>
-<li><h5 id="在属性中选择左侧的高级系统设置然后选择高级选项卡，再点击环境变量按钮"><a href="#在属性中选择左侧的高级系统设置然后选择高级选项卡，再点击环境变量按钮" class="headerlink" title="在属性中选择左侧的高级系统设置然后选择高级选项卡，再点击环境变量按钮."></a>在属性中选择左侧的<strong>高级系统设置</strong>然后选择<strong>高级</strong>选项卡，再点击<strong>环境变量</strong>按钮.<img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/2.gif" alt="2"></h5></li>
-<li><h5 id="点击按钮后-在下面的系统变量中新建-JAVA-HOME-记住最后一定要点确定"><a href="#点击按钮后-在下面的系统变量中新建-JAVA-HOME-记住最后一定要点确定" class="headerlink" title="点击按钮后,在下面的系统变量中新建 JAVA_HOME,记住最后一定要点确定"></a>点击按钮后,在下面的系统变量中新建 JAVA_HOME,记住最后一定要点<strong>确定</strong><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/3.gif" alt="3"></h5></li>
-<li><h5 id="查找-CLASSPATH-如没有就新建-JAVA-HOME-lib-JAVA-HOME-lib-tools-jar-前面的点别忘了"><a href="#查找-CLASSPATH-如没有就新建-JAVA-HOME-lib-JAVA-HOME-lib-tools-jar-前面的点别忘了" class="headerlink" title="查找 CLASSPATH,如没有就新建. .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar; 前面的点别忘了"></a>查找 CLASSPATH,如没有就新建. <strong>.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar;</strong> 前面的点别忘了<img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/4.gif" alt="4"></h5></li>
-<li><h5 id="找到-Path-变量进行编辑-添加-JAVA-HOME-bin-JAVA-HOME-jre-bin”-最后别忘了点确定哦"><a href="#找到-Path-变量进行编辑-添加-JAVA-HOME-bin-JAVA-HOME-jre-bin”-最后别忘了点确定哦" class="headerlink" title="找到 Path 变量进行编辑,添加 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin” , 最后别忘了点确定哦!)"></a>找到 Path 变量进行编辑,添加 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin” , <strong>最后别忘了点确定哦!</strong><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/3.png" alt="3">)<img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/4.png" alt="4"></h5></li>
-<li><h5 id="最后测试环境变量是否配置成功-win-r-输入-cmd-回车-打开-cmd-界面-输入-javac-如果没有报错-出现-error-或者出现以下界面均配置-OK"><a href="#最后测试环境变量是否配置成功-win-r-输入-cmd-回车-打开-cmd-界面-输入-javac-如果没有报错-出现-error-或者出现以下界面均配置-OK" class="headerlink" title="最后测试环境变量是否配置成功.win + r 输入 cmd 回车 打开 cmd 界面 输入 javac , 如果没有报错(出现 error)或者出现以下界面均配置 OK"></a>最后测试环境变量是否配置成功.win + r 输入 cmd 回车 打开 cmd 界面 输入 javac , 如果没有报错(出现 error)或者出现以下界面均配置 OK<img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/5.png" alt="5" style="zoom: 80%;" /></h5></li>
+<li><h5 id="安装好-jdk-之后，我们还需要配置一下系统环境变量，右键我的电脑-此电脑-计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性"><a href="#安装好-jdk-之后，我们还需要配置一下系统环境变量，右键我的电脑-此电脑-计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性" class="headerlink" title="安装好 jdk 之后，我们还需要配置一下系统环境变量，右键我的电脑/此电脑/计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性"></a>安装好 jdk 之后，我们还需要配置一下系统环境变量，右键<strong>我的电脑</strong>/<strong>此电脑</strong>/<strong>计算机</strong>，如果桌面的计算机图标被删除的话进入到文件夹中左侧<strong>此电脑</strong>右键也可以。然后选择<strong>属性</strong><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/1.gif" alt=""></h5></li>
+<li><h5 id="在属性中选择左侧的高级系统设置然后选择高级选项卡，再点击环境变量按钮"><a href="#在属性中选择左侧的高级系统设置然后选择高级选项卡，再点击环境变量按钮" class="headerlink" title="在属性中选择左侧的高级系统设置然后选择高级选项卡，再点击环境变量按钮."></a>在属性中选择左侧的<strong>高级系统设置</strong>然后选择<strong>高级</strong>选项卡，再点击<strong>环境变量</strong>按钮.<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/2.gif" alt=""></h5></li>
+<li><h5 id="点击按钮后-在下面的系统变量中新建-JAVA-HOME-记住最后一定要点确定"><a href="#点击按钮后-在下面的系统变量中新建-JAVA-HOME-记住最后一定要点确定" class="headerlink" title="点击按钮后,在下面的系统变量中新建 JAVA_HOME,记住最后一定要点确定"></a>点击按钮后,在下面的系统变量中新建 JAVA_HOME,记住最后一定要点<strong>确定</strong><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/3.gif" alt=""></h5></li>
+<li><h5 id="查找-CLASSPATH-如没有就新建-JAVA-HOME-lib-JAVA-HOME-lib-tools-jar-前面的点别忘了"><a href="#查找-CLASSPATH-如没有就新建-JAVA-HOME-lib-JAVA-HOME-lib-tools-jar-前面的点别忘了" class="headerlink" title="查找 CLASSPATH,如没有就新建. .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar; 前面的点别忘了"></a>查找 CLASSPATH,如没有就新建. <strong>.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar;</strong> 前面的点别忘了<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/4.gif" alt=""></h5></li>
+<li><h5 id="找到-Path-变量进行编辑-添加-JAVA-HOME-bin-JAVA-HOME-jre-bin”-最后别忘了点确定哦"><a href="#找到-Path-变量进行编辑-添加-JAVA-HOME-bin-JAVA-HOME-jre-bin”-最后别忘了点确定哦" class="headerlink" title="找到 Path 变量进行编辑,添加 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin” , 最后别忘了点确定哦!)"></a>找到 Path 变量进行编辑,添加 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin” , <strong>最后别忘了点确定哦!</strong><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/3.png" alt="">)<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/4.png" alt=""></h5></li>
+<li><h5 id="最后测试环境变量是否配置成功-win-r-输入-cmd-回车-打开-cmd-界面-输入-javac-如果没有报错-出现-error-或者出现以下界面均配置-OK"><a href="#最后测试环境变量是否配置成功-win-r-输入-cmd-回车-打开-cmd-界面-输入-javac-如果没有报错-出现-error-或者出现以下界面均配置-OK" class="headerlink" title="最后测试环境变量是否配置成功.win + r 输入 cmd 回车 打开 cmd 界面 输入 javac , 如果没有报错(出现 error)或者出现以下界面均配置 OK"></a>最后测试环境变量是否配置成功.win + r 输入 cmd 回车 打开 cmd 界面 输入 javac , 如果没有报错(出现 error)或者出现以下界面均配置 OK<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/5.png" alt="5" style="zoom: 80%;" /></h5></li>
 </ol>
 <h4 id="3-开发工具的介绍"><a href="#3-开发工具的介绍" class="headerlink" title="3. 开发工具的介绍"></a>3. 开发工具的介绍</h4><p>​ 配置好 jdk 之后.就开始安装我们的 Java 开发工具了,孔子曾说过: <strong>工欲善其事,必先利其器</strong>.那我们想要开发自己的 Java 应用程序,选择一款合适的开发工具肯定会事半功倍.</p>
 <p>这里我要给各位同学提几点要求.在学习的阶段要对自己狠一点,学习是一个长久,循序渐进的过程,不能三天打鱼两天晒网.所以当我们做好准备开始学习就需要严格要求自己每天都吸收一点新知识和回顾之前的内容,一开始接触 Java 肯定是比较困难的,但是也有无数个成功的例子,而这些成功的人无疑是每天都在努力,所以,如果大家对 Java 或者编程感兴趣的话,坚持下去,你就能成功!</p>
@@ -65,44 +65,44 @@
 <li><h5 id="下载-直接官网-https-www-eclipse-org-downloads-点击-Download-下载即可"><a href="#下载-直接官网-https-www-eclipse-org-downloads-点击-Download-下载即可" class="headerlink" title="下载 直接官网 https://www.eclipse.org/downloads/ 点击 Download 下载即可."></a>下载 直接官网 <a href="https://www.eclipse.org/downloads/" target="_blank" rel="noopener">https://www.eclipse.org/downloads/</a> 点击 Download 下载即可.</h5></li>
 <li><h5 id="安装-选择-Eclipse-IDE-for-Enterprise-Java-Developers"><a href="#安装-选择-Eclipse-IDE-for-Enterprise-Java-Developers" class="headerlink" title="安装 选择 Eclipse IDE for Enterprise Java Developers"></a>安装 选择 <strong>Eclipse IDE for Enterprise Java Developers</strong></h5></li>
 </ol>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/6.png" alt="6"></p>
-<h5 id="选择你要安装的路径-然后点击-Install-即可"><a href="#选择你要安装的路径-然后点击-Install-即可" class="headerlink" title="选择你要安装的路径 然后点击 Install 即可"></a>选择你要安装的路径 然后点击 Install 即可</h5><p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/7.png" alt="7"></p>
-<h5 id="如果出现以下界面-点击-AcceptNow-即可"><a href="#如果出现以下界面-点击-AcceptNow-即可" class="headerlink" title="如果出现以下界面 点击 AcceptNow 即可"></a>如果出现以下界面 点击 AcceptNow 即可</h5><p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/8.png" alt="8"></p>
-<h5 id="如果又出现下方界面-勾选-Remember-accepted-licenese-再点击-Accept-即可"><a href="#如果又出现下方界面-勾选-Remember-accepted-licenese-再点击-Accept-即可" class="headerlink" title="如果又出现下方界面 勾选 Remember accepted licenese 再点击 Accept 即可"></a>如果又出现下方界面 勾选 Remember accepted licenese 再点击 Accept 即可</h5><p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/9.png" alt="9"></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/6.png" alt=""></p>
+<h5 id="选择你要安装的路径-然后点击-Install-即可"><a href="#选择你要安装的路径-然后点击-Install-即可" class="headerlink" title="选择你要安装的路径 然后点击 Install 即可"></a>选择你要安装的路径 然后点击 Install 即可</h5><p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/7.png" alt=""></p>
+<h5 id="如果出现以下界面-点击-AcceptNow-即可"><a href="#如果出现以下界面-点击-AcceptNow-即可" class="headerlink" title="如果出现以下界面 点击 AcceptNow 即可"></a>如果出现以下界面 点击 AcceptNow 即可</h5><p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/8.png" alt=""></p>
+<h5 id="如果又出现下方界面-勾选-Remember-accepted-licenese-再点击-Accept-即可"><a href="#如果又出现下方界面-勾选-Remember-accepted-licenese-再点击-Accept-即可" class="headerlink" title="如果又出现下方界面 勾选 Remember accepted licenese 再点击 Accept 即可"></a>如果又出现下方界面 勾选 Remember accepted licenese 再点击 Accept 即可</h5><p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/9.png" alt=""></p>
 <h4 id="4-创建第一个-Java-应用程序"><a href="#4-创建第一个-Java-应用程序" class="headerlink" title="4. 创建第一个 Java 应用程序"></a>4. 创建第一个 Java 应用程序</h4><h5 id="创建-Java-程序"><a href="#创建-Java-程序" class="headerlink" title="创建 Java 程序"></a>创建 Java 程序</h5><p>​ 好了,到了激动人心的时刻了.在创建 Java 程序之前我们先打开 Eclipse 对工具进行简单的设置和页面的介绍</p>
 <ol>
 <li><h5 id="设置字体大小和切换工作面板"><a href="#设置字体大小和切换工作面板" class="headerlink" title="设置字体大小和切换工作面板"></a>设置字体大小和切换工作面板</h5><p>在打开后的 Eclipse 界面中.</p>
 </li>
 </ol>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/10.png" alt="10"></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/10.png" alt=""></p>
 <p>图中的 Workspace 对应的路径是工作空间的路径,就是我们编写代码存放的目录.设置好后点击 Launch 启动 Eclipse. <strong>注意</strong>:我们在安装软件的过程中或者创建的文件夹目录都尽量不要有中文路径和特殊符号.</p>
 <p>启动后关闭 welcome 界面,在 Eclipse 的上方菜单栏中找到 Window 修改字体样式和大小</p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a1.png" alt="a1"></p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/g1.gif" alt="g1"></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/a1.png" alt=""></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/g1.gif" alt=""></p>
 <p>修改完字体后还需要将 Eclipse 当前的工作面板切换成普通 Java 的面板,因为现在默认安装的是 JavaEE 的开发面板</p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/g2.gif" alt="g2"></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/g2.gif" alt=""></p>
 <p>留下如图所示 3 块空白区域即可.</p>
 <ol start="2">
 <li><h5 id="创建-Java-程序-1"><a href="#创建-Java-程序-1" class="headerlink" title="创建 Java 程序"></a>创建 Java 程序</h5></li>
 </ol>
 <p>在左侧 Package Explorer 中右键选择 new Java Project 即可</p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a2.png" alt="a2"></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/a2.png" alt=""></p>
 <p>在弹出的窗口中填写 Java 工程的名称.这里 Project:工程的意思(<strong>在前面我们提过写代码就像建高楼,建楼是一个工程,敲代码亦如此</strong>.)</p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a3.png" alt="a3"></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/a3.png" alt=""></p>
 <p>填写完工程名点击 Finish,在 Package Explorer 中出现工程</p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a4.png" alt="a4"></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/a4.png" alt=""></p>
 <p>Package Explorer : 包资源管理器.在这里我们可以认为这是用来管理当前工程中的各种文件的.</p>
 <p>上图中的 src 文件夹就是我们放置 java 源代码文件的根目录.</p>
 <p>创建好工程后,我们可以去观察下我们之前的工作空间目录下会有一个新建的目录就是我们当前的工程,以后我们每次创建的工程都可以在此处找到.</p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a5.png" alt="a5"></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/a5.png" alt=""></p>
 <p>继续右键选中 src 文件夹选择 new –&gt; Package,然后填写 Package 名称,名称的格式一般为公司域名的倒写+模块名. 如 xxx.xxx.xxx.xx, com.java.firstlearn.p1.创建好 package 后,观察原项目会发现在 src 下创建了对应层级的文件夹目录,这样的好处就是我们可以<strong>方便的对当前工程下的不同作用类型的 java 源文件进行分类管理</strong>.</p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/g3.gif" alt="g3"></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/g3.gif" alt=""></p>
 <p>创建好 Package 后继续选中对应的 package 右键 new –&gt; Class</p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/g4.gif" alt="g4"></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/g4.gif" alt=""></p>
 <p>这里我们再去工程下的 p1 文件夹下查看是否有 FirstLearn1.java 源文件</p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a6.png" alt="a6"></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/a6.png" alt=""></p>
 <p>好了,终于到了最后一步了,编写 Java 代码,查看运行效果.根据如下图所示输入代码.</p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/g5.gif" alt="g5"></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/g5.gif" alt=""></p>
 <p>代码如下:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.java.firstlearn.p1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstLearn01</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">"Hello World!"</span>);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -113,7 +113,7 @@
 <p><strong>英文大小写</strong>和<strong>空格</strong>还有<strong>中英文符号</strong>的问题</p>
 <p>一定要注意(<strong>重要的事情一定得强调三遍</strong>)</p>
 <p>就是大家在敲代码的时候一定要把输入法调成英文输入来进行编写.代码的缩进处理可以使用 <strong>Tab</strong>键来进行缩进 大家可以试一下.下节课我会继续给大家讲解 Eclipse 的具体使用.今天就到这,同学们再把前面的操作回顾一下,我们下章再见.</p>
-<p><img src="https://fightlee-1300950641.cos.ap-guangzhou.myqcloud.com/fightlee/a7.png" alt="a7"></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/a7.png" alt=""></p>
 ]]></content>
       <categories>
         <category>后台</category>
