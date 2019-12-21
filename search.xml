@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Part7·面向对象编程·二(图文)</title>
-    <url>/archives/undefined.html</url>
+    <url>/03-java.html</url>
     <content><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191221160614.png" alt="20191221160614.png"></p>
 <a id="more"></a>
 
@@ -78,7 +78,7 @@
   </entry>
   <entry>
     <title>Part6·面向对象编程(图文)</title>
-    <url>/archives/undefined.html</url>
+    <url>/02-java.html</url>
     <content><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/xiao1.jpg" alt=""></p>
 <a id="more"></a>
 
@@ -179,7 +179,7 @@
   </entry>
   <entry>
     <title>Part1·初识Java(图文)</title>
-    <url>/archives/undefined.html</url>
+    <url>/01-java.html</url>
     <content><![CDATA[<p>Hello,各位小朋友,不知道在前面的网页制作课程中有没有提升大家对编程的兴趣和信心?从现在开始我们将要进入到<strong>Java</strong>的学习中来了.废话不多说,直接上手.</p>
 <h2 id="Java-环境搭建"><a href="#Java-环境搭建" class="headerlink" title="Java 环境搭建"></a>Java 环境搭建</h2><p>相信大家在学校的课程中,已经通过老师的讲解已经知道 Java 是什么?用来干嘛的?在这里我将直接从 Java 的环境搭建开始.这里主要以 windows10 为例:</p>
 <h4 id="1-jdk-的安装"><a href="#1-jdk-的安装" class="headerlink" title="1. jdk 的安装"></a>1. jdk 的安装</h4><p>​ 在安装 jdk 之前,还是先介绍一下 jdk 的作用.</p>
