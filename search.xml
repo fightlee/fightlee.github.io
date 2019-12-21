@@ -35,9 +35,54 @@
 <li>在调用方法完成的时候,调用者是否需要拿到方法产生的数据?</li>
 </ol>
 <p>好.根据上面2个问题 我们重新来设计我们计算器中的plus方法,在上面的代码中我们重新设计 : </p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*第一 : 方法体中的代码需不需要使用到未知的数据 ? 很明显计算器要做加法运算肯定是要对2个未知的数来进行加法运算,比如 : a + b , 那也就是说我们方法体在运行的时候需要用到一个 数字 a  和 数字 b ,那这样我们就确定了当前方法的参数类型和参数名称.</span></span><br><span class="line"><span class="comment">	参数类型1 : int 参数名1 : a</span></span><br><span class="line"><span class="comment">    参数类型2 : int 参数名2 : b   </span></span><br><span class="line"><span class="comment">  第二 : 调用者是否需要拿到方法产生的数据? 计算器在计算完 a 和 b 的和之后,我们需要拿到运算后的结果,这样我们就确定了当前方法的返回值.</span></span><br><span class="line"><span class="comment">    return a+b的和; //记住分号一定要写</span></span><br><span class="line"><span class="comment">  那确定了参数和返回值 我们重新来定义plus方法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Calucator</span></span>&#123;</span><br><span class="line">    <span class="comment">//返回值 是 2 个 int 类型的和 那也是 int类型</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">plus1</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = a + b;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*第一 : 方法体中的代码需不需要使用到未知的数据 ? 很明显计算器要做加法运算肯定是要对2个未知的数来进行加法运算,比如 : a + b , 那也就是说我们方法体在运行的时候需要用到一个 数字 a  和 数字 b ,那这样我们就确定了当前方法的参数类型和参数名称.</span></span><br><span class="line"><span class="comment">	参数类型1 : int 参数名1 : a</span></span><br><span class="line"><span class="comment">    参数类型2 : int 参数名2 : b   </span></span><br><span class="line"><span class="comment">  第二 : 调用者是否需要拿到方法产生的数据? 计算器在计算完 a 和 b 的和之后,我们需要拿到运算后的结果,这样我们就确定了当前方法的返回值.</span></span><br><span class="line"><span class="comment">    return a+b的和; //记住分号一定要写</span></span><br><span class="line"><span class="comment">  那确定了参数和返回值 我们重新来定义plus方法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Calucator</span></span>&#123;</span><br><span class="line">    <span class="comment">//返回值 是 2 个 int 类型的和 那也是 int类型</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">plus1</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = a + b;<span class="comment">//声明变量sum来接收a和b的和</span></span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">//又是创建对象和调用的过程</span></span><br><span class="line">        Calucator calucator = <span class="keyword">new</span> Calucator();</span><br><span class="line">        <span class="comment">//调用的时候要注意,既然我们在方法上声明了参数,那我们就要传入对应的参数类型的值.</span></span><br><span class="line">        <span class="comment">//比如我们要计算3和5的值</span></span><br><span class="line">        <span class="comment">//因为我们将和从方法中返回了出来,所以我们可以用对应的sum的数据类型来对返回值进行接收</span></span><br><span class="line">        <span class="keyword">int</span> sum = calucator.(<span class="number">3</span>,<span class="number">5</span>);</span><br><span class="line">        <span class="comment">//最后打印输出 我们得到的结果</span></span><br><span class="line">        System.out.println(<span class="string">"3 + 5 = "</span> + sum);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-]]></content>
+<p>得到结果 : </p>
+<figure class="highlight basic"><table><tr><td class="code"><pre><span class="line"><span class="symbol">3 </span>+ <span class="number">5</span> = <span class="number">8</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="Section-3-练习"><a href="#Section-3-练习" class="headerlink" title="Section. 3 练习"></a>Section. 3 练习</h3><p>好了,经过上文的学习后,我们自己来练习一下具体方法的定义和调用</p>
+<p>练习1 : 在Calucator中完善其他减法(sub)乘法(mul)和除法(div),方法名已经给出来了哦.</p>
+<p>练习2 : 重新设计之前敲过的猫和狗类的吃东西的方法,比如说给一种食物(food) 就代表狗或者猫在吃什么? 食物我们先定义为String 类型即可.</p>
+<h3 id="Section-4-总结"><a href="#Section-4-总结" class="headerlink" title="Section. 4 总结"></a>Section. 4 总结</h3><ol>
+<li><p>方法的定义</p>
+<ol>
+<li>方法具体用来干什么? 确定方法名称,比如说方法的作用是 吃饭 eat ,计算总价 getTotalPrice,根据学生的名称来查询学生信息 getStudentInfoByName 等.</li>
+<li>方法体中需不需要用到未知的参数. 确定参数类型和参数名</li>
+<li>方法结束后调用者需不需要使用方法调用完的结果. 如果需要 就应该写返回值类型 和 在方法体中 使用return 返回对应类型的值</li>
+</ol>
+</li>
+<li><p>方法的调用</p>
+<ol>
+<li><p>有参数   比如  void plus(int a,int b) 那在调用时,就必须传入对应参数列表的参数,第一个参数是int类型,那就要传入int类型数据,第二个类型如果是String 那就要传入String. 该plus方法2个参数都是int类型,那么我们调用的时候应该这么调用</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">对象.plus(<span class="number">1</span>,<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+</li>
+</ol>
+<ol start="2">
+<li><p>有返回值 比如  int plus(int a,int b) 那在调用时,我们就能通过 对应的返回值类型来接收数据</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> sum = 对象.plus(<span class="number">3</span>,<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ol>
+<pre><code>![](https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/baodao.gif)
+
+
+
+
+
+&lt;center&gt;&lt;b&gt;END&lt;/b&gt;&lt;/center&gt;</code></pre>]]></content>
       <categories>
         <category>后台</category>
       </categories>
