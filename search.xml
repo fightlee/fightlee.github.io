@@ -1,17 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Part6·面向对象编程(图文并茂)</title>
+    <title>Part7·面向对象编程·二(图文)</title>
+    <url>/2019/12/21/03-java/</url>
+    <content><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191221160614.png" alt="20191221160614.png"></p>
+<a id="more"></a>
+
+<h3 id="Section-1-前文引入"><a href="#Section-1-前文引入" class="headerlink" title="Section. 1 前文引入"></a>Section. 1 前文引入</h3><p>在上一篇文章中我们知道了在Java中如何设计一个类,来定义类中的属性和行为,那属性这个东西呢,和咱们之前学过的变量非常相似.所以我们这里暂时先不提,这篇文章主要来给大家分析我们类中的<b style="color:red">行为</b>.</p>
+<h3 id="Section-2-理论"><a href="#Section-2-理论" class="headerlink" title="Section. 2 理论"></a>Section. 2 理论</h3><p>行为 : 在程序语言中,我们可以用function或者method这俩个单词来对他进行翻译,也可以称之为函数或者方法.在class(类,以后我这里都写成class)中,通常有4种形态的方法.那在掌握不同形态方法之前我们首先来了解一下创建方法的语法是什么?</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//方法的基本语法</span></span><br><span class="line">[修饰符] 返回值类型 方法名(参数类型<span class="number">1</span> 参数名<span class="number">1</span>,参数类型<span class="number">2</span> 参数名<span class="number">2</span>,...)&#123;</span><br><span class="line">    方法体</span><br><span class="line">    ...</span><br><span class="line">    [<span class="keyword">return</span> 返回值;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里来对上面的语法来做一个简单的解释 : </p>
+<p><strong>修饰符</strong> : 方法的修饰符有很多,不同的修饰符作用也不同 比如 : 对方法权限限定的 public private protected , 是否静态 static ,能否被重写 final 等.. 这里目前我们先使用一个 public(公共的)</p>
+<p><strong>返回值类型</strong> : 方法的返回值类型就是 一个数据类型, 但是 返回值类型不能随便定义,我们需要通过具体方法所设计到的需求来决定是否给定具体返回值类型,如果该方法没有具体返回值类型 我们可以定义为 <strong>void</strong></p>
+<p><strong>方法名</strong> : 方法的名称.注意取名的规范即可,和变量一样,尽量要有意义,首个单词小写,其余单词首字母大写,如 showProductInfo , getStudentById 等等…</p>
+<p><strong>参数类型和参数名</strong> : 在调用该方法的时候,比如我们前文设计的猫和狗类种吃东西的方法 , 那具体猫和狗吃什么呢?对于吃的食物不确定,我们就可以通过传入参数的形式来决定,比如猫吃鱼,狗吃骨头,那 鱼和骨头 我们简单认为就是一个字符串,那传入的参数类型就是String 参数名称就是 food</p>
+<p><strong>方法体</strong> : 方法中所需要执行的代码</p>
+<p><strong>return 返回值</strong> : 如果方法中定义了返回值类型,我们就必须要在方法的最后加上 <strong>return</strong> 关键字 .理解起来也很简单,调用该方法有返回值 那是不是应该给我返回 一个值出来了? 这里 正好和返回值类型呼应, 返回什么类型的值,方法上就应该填写什么返回值类型或者能够兼容的返回值类型.</p>
+<h5 id="举例1"><a href="#举例1" class="headerlink" title="举例1 :"></a>举例1 :</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//现在我们设计一个计算器类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Calucator</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//那计算器中肯定具备了一些行为,比如 加减乘除</span></span><br><span class="line">    <span class="comment">//那我们定义一个最基本的 加法的 方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">plus</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"这是计算器中的加法"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>后台</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>面向对象</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Part6·面向对象编程(图文)</title>
     <url>/2019/12/20/02-java/</url>
     <content><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/xiao1.jpg" alt=""></p>
 <a id="more"></a>
 
-<p>OK!今天咱们正式进入到 Java 的核心思想的学习了.标题的面向对象编程是什么意思呢?是不是这样呢?</p>
+<h3 id="Section-1-前文引入"><a href="#Section-1-前文引入" class="headerlink" title="Section. 1 前文引入"></a>Section. 1 前文引入</h3><p>OK!今天咱们正式进入到 Java 的核心思想的学习了.标题的面向对象编程是什么意思呢?是不是这样呢?</p>
 <img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/xiao2.jpeg" alt="xiao2" style="zoom:67%;" />
 
 <p>开个玩笑了,那什么是面向对象编程呢?要搞清楚面向对象是什么?首先我们得知道什么是对象?在学 Java 的当中 90%的人应该都听说过一句话 : <strong>万物皆对象</strong></p>
 <p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/xiao3.png" alt=""></p>
-<p><b style="color:red">万物皆对象</b> : 故名思意 , 世间万物在 Java 中我们都可以认为是一个对象,比如一花一草,一人一物,具体点的,比如从你眼前驶过的车辆,无论是小汽车还是公共汽车还是货车,还是从你头上飞过的飞禽,燕子,乌鸦,鸽子,还是从你脚边跑过的走兽,哈士奇,萨摩耶,橘猫,等等…. 这些都可以称之为<strong>对象</strong>,也就是对象就是一些实际存在于我们生活中的个体</p>
+<h3 id="Section-2-理论"><a href="#Section-2-理论" class="headerlink" title="Section. 2 理论"></a>Section. 2 理论</h3><p><b style="color:red">万物皆对象</b> : 故名思意 , 世间万物在 Java 中我们都可以认为是一个对象,比如一花一草,一人一物,具体点的,比如从你眼前驶过的车辆,无论是小汽车还是公共汽车还是货车,还是从你头上飞过的飞禽,燕子,乌鸦,鸽子,还是从你脚边跑过的走兽,哈士奇,萨摩耶,橘猫,等等…. 这些都可以称之为<strong>对象</strong>,也就是对象就是一些实际存在于我们生活中的个体</p>
 <p>了解了对象的概念后,我们再来思考,大部分对象之间是不是都有一些共同的特征,我们人类再对这些具有共同的特征的对象统一归类,比如说刚才我们提到的燕子,乌鸦,鸽子,这些物种都具备<b style="color:red">飞的行为</b>,还有他们都有体重,大小,和年龄的一些<b style="color:red">特征</b>,所以我们人类都将具备此类对象相同的<b style="color:red">行为和属性</b>归纳成鸟类.同样的还有无论是哈士奇还是萨摩耶还是阿拉斯加,他们也有着相同的<b style="color:red">特征</b>比如,他们的主要生活地点都是寒冷区域,也有体重,性别,身高,体重等,还具备着拉雪橇,看家,打猎等<b style="color:red">行为</b>,我们人类也将具备此类对象相同的行为的属性归纳成狗类.</p>
 <p>注意上一段中我大量的引用到了 2 个词,<b style="color:red">行为</b>和<b style="color:red">属性特征</b>,也就是说我们将根据一些对象相同的行为或者属性特征描述成了某一类事物,并且只要具备了该事物的行为和属性特征的具体的实例对象都是属于同一类事物.再来看图说话.</p>
 <p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/b1.png" alt=""></p>
@@ -26,6 +54,73 @@
 
 <p>代码写完后我们看一下程序运行的结果 :</p>
 <figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">吃饭饭...</span><br><span class="line">二哈拉雪橇咯...</span><br><span class="line">一只体重 : <span class="number">80</span>斤的哈士奇正在看家,看起来智商为 : <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Section-3-练习"><a href="#Section-3-练习" class="headerlink" title="Section. 3 练习"></a>Section. 3 练习</h3><p>OK,到现在我们已经成功在 Java 中创建出了一个对象,该对象所属于 Dog 类,对象具备的属性为: 昵称,体重,品种等.有着吃东西和看门等行为.那我就出另外几个练习,大家在 Java 中练习一下.</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>class 名称</th>
+<th>猫 Cat</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>属性</strong></td>
+<td></td>
+<td>数据类型</td>
+</tr>
+<tr>
+<td>品种 brand</td>
+<td>美短</td>
+<td>String</td>
+</tr>
+<tr>
+<td>昵称 nickName</td>
+<td>招财</td>
+<td>String</td>
+</tr>
+<tr>
+<td>体重 weight</td>
+<td>20</td>
+<td>int</td>
+</tr>
+<tr>
+<td>体型大小 size</td>
+<td>中型</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>行为</strong></td>
+<td></td>
+<td>行为中的代码</td>
+</tr>
+<tr>
+<td>吃东西</td>
+<td>eat</td>
+<td>输出 : 吃饭饭…</td>
+</tr>
+<tr>
+<td>抓老鼠</td>
+<td>catchMouse</td>
+<td>输出 : 体重,品种,体型的猫在捕捉老鼠</td>
+</tr>
+<tr>
+<td>睡觉</td>
+<td>sleep</td>
+<td>输出 : 谁在睡觉</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="Section-4-总结"><a href="#Section-4-总结" class="headerlink" title="Section. 4 总结"></a>Section. 4 总结</h3><p>对于面向对象编程思想而言,其实就是要掌握在 Java 中如何设计类和根据类来创建对应的对象,然后再给对象赋值.总的来说我们简单归纳为 3 步 :</p>
+<p>考试时根据题目描述的或者实际开发中根据需求所掌握的内容来设计类.而设计类无非就是要掌握 3 个方面.</p>
+<ol>
+<li>当前需要创建的类的名称是什么? 这里名称必须是一个每个单词首字母大写的英文单词,并且起名要有意义 : 比如说,商品详情类 : ProductInfo , 订单详情类 : OrderInfo 等等..</li>
+<li>创建的类具备哪些静态属性? 比如 商品详情类中 应该有 商品名称 : productName, 商品价格 : prodcutPrice , 商品的数量 : productNum …等等 . <strong>要注意的是 这些静态属性的命名和前面学习的变量是一样的</strong></li>
+<li>创建的类中具备哪些动态行为? 比如 商品详情类中 有描述商品具体信息的方法 . showProdcutInfo<br>此方法内部具体的描述所有属性内容即可.</li>
+</ol>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191221155629.png" alt="20191221155629.png"></p>
+<center><b>END</b></center>
 ]]></content>
       <categories>
         <category>后台</category>
@@ -36,7 +131,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Part1·初识Java(图文并茂)</title>
+    <title>Part1·初识Java(图文)</title>
     <url>/2019/12/19/01-java/</url>
     <content><![CDATA[<p>Hello,各位小朋友,不知道在前面的网页制作课程中有没有提升大家对编程的兴趣和信心?从现在开始我们将要进入到<strong>Java</strong>的学习中来了.废话不多说,直接上手.</p>
 <h2 id="Java-环境搭建"><a href="#Java-环境搭建" class="headerlink" title="Java 环境搭建"></a>Java 环境搭建</h2><p>相信大家在学校的课程中,已经通过老师的讲解已经知道 Java 是什么?用来干嘛的?在这里我将直接从 Java 的环境搭建开始.这里主要以 windows10 为例:</p>
@@ -50,10 +145,11 @@
 <h5 id="下载完毕后，双击安装，建议一直下一步（next）即可。直到安装（finish）完毕"><a href="#下载完毕后，双击安装，建议一直下一步（next）即可。直到安装（finish）完毕" class="headerlink" title="下载完毕后，双击安装，建议一直下一步（next）即可。直到安装（finish）完毕."></a>下载完毕后，双击安装，建议一直<strong>下一步</strong>（next）即可。直到安装（finish）完毕.</h5><h4 id="2-环境变量的配置"><a href="#2-环境变量的配置" class="headerlink" title="2. 环境变量的配置"></a>2. 环境变量的配置</h4><ol>
 <li><h5 id="安装好-jdk-之后，我们还需要配置一下系统环境变量，右键我的电脑-此电脑-计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性"><a href="#安装好-jdk-之后，我们还需要配置一下系统环境变量，右键我的电脑-此电脑-计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性" class="headerlink" title="安装好 jdk 之后，我们还需要配置一下系统环境变量，右键我的电脑/此电脑/计算机，如果桌面的计算机图标被删除的话进入到文件夹中左侧此电脑右键也可以。然后选择属性"></a>安装好 jdk 之后，我们还需要配置一下系统环境变量，右键<strong>我的电脑</strong>/<strong>此电脑</strong>/<strong>计算机</strong>，如果桌面的计算机图标被删除的话进入到文件夹中左侧<strong>此电脑</strong>右键也可以。然后选择<strong>属性</strong><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/1.gif" alt=""></h5></li>
 <li><h5 id="在属性中选择左侧的高级系统设置然后选择高级选项卡，再点击环境变量按钮"><a href="#在属性中选择左侧的高级系统设置然后选择高级选项卡，再点击环境变量按钮" class="headerlink" title="在属性中选择左侧的高级系统设置然后选择高级选项卡，再点击环境变量按钮."></a>在属性中选择左侧的<strong>高级系统设置</strong>然后选择<strong>高级</strong>选项卡，再点击<strong>环境变量</strong>按钮.<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/2.gif" alt=""></h5></li>
-<li><h5 id="点击按钮后-在下面的系统变量中新建-JAVA-HOME-记住最后一定要点确定"><a href="#点击按钮后-在下面的系统变量中新建-JAVA-HOME-记住最后一定要点确定" class="headerlink" title="点击按钮后,在下面的系统变量中新建 JAVA_HOME,记住最后一定要点确定"></a>点击按钮后,在下面的系统变量中新建 JAVA_HOME,记住最后一定要点<strong>确定</strong><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/3.gif" alt=""></h5></li>
+<li><h5 id="点击按钮后-在下面的系统变量中新建-JAVA-HOME-记住最后一定要点确定"><a href="#点击按钮后-在下面的系统变量中新建-JAVA-HOME-记住最后一定要点确定" class="headerlink" title="点击按钮后,在下面的系统变量中新建 JAVA_HOME,记住最后一定要点确定"></a>点击按钮后,在下面的系统变量中新建 JAVA_HOME,记住最后一定要点<strong>确定</strong><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/r2.gif" alt=""></h5></li>
 <li><h5 id="查找-CLASSPATH-如没有就新建-JAVA-HOME-lib-JAVA-HOME-lib-tools-jar-前面的点别忘了"><a href="#查找-CLASSPATH-如没有就新建-JAVA-HOME-lib-JAVA-HOME-lib-tools-jar-前面的点别忘了" class="headerlink" title="查找 CLASSPATH,如没有就新建. .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar; 前面的点别忘了"></a>查找 CLASSPATH,如没有就新建. <strong>.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar;</strong> 前面的点别忘了<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/4.gif" alt=""></h5></li>
 <li><h5 id="找到-Path-变量进行编辑-添加-JAVA-HOME-bin-JAVA-HOME-jre-bin”-最后别忘了点确定哦"><a href="#找到-Path-变量进行编辑-添加-JAVA-HOME-bin-JAVA-HOME-jre-bin”-最后别忘了点确定哦" class="headerlink" title="找到 Path 变量进行编辑,添加 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin” , 最后别忘了点确定哦!)"></a>找到 Path 变量进行编辑,添加 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin” , <strong>最后别忘了点确定哦!</strong><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/3.png" alt="">)<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/4.png" alt=""></h5></li>
 <li><h5 id="最后测试环境变量是否配置成功-win-r-输入-cmd-回车-打开-cmd-界面-输入-javac-如果没有报错-出现-error-或者出现以下界面均配置-OK"><a href="#最后测试环境变量是否配置成功-win-r-输入-cmd-回车-打开-cmd-界面-输入-javac-如果没有报错-出现-error-或者出现以下界面均配置-OK" class="headerlink" title="最后测试环境变量是否配置成功.win + r 输入 cmd 回车 打开 cmd 界面 输入 javac , 如果没有报错(出现 error)或者出现以下界面均配置 OK"></a>最后测试环境变量是否配置成功.win + r 输入 cmd 回车 打开 cmd 界面 输入 javac , 如果没有报错(出现 error)或者出现以下界面均配置 OK<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/5.png" alt="5" style="zoom: 80%;" /></h5></li>
+<li><h5 id="如果还有错-把-Path-环境变量中的下方所示的第一个删除"><a href="#如果还有错-把-Path-环境变量中的下方所示的第一个删除" class="headerlink" title="如果还有错 把 Path 环境变量中的下方所示的第一个删除"></a>如果还有错 把 Path 环境变量中的下方所示的第一个删除<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191221163244.png" alt="20191221163244.png"></h5></li>
 </ol>
 <h4 id="3-开发工具的介绍"><a href="#3-开发工具的介绍" class="headerlink" title="3. 开发工具的介绍"></a>3. 开发工具的介绍</h4><p>​ 配置好 jdk 之后.就开始安装我们的 Java 开发工具了,孔子曾说过: <strong>工欲善其事,必先利其器</strong>.那我们想要开发自己的 Java 应用程序,选择一款合适的开发工具肯定会事半功倍.</p>
 <p>这里我要给各位同学提几点要求.在学习的阶段要对自己狠一点,学习是一个长久,循序渐进的过程,不能三天打鱼两天晒网.所以当我们做好准备开始学习就需要严格要求自己每天都吸收一点新知识和回顾之前的内容,一开始接触 Java 肯定是比较困难的,但是也有无数个成功的例子,而这些成功的人无疑是每天都在努力,所以,如果大家对 Java 或者编程感兴趣的话,坚持下去,你就能成功!</p>

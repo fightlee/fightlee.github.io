@@ -47,7 +47,7 @@
 </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="Part6·面向对象编程(图文并茂)">
+<meta property="og:title" content="Part6·面向对象编程(图文)">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;20&#x2F;02-java&#x2F;index.html">
 <meta property="og:site_name" content="Here is Lee Blog.">
 <meta property="og:locale" content="zh_CN">
@@ -55,8 +55,9 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;xiao2.jpeg">
 <meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;xiao3.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;b1.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20191221155629.png">
 <meta property="article:published_time" content="2019-12-20T06:11:03.000Z">
-<meta property="article:modified_time" content="2019-12-21T05:18:36.382Z">
+<meta property="article:modified_time" content="2019-12-21T07:56:57.422Z">
 <meta property="article:author" content="Lee">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="面向对象">
@@ -75,7 +76,7 @@
   };
 </script>
 
-  <title>Part6·面向对象编程(图文并茂) | Here is Lee Blog.</title>
+  <title>Part6·面向对象编程(图文) | Here is Lee Blog.</title>
   
 
 
@@ -229,7 +230,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Part6·面向对象编程(图文并茂)
+          Part6·面向对象编程(图文)
         </h1>
 
         <div class="post-meta">
@@ -246,7 +247,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-21 13:18:36" itemprop="dateModified" datetime="2019-12-21T13:18:36+08:00">2019-12-21</time>
+                <time title="修改时间：2019-12-21 15:56:57" itemprop="dateModified" datetime="2019-12-21T15:56:57+08:00">2019-12-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -261,7 +262,7 @@
             </span>
 
           
-            <span id="/2019/12/20/02-java/" class="post-meta-item leancloud_visitors" data-flag-title="Part6·面向对象编程(图文并茂)" title="阅读次数">
+            <span id="/2019/12/20/02-java/" class="post-meta-item leancloud_visitors" data-flag-title="Part6·面向对象编程(图文)" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -295,12 +296,12 @@
         <p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/xiao1.jpg" alt=""></p>
 <a id="more"></a>
 
-<p>OK!今天咱们正式进入到 Java 的核心思想的学习了.标题的面向对象编程是什么意思呢?是不是这样呢?</p>
+<h3 id="Section-1-前文引入"><a href="#Section-1-前文引入" class="headerlink" title="Section. 1 前文引入"></a>Section. 1 前文引入</h3><p>OK!今天咱们正式进入到 Java 的核心思想的学习了.标题的面向对象编程是什么意思呢?是不是这样呢?</p>
 <img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/xiao2.jpeg" alt="xiao2" style="zoom:67%;" />
 
 <p>开个玩笑了,那什么是面向对象编程呢?要搞清楚面向对象是什么?首先我们得知道什么是对象?在学 Java 的当中 90%的人应该都听说过一句话 : <strong>万物皆对象</strong></p>
 <p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/xiao3.png" alt=""></p>
-<p><b style="color:red">万物皆对象</b> : 故名思意 , 世间万物在 Java 中我们都可以认为是一个对象,比如一花一草,一人一物,具体点的,比如从你眼前驶过的车辆,无论是小汽车还是公共汽车还是货车,还是从你头上飞过的飞禽,燕子,乌鸦,鸽子,还是从你脚边跑过的走兽,哈士奇,萨摩耶,橘猫,等等…. 这些都可以称之为<strong>对象</strong>,也就是对象就是一些实际存在于我们生活中的个体</p>
+<h3 id="Section-2-理论"><a href="#Section-2-理论" class="headerlink" title="Section. 2 理论"></a>Section. 2 理论</h3><p><b style="color:red">万物皆对象</b> : 故名思意 , 世间万物在 Java 中我们都可以认为是一个对象,比如一花一草,一人一物,具体点的,比如从你眼前驶过的车辆,无论是小汽车还是公共汽车还是货车,还是从你头上飞过的飞禽,燕子,乌鸦,鸽子,还是从你脚边跑过的走兽,哈士奇,萨摩耶,橘猫,等等…. 这些都可以称之为<strong>对象</strong>,也就是对象就是一些实际存在于我们生活中的个体</p>
 <p>了解了对象的概念后,我们再来思考,大部分对象之间是不是都有一些共同的特征,我们人类再对这些具有共同的特征的对象统一归类,比如说刚才我们提到的燕子,乌鸦,鸽子,这些物种都具备<b style="color:red">飞的行为</b>,还有他们都有体重,大小,和年龄的一些<b style="color:red">特征</b>,所以我们人类都将具备此类对象相同的<b style="color:red">行为和属性</b>归纳成鸟类.同样的还有无论是哈士奇还是萨摩耶还是阿拉斯加,他们也有着相同的<b style="color:red">特征</b>比如,他们的主要生活地点都是寒冷区域,也有体重,性别,身高,体重等,还具备着拉雪橇,看家,打猎等<b style="color:red">行为</b>,我们人类也将具备此类对象相同的行为的属性归纳成狗类.</p>
 <p>注意上一段中我大量的引用到了 2 个词,<b style="color:red">行为</b>和<b style="color:red">属性特征</b>,也就是说我们将根据一些对象相同的行为或者属性特征描述成了某一类事物,并且只要具备了该事物的行为和属性特征的具体的实例对象都是属于同一类事物.再来看图说话.</p>
 <p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/b1.png" alt=""></p>
@@ -315,6 +316,73 @@
 
 <p>代码写完后我们看一下程序运行的结果 :</p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">吃饭饭...</span><br><span class="line">二哈拉雪橇咯...</span><br><span class="line">一只体重 : <span class="number">80</span>斤的哈士奇正在看家,看起来智商为 : <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Section-3-练习"><a href="#Section-3-练习" class="headerlink" title="Section. 3 练习"></a>Section. 3 练习</h3><p>OK,到现在我们已经成功在 Java 中创建出了一个对象,该对象所属于 Dog 类,对象具备的属性为: 昵称,体重,品种等.有着吃东西和看门等行为.那我就出另外几个练习,大家在 Java 中练习一下.</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>class 名称</th>
+<th>猫 Cat</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>属性</strong></td>
+<td></td>
+<td>数据类型</td>
+</tr>
+<tr>
+<td>品种 brand</td>
+<td>美短</td>
+<td>String</td>
+</tr>
+<tr>
+<td>昵称 nickName</td>
+<td>招财</td>
+<td>String</td>
+</tr>
+<tr>
+<td>体重 weight</td>
+<td>20</td>
+<td>int</td>
+</tr>
+<tr>
+<td>体型大小 size</td>
+<td>中型</td>
+<td>String</td>
+</tr>
+<tr>
+<td><strong>行为</strong></td>
+<td></td>
+<td>行为中的代码</td>
+</tr>
+<tr>
+<td>吃东西</td>
+<td>eat</td>
+<td>输出 : 吃饭饭…</td>
+</tr>
+<tr>
+<td>抓老鼠</td>
+<td>catchMouse</td>
+<td>输出 : 体重,品种,体型的猫在捕捉老鼠</td>
+</tr>
+<tr>
+<td>睡觉</td>
+<td>sleep</td>
+<td>输出 : 谁在睡觉</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="Section-4-总结"><a href="#Section-4-总结" class="headerlink" title="Section. 4 总结"></a>Section. 4 总结</h3><p>对于面向对象编程思想而言,其实就是要掌握在 Java 中如何设计类和根据类来创建对应的对象,然后再给对象赋值.总的来说我们简单归纳为 3 步 :</p>
+<p>考试时根据题目描述的或者实际开发中根据需求所掌握的内容来设计类.而设计类无非就是要掌握 3 个方面.</p>
+<ol>
+<li>当前需要创建的类的名称是什么? 这里名称必须是一个每个单词首字母大写的英文单词,并且起名要有意义 : 比如说,商品详情类 : ProductInfo , 订单详情类 : OrderInfo 等等..</li>
+<li>创建的类具备哪些静态属性? 比如 商品详情类中 应该有 商品名称 : productName, 商品价格 : prodcutPrice , 商品的数量 : productNum …等等 . <strong>要注意的是 这些静态属性的命名和前面学习的变量是一样的</strong></li>
+<li>创建的类中具备哪些动态行为? 比如 商品详情类中 有描述商品具体信息的方法 . showProdcutInfo<br>此方法内部具体的描述所有属性内容即可.</li>
+</ol>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191221155629.png" alt="20191221155629.png"></p>
+<center><b>END</b></center>
 
     </div>
 
@@ -334,10 +402,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/12/19/01-java/" rel="prev" title="Part1·初识Java(图文并茂)">
-      <i class="fa fa-chevron-left"></i> Part1·初识Java(图文并茂)
+    <a href="/2019/12/19/01-java/" rel="prev" title="Part1·初识Java(图文)">
+      <i class="fa fa-chevron-left"></i> Part1·初识Java(图文)
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/21/03-java/" rel="next" title="Part7·面向对象编程·二(图文)">
+      Part7·面向对象编程·二(图文) <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -398,6 +469,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Section-1-前文引入"><span class="nav-number">1.</span> <span class="nav-text">Section. 1 前文引入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Section-2-理论"><span class="nav-number">2.</span> <span class="nav-text">Section. 2 理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Section-3-练习"><span class="nav-number">3.</span> <span class="nav-text">Section. 3 练习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Section-4-总结"><span class="nav-number">4.</span> <span class="nav-text">Section. 4 总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -413,7 +485,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
