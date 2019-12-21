@@ -40,8 +40,6 @@
 <p>得到结果 :</p>
 <figure class="highlight basic"><table><tr><td class="code"><pre><span class="line"><span class="symbol">3 </span>+ <span class="number">5</span> = <span class="number">8</span></span><br></pre></td></tr></table></figure>
 
-
-
 <h3 id="Section-3-练习"><a href="#Section-3-练习" class="headerlink" title="Section. 3 练习"></a>Section. 3 练习</h3><p>好了,经过上文的学习后,我们自己来练习一下具体方法的定义和调用</p>
 <p>练习 1 : 在 Calucator 中完善其他减法(sub)乘法(mul)和除法(div),方法名已经给出来了哦.</p>
 <p>练习 2 : 重新设计之前敲过的猫和狗类的吃东西的方法,比如说给一种食物(food) 就代表狗或者猫在吃什么? 食物我们先定义为 String 类型即可.</p>
@@ -55,7 +53,7 @@
 </li>
 <li><p>方法的调用</p>
 <ol>
-<li><strong>有参数</strong> 比如 void plus(int a,int b) 那在调用时,就必须传入对应参数列表的参数,第一个参数是 int 类型,那就要传入 int 类型数据,第二个类型如果是 String 那就要传入 String. 该 plus 方法 2 个参数都是 int 类型, </li>
+<li><strong>有参数</strong> 比如 void plus(int a,int b) 那在调用时,就必须传入对应参数列表的参数,第一个参数是 int 类型,那就要传入 int 类型数据,第二个类型如果是 String 那就要传入 String. 该 plus 方法 2 个参数都是 int 类型,</li>
 </ol>
 <ul>
 <li>调用方式 : <strong>对象.plus(1,2);</strong></li>
@@ -69,10 +67,6 @@
 </li>
 </ol>
 <img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/baodao.gif" />
-
-
-
-  <center><b>END</b></center>
 ]]></content>
       <categories>
         <category>后台</category>
@@ -174,7 +168,6 @@
 <li>创建的类中具备哪些动态行为? 比如 商品详情类中 有描述商品具体信息的方法 . showProdcutInfo<br>此方法内部具体的描述所有属性内容即可.</li>
 </ol>
 <p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191221155629.png" alt="20191221155629.png"></p>
-<center><b>END</b></center>
 ]]></content>
       <categories>
         <category>后台</category>
