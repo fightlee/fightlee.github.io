@@ -1,13 +1,453 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Part2·Java结构&amp;基本语法(图文)</title>
+    <url>/04-java.html</url>
+    <content><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191222183619.png" alt="20191222183619.png"></p>
+<a id="more"></a>
+
+<h2 id="Section-1-Java程序结构"><a href="#Section-1-Java程序结构" class="headerlink" title="Section.1  Java程序结构"></a>Section.1  Java程序结构</h2><p>在第一篇文章中我们已经学会了如何在系统中安装Java开发工具和开发Java所需要的环境,并创建了我们第一个Java项目,建立了第一个Java类文件并成功运行.那现在我们来分析一下之前的代码是什么意思.</p>
+<p>首先我们再来回顾一下之前的第一个Java程序 : </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01</span></span>&#123; <span class="comment">//程序的外层框架</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123; <span class="comment">//程序的内层框架</span></span><br><span class="line">        System.out.println(<span class="string">"Hello World"</span>); <span class="comment">//程序所要执行的代码</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="main方法"><a href="#main方法" class="headerlink" title="main方法"></a>main方法</h4><p>这里我着重的讲解一下上篇代码中的 public static void main(String[] args){} 这个程序的内层框架, 我们把它简称为<strong>main方法</strong>,是整个Java程序的入口.那在这里我再简单介绍一下一些基本的概念.</p>
+<ol>
+<li><p>程序 : 什么是程序? <img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191222195458.png" alt="20191222195458.png">这里字典给我们解释的非常清楚了.  就是一件事情进行的步骤和次序. 在计算机中 程序就是一堆有次序的<strong>指令</strong>的集合.那指令又是什么? 这里我们把指令就理解为步骤就好.在实际生活中,程序无所不在,比如去银行办理各种业务就是一个程序.<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191222200359.png" alt="20191222200359.png">对于我们现在看到的这个办理业务的程序而言,程序是从上至下,依次执行,不能将以上的顺序打乱,因为我们不能直接去了银行就去柜台输密码,签字什么的.没取号,没排队,银行职员也不知道你要办理什么业务咱们输密码有什么用?<strong>所以程序的执行是有顺序的,并且缺一不可的.</strong></p>
+</li>
+<li><p><strong>main 方法</strong> : main : 主要的 . main方法就是Java程序的主入口,也就是说Java程序要从main方法开始来执行我们设计的程序, 相当于我要去银行办理业务,那首先得从银行的大门进去才能正式开始我们银行办理业务的程序,那银行的大门就是我们的main方法,main方法有4要素,4者缺一不可.</p>
+<ol>
+<li>public </li>
+<li>static </li>
+<li>void </li>
+<li>String[] args</li>
+</ol>
+</li>
+<li><p>上面第一条我们介绍到了指令的概念,现在我们在代码中新加入几行代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">     System.out.println(<span class="string">"1.输入用户名"</span>);</span><br><span class="line">     System.out.println(<span class="string">"2.输入密码"</span>);</span><br><span class="line">     System.out.println(<span class="string">"3.点击登陆按钮"</span>);</span><br><span class="line">     System.out.println(<span class="string">"4.登陆成功"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后点击绿色的箭头开始运行代码.</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span>输入用户名</span><br><span class="line"><span class="number">2.</span>输入密码</span><br><span class="line"><span class="number">3.</span>点击登陆按钮</span><br><span class="line"><span class="number">4.</span>登陆成功</span><br></pre></td></tr></table></figure>
+
+<p>从上面的执行结果我们就能看出来,程序是从main方法开始执行,然后从main方法的大括号内部由上至下依次执行的,而其中写的代码 <strong>System.out.println(“xxx”);</strong> 的作用就是将双引号 <b style="color:red">“ “</b> 内部的内容输出到控制台上,我们就能看到输出结果.</p>
+</li>
+</ol>
+<h2 id="Section-2-注释-amp-关键字-amp-标识符"><a href="#Section-2-注释-amp-关键字-amp-标识符" class="headerlink" title="Section.2  注释&amp;关键字&amp;标识符"></a>Section.2  注释&amp;关键字&amp;标识符</h2><h4 id="A-Java严格区分大小写"><a href="#A-Java严格区分大小写" class="headerlink" title="A. Java严格区分大小写"></a>A. Java严格区分大小写</h4><p>首先我们在编写Java程序的时候要注意 Java 是大小写敏感的,严格区分大小写, Class 和 class 的 意义和作用都不一样.</p>
+<h4 id="B-关键字"><a href="#B-关键字" class="headerlink" title="B. 关键字"></a>B. 关键字</h4><p>在java中有一些单词是具备特殊含义的,不能作为其他用途来使用,下面用一个表格来整理Java中所有的关键字和保留字</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>关键字</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>权限控制</td>
+<td>private</td>
+<td>私有的</td>
+</tr>
+<tr>
+<td></td>
+<td>public</td>
+<td>公共的</td>
+</tr>
+<tr>
+<td></td>
+<td>protected</td>
+<td>受保护的</td>
+</tr>
+<tr>
+<td>类、方法和变量修饰符</td>
+<td>class</td>
+<td>类</td>
+</tr>
+<tr>
+<td></td>
+<td>static</td>
+<td>静态</td>
+</tr>
+<tr>
+<td></td>
+<td>final</td>
+<td>最终,不可变</td>
+</tr>
+<tr>
+<td></td>
+<td>extends</td>
+<td>继承</td>
+</tr>
+<tr>
+<td></td>
+<td>abstract</td>
+<td>抽象</td>
+</tr>
+<tr>
+<td></td>
+<td>implements</td>
+<td>实现</td>
+</tr>
+<tr>
+<td></td>
+<td>interface</td>
+<td>接口</td>
+</tr>
+<tr>
+<td></td>
+<td>new</td>
+<td>新建,创建</td>
+</tr>
+<tr>
+<td></td>
+<td>native</td>
+<td>本地,原生</td>
+</tr>
+<tr>
+<td></td>
+<td>strictfp</td>
+<td>精确</td>
+</tr>
+<tr>
+<td></td>
+<td>synchronized</td>
+<td>同步</td>
+</tr>
+<tr>
+<td></td>
+<td>transient</td>
+<td>瞬态</td>
+</tr>
+<tr>
+<td></td>
+<td>volatile</td>
+<td>易变的</td>
+</tr>
+<tr>
+<td>程序控制语句</td>
+<td>break</td>
+<td>跳出</td>
+</tr>
+<tr>
+<td></td>
+<td>case</td>
+<td>和switch结合使用,用来选择</td>
+</tr>
+<tr>
+<td></td>
+<td>continue</td>
+<td>跳出当前循环,继续下一轮循环</td>
+</tr>
+<tr>
+<td></td>
+<td>default</td>
+<td>默认值</td>
+</tr>
+<tr>
+<td></td>
+<td>do</td>
+<td>执行</td>
+</tr>
+<tr>
+<td></td>
+<td>else</td>
+<td>否则</td>
+</tr>
+<tr>
+<td></td>
+<td>if</td>
+<td>如果</td>
+</tr>
+<tr>
+<td></td>
+<td>for</td>
+<td>循环</td>
+</tr>
+<tr>
+<td></td>
+<td>while</td>
+<td>循环</td>
+</tr>
+<tr>
+<td></td>
+<td>switch</td>
+<td>选择结构</td>
+</tr>
+<tr>
+<td></td>
+<td>return</td>
+<td>返回</td>
+</tr>
+<tr>
+<td></td>
+<td>instanceof</td>
+<td>判断是否为该类实例</td>
+</tr>
+<tr>
+<td>异常处理</td>
+<td>try</td>
+<td>尝试</td>
+</tr>
+<tr>
+<td></td>
+<td>catch</td>
+<td>捕捉异常</td>
+</tr>
+<tr>
+<td></td>
+<td>finally</td>
+<td>不管是否出现异常都会执行</td>
+</tr>
+<tr>
+<td></td>
+<td>throw</td>
+<td>抛出一个异常对象</td>
+</tr>
+<tr>
+<td></td>
+<td>throws</td>
+<td>声明一个或者多个异常类</td>
+</tr>
+<tr>
+<td></td>
+<td>assert</td>
+<td>断言</td>
+</tr>
+<tr>
+<td>包</td>
+<td>import</td>
+<td>导入</td>
+</tr>
+<tr>
+<td></td>
+<td>package</td>
+<td>包</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>byte</td>
+<td>字节型</td>
+</tr>
+<tr>
+<td></td>
+<td>short</td>
+<td>短整型</td>
+</tr>
+<tr>
+<td></td>
+<td>int</td>
+<td>整型</td>
+</tr>
+<tr>
+<td></td>
+<td>long</td>
+<td>长整型</td>
+</tr>
+<tr>
+<td></td>
+<td>float</td>
+<td>单精度浮点</td>
+</tr>
+<tr>
+<td></td>
+<td>double</td>
+<td>双精度浮点</td>
+</tr>
+<tr>
+<td></td>
+<td>boolean</td>
+<td>布尔</td>
+</tr>
+<tr>
+<td></td>
+<td>char</td>
+<td>字符</td>
+</tr>
+<tr>
+<td></td>
+<td>void</td>
+<td>无返回值类型</td>
+</tr>
+<tr>
+<td>引用</td>
+<td>this</td>
+<td>当前类引用</td>
+</tr>
+<tr>
+<td></td>
+<td>super</td>
+<td>父类引用</td>
+</tr>
+<tr>
+<td>保留字</td>
+<td>goto</td>
+<td>不能使用</td>
+</tr>
+<tr>
+<td></td>
+<td>const</td>
+<td>不能使用</td>
+</tr>
+<tr>
+<td>值</td>
+<td>null</td>
+<td>空</td>
+</tr>
+</tbody></table>
+<h5 id="注"><a href="#注" class="headerlink" title="注 :"></a>注 :</h5><p>有些同学可能一看,哇这么多单词,对于一些英语可能比较差的同学在这里可能就懵逼了,其实这里我要补充一句,要想学了Java然后出去找一份工作的话,其实需要掌握的词汇量也就100 200个就足够了,每天记10个单词,不到1个月就记完了,所以每天学习所涉及到不懂的单词,当天就即时的消化掉.这里也要注意,<strong>关键字不需要死记硬背</strong>,,<strong>关键字不需要死记硬背</strong>,<strong>关键字不需要死记硬背</strong>,咱们在后面的学习过程中,慢慢的就掌握了,只要代码敲的多就好.这里还要提醒一句,其实有了工具后关键字在工具中有着和其他单词不同的颜色,用眼睛就能看出来哪个是关键字,哪个不是了.</p>
+<h4 id="C-标识符"><a href="#C-标识符" class="headerlink" title="C. 标识符"></a>C. 标识符</h4><p> Java 所有的组成部分都需要名字。类名、变量名,常量名以及方法名都被称为标识符。 </p>
+<p>关于标识符我们要注意的是标识符的命名规则和命名规范 : </p>
+<p>规则 :  </p>
+<ol>
+<li>标识符不能用数字开头</li>
+<li>标识符由字母数字和符号组成,符号中不能有特殊符号除了下划线 _ 和 美元符号 $ </li>
+<li>关键字不能用来做为标识符使用</li>
+<li>标识符大小写是敏感的,也就是说 name 和 Name 是不同的标识符</li>
+</ol>
+<p>规范: </p>
+<ol>
+<li>命名尽量要有意义.</li>
+<li>类名,也就是关键字后class后的名称 , class名称一般都是每个单词首字母大小,比如 : Student,Teacher,ProdcutInfo,OrderInfo,OrderService,等等</li>
+<li>变量名 , 一般都是第一个单词字母小写,之后的每个单词首字母都大写,比如 : studentName,orderName,productPrice,等等</li>
+<li>常量名, 一般都是每个单词都大写,单词之间使用下划线隔开 . 如 : ERROR_CODE , MAX_VALUE, MIN_VALUE</li>
+<li>方法名 : 和变量名类似 , 如 getElementById() , getStudentByName() , 通常是根据要实现的功能来进行相应的命名</li>
+</ol>
+<h5 id="注-规则是一定要遵守的-但是规范我这里总结的只是大部分程序猿都这么去写-没有按照规范来不会错-但是希望大家去遵守-就跟排队一样的-插队体现了人品素质差-没有遵守代码规范也只是代表着你的编程素质差而已-除非是你的公司有明文规范要求你这么写-那我们还是要以公司为主"><a href="#注-规则是一定要遵守的-但是规范我这里总结的只是大部分程序猿都这么去写-没有按照规范来不会错-但是希望大家去遵守-就跟排队一样的-插队体现了人品素质差-没有遵守代码规范也只是代表着你的编程素质差而已-除非是你的公司有明文规范要求你这么写-那我们还是要以公司为主" class="headerlink" title="注 : 规则是一定要遵守的,但是规范我这里总结的只是大部分程序猿都这么去写,没有按照规范来不会错,但是希望大家去遵守,就跟排队一样的,插队体现了人品素质差,没有遵守代码规范也只是代表着你的编程素质差而已,除非是你的公司有明文规范要求你这么写,那我们还是要以公司为主."></a>注 : 规则是一定要遵守的,但是规范我这里总结的只是大部分程序猿都这么去写,没有按照规范来不会错,但是希望大家去遵守,就跟排队一样的,插队体现了人品素质差,没有遵守代码规范也只是代表着你的编程素质差而已,除非是你的公司有明文规范要求你这么写,那我们还是要以公司为主.</h5><h4 id="D-注释"><a href="#D-注释" class="headerlink" title="D. 注释"></a>D. 注释</h4><p>注释 : 解释.比如说我们定义了一个方法,或者写了一段代码,或者定义了一个变量,都可以加上注释,注释中的文字不会被Java所执行,起一个解释的作用.</p>
+<p>Java中有3种注释</p>
+<ol>
+<li><strong>单行注释</strong>    // 注释内容             这里要注意, 单行注释只会注释掉 双斜杠后面的内容.</li>
+<li><strong>多行注释</strong>    /*    注释内容  */</li>
+<li><strong>文档注释</strong>    /**  注释内容   */</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> 这是一个show方法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//声明了一个局部变量a,并赋值为1</span></span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">    String name;<span class="comment">//声明了一个局部变量name</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    给局部变量name赋值</span></span><br><span class="line"><span class="comment">    同时输出变量name中的值</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    name = <span class="string">"zhangsan"</span>;</span><br><span class="line">    System.out.println(name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Section-3-变量-amp-数据类型"><a href="#Section-3-变量-amp-数据类型" class="headerlink" title="Section.3  变量&amp;数据类型"></a>Section.3  变量&amp;数据类型</h2><p>OK 介绍完一些Java中的标识符和关键字等概念后.我们继续开始讲解下面的内容.</p>
+<h3 id="变量-variable"><a href="#变量-variable" class="headerlink" title="变量 [variable]"></a>变量 [variable]</h3><h4 id="变量的概念"><a href="#变量的概念" class="headerlink" title="变量的概念 :"></a>变量的概念 :</h4><p>在讲变量之前我还是用一个例子来帮助大家理解变量.    </p>
+<p>小明有1000块钱,小明不管是出去Shopping也好,还是出去玩也好携带在身上很不方便.那按照我们现在的人的思维是不是可以把钱存在支付宝或者微信里呢?然后想要用钱的时候就用支付宝或者微信支付就可以了,这样是不是更加方便? </p>
+<p>那在上面这个例子里,支付宝或者微信就是我们用来存储或者保存钱的一个容器.小明想要花钱或者存钱的时候只需要选用一种容器,然后用容器来去操作就好了.然后,容器中可以用来操作钱的种类又有很多,比如说花呗,借呗,余额宝,账户余额等等,那现在小明现在操作或者存储的是哪种类型的钱呢?</p>
+<p>到了这里我们就来总结一下上面的例子 ; </p>
+<ol>
+<li>存储钱的容器      </li>
+<li>使用 支付宝 or 微信 ?  </li>
+<li>1000块钱             ======&gt;     数据值</li>
+<li>账户余额,花呗,借呗              ======&gt;     数据类型</li>
+</ol>
+<p>到这里我们再来用专业一点的语言来描述这几个概念 : </p>
+<p><strong>变量  :  Java内存中的一块存储空间,这块空间中存储的数据是可变的</strong>    =====&gt;     容器</p>
+<p>*<em>变量名  : 引用存储空间所起的名称 *</em>    ======&gt;    支付宝,微信    </p>
+<p>*<em>数据类型 : 在java中,根据存储空间所存储的数据不同,划分了多种数据类型,比如说,存储的是数字,数字又分小数类型和整数类型,存储的是字母或者汉字或者拼音等,可以称之为字符或者字符串类型等等 *</em></p>
+<p>======&gt;  余额,花呗,借呗 </p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">变量的语法 :</span><br><span class="line"></span><br><span class="line">数据类型 变量名1 [<span class="string"> = 数据值2</span>][<span class="symbol">, 变量名2 [= 数据值2</span>] ...] ;</span><br><span class="line"></span><br><span class="line">---这里要注意的是 [] 中的内容代表可写可不写---</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型 :"></a>数据类型 :</h4><p>刚刚讲到了在Java中会根据数据的不同而划分了不同的数据类型,那现在我们来看一下具体有多少种数据类型</p>
+<ol>
+<li>基本数据类型<ol>
+<li>整数类型 : 整数分为4种 byte short <b style="color:red;">int </b> long  如 : 1,2,3,4 100 ,200 , -100,-200..</li>
+<li>浮点类型 : 浮点型 2种 float <b style="color:red;">double</b>  如 : 0.1, 1.1234, -0.123…</li>
+<li>布尔类型 : <b style="color:red;">boolean</b> 如 : true ,false  </li>
+<li>字符类型 : char 如 : ‘a’ ‘b’ ‘我’ ‘好’ ‘了’</li>
+</ol>
+</li>
+<li>引用数据类型  :   数组,类类型 等… 重点提一下 <b style="color:red;">String </b></li>
+</ol>
+<p>上面列表中我标红的类型就是在java基础学习的过程中常见的数据类型.</p>
+<h5 id="String和char的区别"><a href="#String和char的区别" class="headerlink" title="String和char的区别 :"></a><b style="color:red">String和char的区别</b> :</h5><ol>
+<li><p>char 称之为 字符 , 在Java语言中,所有的单个字母,数字,或者汉字和字符,都能被’’单引号所标识,比如 ‘a’,’b’,’我’,’1’ ,’=’ 都称之为字符</p>
+</li>
+<li><p>String 称之为 字符串 , 通俗一点理解,字符串即一串字符, 也就是如果有多个字母或者符号,我们就需要用 “” 双引号来标识, 如  : “我好了”, “下次一定” , “湖人总冠军” , “abc” , “123” 等等..</p>
+<h5 id="注意-并不是说一定要多个字符才称之为字符串-只要用双引号标识的-我们都认为是字符串-打个比方-一块羊肉叫羊肉-一根竹子上串5块羊肉就叫羊肉串了-那羊肉串被你吃了4块-还剩一块-那不还得是羊肉串嘛"><a href="#注意-并不是说一定要多个字符才称之为字符串-只要用双引号标识的-我们都认为是字符串-打个比方-一块羊肉叫羊肉-一根竹子上串5块羊肉就叫羊肉串了-那羊肉串被你吃了4块-还剩一块-那不还得是羊肉串嘛" class="headerlink" title="注意 : 并不是说一定要多个字符才称之为字符串,只要用双引号标识的,我们都认为是字符串,打个比方,一块羊肉叫羊肉,一根竹子上串5块羊肉就叫羊肉串了, 那羊肉串被你吃了4块,还剩一块,那不还得是羊肉串嘛!"></a>注意 : 并不是说一定要多个字符才称之为字符串,只要用双引号标识的,我们都认为是字符串,打个比方,一块羊肉叫羊肉,一根竹子上串5块羊肉就叫羊肉串了, 那羊肉串被你吃了4块,还剩一块,那不还得是羊肉串嘛!</h5></li>
+</ol>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/xiao111.gif" alt=""></p>
+<h4 id="变量的使用"><a href="#变量的使用" class="headerlink" title="变量的使用 :"></a>变量的使用 :</h4><p>变量的使用分为2步 : </p>
+<ol>
+<li>声明变量</li>
+<li>给变量赋值</li>
+<li>使用变量来对数据进行操作</li>
+</ol>
+<p>也可以一步到位 :  声明变量并赋值,然后再操作</p>
+<p>按照第一篇文章介绍的方式我们再创建一个VariableDemo01的class,用上面的语法来描述小明存钱到支付宝或者微信,然后到使用钱的过程</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VariableDemo01</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		<span class="comment">//1.确定小明要存什么类型的数据,数据为1000 那数据类型在Java中就为整数类型</span></span><br><span class="line">        <span class="comment">//整数类型 int</span></span><br><span class="line">        <span class="comment">//2.小明将钱存入哪一个容器中</span></span><br><span class="line">        <span class="comment">//容器名称,也就是变量名 weixin </span></span><br><span class="line">        <span class="comment">//上面2步就是 : 声明变量的过程 . </span></span><br><span class="line">        <span class="keyword">int</span> weixin ;</span><br><span class="line">        <span class="comment">//3.小明要存1000  存到 weixin 中</span></span><br><span class="line">        <span class="comment">//这一步就是给变量赋值</span></span><br><span class="line">        weixin = <span class="number">1000</span>;</span><br><span class="line">        <span class="comment">//现在我们要去操作变量了.比如小明逛街花了100</span></span><br><span class="line">        System.out.println(weixin - <span class="number">100</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果 : </p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="number">900</span></span><br></pre></td></tr></table></figure>
+
+<p>然后我们还可以换另一种方式 : </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    <span class="comment">//1.声明变量并赋值</span></span><br><span class="line">    <span class="keyword">int</span> zhifubao = <span class="number">2000</span>;</span><br><span class="line">    <span class="comment">//2.使用变量,查看支付宝中有多少余额</span></span><br><span class="line">    System.out.println(zhifubao);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果 : </p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="number">2000</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="注-我们如果想要输出这种结果"><a href="#注-我们如果想要输出这种结果" class="headerlink" title="注 : 我们如果想要输出这种结果"></a>注 : 我们如果想要输出这种结果</h5><figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">余额 = <span class="number">2000</span></span><br></pre></td></tr></table></figure>
+
+<p>就要修改代码为</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(<span class="string">"余额 = "</span> + zhifubao);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Section-4-练习"><a href="#Section-4-练习" class="headerlink" title="Section.4 练习"></a>Section.4 练习</h2><p>好了..现在我们应该已经对变量有了一些基本的理解,来几个练习吧</p>
+<ol>
+<li>在main方法中声明并使用变量存储以下内容,并输出<ol>
+<li>名称(name)  Lucy  String 类型</li>
+<li>身高(height) 1.7    double 类型</li>
+<li>体重(weight) 50    int 类型</li>
+<li>性别(gender) 女    char 类型</li>
+<li>是否结婚(isMarried) 否(false) boolean类型</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">名称 : <span class="type">Lucy</span></span><br><span class="line">身高 : 1.7</span><br><span class="line">体重 : 50</span><br><span class="line">性别 : 女</span><br><span class="line">是否结婚 : <span class="type">false</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Section-5-总结"><a href="#Section-5-总结" class="headerlink" title="Section.5 总结"></a>Section.5 总结</h2><p>今天内容有点多 , 就简单总结一下 : </p>
+<ol>
+<li>java中的 main方法 (理解,多敲拿这个练手感)</li>
+<li><strong>关键字&amp;标识符&amp;注释</strong> (掌握概念,不用死记)</li>
+<li><b style="color:red">变量&amp;数据类型</b> (重点掌握) </li>
+</ol>
+<p>好了,来个詹韦连线激情一下.</p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/james&wade.gif" alt=""></p>
+<p>  <img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191223005929.png" alt="20191223005929.png"></p>
+]]></content>
+      <categories>
+        <category>后台</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo next7.X主题 添加版权信息</title>
+    <url>/01-next.html</url>
+    <content><![CDATA[<p>最近想记录一整套 Java 到前端的学习记录,hexo next 主题在搭建的时候其他的效果网上都能找到对应的答案,但是版权怎么也设置不对,还自己试着添加过,但是始终有问题,后来自己试着翻了一下主题下的 config 配置文件,找到了这个,其实 hexo next 主题自己集成了,根本不用添加一大堆配置文件和其他的文件信息.</p>
+<a id="more"></a>
+
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># Creative Commons 4.0 International License.</span></span><br><span class="line"></span><br><span class="line"><span class="section"># See: https://creativecommons.org/share-your-work/licensing-types-examples</span></span><br><span class="line"></span><br><span class="line"><span class="section"># Available values of license: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero</span></span><br><span class="line"></span><br><span class="line"><span class="section"># You can set a language value if you prefer a translated version of CC license, e.g. deed.zh</span></span><br><span class="line"></span><br><span class="line"><span class="section"># CC licenses are available in 39 languages, you can find the specific and correct abbreviation you need on https://creativecommons.org</span></span><br><span class="line"></span><br><span class="line">creative_commons:</span><br><span class="line">license: by-nc-sa</span><br><span class="line">sidebar: true</span><br><span class="line">post: true</span><br><span class="line">language: zh-CN</span><br></pre></td></tr></table></figure>
+
+<p>把 post 和 sidebar 和 language 配置下即可.. OK.</p>
+]]></content>
+      <categories>
+        <category>next</category>
+      </categories>
+      <tags>
+        <tag>next主题</tag>
+        <tag>版权信息</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Part7·面向对象编程·二(图文)</title>
     <url>/03-java.html</url>
     <content><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191221160614.png" alt="20191221160614.png"></p>
 <a id="more"></a>
 
-<h3 id="Section-1-前文引入"><a href="#Section-1-前文引入" class="headerlink" title="Section. 1 前文引入"></a>Section. 1 前文引入</h3><p>在上一篇文章中我们知道了在 Java 中如何设计一个类,来定义类中的属性和行为,那属性这个东西呢,和咱们之前学过的变量非常相似.所以我们这里暂时先不提,这篇文章主要来给大家分析我们类中的<b style="color:red">行为</b>.</p>
-<h3 id="Section-2-理论"><a href="#Section-2-理论" class="headerlink" title="Section. 2 理论"></a>Section. 2 理论</h3><p>行为 : 在程序语言中,我们可以用 function 或者 method 这俩个单词来对他进行翻译,也可以称之为函数或者方法.在 class(类,以后我这里都写成 class)中,通常有 4 种形态的方法.那在掌握不同形态方法之前我们首先来了解一下创建方法的语法是什么?</p>
+<h2 id="Section-1-前文引入"><a href="#Section-1-前文引入" class="headerlink" title="Section. 1 前文引入"></a>Section. 1 前文引入</h2><p>在上一篇文章中我们知道了在 Java 中如何设计一个类,来定义类中的属性和行为,那属性这个东西呢,和咱们之前学过的变量非常相似.所以我们这里暂时先不提,这篇文章主要来给大家分析我们类中的<b style="color:red">行为</b>.</p>
+<h2 id="Section-2-理论"><a href="#Section-2-理论" class="headerlink" title="Section. 2 理论"></a>Section. 2 理论</h2><p>行为 : 在程序语言中,我们可以用 function 或者 method 这俩个单词来对他进行翻译,也可以称之为函数或者方法.在 class(类,以后我这里都写成 class)中,通常有 4 种形态的方法.那在掌握不同形态方法之前我们首先来了解一下创建方法的语法是什么?</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//方法的基本语法</span></span><br><span class="line">[修饰符] 返回值类型 方法名([参数类型<span class="number">1</span> 参数名<span class="number">1</span>,参数类型<span class="number">2</span> 参数名<span class="number">2</span>,...])&#123;</span><br><span class="line">    方法体</span><br><span class="line">    ...</span><br><span class="line">    [<span class="keyword">return</span> 返回值;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这里来对上面的语法来做一个简单的解释 :</p>
@@ -40,10 +480,12 @@
 <p>得到结果 :</p>
 <figure class="highlight basic"><table><tr><td class="code"><pre><span class="line"><span class="symbol">3 </span>+ <span class="number">5</span> = <span class="number">8</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="Section-3-练习"><a href="#Section-3-练习" class="headerlink" title="Section. 3 练习"></a>Section. 3 练习</h3><p>好了,经过上文的学习后,我们自己来练习一下具体方法的定义和调用</p>
+
+
+<h2 id="Section-3-练习"><a href="#Section-3-练习" class="headerlink" title="Section. 3 练习"></a>Section. 3 练习</h2><p>好了,经过上文的学习后,我们自己来练习一下具体方法的定义和调用</p>
 <p>练习 1 : 在 Calucator 中完善其他减法(sub)乘法(mul)和除法(div),方法名已经给出来了哦.</p>
 <p>练习 2 : 重新设计之前敲过的猫和狗类的吃东西的方法,比如说给一种食物(food) 就代表狗或者猫在吃什么? 食物我们先定义为 String 类型即可.</p>
-<h3 id="Section-4-总结"><a href="#Section-4-总结" class="headerlink" title="Section. 4 总结"></a>Section. 4 总结</h3><ol>
+<h2 id="Section-4-总结"><a href="#Section-4-总结" class="headerlink" title="Section. 4 总结"></a>Section. 4 总结</h2><ol>
 <li><p>方法的定义</p>
 <ol>
 <li>方法具体用来干什么? 确定方法名称,比如说方法的作用是 吃饭 eat ,计算总价 getTotalPrice,根据学生的名称来查询学生信息 getStudentInfoByName 等.</li>
@@ -82,12 +524,12 @@
     <content><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/xiao1.jpg" alt=""></p>
 <a id="more"></a>
 
-<h3 id="Section-1-前文引入"><a href="#Section-1-前文引入" class="headerlink" title="Section. 1 前文引入"></a>Section. 1 前文引入</h3><p>OK!今天咱们正式进入到 Java 的核心思想的学习了.标题的面向对象编程是什么意思呢?是不是这样呢?</p>
+<h2 id="Section-1-前文引入"><a href="#Section-1-前文引入" class="headerlink" title="Section. 1 前文引入"></a>Section. 1 前文引入</h2><p>OK!今天咱们正式进入到 Java 的核心思想的学习了.标题的面向对象编程是什么意思呢?是不是这样呢?</p>
 <img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/xiao2.jpeg" alt="xiao2" style="zoom:67%;" />
 
 <p>开个玩笑了,那什么是面向对象编程呢?要搞清楚面向对象是什么?首先我们得知道什么是对象?在学 Java 的当中 90%的人应该都听说过一句话 : <strong>万物皆对象</strong></p>
 <p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/xiao3.png" alt=""></p>
-<h3 id="Section-2-理论"><a href="#Section-2-理论" class="headerlink" title="Section. 2 理论"></a>Section. 2 理论</h3><p><b style="color:red">万物皆对象</b> : 故名思意 , 世间万物在 Java 中我们都可以认为是一个对象,比如一花一草,一人一物,具体点的,比如从你眼前驶过的车辆,无论是小汽车还是公共汽车还是货车,还是从你头上飞过的飞禽,燕子,乌鸦,鸽子,还是从你脚边跑过的走兽,哈士奇,萨摩耶,橘猫,等等…. 这些都可以称之为<strong>对象</strong>,也就是对象就是一些实际存在于我们生活中的个体</p>
+<h2 id="Section-2-理论"><a href="#Section-2-理论" class="headerlink" title="Section. 2 理论"></a>Section. 2 理论</h2><p><b style="color:red">万物皆对象</b> : 故名思意 , 世间万物在 Java 中我们都可以认为是一个对象,比如一花一草,一人一物,具体点的,比如从你眼前驶过的车辆,无论是小汽车还是公共汽车还是货车,还是从你头上飞过的飞禽,燕子,乌鸦,鸽子,还是从你脚边跑过的走兽,哈士奇,萨摩耶,橘猫,等等…. 这些都可以称之为<strong>对象</strong>,也就是对象就是一些实际存在于我们生活中的个体</p>
 <p>了解了对象的概念后,我们再来思考,大部分对象之间是不是都有一些共同的特征,我们人类再对这些具有共同的特征的对象统一归类,比如说刚才我们提到的燕子,乌鸦,鸽子,这些物种都具备<b style="color:red">飞的行为</b>,还有他们都有体重,大小,和年龄的一些<b style="color:red">特征</b>,所以我们人类都将具备此类对象相同的<b style="color:red">行为和属性</b>归纳成鸟类.同样的还有无论是哈士奇还是萨摩耶还是阿拉斯加,他们也有着相同的<b style="color:red">特征</b>比如,他们的主要生活地点都是寒冷区域,也有体重,性别,身高,体重等,还具备着拉雪橇,看家,打猎等<b style="color:red">行为</b>,我们人类也将具备此类对象相同的行为的属性归纳成狗类.</p>
 <p>注意上一段中我大量的引用到了 2 个词,<b style="color:red">行为</b>和<b style="color:red">属性特征</b>,也就是说我们将根据一些对象相同的行为或者属性特征描述成了某一类事物,并且只要具备了该事物的行为和属性特征的具体的实例对象都是属于同一类事物.再来看图说话.</p>
 <p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/b1.png" alt=""></p>
@@ -103,7 +545,9 @@
 <p>代码写完后我们看一下程序运行的结果 :</p>
 <figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">吃饭饭...</span><br><span class="line">二哈拉雪橇咯...</span><br><span class="line">一只体重 : <span class="number">80</span>斤的哈士奇正在看家,看起来智商为 : <span class="number">0</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="Section-3-练习"><a href="#Section-3-练习" class="headerlink" title="Section. 3 练习"></a>Section. 3 练习</h3><p>OK,到现在我们已经成功在 Java 中创建出了一个对象,该对象所属于 Dog 类,对象具备的属性为: 昵称,体重,品种等.有着吃东西和看门等行为.那我就出另外几个练习,大家在 Java 中练习一下.</p>
+
+
+<h2 id="Section-3-练习"><a href="#Section-3-练习" class="headerlink" title="Section. 3 练习"></a>Section. 3 练习</h2><p>OK,到现在我们已经成功在 Java 中创建出了一个对象,该对象所属于 Dog 类,对象具备的属性为: 昵称,体重,品种等.有着吃东西和看门等行为.那我就出另外几个练习,大家在 Java 中练习一下.</p>
 <hr>
 <table>
 <thead>
@@ -160,7 +604,7 @@
 </tr>
 </tbody></table>
 <hr>
-<h3 id="Section-4-总结"><a href="#Section-4-总结" class="headerlink" title="Section. 4 总结"></a>Section. 4 总结</h3><p>对于面向对象编程思想而言,其实就是要掌握在 Java 中如何设计类和根据类来创建对应的对象,然后再给对象赋值.总的来说我们简单归纳为 3 步 :</p>
+<h2 id="Section-4-总结"><a href="#Section-4-总结" class="headerlink" title="Section. 4 总结"></a>Section. 4 总结</h2><p>对于面向对象编程思想而言,其实就是要掌握在 Java 中如何设计类和根据类来创建对应的对象,然后再给对象赋值.总的来说我们简单归纳为 3 步 :</p>
 <p>考试时根据题目描述的或者实际开发中根据需求所掌握的内容来设计类.而设计类无非就是要掌握 3 个方面.</p>
 <ol>
 <li>当前需要创建的类的名称是什么? 这里名称必须是一个每个单词首字母大写的英文单词,并且起名要有意义 : 比如说,商品详情类 : ProductInfo , 订单详情类 : OrderInfo 等等..</li>
