@@ -1,6 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Part1.Vue环境搭建(图文)</title>
+    <url>/01-vue.html</url>
+    <content><![CDATA[<img src="https://cn.vuejs.org/images/logo.png" alt="20191223092306.png" style="zoom: 67%;" />
+
+<a id="more"></a>
+
+<h1 id="Vue环境搭建"><a href="#Vue环境搭建" class="headerlink" title="Vue环境搭建"></a>Vue环境搭建</h1><p>废话不多说,vue环境的搭建其实不是很难,我们来看一下我们要准备一些什么东西?</p>
+<ol>
+<li><p>git</p>
+<ul>
+<li><p>下载地址 :  <a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a>  直接点击右边的download下载.</p>
+</li>
+<li><p>安装步骤 :  没有什么太多要求的话,傻瓜式下一步安装即可.</p>
+</li>
+<li><p>如果在github中注册过,就在桌面右键 选择git bash 输入命令 </p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">$ git<span class="built_in"> config </span>--global user.name lee #将用户名设为lee</span><br><span class="line">$ git<span class="built_in"> config </span>--global user.email lee@163.com #将用户邮箱设为163邮箱</span><br><span class="line"></span><br><span class="line">输入完后继续输入,查看配置的用户名和邮箱</span><br><span class="line">$ git<span class="built_in"> config </span>user.name</span><br><span class="line">$ git<span class="built_in"> config </span>user.email</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li><p>node</p>
+<ul>
+<li><p>下载地址 :  <a href="http://nodejs.cn/download/" target="_blank" rel="noopener">http://nodejs.cn/download/</a>  点击download 下载.</p>
+</li>
+<li><p>安装步骤 : 同上,傻瓜式下一步安装</p>
+</li>
+<li><p>安装完毕后 , 打开cmd 输入命令</p>
+<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line">node - v <span class="comment">// 输出版本信息无误</span></span><br><span class="line">npm - v <span class="comment">// 输出版本信息无误</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//这里最好将npm的镜像换成淘宝镜像cnpm</span></span><br><span class="line"><span class="symbol">$</span> npm install -g cnpm --registry=https:<span class="comment">//registry.npm.taobao.org</span></span><br><span class="line"><span class="symbol">$</span> cnpm -v <span class="comment">//查看版本信息</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>VScode</p>
+<ul>
+<li><p>下载地址 :  <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">https://code.visualstudio.com/</a>  点击 download 下载.</p>
+</li>
+<li><p>安装步骤 : 傻瓜式 下一步安装</p>
+</li>
+<li><p>插件安装 : <img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191223095210.png" alt="20191223095210.png"></p>
+</li>
+<li><p>推荐插件 : </p>
+<ol>
+<li><strong>Chinese (Simplified) Language…</strong> 中文简体,如果英语够好,使用英文版即可</li>
+<li><strong>Prettier</strong>  代码格式化工具</li>
+<li><strong>ESLint</strong>和<strong>TSLint</strong> 用来统一JavaScript 和 TypeScript的风格,当前项目用Js则装ESlint,Ts用TSLint</li>
+<li><strong>EditorConfig</strong>  VSCode的扩展插件   在当前项目根目录下添加<code>.editorconfig</code>文件,普通项目练习不用配置也可以,用Prettier足够 , 这个的作用是为项目统一编辑器的实时格式。 </li>
+<li><strong>Bootstrap 3 Snippets</strong> 或者 <strong>4 Snippets</strong> 如果项目中使用了 Bootstrap 可以用来出现模板代码</li>
+<li><strong>Vetur,Vue 2Snippets,Vue VSCode Snippets</strong>  Vue语法提示等作用.</li>
+</ol>
+</li>
+<li><p>插件配置 :  点击左上角 <strong>文件</strong> –&gt; <strong>首选项</strong> –&gt; <strong>设置</strong> –&gt; <strong>右上角第一个图标,打开json</strong></p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"editor.renderIndentGuides"</span>: <span class="literal">false</span>, <span class="comment">//控制编辑器是否显示缩进参考线。</span></span><br><span class="line">  <span class="attr">"editor.fontSize"</span>: <span class="number">26</span>, <span class="comment">//以像素为单位控制字体大小。</span></span><br><span class="line">  <span class="attr">"files.autoSave"</span>: <span class="string">"afterDelay"</span>, <span class="comment">//自动保存</span></span><br><span class="line">  <span class="attr">"editor.lineNumbers"</span>: <span class="string">"on"</span>, <span class="comment">//打开行号</span></span><br><span class="line">  <span class="attr">"editor.quickSuggestions"</span>: &#123;</span><br><span class="line">    <span class="comment">//开启自动显示建议</span></span><br><span class="line">    <span class="attr">"other"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"comments"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"strings"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"editor.tabSize"</span>: <span class="number">2</span>, <span class="comment">//制表符符号eslint</span></span><br><span class="line">  <span class="attr">"editor.formatOnSave"</span>: <span class="literal">true</span>, <span class="comment">//保存时自动格式化</span></span><br><span class="line">  <span class="attr">"editor.codeActionsOnSave"</span>: &#123;</span><br><span class="line">    <span class="attr">"source.fixAll"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;, <span class="comment">//让prettier使用eslint的代码格式进行校验</span></span><br><span class="line">  <span class="attr">"prettier.semi"</span>: <span class="literal">false</span>, <span class="comment">//去掉代码结尾的分号</span></span><br><span class="line">  <span class="attr">"prettier.singleQuote"</span>: <span class="literal">true</span>, <span class="comment">//使用带引号替代双引号</span></span><br><span class="line">  <span class="attr">"javascript.format.insertSpaceBeforeFunctionParenthesis"</span>: <span class="literal">true</span>, <span class="comment">//让函数(名)和后面的括号之间加个空格</span></span><br><span class="line">  <span class="attr">"vetur.format.defaultFormatter.html"</span>: <span class="string">"js-beautify-html"</span>, <span class="comment">//格式化.vue中html</span></span><br><span class="line">  <span class="attr">"vetur.format.defaultFormatter.js"</span>: <span class="string">"vscode-typescript"</span>, <span class="comment">//让vue中的js按编辑器自带的ts格式进行格式化</span></span><br><span class="line">  <span class="attr">"vetur.format.defaultFormatterOptions"</span>: &#123;</span><br><span class="line">    <span class="attr">"js-beautify-html"</span>: &#123;</span><br><span class="line">      <span class="attr">"wrap_attributes"</span>: <span class="string">"force-aligned"</span> <span class="comment">//属性强制折行对齐</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"eslint.validate"</span>: [</span><br><span class="line">    <span class="comment">//开启对.vue文件中错误的检查</span></span><br><span class="line">    <span class="string">"javascript"</span>,</span><br><span class="line">    <span class="string">"javascriptreact"</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"language"</span>: <span class="string">"html"</span>,</span><br><span class="line">      <span class="attr">"autoFix"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"language"</span>: <span class="string">"vue"</span>,</span><br><span class="line">      <span class="attr">"autoFix"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"emmet.triggerExpansionOnTab"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"files.associations"</span>: &#123;</span><br><span class="line">    <span class="comment">//要进行html补全的文件</span></span><br><span class="line">    <span class="attr">"*.js"</span>: <span class="string">"html"</span>,</span><br><span class="line">    <span class="attr">"*.vue"</span>: <span class="string">"html"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"workbench.colorTheme"</span>: <span class="string">"Quiet Light"</span>,</span><br><span class="line">  <span class="attr">"explorer.confirmDelete"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">"terminal.integrated.fontSize"</span>: <span class="number">24</span>,</span><br><span class="line">  <span class="attr">"editor.autoClosingBrackets"</span>: <span class="string">"always"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ol>
+<ol start="4">
+<li><p>Chrome 这个装个最新版本的就好,然后装一个谷歌访问助手 , 然后打开设置.点击左侧高级下的扩展程序 ,然后点击扩展程序左边的菜单按钮,然后打开谷歌应用商店搜索devtools 安装<strong>Vue.js devtools</strong>即可.下图我已经安装过了所以没有显示 添加到 Chrome.<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/r3.gif" alt=""></p>
+</li>
+<li><p>如果想美化Google标签页的话 在应用商城搜索 <strong>momentum</strong> 即可</p>
+</li>
+</ol>
+<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191223092306.png" alt="20191223092306.png" style="zoom:67%;" />]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Part2·Java结构&amp;基本语法(图文)</title>
     <url>/04-java.html</url>
     <content><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191222183619.png" alt="20191222183619.png"></p>
