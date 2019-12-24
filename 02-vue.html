@@ -47,15 +47,18 @@
 </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="Part2.快速掌握Vue·一(图文)">
+<meta property="og:title" content="Part2.Vue速学(图文)">
 <meta property="og:url" content="http:&#x2F;&#x2F;fightlee.fun&#x2F;02-vue.html">
 <meta property="og:site_name" content="Here is Lee Blog.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;cn.vuejs.org&#x2F;images&#x2F;logo.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20191224113959.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;vue1.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;v1.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;v2.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20191224144948.png">
 <meta property="article:published_time" content="2019-12-24T03:15:22.000Z">
-<meta property="article:modified_time" content="2019-12-24T06:18:19.988Z">
+<meta property="article:modified_time" content="2019-12-24T08:09:10.256Z">
 <meta property="article:author" content="Lee">
 <meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
@@ -73,7 +76,7 @@
   };
 </script>
 
-  <title>Part2.快速掌握Vue·一(图文) | Here is Lee Blog.</title>
+  <title>Part2.Vue速学(图文) | Here is Lee Blog.</title>
   
 
 
@@ -237,7 +240,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          Part2.快速掌握Vue·一(图文)
+          Part2.Vue速学(图文)
         </h2>
 
         <div class="post-meta">
@@ -248,7 +251,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-12-24 11:15:22 / 修改时间：14:18:19" itemprop="dateCreated datePublished" datetime="2019-12-24T11:15:22+08:00">2019-12-24</time>
+              <time title="创建时间：2019-12-24 11:15:22 / 修改时间：16:09:10" itemprop="dateCreated datePublished" datetime="2019-12-24T11:15:22+08:00">2019-12-24</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -263,7 +266,7 @@
             </span>
 
           
-            <span id="/02-vue.html" class="post-meta-item leancloud_visitors" data-flag-title="Part2.快速掌握Vue·一(图文)" title="阅读次数">
+            <span id="/02-vue.html" class="post-meta-item leancloud_visitors" data-flag-title="Part2.Vue速学(图文)" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -305,47 +308,68 @@
 
 <a id="more"></a>
 
-<p><b style="color:red">——下面这点东西不想看就略过——</b></p>
-<h1 id="What-is-the-Fu-ing-Vue"><a href="#What-is-the-Fu-ing-Vue" class="headerlink" title="What is the Fu***ing Vue?"></a><b style="color:rgb(65,184,131)">What is the Fu***ing Vue?</b></h1><h3 id="来自官网的介绍"><a href="#来自官网的介绍" class="headerlink" title="来自官网的介绍 :"></a>来自官网的介绍 :</h3><p><strong>Vue</strong> (读音 /vjuː/，类似于 <strong>view</strong>) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。</p>
-<h1 id="Why-do-we-need-to-use-Vue"><a href="#Why-do-we-need-to-use-Vue" class="headerlink" title="Why do we need to use Vue?"></a><b style="color:rgb(65,184,131)">Why do we need to use Vue?</b></h1><h3 id="同样来自官网的介绍和我的理解"><a href="#同样来自官网的介绍和我的理解" class="headerlink" title="同样来自官网的介绍和我的理解 :"></a>同样来自官网的介绍和我的理解 :</h3><ol>
-<li><p><strong>体积小</strong> :  压缩后的体积仅为33k</p>
+<p><b style="color:red">——学习 Vue 之前需要大家对 HTML,CSS 和 JS 有所掌握——</b><br><b style="color:red">——下面这点东西不想看就略过——</b></p>
+<h1 id="What-is-the-Fu-ing-Vue"><a href="#What-is-the-Fu-ing-Vue" class="headerlink" title="What is the Fu***ing Vue?"></a><b style="color:rgb(65,184,131)">What is the Fu***ing Vue?</b></h1><h3 id="来自官网的介绍"><a href="#来自官网的介绍" class="headerlink" title="来自官网的介绍"></a>来自官网的介绍</h3><p><strong>Vue</strong> (读音 /vjuː/，类似于 <strong>view</strong>) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。</p>
+<h1 id="Why-do-we-need-to-use-Vue"><a href="#Why-do-we-need-to-use-Vue" class="headerlink" title="Why do we need to use Vue?"></a><b style="color:rgb(65,184,131)">Why do we need to use Vue?</b></h1><h3 id="同样来自官网的介绍和我的理解"><a href="#同样来自官网的介绍和我的理解" class="headerlink" title="同样来自官网的介绍和我的理解"></a>同样来自官网的介绍和我的理解</h3><ol>
+<li><p><strong>体积小</strong> : 压缩后的体积仅为 33k</p>
 </li>
-<li><p><strong>更高的运行效率</strong> : 基于虚拟dom,一种可以预先通过JavaScript进行各种计算,把最终的DOM操作计算出来并优化的技术,由于这个DOM操作属于预处理操作,并没有真实的操作DOM,所以叫做虚拟DOM .</p>
+<li><p><strong>更高的运行效率</strong> : 基于虚拟 dom,一种可以预先通过 JavaScript 进行各种计算,把最终的 DOM 操作计算出来并优化的技术,由于这个 DOM 操作属于预处理操作,并没有真实的操作 DOM,所以叫做虚拟 DOM .</p>
 </li>
-<li><p><strong>双向数据绑定</strong> : 让开发者不用再去操作DOM对象,把更多的精力投入到业务逻辑的处理上  </p>
+<li><p><strong>双向数据绑定</strong> : 让开发者不用再去操作 DOM 对象,把更多的精力投入到业务逻辑的处理上</p>
 </li>
-<li><p><strong>生态丰富,学习成本低</strong> : 市场上有大量成熟,稳定的基于Vue.js的ui框架,常用组件 比如 element-ui等拿来就能实现快速开发,对初学者比较友好,入门简单,学习资料也多.</p>
+<li><p><strong>生态丰富,学习成本低</strong> : 市场上有大量成熟,稳定的基于 Vue.js 的 ui 框架,常用组件 比如 element-ui 等拿来就能实现快速开发,对初学者比较友好,入门简单,学习资料也多.</p>
 </li>
-<li><p><strong>各大小厂都要求需要至少掌握一种现在前沿的前端技,如Vue,React等</strong></p>
+<li><p><strong>各大小厂都要求需要至少掌握一种现在前沿的前端技,如 Vue,React 等</strong></p>
 </li>
 </ol>
 <p><b style="color:red">——下面这点东西还是需要看一下——</b></p>
-<h1 id="2个核心"><a href="#2个核心" class="headerlink" title="2个核心"></a><b style="color:rgb(65,184,131)">2个核心</b></h1><ol>
-<li><strong>数据绑定</strong> : 数据改变驱动了视图的自动更新，传统的做法你得手动改变DOM来改变视图，Vue.js只需要改变数据，就会自动改变视图，一个字：爽。再也不用你去操心DOM的更新了，这就是MVVM思想的实现。</li>
+<h1 id="2-个核心"><a href="#2-个核心" class="headerlink" title="2 个核心"></a><b style="color:rgb(65,184,131)">2 个核心</b></h1><ol>
+<li><strong>数据绑定</strong> : 数据改变驱动了视图的自动更新，传统的做法你得手动改变 DOM 来改变视图，Vue.js 只需要改变数据，就会自动改变视图，一个字：爽。再也不用你去操心 DOM 的更新了，这就是 MVVM 思想的实现。</li>
 <li><strong>视图组件</strong> : 把整一个网页的拆分成一个个区块，每个区块我们可以看作成一个组件。网页由多个组件拼接或者嵌套组成。</li>
 </ol>
 <p><b style="color:red">——这里开始就是重点拉!!——</b></p>
-<h1 id="How-do-we-use-the-Vue"><a href="#How-do-we-use-the-Vue" class="headerlink" title="How do we use the Vue?"></a><b style="color:rgb(65,184,131)">How do we use the Vue?</b></h1><h3 id="Vue安装"><a href="#Vue安装" class="headerlink" title="Vue安装 :"></a>Vue安装 :</h3><ol>
-<li><p><strong>使用cdn引入vue所需要的js文件</strong><br>官网提供了CDN :</p>
+<h1 id="How-do-we-use-the-Vue"><a href="#How-do-we-use-the-Vue" class="headerlink" title="How do we use the Vue?"></a><b style="color:rgb(65,184,131)">How do we use the Vue?</b></h1><h3 id="Vue-安装"><a href="#Vue-安装" class="headerlink" title="Vue 安装"></a>Vue 安装</h3><ol>
+<li><p><strong>使用 cdn 引入 vue 所需要的 js 文件</strong><br>官网提供了 CDN :</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>直接在项目中引入js本地文件</strong></p>
-<p>进入官网 :  <a href="https://cn.vuejs.org/v2/guide/installation.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/installation.html</a><br><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191224113959.png" alt="20191224113959.png"><br>点击图片中的按钮 下载对应版本,然后拖放到项目中使用script标签引用即可</p>
+<li><p><strong>直接在项目中引入 js 本地文件</strong></p>
+<p>进入官网 : <a href="https://cn.vuejs.org/v2/guide/installation.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/installation.html</a><br><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191224113959.png" alt="20191224113959.png"><br>点击图片中的按钮 下载对应版本,然后拖放到项目中使用 script 标签引用即可</p>
 </li>
-<li><p><strong>通过vue-cli 脚手架工具创建vue 项目</strong></p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue // 这就要使用到我们之前的<span class="keyword">node</span><span class="title">中的npm</span>来进行安装了,安装步骤到后面详解.</span><br></pre></td></tr></table></figure>
-
-</li>
+<li><p><strong>通过 vue-cli 脚手架工具创建 vue 项目</strong></p>
+<pre><code>npm install vue // 这就要使用到我们之前的node中的npm来进行安装了,安装步骤到后面详解.</code></pre></li>
 </ol>
-<h3 id="Vue使用步骤"><a href="#Vue使用步骤" class="headerlink" title="Vue使用步骤 :"></a>Vue使用步骤 :</h3><ol>
-<li>使用VSCode 创建文件夹,文件夹中创建index.html</li>
-<li>引入Vue.js文件</li>
-<li>在body中添加div标签,并加上id属性</li>
-<li>在div标签中插入</li>
-<li>在div标签下创建script标签并创建Vue对象并传入一个options对象参数</li>
-<li>配置options对象属性,如el,data.</li>
+<h3 id="Vue-使用步骤"><a href="#Vue-使用步骤" class="headerlink" title="Vue 使用步骤"></a>Vue 使用步骤</h3><ol>
+<li>使用 VSCode 创建文件夹,文件夹中创建 index.html</li>
+<li>引入 Vue.js 文件</li>
+<li>在 body 中添加 div 标签,并加上 id 属性</li>
+<li>在 div 标签中插入</li>
+<li>在 div 标签下创建 script 标签并创建 Vue 对象并传入一个 options 对象参数</li>
+<li>配置 options 对象属性,如 el,data.</li>
 </ol>
 <p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/vue1.gif" alt=""></p>
+<p><strong>代码如下</strong> : </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 1.引入Vue --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 2.创建Div标签 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 3.插入message --&gt;</span></span><br><span class="line">      &#123;&#123;message&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">​    <span class="comment">&lt;!-- 4.script 创建Vue对象 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">        el: <span class="string">'#app'</span>, <span class="comment">//选中id为app的元素</span></span></span><br><span class="line">        data: &#123;</span><br><span class="line"><span class="actionscript">          message: <span class="string">'Hello World!'</span> <span class="comment">//设置message变量的值为 Hello World!</span></span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>创建Vue传入的options对象参数中不仅有el和data属性,在接下来的课程中我们会慢慢学到.</p>
+<ol>
+<li><p>el : element,选中html中哪一个div块为vue实例</p>
+</li>
+<li><p>data : 数据,vue实例中使用到的变量需要先在data中定义.</p>
+</li>
+<li><p>可以使用app来接收vue实例对象,可以在浏览器的console中对app实例下的数据进行修改</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">    el:<span class="string">'#app'</span>,</span></span><br><span class="line">    data:&#123;</span><br><span class="line"><span class="actionscript">        message:<span class="string">'Hello World!'</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/v1.png" alt=""></p>
+</li>
+</ol>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/v2.png" alt=""></p>
+<h1 id="Vue-插值语法"><a href="#Vue-插值语法" class="headerlink" title="Vue 插值语法"></a><b style="color:rgb(65,184,131)">Vue 插值语法</b></h1><h2 id="mustache-插值语法"><a href="#mustache-插值语法" class="headerlink" title="mustache 插值语法"></a>mustache 插值语法</h2><p>在 html 中使用,语法结构位 { { } } 俩个大括号 里层大括号中可以写表达式和变量等.</p>
+<p>…</p>
+<p>…</p>
+<p>好了这一章内容就到这,我们下一张快速的将 Vue 中比较常用的指令练习一遍.下一章篇幅有点长,大家做好心理准备…</p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191224144948.png" alt="20191224144948.png"></p>
 
     </div>
 
@@ -371,7 +395,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://fightlee.fun/02-vue.html" title="Part2.快速掌握Vue·一(图文)">http://fightlee.fun/02-vue.html</a>
+    <a href="http://fightlee.fun/02-vue.html" title="Part2.Vue速学(图文)">http://fightlee.fun/02-vue.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -394,7 +418,10 @@
     <a href="/05-java.html" rel="prev" title="Part3·Java转义符&运算符(图文)">
       <i class="fa fa-chevron-left"></i> Part3·Java转义符&运算符(图文)
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/03-vue.html" rel="next" title="Part3.Vue速学(图文)">
+      Part3.Vue速学(图文) <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -455,7 +482,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-is-the-Fu-ing-Vue"><span class="nav-number">1.</span> <span class="nav-text">What is the Fu***ing Vue?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#来自官网的介绍"><span class="nav-number">1.0.1.</span> <span class="nav-text">来自官网的介绍 :</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Why-do-we-need-to-use-Vue"><span class="nav-number">2.</span> <span class="nav-text">Why do we need to use Vue?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#同样来自官网的介绍和我的理解"><span class="nav-number">2.0.1.</span> <span class="nav-text">同样来自官网的介绍和我的理解 :</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2个核心"><span class="nav-number">3.</span> <span class="nav-text">2个核心</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#How-do-we-use-the-Vue"><span class="nav-number">4.</span> <span class="nav-text">How do we use the Vue?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue安装"><span class="nav-number">4.0.1.</span> <span class="nav-text">Vue安装 :</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue使用步骤"><span class="nav-number">4.0.2.</span> <span class="nav-text">Vue使用步骤 :</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-is-the-Fu-ing-Vue"><span class="nav-number">1.</span> <span class="nav-text">What is the Fu***ing Vue?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#来自官网的介绍"><span class="nav-number">1.0.1.</span> <span class="nav-text">来自官网的介绍</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Why-do-we-need-to-use-Vue"><span class="nav-number">2.</span> <span class="nav-text">Why do we need to use Vue?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#同样来自官网的介绍和我的理解"><span class="nav-number">2.0.1.</span> <span class="nav-text">同样来自官网的介绍和我的理解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-个核心"><span class="nav-number">3.</span> <span class="nav-text">2 个核心</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#How-do-we-use-the-Vue"><span class="nav-number">4.</span> <span class="nav-text">How do we use the Vue?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue-安装"><span class="nav-number">4.0.1.</span> <span class="nav-text">Vue 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue-使用步骤"><span class="nav-number">4.0.2.</span> <span class="nav-text">Vue 使用步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue-插值语法"><span class="nav-number">5.</span> <span class="nav-text">Vue 插值语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mustache-插值语法"><span class="nav-number">5.1.</span> <span class="nav-text">mustache 插值语法</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -471,7 +498,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
