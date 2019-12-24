@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Luffys_flag_32px.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Luffys_flag_16px.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://fightlee.fun').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Part3·Java转义符&amp;运算符(图文)">
+<meta property="og:url" content="http:&#x2F;&#x2F;fightlee.fun&#x2F;05-java.html">
+<meta property="og:site_name" content="Here is Lee Blog.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20191224084248.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20191224105532.png">
+<meta property="article:published_time" content="2019-12-24T00:40:41.000Z">
+<meta property="article:modified_time" content="2019-12-24T02:56:00.346Z">
+<meta property="article:author" content="Lee">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20191224084248.png">
+
+<link rel="canonical" href="http://fightlee.fun/05-java.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Part3·Java转义符&运算符(图文) | Here is Lee Blog.</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?355b8b54ffb9c345198a6ddf01768381";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Here is Lee Blog." type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Here is Lee Blog.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">Keep fighting,Keep your mind,Be patient,and Never give up!</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="请输入您要搜索的关键字..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://fightlee.fun/05-java.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpeg">
+      <meta itemprop="name" content="Lee">
+      <meta itemprop="description" content="面向小白的技术博客..">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Here is Lee Blog.">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          Part3·Java转义符&运算符(图文)
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-24 08:40:41 / 修改时间：10:56:00" itemprop="dateCreated datePublished" datetime="2019-12-24T08:40:41+08:00">2019-12-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">后台</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/05-java.html" class="post-meta-item leancloud_visitors" data-flag-title="Part3·Java转义符&运算符(图文)" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/05-java.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/05-java.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191224084248.png" alt="20191224084248.png"></p>
+<a id="more"></a>
+
+<h1 id="Section-1-前文回顾-amp-转义符"><a href="#Section-1-前文回顾-amp-转义符" class="headerlink" title="Section.1  前文回顾&amp;转义符"></a>Section.1  前文回顾&amp;转义符</h1><h3 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h3><p>在上一篇课程中,我们重点介绍了Java中的变量和各种数据类型,我们再用一个小练习来进行简单的回顾.</p>
+<h5 id="练习-1"><a href="#练习-1" class="headerlink" title="练习 1 :"></a>练习 1 :</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">声明变量保存以下信息</span></span><br><span class="line"><span class="comment">品种(brand) : 哈士奇 String</span></span><br><span class="line"><span class="comment">昵称(nickName) : 旺财 String</span></span><br><span class="line"><span class="comment">年龄(age) : 16 int</span></span><br><span class="line"><span class="comment">性别(gender) : 公 char</span></span><br><span class="line"><span class="comment">是否绝育(isSterilized) : true boolean</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">输出对应信息 : </span></span><br><span class="line"><span class="comment">	...</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VariableDemo03</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">//1.声明变量 并赋值</span></span><br><span class="line">        String brand = <span class="string">"哈士奇"</span>;</span><br><span class="line">        String nickName = <span class="string">"旺财"</span>;</span><br><span class="line">        <span class="keyword">int</span> age = <span class="number">16</span>;</span><br><span class="line">        <span class="keyword">char</span> gender = <span class="string">'公'</span>;</span><br><span class="line">        <span class="keyword">boolean</span> isSterilized = <span class="keyword">false</span>;</span><br><span class="line">        <span class="comment">//2.输出信息到控制台</span></span><br><span class="line">        System.out.println(<span class="string">"品种 : "</span> + brand);</span><br><span class="line">        System.out.println(<span class="string">"昵称 : "</span> + nickName);</span><br><span class="line">        System.out.println(<span class="string">"年龄 : "</span> + age);</span><br><span class="line">        System.out.println(<span class="string">"性别 : "</span> + gender);</span><br><span class="line">        System.out.println(<span class="string">"是否绝育 : "</span> + isSterilized);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>*<em>注 : 在这里我 “System.out.println()” 做一个补充. *</em></p>
+<ol>
+<li>System.out.<strong>println</strong>(); 的作用是向控制台上输出完一行信息并换行,也就是说每当输出完小括号中的内容将会执行一个回车换行的操作.</li>
+<li>System.out.<strong>print</strong>();的作用同上,但是区别是输出完信息后不会另起一行</li>
+<li>如果想用System.out.<strong>print</strong>();同样达到换行的效果,我们可以在小括号中加上转义字符 “\n”.</li>
+</ol>
+<h5 id="例-1"><a href="#例-1" class="headerlink" title="例 1 :"></a>例 1 :</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> TestDemo01&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">//1.</span></span><br><span class="line">        System.out.print(<span class="string">"今天天气不错"</span>);</span><br><span class="line">        System.out.print(<span class="string">",我们去唱,跳,rap,篮球吧!"</span>);</span><br><span class="line">        <span class="comment">//2.</span></span><br><span class="line">        System.out.print(<span class="string">"今天天气不错\n"</span>);</span><br><span class="line">        System.out.print(<span class="string">",我们去唱,跳,rap,篮球吧!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果 : </p>
+<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">今天天气不错,我们去唱,跳,rap,篮球吧!今天天气不错</span><br><span class="line">,我们去唱,跳,rap,篮球吧!</span><br></pre></td></tr></table></figure>
+
+<p>可以看出 第一个,第二个第三个print都处于一行,因为第一个和第二个print输出后没有另起一行,第三个print字符串末尾加上了\n所以就会开始另起一行开始输出.同学们自己使用<strong>println</strong>再来试一次吧!</p>
+<h3 id="转义符"><a href="#转义符" class="headerlink" title="转义符"></a>转义符</h3><p>转义符 : 反斜杠 <b style="color:red">\</b> . </p>
+<p>作用 : 用来在字符串中改变字符或者符号本身的含义 . 比如我们想要在控制台输出</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"Hello World"</span></span><br></pre></td></tr></table></figure>
+
+<p>按照之前的思路是不是得这么写呢?</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	System.out.println(<span class="string">""</span>Hello World<span class="string">""</span>); <span class="comment">// 程序报错</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为在Java中 一对双引号就代表一个字符串,那第一对双引号即为一个字符串,然后中间 Hello World ,后面还有一对双引号,这种写法在Java中是不允许的.所以我们需要转义符来对包裹Hello World的双引号转义,将其转义成普通的双引号,不代表字符串.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	System.out.println(<span class="string">"\"Hello World\""</span>); <span class="comment">// 程序正确</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Java 中有很多有特殊意义的转义符, 比如 之前提到的 “\n” 换行 , “\r” 回车, “\t”  横向制表(HT) (跳到下一个TAB位置)  等..</p>
+<h1 id="Section-2-运算符"><a href="#Section-2-运算符" class="headerlink" title="Section.2  运算符"></a>Section.2  运算符</h1><h2 id="表达式"><a href="#表达式" class="headerlink" title="表达式 :"></a>表达式 :</h2><p>表达式的概念其实应该在初中数学或者小学数学中我们已经接触过了,比如俩数之和 <strong>x + y</strong>   , 圆面积表达式  <strong>Π * r * r</strong> , 这些都是一些比较简单的表达式, 稍微复杂一点的 如 : (a + b) * (x + y)  等等, 通过不同的<strong>运算符</strong>将表达式组合在一起得到不同类型的结果, 比如整型,浮点型,布尔型(<strong>真or假</strong>)的结果等.那下面我们来看下Java中有哪些运算符?</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符 :"></a>运算符 :</h2><ol>
+<li>算术运算符</li>
+<li>赋值运算符</li>
+<li>关系运算符</li>
+<li>逻辑运算符</li>
+<li>三目/三元运算符</li>
+</ol>
+<h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><p>算术运算符一般用于做数值运算,比如 加,减,乘,除,取余,自增或者自减的操作</p>
+<table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">作用</th>
+<th align="center">举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">+</td>
+<td align="center">加</td>
+<td align="center">2 + 4</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">减</td>
+<td align="center">2 - 4</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="center">乘</td>
+<td align="center">2 * 4</td>
+</tr>
+<tr>
+<td align="center">/</td>
+<td align="center">除</td>
+<td align="center">4 / 2 结果为 :  2</td>
+</tr>
+<tr>
+<td align="center">%</td>
+<td align="center">取余</td>
+<td align="center">5 % 2 结果为 : 1 <br>2 % 5 结果为 : 2</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">自增 , 在变量自身的基础上 + 1</td>
+<td align="center">a++,++a 等同于 a = a + 1</td>
+</tr>
+<tr>
+<td align="center">–</td>
+<td align="center">自减 , 在变量自身的基础上 - 1</td>
+<td align="center">a–,–a  等同于 a = a - 1</td>
+</tr>
+</tbody></table>
+<h5 id="例-2"><a href="#例-2" class="headerlink" title="例 2 :"></a>例 2 :</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo02</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="number">2</span> + <span class="number">4</span>);</span><br><span class="line">        System.out.println(<span class="number">2</span> - <span class="number">4</span>);</span><br><span class="line">        System.out.println(<span class="number">2</span> * <span class="number">4</span>);</span><br><span class="line">        <span class="comment">//除法 注意数据类型</span></span><br><span class="line">        System.out.println(<span class="number">2</span> / <span class="number">4</span>);</span><br><span class="line">        System.out.println(<span class="number">5</span> / <span class="number">2</span>);</span><br><span class="line">        System.out.println(<span class="number">5.0</span> / <span class="number">2</span>);</span><br><span class="line">        <span class="comment">//取余</span></span><br><span class="line">        System.out.println(<span class="number">2</span> % <span class="number">5</span>);</span><br><span class="line">        System.out.println(<span class="number">5</span> % <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果 : </p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//加减乘</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">-2</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="comment">//除法(整数跟整数运算 得到的结果也是整数,5 / 2 得到 2.5取整即为2 , 5.0为浮点型小数与整数的运算在后面讲)</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">2.5</span></span><br><span class="line"><span class="comment">//取余(如果左边的数比运算符右边的数要小,余数取左边的数)</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="自增-amp-自减的执行顺序"><a href="#自增-amp-自减的执行顺序" class="headerlink" title="自增&amp;自减的执行顺序"></a>自增&amp;自减的执行顺序</h4><p>自增或者自减都是单目运算符,只需要一个操作数就可以进行运算,通常配合变量一起使用,如对变量a做自增或者自减的操作 : <strong>a++</strong>, <strong>a–</strong> ,<strong>++a</strong>, <strong>–a</strong></p>
+<p><strong>a++,a–</strong> :  如果运算符在后边,则为先执行代码,再运算 ,我们通常称之为 后加加,后减减</p>
+<p><strong>++a,–a</strong> : 如果运算符在前边,则为先运算,再执行代码, 我们通常称之为 前加加,前减减</p>
+<h5 id="例-3"><a href="#例-3" class="headerlink" title="例 3 :"></a>例 3 :</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo03</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">        System.out.println(++a);</span><br><span class="line">        System.out.println(a++);</span><br><span class="line">        System.out.println(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果 : </p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>分析 : </p>
+<p>第一个 System.out.println(++a);  因为运算符在前边,所以<b style="color:red">先运算</b><strong>自增1</strong>,然后执行代码输出 <strong>2</strong></p>
+<p>第二个 System.out.println(a++); 运算符在后边,所以<b style="color:red">先执行代码</b>输出 <strong>2</strong>, 然后自增1, 自增后a中的值为 <strong>3</strong></p>
+<p>第三个 System.out.println(a); 没有运算符,直接输出a变量中的值 3</p>
+<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><p>赋值运算符,将运算符右边的值赋值给左边, 如 a = a + 1, 将变量 a 的值 + 1 再 重新赋值给 a .</p>
+<table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">作用</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">=</td>
+<td align="center">将右边的值直接赋值给左边</td>
+<td>a = 33</td>
+</tr>
+<tr>
+<td align="center">+=</td>
+<td align="center">将右边的值与左边的变量的值相加后再赋值给左边</td>
+<td>a += 33 等同于 a = a + 33</td>
+</tr>
+<tr>
+<td align="center">-=</td>
+<td align="center">将右边的值与左边的变量的值相减后再赋值给左边</td>
+<td>a -= 33 等同于 a = a - 33</td>
+</tr>
+<tr>
+<td align="center">*=</td>
+<td align="center">将右边的值与左边的变量的值相乘后再赋值给左边</td>
+<td>a *= 33 等同于 a = a * 33</td>
+</tr>
+<tr>
+<td align="center">/=</td>
+<td align="center">将右边的值与左边的变量的值相除后再赋值给左边</td>
+<td>a /= 33 等同于 a = a / 33</td>
+</tr>
+<tr>
+<td align="center">%=</td>
+<td align="center">将右边的值与左边的变量的值取余后再赋值给左边</td>
+<td>a %= 33 等同于 a = a % 33</td>
+</tr>
+</tbody></table>
+<h3 id="关系-比较运算符"><a href="#关系-比较运算符" class="headerlink" title="关系/比较运算符"></a>关系/比较运算符</h3><p>将俩个表达式使用比较运算符来操作得到比较结果,结果为布尔类型,true或者false</p>
+<table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">作用</th>
+<th align="center">举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">&gt;</td>
+<td align="center">大于</td>
+<td align="center">假设int  a = 30 , b = 20;<br> a &gt; b (结果为 : <strong>true</strong>)</td>
+</tr>
+<tr>
+<td align="center">&gt;=</td>
+<td align="center">大于或者等于</td>
+<td align="center">a &gt;= b (结果为 : <strong>true</strong>)</td>
+</tr>
+<tr>
+<td align="center">&lt;</td>
+<td align="center">小于</td>
+<td align="center">a &lt; b (结果为 : <strong>false</strong>)</td>
+</tr>
+<tr>
+<td align="center">&lt;=</td>
+<td align="center">小于或者等于</td>
+<td align="center">a &lt;= b (结果为 : <strong>false</strong>)</td>
+</tr>
+<tr>
+<td align="center">==</td>
+<td align="center">等等于,检测运算符俩边表达式的值是否相等</td>
+<td align="center">a == b (结果为 : <strong>false</strong>)</td>
+</tr>
+<tr>
+<td align="center">!=</td>
+<td align="center">不等于</td>
+<td align="center">a != b (结果为 : <strong>true</strong>)</td>
+</tr>
+</tbody></table>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p>用来连接俩个关系表达式或者布尔类型的值,得到对应的布尔类型结果.</p>
+<table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">作用</th>
+<th align="center">举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">&amp;&amp;</td>
+<td align="center">与操作符 (and)</td>
+<td align="center">true &amp;&amp; false 结果为 false <br>与操作符俩边为true结果才为true,否则为false</td>
+</tr>
+<tr>
+<td align="center">||</td>
+<td align="center">或操作符(or)</td>
+<td align="center">true || false 结果为 true<br/>或操作符俩边为false结果才为false,否则为true</td>
+</tr>
+<tr>
+<td align="center">!</td>
+<td align="center">非(not),单目运算符</td>
+<td align="center">!true 结果为 false <br/>与当前值取反</td>
+</tr>
+</tbody></table>
+<h3 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h3><p>没什么好解释的看下面.</p>
+<table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">解释</th>
+<th align="center">举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">表达式 ? 值1 : 值2</td>
+<td align="center">表达式的结果通常为boolean类型,<br/>可以使用比较运算符运算符或者逻辑运算符连接,<br>如果表达式的结果为真(true),则得到值1,<br/>如果表达式的结果为假(false),则得到值2</td>
+<td align="center">假设 a = 10,<br>a &gt; 5 ? “大于”:”小于” <br>得到结果 : 大于</td>
+</tr>
+</tbody></table>
+<h3 id="运算符的优先级"><a href="#运算符的优先级" class="headerlink" title="运算符的优先级 :"></a>运算符的优先级 :</h3><p>简单来说 :  <strong>算术运算符优先级较高，关系和逻辑运算符优先级较低,有括号先算括号内部的,如果算术运算中包含单目运算符,则单目优先级比算术运算符高</strong>。 </p>
+<h1 id="Section-3-字面量"><a href="#Section-3-字面量" class="headerlink" title="Section.3  字面量"></a>Section.3  字面量</h1><p>字面量是指在程序中通过源代码直接给出的值 , 如 int a = 1; String name = “zhangsan”; 此处  1 和 “zhangsan”则分别为 整数字面量和字符串字面量.</p>
+<p>不同类型的字面量赋值 :</p>
+<p><strong>int 类型</strong> :   整数字面量, 可以为 二进制 ( 0b0011 ),八进制( 020 ),十进制( 12 ),十六进制 (0x12a).</p>
+<p><strong>long类型</strong> : 长整型字面量,在赋值时,需要在整型后加上l或者L , 如 : 18L , 18l</p>
+<p><strong>float类型</strong> : 单精度浮点型 , 需要在小数后加上f 或者 F , 如 : 1.8f ,1.8F</p>
+<p><strong>double类型</strong> : 双精度浮点型, 直接赋值小数即可, 如 : 3.4</p>
+<p><strong>boolean类型</strong> : 布尔类型,只有 true 和 false 俩个字面量</p>
+<p><strong>String类型</strong> : 双引号标识的就是字符串字面量</p>
+<p><strong>char类型</strong> : 用单引号括起来的字符、转义字符和 Unicode 值表示的字符。例如 ‘a’，‘\n’ 和 ‘\u0036’ 都代表char类型字面量 </p>
+<h1 id="Section-4-总结"><a href="#Section-4-总结" class="headerlink" title="Section.4 总结"></a>Section.4 总结</h1><p>1.转义符 (掌握)</p>
+<p>2.<b style="color:red">运算符</b>(<strong>重点</strong>)</p>
+<p>3.字面量(掌握)</p>
+<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191224105532.png" alt="20191224105532.png" style="zoom:67%;" />
+
+
+    </div>
+
+  <div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------Thank you for your Reading------</div>
+    
+</div>
+    
+ </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Lee
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://fightlee.fun/05-java.html" title="Part3·Java转义符&amp;运算符(图文)">http://fightlee.fun/05-java.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/01-vue.html" rel="prev" title="Part1.Vue环境搭建(图文)">
+      <i class="fa fa-chevron-left"></i> Part1.Vue环境搭建(图文)
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Section-1-前文回顾-amp-转义符"><span class="nav-number">1.</span> <span class="nav-text">Section.1  前文回顾&amp;转义符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#回顾"><span class="nav-number">1.0.1.</span> <span class="nav-text">回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#练习-1"><span class="nav-number">1.0.1.0.1.</span> <span class="nav-text">练习 1 :</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#例-1"><span class="nav-number">1.0.1.0.2.</span> <span class="nav-text">例 1 :</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转义符"><span class="nav-number">1.0.2.</span> <span class="nav-text">转义符</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Section-2-运算符"><span class="nav-number">2.</span> <span class="nav-text">Section.2  运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#表达式"><span class="nav-number">2.1.</span> <span class="nav-text">表达式 :</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符"><span class="nav-number">2.2.</span> <span class="nav-text">运算符 :</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算术运算符"><span class="nav-number">2.2.1.</span> <span class="nav-text">算术运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#例-2"><span class="nav-number">2.2.1.0.1.</span> <span class="nav-text">例 2 :</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自增-amp-自减的执行顺序"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">自增&amp;自减的执行顺序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#例-3"><span class="nav-number">2.2.1.1.1.</span> <span class="nav-text">例 3 :</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋值运算符"><span class="nav-number">2.2.2.</span> <span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关系-比较运算符"><span class="nav-number">2.2.3.</span> <span class="nav-text">关系&#x2F;比较运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">2.2.4.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三元运算符"><span class="nav-number">2.2.5.</span> <span class="nav-text">三元运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符的优先级"><span class="nav-number">2.2.6.</span> <span class="nav-text">运算符的优先级 :</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Section-3-字面量"><span class="nav-number">3.</span> <span class="nav-text">Section.3  字面量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Section-4-总结"><span class="nav-number">4.</span> <span class="nav-text">Section.4 总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lee"
+      src="/images/author.jpeg">
+  <p class="site-author-name" itemprop="name">Lee</p>
+  <div class="site-description" itemprop="description">面向小白的技术博客..</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lee</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'MCACXLHvNu3O6JofbCUqVbDr-gzGzoHsz',
+      appKey: 'EQbR0P0AmfPjdoUMn1dCfHM7',
+      placeholder: "疑问在此处留下...",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
