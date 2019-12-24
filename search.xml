@@ -1,6 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Part2.初识Vue(图文)</title>
+    <url>/02-vue.html</url>
+    <content><![CDATA[<img src="https://cn.vuejs.org/images/logo.png" alt="20191223092306.png" style="zoom: 67%;" />
+
+<a id="more"></a>
+
+
+
+<p><b style="color:red">——下面这点东西不想看就略过——</b></p>
+<h1 id="What-is-the-Fu-ing-Vue"><a href="#What-is-the-Fu-ing-Vue" class="headerlink" title="What is the Fu***ing Vue?"></a><b style="color:rgb(65,184,131)">What is the Fu***ing Vue?</b></h1><h3 id="来自官网的介绍"><a href="#来自官网的介绍" class="headerlink" title="来自官网的介绍 :"></a>来自官网的介绍 :</h3><p><strong>Vue</strong> (读音 /vjuː/，类似于 <strong>view</strong>) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。</p>
+<h1 id="Why-do-we-need-to-use-Vue"><a href="#Why-do-we-need-to-use-Vue" class="headerlink" title="Why do we need to use Vue?"></a><b style="color:rgb(65,184,131)">Why do we need to use Vue?</b></h1><h3 id="同样来自官网的介绍和我的理解"><a href="#同样来自官网的介绍和我的理解" class="headerlink" title="同样来自官网的介绍和我的理解 :"></a>同样来自官网的介绍和我的理解 :</h3><ol>
+<li><p><strong>体积小</strong> :  压缩后的体积仅为33k</p>
+</li>
+<li><p><strong>更高的运行效率</strong> : 基于虚拟dom,一种可以预先通过JavaScript进行各种计算,把最终的DOM操作计算出来并优化的技术,由于这个DOM操作属于预处理操作,并没有真实的操作DOM,所以叫做虚拟DOM .</p>
+</li>
+<li><p><strong>双向数据绑定</strong> : 让开发者不用再去操作DOM对象,把更多的精力投入到业务逻辑的处理上  </p>
+</li>
+<li><p><strong>生态丰富,学习成本低</strong> : 市场上有大量成熟,稳定的基于Vue.js的ui框架,常用组件 比如 element-ui等拿来就能实现快速开发,对初学者比较友好,入门简单,学习资料也多.</p>
+</li>
+<li><p><strong>各大小厂都要求需要至少掌握一种现在前沿的前端技,如Vue,React等</strong></p>
+</li>
+</ol>
+<p><b style="color:red">——下面这点东西还是需要看一下——</b></p>
+<h1 id="2个核心"><a href="#2个核心" class="headerlink" title="2个核心"></a><b style="color:rgb(65,184,131)">2个核心</b></h1><ol>
+<li><strong>数据绑定</strong> : 数据改变驱动了视图的自动更新，传统的做法你得手动改变DOM来改变视图，Vue.js只需要改变数据，就会自动改变视图，一个字：爽。再也不用你去操心DOM的更新了，这就是MVVM思想的实现。</li>
+<li><strong>视图组件</strong> : 把整一个网页的拆分成一个个区块，每个区块我们可以看作成一个组件。网页由多个组件拼接或者嵌套组成。</li>
+</ol>
+<p><b style="color:red">——这里开始就是重点拉!!——</b></p>
+<h1 id="How-do-we-use-the-Vue"><a href="#How-do-we-use-the-Vue" class="headerlink" title="How do we use the Vue?"></a><b style="color:rgb(65,184,131)">How do we use the Vue?</b></h1><h3 id="Vue安装"><a href="#Vue安装" class="headerlink" title="Vue安装 :"></a>Vue安装 :</h3><ol>
+<li><p><strong>使用cdn引入vue所需要的js文件</strong><br> 官网提供了CDN : </p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>直接在项目中引入js本地文件</strong></p>
+<p>进入官网 :  <a href="https://cn.vuejs.org/v2/guide/installation.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/installation.html</a><br><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191224113959.png" alt="20191224113959.png"><br>点击图片中的按钮 下载对应版本,然后拖放到项目中使用script标签引用即可</p>
+</li>
+<li><p><strong>通过vue-cli 脚手架工具创建vue 项目</strong> </p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">$ npm install vue // 这就要使用到我们之前的<span class="keyword">node</span><span class="title">中的npm</span>来进行安装了,安装步骤到后面详解.</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h3 id="Vue使用步骤"><a href="#Vue使用步骤" class="headerlink" title="Vue使用步骤 :"></a>Vue使用步骤 :</h3><ol>
+<li>使用VSCode 创建文件夹,文件夹中创建index.html</li>
+<li>引入Vue.js文件</li>
+<li>在body中添加div标签,并加上id属性</li>
+<li>在div标签中插入</li>
+<li>在div标签下创建script标签并创建Vue对象并传入一个options对象参数</li>
+<li>配置options对象属性,如el,data.</li>
+</ol>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/vue1.gif" alt=""></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Part3·Java转义符&amp;运算符(图文)</title>
     <url>/05-java.html</url>
     <content><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191224084248.png" alt="20191224084248.png"></p>
