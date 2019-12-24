@@ -58,7 +58,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;james&amp;wade.gif">
 <meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20191223005929.png">
 <meta property="article:published_time" content="2019-12-22T04:37:53.000Z">
-<meta property="article:modified_time" content="2019-12-24T00:55:42.903Z">
+<meta property="article:modified_time" content="2019-12-24T06:17:59.467Z">
 <meta property="article:author" content="Lee">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -257,7 +257,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-24 08:55:42" itemprop="dateModified" datetime="2019-12-24T08:55:42+08:00">2019-12-24</time>
+                <time title="修改时间：2019-12-24 14:17:59" itemprop="dateModified" datetime="2019-12-24T14:17:59+08:00">2019-12-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -314,10 +314,8 @@
 <a id="more"></a>
 
 <h2 id="Section-1-Java程序结构"><a href="#Section-1-Java程序结构" class="headerlink" title="Section.1  Java程序结构"></a>Section.1  Java程序结构</h2><p>在第一篇文章中我们已经学会了如何在系统中安装Java开发工具和开发Java所需要的环境,并创建了我们第一个Java项目,建立了第一个Java类文件并成功运行.那现在我们来分析一下之前的代码是什么意思.</p>
-<p>首先我们再来回顾一下之前的第一个Java程序 : </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01</span></span>&#123; <span class="comment">//程序的外层框架</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123; <span class="comment">//程序的内层框架</span></span><br><span class="line">        System.out.println(<span class="string">"Hello World"</span>); <span class="comment">//程序所要执行的代码</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+<p>首先我们再来回顾一下之前的第一个Java程序 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01</span></span>&#123; <span class="comment">//程序的外层框架</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123; <span class="comment">//程序的内层框架</span></span><br><span class="line">        System.out.println(<span class="string">"Hello World"</span>); <span class="comment">//程序所要执行的代码</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="main方法"><a href="#main方法" class="headerlink" title="main方法"></a>main方法</h4><p>这里我着重的讲解一下上篇代码中的 public static void main(String[] args){} 这个程序的内层框架, 我们把它简称为<strong>main方法</strong>,是整个Java程序的入口.那在这里我再简单介绍一下一些基本的概念.</p>
 <ol>
@@ -325,9 +323,9 @@
 </li>
 <li><p><strong>main 方法</strong> : main : 主要的 . main方法就是Java程序的主入口,也就是说Java程序要从main方法开始来执行我们设计的程序, 相当于我要去银行办理业务,那首先得从银行的大门进去才能正式开始我们银行办理业务的程序,那银行的大门就是我们的main方法,main方法有4要素,4者缺一不可.</p>
 <ol>
-<li>public </li>
-<li>static </li>
-<li>void </li>
+<li>public</li>
+<li>static</li>
+<li>void</li>
 <li>String[] args</li>
 </ol>
 </li>
@@ -602,16 +600,16 @@
 </tr>
 </tbody></table>
 <h5 id="注"><a href="#注" class="headerlink" title="注 :"></a>注 :</h5><p>有些同学可能一看,哇这么多单词,对于一些英语可能比较差的同学在这里可能就懵逼了,其实这里我要补充一句,要想学了Java然后出去找一份工作的话,其实需要掌握的词汇量也就100 200个就足够了,每天记10个单词,不到1个月就记完了,所以每天学习所涉及到不懂的单词,当天就即时的消化掉.这里也要注意,<strong>关键字不需要死记硬背</strong>,,<strong>关键字不需要死记硬背</strong>,<strong>关键字不需要死记硬背</strong>,咱们在后面的学习过程中,慢慢的就掌握了,只要代码敲的多就好.这里还要提醒一句,其实有了工具后关键字在工具中有着和其他单词不同的颜色,用眼睛就能看出来哪个是关键字,哪个不是了.</p>
-<h4 id="C-标识符"><a href="#C-标识符" class="headerlink" title="C. 标识符"></a>C. 标识符</h4><p> Java 所有的组成部分都需要名字。类名、变量名,常量名以及方法名都被称为标识符。 </p>
-<p>关于标识符我们要注意的是标识符的命名规则和命名规范 : </p>
+<h4 id="C-标识符"><a href="#C-标识符" class="headerlink" title="C. 标识符"></a>C. 标识符</h4><p> Java 所有的组成部分都需要名字。类名、变量名,常量名以及方法名都被称为标识符。</p>
+<p>关于标识符我们要注意的是标识符的命名规则和命名规范 :</p>
 <p>规则 :  </p>
 <ol>
 <li>标识符不能用数字开头</li>
-<li>标识符由字母数字和符号组成,符号中不能有特殊符号除了下划线 _ 和 美元符号 $ </li>
+<li>标识符由字母数字和符号组成,符号中不能有特殊符号除了下划线 _ 和 美元符号 $</li>
 <li>关键字不能用来做为标识符使用</li>
 <li>标识符大小写是敏感的,也就是说 name 和 Name 是不同的标识符</li>
 </ol>
-<p>规范: </p>
+<p>规范:</p>
 <ol>
 <li>命名尽量要有意义.</li>
 <li>类名,也就是关键字后class后的名称 , class名称一般都是每个单词首字母大小,比如 : Student,Teacher,ProdcutInfo,OrderInfo,OrderService,等等</li>
@@ -619,40 +617,34 @@
 <li>常量名, 一般都是每个单词都大写,单词之间使用下划线隔开 . 如 : ERROR_CODE , MAX_VALUE, MIN_VALUE</li>
 <li>方法名 : 和变量名类似 , 如 getElementById() , getStudentByName() , 通常是根据要实现的功能来进行相应的命名</li>
 </ol>
-<h5 id="注-规则是一定要遵守的-但是规范我这里总结的只是大部分程序猿都这么去写-没有按照规范来不会错-但是希望大家去遵守-就跟排队一样的-插队体现了人品素质差-没有遵守代码规范也只是代表着你的编程素质差而已-除非是你的公司有明文规范要求你这么写-那我们还是要以公司为主"><a href="#注-规则是一定要遵守的-但是规范我这里总结的只是大部分程序猿都这么去写-没有按照规范来不会错-但是希望大家去遵守-就跟排队一样的-插队体现了人品素质差-没有遵守代码规范也只是代表着你的编程素质差而已-除非是你的公司有明文规范要求你这么写-那我们还是要以公司为主" class="headerlink" title="注 : 规则是一定要遵守的,但是规范我这里总结的只是大部分程序猿都这么去写,没有按照规范来不会错,但是希望大家去遵守,就跟排队一样的,插队体现了人品素质差,没有遵守代码规范也只是代表着你的编程素质差而已,除非是你的公司有明文规范要求你这么写,那我们还是要以公司为主."></a>注 : 规则是一定要遵守的,但是规范我这里总结的只是大部分程序猿都这么去写,没有按照规范来不会错,但是希望大家去遵守,就跟排队一样的,插队体现了人品素质差,没有遵守代码规范也只是代表着你的编程素质差而已,除非是你的公司有明文规范要求你这么写,那我们还是要以公司为主.</h5><h4 id="D-注释"><a href="#D-注释" class="headerlink" title="D. 注释"></a>D. 注释</h4><p>注释 : 解释.比如说我们定义了一个方法,或者写了一段代码,或者定义了一个变量,都可以加上注释,注释中的文字不会被Java所执行,起一个解释的作用.</p>
+<h5 id="注-规则是一定要遵守的-但是规范我这里总结的只是大部分程序猿都这么去写-没有按照规范来不会错-但是希望大家去遵守-就跟排队一样的-插队体现了人品素质差-没有遵守代码规范也只是代表着你的编程素质差而已-除非是你的公司有明文规范要求你这么写-那我们还是要以公司为主"><a href="#注-规则是一定要遵守的-但是规范我这里总结的只是大部分程序猿都这么去写-没有按照规范来不会错-但是希望大家去遵守-就跟排队一样的-插队体现了人品素质差-没有遵守代码规范也只是代表着你的编程素质差而已-除非是你的公司有明文规范要求你这么写-那我们还是要以公司为主" class="headerlink" title="注 : 规则是一定要遵守的,但是规范我这里总结的只是大部分程序猿都这么去写,没有按照规范来不会错,但是希望大家去遵守,就跟排队一样的,插队体现了人品素质差,没有遵守代码规范也只是代表着你的编程素质差而已,除非是你的公司有明文规范要求你这么写,那我们还是要以公司为主"></a>注 : 规则是一定要遵守的,但是规范我这里总结的只是大部分程序猿都这么去写,没有按照规范来不会错,但是希望大家去遵守,就跟排队一样的,插队体现了人品素质差,没有遵守代码规范也只是代表着你的编程素质差而已,除非是你的公司有明文规范要求你这么写,那我们还是要以公司为主</h5><h4 id="D-注释"><a href="#D-注释" class="headerlink" title="D. 注释"></a>D. 注释</h4><p>注释 : 解释.比如说我们定义了一个方法,或者写了一段代码,或者定义了一个变量,都可以加上注释,注释中的文字不会被Java所执行,起一个解释的作用.</p>
 <p>Java中有3种注释</p>
 <ol>
-<li><strong>单行注释</strong>    // 注释内容             这里要注意, 单行注释只会注释掉 双斜杠后面的内容.</li>
+<li><strong>单行注释</strong>    // 注释内容       这里要注意, 单行注释只会注释掉 双斜杠后面的内容.</li>
 <li><strong>多行注释</strong>    /*    注释内容  */</li>
 <li><strong>文档注释</strong>    /**  注释内容   */</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> 这是一个show方法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//声明了一个局部变量a,并赋值为1</span></span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">    String name;<span class="comment">//声明了一个局部变量name</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    给局部变量name赋值</span></span><br><span class="line"><span class="comment">    同时输出变量name中的值</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    name = <span class="string">"zhangsan"</span>;</span><br><span class="line">    System.out.println(name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
-
-
 <h2 id="Section-3-变量-amp-数据类型"><a href="#Section-3-变量-amp-数据类型" class="headerlink" title="Section.3  变量&amp;数据类型"></a>Section.3  变量&amp;数据类型</h2><p>OK 介绍完一些Java中的标识符和关键字等概念后.我们继续开始讲解下面的内容.</p>
-<h3 id="变量-variable"><a href="#变量-variable" class="headerlink" title="变量 [variable]"></a>变量 [variable]</h3><h4 id="变量的概念"><a href="#变量的概念" class="headerlink" title="变量的概念 :"></a>变量的概念 :</h4><p>在讲变量之前我还是用一个例子来帮助大家理解变量.    </p>
-<p>小明有1000块钱,小明不管是出去Shopping也好,还是出去玩也好携带在身上很不方便.那按照我们现在的人的思维是不是可以把钱存在支付宝或者微信里呢?然后想要用钱的时候就用支付宝或者微信支付就可以了,这样是不是更加方便? </p>
+<h3 id="变量-variable"><a href="#变量-variable" class="headerlink" title="变量 [variable]"></a>变量 [variable]</h3><h4 id="变量的概念"><a href="#变量的概念" class="headerlink" title="变量的概念 :"></a>变量的概念 :</h4><p>在讲变量之前我还是用一个例子来帮助大家理解变量. </p>
+<p>小明有1000块钱,小明不管是出去Shopping也好,还是出去玩也好携带在身上很不方便.那按照我们现在的人的思维是不是可以把钱存在支付宝或者微信里呢?然后想要用钱的时候就用支付宝或者微信支付就可以了,这样是不是更加方便?</p>
 <p>那在上面这个例子里,支付宝或者微信就是我们用来存储或者保存钱的一个容器.小明想要花钱或者存钱的时候只需要选用一种容器,然后用容器来去操作就好了.然后,容器中可以用来操作钱的种类又有很多,比如说花呗,借呗,余额宝,账户余额等等,那现在小明现在操作或者存储的是哪种类型的钱呢?</p>
-<p>到了这里我们就来总结一下上面的例子 ; </p>
+<p>到了这里我们就来总结一下上面的例子 ;</p>
 <ol>
-<li>存储钱的容器      </li>
+<li>存储钱的容器</li>
 <li>使用 支付宝 or 微信 ?  </li>
 <li>1000块钱             ======&gt;     数据值</li>
 <li>账户余额,花呗,借呗              ======&gt;     数据类型</li>
 </ol>
-<p>到这里我们再来用专业一点的语言来描述这几个概念 : </p>
-<p><strong>变量  :  Java内存中的一块存储空间,这块空间中存储的数据是可变的</strong>    =====&gt;     容器</p>
-<p>*<em>变量名  : 引用存储空间所起的名称 *</em>    ======&gt;    支付宝,微信    </p>
-<p>*<em>数据类型 : 在java中,根据存储空间所存储的数据不同,划分了多种数据类型,比如说,存储的是数字,数字又分小数类型和整数类型,存储的是字母或者汉字或者拼音等,可以称之为字符或者字符串类型等等 *</em></p>
-<p>======&gt;  余额,花呗,借呗 </p>
+<p>到这里我们再来用专业一点的语言来描述这几个概念 :</p>
+<p><strong>变量  :  Java内存中的一块存储空间,这块空间中存储的数据是可变的</strong> =====&gt;     容器</p>
+<p>*<em>变量名  : 引用存储空间所起的名称 *</em> ======&gt;    支付宝,微信 </p>
+<p><strong>数据类型 : 在java中,根据存储空间所存储的数据不同,划分了多种数据类型,比如说,存储的是数字,数字又分小数类型和整数类型,存储的是字母或者汉字或者拼音等,可以称之为字符或者字符串类型等等</strong></p>
+<p>======&gt;  余额,花呗,借呗</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">变量的语法 :</span><br><span class="line"></span><br><span class="line">数据类型 变量名1 [<span class="string"> = 数据值2</span>][<span class="symbol">, 变量名2 [= 数据值2</span>] ...] ;</span><br><span class="line"></span><br><span class="line">---这里要注意的是 [] 中的内容代表可写可不写---</span><br></pre></td></tr></table></figure>
 
-
-
-<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型 :"></a>数据类型 :</h4><p>刚刚讲到了在Java中会根据数据的不同而划分了不同的数据类型,那现在我们来看一下具体有多少种数据类型</p>
+<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><p>刚刚讲到了在Java中会根据数据的不同而划分了不同的数据类型,那现在我们来看一下具体有多少种数据类型</p>
 <ol>
 <li>基本数据类型<ol>
 <li>整数类型 : 整数分为4种 byte short <b style="color:red;">int </b> long  如 : 1,2,3,4 100 ,200 , -100,-200..</li>
@@ -670,10 +662,10 @@
 <li><p>char 称之为 字符 , 在Java语言中,所有的单个字母,数字,或者汉字和字符,都能被’’单引号所标识,比如 ‘a’,’b’,’我’,’1’ ,’=’ 都称之为字符</p>
 </li>
 <li><p>String 称之为 字符串 , 通俗一点理解,字符串即一串字符, 也就是如果有多个字母或者符号,我们就需要用 “” 双引号来标识, 如  : “我好了”, “下次一定” , “湖人总冠军” , “abc” , “123” 等等..</p>
-<h5 id="注意-并不是说一定要多个字符才称之为字符串-只要用双引号标识的-我们都认为是字符串-打个比方-一块羊肉叫羊肉-一根竹子上串5块羊肉就叫羊肉串了-那羊肉串被你吃了4块-还剩一块-那不还得是羊肉串嘛"><a href="#注意-并不是说一定要多个字符才称之为字符串-只要用双引号标识的-我们都认为是字符串-打个比方-一块羊肉叫羊肉-一根竹子上串5块羊肉就叫羊肉串了-那羊肉串被你吃了4块-还剩一块-那不还得是羊肉串嘛" class="headerlink" title="注意 : 并不是说一定要多个字符才称之为字符串,只要用双引号标识的,我们都认为是字符串,打个比方,一块羊肉叫羊肉,一根竹子上串5块羊肉就叫羊肉串了, 那羊肉串被你吃了4块,还剩一块,那不还得是羊肉串嘛!"></a>注意 : 并不是说一定要多个字符才称之为字符串,只要用双引号标识的,我们都认为是字符串,打个比方,一块羊肉叫羊肉,一根竹子上串5块羊肉就叫羊肉串了, 那羊肉串被你吃了4块,还剩一块,那不还得是羊肉串嘛!<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/xiao111.gif" alt=""></h5><p>比如 “Hello World!” , “abc123”  这些都是多个字符组成的 必须用双引号标识,代表字符串, 但是 如果 是 <strong>“a”</strong>,双引号只标识了单个字符 也是代表字符串,只有 <strong>‘a’</strong> 才是 字符.</p>
 </li>
 </ol>
-<h4 id="变量的使用"><a href="#变量的使用" class="headerlink" title="变量的使用 :"></a>变量的使用 :</h4><p>变量的使用分为2步 : </p>
+<h5 id="注意-并不是说一定要多个字符才称之为字符串-只要用双引号标识的-我们都认为是字符串-打个比方-一块羊肉叫羊肉-一根竹子上串5块羊肉就叫羊肉串了-那羊肉串被你吃了4块-还剩一块-那不还得是羊肉串嘛"><a href="#注意-并不是说一定要多个字符才称之为字符串-只要用双引号标识的-我们都认为是字符串-打个比方-一块羊肉叫羊肉-一根竹子上串5块羊肉就叫羊肉串了-那羊肉串被你吃了4块-还剩一块-那不还得是羊肉串嘛" class="headerlink" title="注意 : 并不是说一定要多个字符才称之为字符串,只要用双引号标识的,我们都认为是字符串,打个比方,一块羊肉叫羊肉,一根竹子上串5块羊肉就叫羊肉串了, 那羊肉串被你吃了4块,还剩一块,那不还得是羊肉串嘛!"></a>注意 : 并不是说一定要多个字符才称之为字符串,只要用双引号标识的,我们都认为是字符串,打个比方,一块羊肉叫羊肉,一根竹子上串5块羊肉就叫羊肉串了, 那羊肉串被你吃了4块,还剩一块,那不还得是羊肉串嘛!<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/xiao111.gif" alt=""></h5><p>   比如 “Hello World!” , “abc123”  这些都是多个字符组成的 必须用双引号标识,代表字符串, 但是 如果 是 <strong>“a”</strong>,双引号只标识了单个字符 也是代表字符串,只有 <strong>‘a’</strong> 才是 字符.</p>
+<h4 id="变量的使用"><a href="#变量的使用" class="headerlink" title="变量的使用 :"></a>变量的使用 :</h4><p>变量的使用分为2步 :</p>
 <ol>
 <li>声明变量</li>
 <li>给变量赋值</li>
@@ -681,23 +673,21 @@
 </ol>
 <p>也可以一步到位 :  声明变量并赋值,然后再操作</p>
 <p>按照第一篇文章介绍的方式我们再创建一个VariableDemo01的class,用上面的语法来描述小明存钱到支付宝或者微信,然后到使用钱的过程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VariableDemo01</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		<span class="comment">//1.确定小明要存什么类型的数据,数据为1000 那数据类型在Java中就为整数类型</span></span><br><span class="line">        <span class="comment">//整数类型 int</span></span><br><span class="line">        <span class="comment">//2.小明将钱存入哪一个容器中</span></span><br><span class="line">        <span class="comment">//容器名称,也就是变量名 weixin </span></span><br><span class="line">        <span class="comment">//上面2步就是 : 声明变量的过程 . </span></span><br><span class="line">        <span class="keyword">int</span> weixin ;</span><br><span class="line">        <span class="comment">//3.小明要存1000  存到 weixin 中</span></span><br><span class="line">        <span class="comment">//这一步就是给变量赋值</span></span><br><span class="line">        weixin = <span class="number">1000</span>;</span><br><span class="line">        <span class="comment">//现在我们要去操作变量了.比如小明逛街花了100</span></span><br><span class="line">        System.out.println(weixin - <span class="number">100</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VariableDemo01</span></span>&#123;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">  <span class="comment">//1.确定小明要存什么类型的数据,数据为1000 那数据类型在Java中就为整数类型</span></span><br><span class="line">        <span class="comment">//整数类型 int</span></span><br><span class="line">        <span class="comment">//2.小明将钱存入哪一个容器中</span></span><br><span class="line">        <span class="comment">//容器名称,也就是变量名 weixin</span></span><br><span class="line">        <span class="comment">//上面2步就是 : 声明变量的过程 .</span></span><br><span class="line">        <span class="keyword">int</span> weixin ;</span><br><span class="line">        <span class="comment">//3.小明要存1000  存到 weixin 中</span></span><br><span class="line">        <span class="comment">//这一步就是给变量赋值</span></span><br><span class="line">        weixin = <span class="number">1000</span>;</span><br><span class="line">        <span class="comment">//现在我们要去操作变量了.比如小明逛街花了100</span></span><br><span class="line">        System.out.println(weixin - <span class="number">100</span>);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>输出结果 : </p>
+<p>输出结果 :</p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">900</span></span><br></pre></td></tr></table></figure>
 
-<p>然后我们还可以换另一种方式 : </p>
+<p>然后我们还可以换另一种方式 :</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    <span class="comment">//1.声明变量并赋值</span></span><br><span class="line">    <span class="keyword">int</span> zhifubao = <span class="number">2000</span>;</span><br><span class="line">    <span class="comment">//2.使用变量,查看支付宝中有多少余额</span></span><br><span class="line">    System.out.println(zhifubao);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>输出结果 : </p>
+<p>输出结果 :</p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2000</span></span><br></pre></td></tr></table></figure>
 
 <h5 id="注-我们如果想要输出这种结果"><a href="#注-我们如果想要输出这种结果" class="headerlink" title="注 : 我们如果想要输出这种结果"></a>注 : 我们如果想要输出这种结果</h5><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">余额 = <span class="number">2000</span></span><br></pre></td></tr></table></figure>
 
 <p>就要修改代码为</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"余额 = "</span> + zhifubao);</span><br></pre></td></tr></table></figure>
-
-
 
 <h2 id="Section-4-练习"><a href="#Section-4-练习" class="headerlink" title="Section.4 练习"></a>Section.4 练习</h2><p>好了..现在我们应该已经对变量有了一些基本的理解,来几个练习吧</p>
 <ol>
@@ -712,13 +702,11 @@
 </ol>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">名称 : <span class="type">Lucy</span></span><br><span class="line">身高 : 1.7</span><br><span class="line">体重 : 50</span><br><span class="line">性别 : 女</span><br><span class="line">是否结婚 : <span class="type">false</span></span><br></pre></td></tr></table></figure>
 
-
-
-<h2 id="Section-5-总结"><a href="#Section-5-总结" class="headerlink" title="Section.5 总结"></a>Section.5 总结</h2><p>今天内容有点多 , 就简单总结一下 : </p>
+<h2 id="Section-5-总结"><a href="#Section-5-总结" class="headerlink" title="Section.5 总结"></a>Section.5 总结</h2><p>今天内容有点多 , 就简单总结一下 :</p>
 <ol>
 <li>java中的 main方法 (理解,多敲拿这个练手感)</li>
 <li><strong>关键字&amp;标识符&amp;注释</strong> (掌握概念,不用死记)</li>
-<li><b style="color:red">变量&amp;数据类型</b> (重点掌握) </li>
+<li><b style="color:red">变量&amp;数据类型</b> (重点掌握)</li>
 </ol>
 <p>好了,来个詹韦连线激情一下.</p>
 <p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/james&wade.gif" alt=""></p>
@@ -835,7 +823,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Section-1-Java程序结构"><span class="nav-number">1.</span> <span class="nav-text">Section.1  Java程序结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#main方法"><span class="nav-number">1.0.1.</span> <span class="nav-text">main方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section-2-注释-amp-关键字-amp-标识符"><span class="nav-number">2.</span> <span class="nav-text">Section.2  注释&amp;关键字&amp;标识符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-Java严格区分大小写"><span class="nav-number">2.0.1.</span> <span class="nav-text">A. Java严格区分大小写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B-关键字"><span class="nav-number">2.0.2.</span> <span class="nav-text">B. 关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">注 :</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-标识符"><span class="nav-number">2.0.3.</span> <span class="nav-text">C. 标识符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注-规则是一定要遵守的-但是规范我这里总结的只是大部分程序猿都这么去写-没有按照规范来不会错-但是希望大家去遵守-就跟排队一样的-插队体现了人品素质差-没有遵守代码规范也只是代表着你的编程素质差而已-除非是你的公司有明文规范要求你这么写-那我们还是要以公司为主"><span class="nav-number">2.0.3.1.</span> <span class="nav-text">注 : 规则是一定要遵守的,但是规范我这里总结的只是大部分程序猿都这么去写,没有按照规范来不会错,但是希望大家去遵守,就跟排队一样的,插队体现了人品素质差,没有遵守代码规范也只是代表着你的编程素质差而已,除非是你的公司有明文规范要求你这么写,那我们还是要以公司为主.</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#D-注释"><span class="nav-number">2.0.4.</span> <span class="nav-text">D. 注释</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section-3-变量-amp-数据类型"><span class="nav-number">3.</span> <span class="nav-text">Section.3  变量&amp;数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量-variable"><span class="nav-number">3.1.</span> <span class="nav-text">变量 [variable]</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量的概念"><span class="nav-number">3.1.1.</span> <span class="nav-text">变量的概念 :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据类型"><span class="nav-number">3.1.2.</span> <span class="nav-text">数据类型 :</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#String和char的区别"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">String和char的区别 :</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注意-并不是说一定要多个字符才称之为字符串-只要用双引号标识的-我们都认为是字符串-打个比方-一块羊肉叫羊肉-一根竹子上串5块羊肉就叫羊肉串了-那羊肉串被你吃了4块-还剩一块-那不还得是羊肉串嘛"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">注意 : 并不是说一定要多个字符才称之为字符串,只要用双引号标识的,我们都认为是字符串,打个比方,一块羊肉叫羊肉,一根竹子上串5块羊肉就叫羊肉串了, 那羊肉串被你吃了4块,还剩一块,那不还得是羊肉串嘛!</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量的使用"><span class="nav-number">3.1.3.</span> <span class="nav-text">变量的使用 :</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注-我们如果想要输出这种结果"><span class="nav-number">3.1.3.1.</span> <span class="nav-text">注 : 我们如果想要输出这种结果</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section-4-练习"><span class="nav-number">4.</span> <span class="nav-text">Section.4 练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section-5-总结"><span class="nav-number">5.</span> <span class="nav-text">Section.5 总结</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Section-1-Java程序结构"><span class="nav-number">1.</span> <span class="nav-text">Section.1  Java程序结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#main方法"><span class="nav-number">1.0.1.</span> <span class="nav-text">main方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section-2-注释-amp-关键字-amp-标识符"><span class="nav-number">2.</span> <span class="nav-text">Section.2  注释&amp;关键字&amp;标识符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-Java严格区分大小写"><span class="nav-number">2.0.1.</span> <span class="nav-text">A. Java严格区分大小写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B-关键字"><span class="nav-number">2.0.2.</span> <span class="nav-text">B. 关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">注 :</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-标识符"><span class="nav-number">2.0.3.</span> <span class="nav-text">C. 标识符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注-规则是一定要遵守的-但是规范我这里总结的只是大部分程序猿都这么去写-没有按照规范来不会错-但是希望大家去遵守-就跟排队一样的-插队体现了人品素质差-没有遵守代码规范也只是代表着你的编程素质差而已-除非是你的公司有明文规范要求你这么写-那我们还是要以公司为主"><span class="nav-number">2.0.3.1.</span> <span class="nav-text">注 : 规则是一定要遵守的,但是规范我这里总结的只是大部分程序猿都这么去写,没有按照规范来不会错,但是希望大家去遵守,就跟排队一样的,插队体现了人品素质差,没有遵守代码规范也只是代表着你的编程素质差而已,除非是你的公司有明文规范要求你这么写,那我们还是要以公司为主</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#D-注释"><span class="nav-number">2.0.4.</span> <span class="nav-text">D. 注释</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section-3-变量-amp-数据类型"><span class="nav-number">3.</span> <span class="nav-text">Section.3  变量&amp;数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量-variable"><span class="nav-number">3.1.</span> <span class="nav-text">变量 [variable]</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量的概念"><span class="nav-number">3.1.1.</span> <span class="nav-text">变量的概念 :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据类型"><span class="nav-number">3.1.2.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#String和char的区别"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">String和char的区别 :</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注意-并不是说一定要多个字符才称之为字符串-只要用双引号标识的-我们都认为是字符串-打个比方-一块羊肉叫羊肉-一根竹子上串5块羊肉就叫羊肉串了-那羊肉串被你吃了4块-还剩一块-那不还得是羊肉串嘛"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">注意 : 并不是说一定要多个字符才称之为字符串,只要用双引号标识的,我们都认为是字符串,打个比方,一块羊肉叫羊肉,一根竹子上串5块羊肉就叫羊肉串了, 那羊肉串被你吃了4块,还剩一块,那不还得是羊肉串嘛!</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量的使用"><span class="nav-number">3.1.3.</span> <span class="nav-text">变量的使用 :</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注-我们如果想要输出这种结果"><span class="nav-number">3.1.3.1.</span> <span class="nav-text">注 : 我们如果想要输出这种结果</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section-4-练习"><span class="nav-number">4.</span> <span class="nav-text">Section.4 练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section-5-总结"><span class="nav-number">5.</span> <span class="nav-text">Section.5 总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
