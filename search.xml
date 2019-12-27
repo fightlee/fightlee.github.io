@@ -110,7 +110,7 @@
 <p>修改 a = 3 ,输出结果 : </p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">爱国</span><br><span class="line">程序结束</span><br></pre></td></tr></table></figure>
 
-<p><strong>从这里我们可以看出, 因为case 1 中没有 break, 所以在执行完 System.out.println()后 会继续 case 2 执行 , 碰倒break 结束语句, 输出 程序结束</strong></p>
+<p><strong>从这里我们可以看出, 因为case 1 中没有 break, 所以在执行完 System.out.println()后 会继续 case 2 执行 , 碰到break 结束语句, 输出 程序结束</strong></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>选择结构 : </p>
 <ol>
 <li><p>if 的使用    (<strong>重点</strong>,<strong>重点</strong>,<strong>重点</strong>)</p>
@@ -119,6 +119,8 @@
 </li>
 </ol>
 <h1 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h1><p><strong>练习上面代码即可,并且可以将例1,2,3的幸运值改成输入形式.</strong></p>
+<p>下一篇介绍 Java语法中的 <strong>循环结构</strong>…</p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191227164448.png" alt="20191227164448.png"></p>
 ]]></content>
       <categories>
         <category>后台</category>
