@@ -57,7 +57,7 @@
 <p>输出结果 : </p>
 <figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">装备强化失败<span class="string">...</span>装备损坏</span><br><span class="line">装备强化完成<span class="string">...</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>OK ! 从这里我们可以看出,if else if else 可以对多种条件进行判断..在实际操作中,根据当前需求来选择具体使用哪种选择结构,并且注意 if else if else 中的 else 不一定要写哦! 根据需求或者题目要求来写即可!</strong></p>
+<p><strong>OK ! 从这里我们可以看出,if else if else 可以对多种条件进行判断..在实际操作中,根据当前需求来选择具体使用哪种选择结构,并且注意 if else if else 中的 else 不一定要写哦! 但是一般推荐要写!!!</strong></p>
 <img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191227150716.png" alt="20191227150716.png" style="zoom:50%;" />
 
 <p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/xiapo.gif" alt=""></p>
@@ -93,9 +93,24 @@
 
 <p><strong>效果图 :</strong><br>当我们输入 字母 a</p>
 <figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">请输入数字 : </span><br><span class="line">a</span><br><span class="line">输入格式有误<span class="string">...</span>支付失败</span><br><span class="line">程序结束<span class="string">...</span></span><br></pre></td></tr></table></figure>
+<h4 id="Switch在选择数据时-数据的类型-整型-char-枚举和String-并且要注意是等值的判断-而不是区间性的判断-这也是和if的区别-if可以对一个连续的空间进行判断-而switch只能做等值判断"><a href="#Switch在选择数据时-数据的类型-整型-char-枚举和String-并且要注意是等值的判断-而不是区间性的判断-这也是和if的区别-if可以对一个连续的空间进行判断-而switch只能做等值判断" class="headerlink" title="Switch在选择数据时,数据的类型(整型,char,枚举和String),并且要注意是等值的判断,而不是区间性的判断,这也是和if的区别.if可以对一个连续的空间进行判断,而switch只能做等值判断."></a>Switch在选择数据时,数据的类型(整型,char,枚举和String),并且要注意是等值的判断,而不是区间性的判断,这也是和if的区别.if可以对一个连续的空间进行判断,而switch只能做等值判断.</h4><p>如 : </p>
+<p><strong>if(a &gt; 20) else if ( a &gt; 10) else if ( a &gt; 0 ) else  选择的范围为 :</strong></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191227162712.png" alt="20191227162712.png"> </p>
+<p>*<em>switch (numer) case 1 : case 2 : case 3的范围为 : *</em> </p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191227163008.png" alt="20191227163008.png"></p>
+<h2 id="switch-…-case-中-break的作用"><a href="#switch-…-case-中-break的作用" class="headerlink" title="switch … case 中 break的作用"></a>switch … case 中 break的作用</h2><p>switch 中 的break关键字 起一个拦截跳出语句的作用, 如果case语句中 没有break,那程序就会继续往下运行,直到碰到break;才会跳出跳出switch语句 . 我们用一个例子来看下.</p>
+<h4 id="例-5-看代码-输出对应结果"><a href="#例-5-看代码-输出对应结果" class="headerlink" title="例 5 : 看代码 , 输出对应结果"></a>例 5 : 看代码 , 输出对应结果</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo06</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">//选择 a 的值 输出对应结果</span></span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">switch</span>(a)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">               System.out.println(<span class="string">"富强"</span>);</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">               System.out.println(<span class="string">"民主"</span>);</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">               System.out.println(<span class="string">"爱国"</span>);</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"程序结束"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>当 a = 1 时,输出结果 : </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">富强</span><br><span class="line">民主</span><br><span class="line">程序结束</span><br></pre></td></tr></table></figure>
 
+<p>修改 a = 2 ,输出结果 : </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">民主</span><br><span class="line">程序结束</span><br></pre></td></tr></table></figure>
 
+<p>修改 a = 3 ,输出结果 : </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">爱国</span><br><span class="line">程序结束</span><br></pre></td></tr></table></figure>
+
+<p><strong>从这里我们可以看出, 因为case 1 中没有 break, 所以在执行完 System.out.println()后 会继续 case 2 执行 , 碰倒break 结束语句, 输出 程序结束</strong></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>选择结构 : </p>
 <ol>
 <li><p>if 的使用    (<strong>重点</strong>,<strong>重点</strong>,<strong>重点</strong>)</p>
