@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Luffys_flag_32px.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Luffys_flag_16px.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://fightlee.fun').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Part5·Java语法结构(二)(图文)">
+<meta property="og:url" content="http:&#x2F;&#x2F;fightlee.fun&#x2F;07-java.html">
+<meta property="og:site_name" content="Here is Lee Blog.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20191229220831.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20191226153157.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20191229235239.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20191229235248.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20191230001906.png">
+<meta property="article:published_time" content="2019-12-27T09:03:49.000Z">
+<meta property="article:modified_time" content="2019-12-29T16:19:48.155Z">
+<meta property="article:author" content="Lee">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20191229220831.png">
+
+<link rel="canonical" href="http://fightlee.fun/07-java.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Part5·Java语法结构(二)(图文) | Here is Lee Blog.</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?355b8b54ffb9c345198a6ddf01768381";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Here is Lee Blog." type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Here is Lee Blog.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">Keep fighting,Keep your mind,Be patient,and Never give up!</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="请输入您要搜索的关键字..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://fightlee.fun/07-java.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpeg">
+      <meta itemprop="name" content="Lee">
+      <meta itemprop="description" content="面向小白的技术博客..">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Here is Lee Blog.">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          Part5·Java语法结构(二)(图文)
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-27 17:03:49" itemprop="dateCreated datePublished" datetime="2019-12-27T17:03:49+08:00">2019-12-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-30 00:19:48" itemprop="dateModified" datetime="2019-12-30T00:19:48+08:00">2019-12-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/server/" itemprop="url" rel="index">
+                    <span itemprop="name">后台</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/07-java.html" class="post-meta-item leancloud_visitors" data-flag-title="Part5·Java语法结构(二)(图文)" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/07-java.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/07-java.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191229220831.png" alt="20191229220831.png" style="zoom:80%;" />
+
+<a id="more"></a>
+
+<h1 id="循环结构-1-While"><a href="#循环结构-1-While" class="headerlink" title="循环结构 1 While"></a>循环结构 1 While</h1><h2 id="while-循环"><a href="#while-循环" class="headerlink" title="while 循环"></a>while 循环</h2><h3 id="语法结构"><a href="#语法结构" class="headerlink" title="语法结构"></a>语法结构</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*整个语法我们可以这么来理解, 首先看while的翻译 : 当..   那我们就这么讲</span></span><br><span class="line"><span class="comment"> 当 小括号中的表达式的结果为true时,代码进入大括号循环体 开始循环. 直到 布尔表达式的结果为false则跳出.如果布尔表达式的结果永远都为true,那此时循环进入无限循环,也可以称之为死循环,一般我们尽量要避免出现死循环的情况.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">while</span>(布尔表达式)&#123;</span><br><span class="line">    <span class="comment">//当布尔表达式的结果为true时,循环执行大括号中的代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>学习循环我们还是和上节一样举个栗子 :</p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191226153157.png" alt="20191226153157.png"></p>
+<h4 id="例-1-在控制台中输出100次-“好好学习-天天向上”"><a href="#例-1-在控制台中输出100次-“好好学习-天天向上”" class="headerlink" title="例 1 : 在控制台中输出100次 “好好学习,天天向上”"></a>例 1 : 在控制台中输出100次 “好好学习,天天向上”</h4><p>代码 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo01</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">//1.定义一个计数器来 记录当前输出到第几次</span></span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//2.开始循环 输出 好好学习,天天向上 ,</span></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        按照上面我们的理解,我们可以这么写,</span></span><br><span class="line"><span class="comment">        (1)当计数器中记录的数字小于等于100时,我们就开始循环,</span></span><br><span class="line"><span class="comment">        (2)输出 好好学习,天天向上</span></span><br><span class="line"><span class="comment">        (3)循环一次后,计数器中的数字要自增一次,然后自增到101时退出循环,程序结束</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">while</span>(count &lt;= <span class="number">100</span>)&#123;<span class="comment">//(1)</span></span><br><span class="line">            System.out.println(<span class="string">"好好学习,天天向上"</span>);<span class="comment">//(2)</span></span><br><span class="line">            count++;<span class="comment">//(3)----&gt;回到(1)判断</span></span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"程序结束..."</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果 :</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">好好学习,天天向上</span><br><span class="line"><span class="built_in">..</span><span class="built_in">..</span>.</span><br><span class="line">好好学习,天天向上</span><br><span class="line">程序结束</span><br></pre></td></tr></table></figure>
+
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结 :"></a>小结 :</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(循环条件)&#123;</span><br><span class="line">    循环操作</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*执行while循环时, 我们先要判断循环条件是否满足,然后再来执行大括号中的循环操作,执行完一次循环后,继续判断循环条件,....*/</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="例-2-求1-10的和"><a href="#例-2-求1-10的和" class="headerlink" title="例 2 : 求1-10的和"></a>例 2 : 求1-10的和</h4><p>代码 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">分析 :</span></span><br><span class="line"><span class="comment">需要求和, 我们先定义和的变量 sum .</span></span><br><span class="line"><span class="comment">   .分析1-10求和的过程 :</span></span><br><span class="line"><span class="comment"> 第一次 和 sum = 0 + 1</span></span><br><span class="line"><span class="comment"> 第二次   sum = 1 + 2</span></span><br><span class="line"><span class="comment"> 第三次   sum = 3 + 3</span></span><br><span class="line"><span class="comment"> 第四次   sum = 6 + 4</span></span><br><span class="line"><span class="comment"> ...</span></span><br><span class="line"><span class="comment"> 第10次  sum = 前一次的sum + 10 </span></span><br><span class="line"><span class="comment">得出结论</span></span><br><span class="line"><span class="comment">循环操作 : 求和 为 sum =  sum + n;</span></span><br><span class="line"><span class="comment">     n 为计数器,用来计算当前累加到第几个数,每次循环 计数器都自增一次</span></span><br><span class="line"><span class="comment">循环条件 : 当 n 的值小于等于10时,进入循环开始循环操作.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo02</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">     <span class="comment">//1.定义 和 : sum 和 计数器 : n</span></span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>,n = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//2.判断当前计数器是否小于等于10</span></span><br><span class="line">        <span class="keyword">while</span>(n &lt;= <span class="number">10</span>)&#123;</span><br><span class="line">            <span class="comment">//3.如果count&lt;= 10 执行循环操作</span></span><br><span class="line">            sum += n;<span class="comment">//为 sum = sum + n; 的简写</span></span><br><span class="line">            <span class="comment">//4.每执行一次和的累加 n 自增一次</span></span><br><span class="line">            n++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//5.程序结束 输出 sum = 多少?</span></span><br><span class="line">        System.out.println(<span class="string">"sum = "</span> + sum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果 :</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sum</span> = <span class="number">55</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="练习-求-1-10-的偶数和-奇数和"><a href="#练习-求-1-10-的偶数和-奇数和" class="headerlink" title="练习 : 求 1 - 10 的偶数和,奇数和"></a>练习 : 求 1 - 10 的偶数和,奇数和</h4><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">小提示 :</span><br><span class="line">偶数和 : 累加的是能被<span class="number">2</span>整除的数</span><br><span class="line">奇数和 : 除<span class="number">2</span>余<span class="number">1</span>的数才能累加</span><br><span class="line">或者修改计数器的增量也可以.</span><br></pre></td></tr></table></figure>
+
+<h2 id="do…while循环"><a href="#do…while循环" class="headerlink" title="do…while循环"></a>do…while循环</h2><h3 id="语法结构-1"><a href="#语法结构-1" class="headerlink" title="语法结构"></a>语法结构</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    <span class="comment">//当布尔表达式的结果为true时,循环执行大括号中的代码</span></span><br><span class="line">&#125;<span class="keyword">while</span>(布尔表达式)</span><br></pre></td></tr></table></figure>
+
+<h3 id="do…while循环和while循环的区别"><a href="#do…while循环和while循环的区别" class="headerlink" title="do…while循环和while循环的区别"></a>do…while循环和while循环的区别</h3><p>俩者本质上都是循环结构,唯一区别就是执行顺序的问题 :</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>循环 : 先判断循环条件 , 再执行循环语句</span><br><span class="line"><span class="keyword">do</span>...<span class="keyword">while</span>循环 : 先执行循环语句 , 再判断循环条件.</span><br></pre></td></tr></table></figure>
+
+<h4 id="例-3"><a href="#例-3" class="headerlink" title="例 3"></a>例 3</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo03</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">     <span class="comment">//while循环</span></span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &gt; <span class="number">2</span>)&#123;</span><br><span class="line">            System.out.println(<span class="string">"while 循环 执行...."</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//do...while循环</span></span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"do...while 循环 执行...."</span>);</span><br><span class="line">        &#125;<span class="keyword">while</span>(i &gt; <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果 :</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span><span class="built_in">..</span>.<span class="keyword">while</span> 循环 执行<span class="built_in">..</span><span class="built_in">..</span></span><br></pre></td></tr></table></figure>
+
+<p>从这里可以看出 , i = 1, i &gt; 2的结果为false 则,while循环体中的循环操作不执行,但是 do语句中的循环操作执行并且只执行一次,执行一次后 i &gt; 2结果为false 退出循环正好验证之前的区别.</p>
+<p>注 : do..while 基本见不到,以while为主</p>
+<h1 id="循环结构-2-For"><a href="#循环结构-2-For" class="headerlink" title="循环结构 2 For"></a>循环结构 2 For</h1><h3 id="语法结构-2"><a href="#语法结构-2" class="headerlink" title="语法结构"></a>语法结构</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">for</span><span class="params">(定义计数器;循环条件;修改计数器)</span></span>&#123;</span><br><span class="line"> 循环操作</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="回顾-例-1"><a href="#回顾-例-1" class="headerlink" title="回顾 例 1 :"></a>回顾 例 1 :</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo04</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">/*例1 的代码 使用 while 循环</span></span><br><span class="line"><span class="comment">        int count = 1;</span></span><br><span class="line"><span class="comment">        while(count &lt;= 100)&#123;</span></span><br><span class="line"><span class="comment">            System.out.println("好好学习,天天向上");</span></span><br><span class="line"><span class="comment">            count++;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">        System.out.println("程序结束...")</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="comment">/*使用for循环*/</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> count = <span class="number">1</span>;count &lt;= <span class="number">100</span>;count++)&#123;</span><br><span class="line">           System.out.println(<span class="string">"好好学习,天天向上"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"程序结束..."</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果 :</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">好好学习,天天向上</span><br><span class="line">...</span><br><span class="line">好好学习,天天向上</span><br><span class="line">程序结束...</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意执行顺序即可,先初始化 count , 判断 count 是否 &lt;= 100 再 执行 循环操作,然后 count++</strong></p>
+<h4 id="例-4-求1-100的和"><a href="#例-4-求1-100的和" class="headerlink" title="例 4 :  求1 - 100的和"></a>例 4 :  求1 - 100的和</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo05</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;<span class="comment">//定义总和</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> count = <span class="number">1</span>;count &lt;= <span class="number">100</span>;count++)&#123;</span><br><span class="line">            sum += count;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"sum = "</span> + sum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果 :</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sum</span> = <span class="number">5050</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>从上面的学习中发现,while和for循环都是用来执行循环操作,那在实际使用时我们应该怎么去选择哪一种循环?</strong></p>
+<ol>
+<li>for循环一般在循环次数确定的情况时使用.(因为for循环体中一般需要初始化计数器来计算循环次数)</li>
+<li>while循环一般在循环次数不确定,但清楚循环的退出条件时使用.</li>
+</ol>
+<h1 id="break-amp-continue"><a href="#break-amp-continue" class="headerlink" title="break&amp;continue"></a>break&amp;continue</h1><h2 id="break"><a href="#break" class="headerlink" title="break"></a>break</h2><p>break : 其实在学习switch中我们已经认识了关键字 <strong>break</strong>,break,故名思意,起阻断的作用.在循环中使用会打断循环的执行.跳出循环语句.</p>
+<h4 id="例-5-小明和同学做游戏-小明在心中默念一个1-10中间的数字-同学如果猜中则游戏结束-小明受到惩罚-罚做100个俯卧撑-游戏只能猜5次-5次结束-同学受到惩罚-每个同学罚做50个俯卧撑"><a href="#例-5-小明和同学做游戏-小明在心中默念一个1-10中间的数字-同学如果猜中则游戏结束-小明受到惩罚-罚做100个俯卧撑-游戏只能猜5次-5次结束-同学受到惩罚-每个同学罚做50个俯卧撑" class="headerlink" title="例 5 : 小明和同学做游戏,小明在心中默念一个1-10中间的数字,同学如果猜中则游戏结束,小明受到惩罚,罚做100个俯卧撑,游戏只能猜5次,5次结束,同学受到惩罚.每个同学罚做50个俯卧撑"></a>例 5 : 小明和同学做游戏,小明在心中默念一个1-10中间的数字,同学如果猜中则游戏结束,小明受到惩罚,罚做100个俯卧撑,游戏只能猜5次,5次结束,同学受到惩罚.每个同学罚做50个俯卧撑</h4><p>代码 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo06</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">//1.定义游戏结果(结果要么 猜中,要么未猜中 可以定义为 布尔类型)</span></span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;<span class="comment">//初始化 为 未猜中</span></span><br><span class="line">        <span class="comment">//2.定义一个数字来作为小明心中的数字,此处我们使用一个1-10的随机值,不懂的暂时可以先直接照着抄</span></span><br><span class="line">        <span class="comment">//Math.random() 得到一个 0-1的随机小数,包含0,不包含1</span></span><br><span class="line">        <span class="keyword">int</span> num = (<span class="keyword">int</span>) (Math.random() * <span class="number">10</span> + <span class="number">1</span>);</span><br><span class="line">        <span class="comment">//3.(作弊)输出小明心中的数字,不作弊怕你们猜不到,哈哈哈哈哈</span></span><br></pre></td></tr></table></figure>
+<pre><code>System.out.println(&quot;小明心中的数字 : &quot; + num);
+//4.游戏只能玩5次,确定循环次数 使用for循环,并创建扫描仪(扫描仪的创建不要放在循环体内,想想,我们要打印5份卷子,需要5个打印机嘛?)
+Scanner scanner = new Scanner(System.in);//创建扫描仪
+for(int i = 4; i &gt;= 0; i--){//注意这里是从4开始的哦,每循环一次,游戏次数-1
+    //5.提示同学开始猜测 :
+    System.out.print(&quot;请输入小明心中的数字 : &quot;);
+    //6.得到同学输入的数字
+    int number = scanner.nextInt();
+    //7.判断是否为小明心中的数字,如果猜中,则跳出循环,不需要再次猜测,游戏结果为 猜中 true
+    if(number == num){
+        //猜中
+        flag = true;//重新定义游戏结果
+        break;//结束循环
+    }else{
+        //没猜中
+        System.out.println(&quot;很遗憾,您没有猜中,您还有&quot; + i + &quot;次机会&quot;);
+    }
+}
+//判断游戏结果,
+if(flag){
+    //如果游戏结果为true
+    System.out.println(&quot;恭喜您猜中了!小明受到惩罚,做100个俯卧撑&quot;);
+}else{</code></pre><p>   //如果游戏结果为false<br>            System.out.println(“太惨了,同学受到惩罚,每个人做50个俯卧撑”);<br>        }<br>    }<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">输出结果 :</span><br></pre></td></tr></table></figure>
+<p>小明心中的数字 : 9<br>请输入小明心中的数字 : 3<br>很遗憾,您没有猜中,您还有4次机会<br>请输入小明心中的数字 : 2<br>很遗憾,您没有猜中,您还有3次机会<br>请输入小明心中的数字 : 1<br>很遗憾,您没有猜中,您还有2次机会<br>请输入小明心中的数字 : 8<br>很遗憾,您没有猜中,您还有1次机会<br>请输入小明心中的数字 : 9<br>恭喜您猜中了!小明受到惩罚,做100个俯卧撑</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">continue</span>,故名思意,继续, 准确的意思为 中止当前循环操作,继续下一次循环</span><br><span class="line"></span><br><span class="line">#### 例 <span class="number">6</span> : <span class="number">1</span> - <span class="number">10</span> 的奇数和</span><br><span class="line"></span><br><span class="line">(不知道之前的<span class="keyword">while</span>的练习大家有没有做出来?)</span><br><span class="line"></span><br><span class="line">代码 :</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">TestDemo07</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> static <span class="built_in">void</span> main(String[] args)&#123;</span><br><span class="line">        <span class="built_in">int</span> sum = <span class="number">0</span>;<span class="comment">//定义和</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">1</span> ; i &lt;= <span class="number">10</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i % <span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            sum += i;</span><br><span class="line">        &#125;</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"sum = "</span> + sum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果 :</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sum</span> = <span class="number">25</span></span><br></pre></td></tr></table></figure>
+
+<p>分析 :</p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191229235239.png" alt="20191229235239.png"></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191229235248.png" alt="20191229235248.png"></p>
+<h1 id="双重循环"><a href="#双重循环" class="headerlink" title="双重循环"></a>双重循环</h1><h3 id="语法结构-3"><a href="#语法结构-3" class="headerlink" title="语法结构"></a>语法结构</h3><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span><span class="comment">()</span>&#123;         for<span class="comment">()</span>&#123;</span><br><span class="line"> <span class="keyword">while</span><span class="comment">()</span>&#123;         for<span class="comment">()</span>&#123;</span><br><span class="line">            </span><br><span class="line"> &#125;           &#125;</span><br><span class="line">&#125;           &#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">while</span><span class="comment">()</span>&#123;         for<span class="comment">()</span>&#123;</span><br><span class="line"> for<span class="comment">()</span>&#123;          <span class="keyword">while</span><span class="comment">()</span>&#123;</span><br><span class="line">            </span><br><span class="line"> &#125;           &#125;</span><br><span class="line">&#125;           &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注:结构嵌套时,不管是if嵌套if还是 while嵌套if或者 while嵌套for 等等 注意 结构的完整嵌套 即可.</strong></p>
+<h4 id="例-7-打印5-6的矩形"><a href="#例-7-打印5-6的矩形" class="headerlink" title="例 7 : 打印5*6的矩形"></a>例 7 : 打印5*6的矩形</h4><p>代码 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo08</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= <span class="number">5</span>;i++)&#123;</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">6</span>;j++)&#123;</span><br><span class="line">              System.out.print(<span class="string">"*"</span>);<span class="comment">//输出 * 注意不能换行</span></span><br><span class="line">           &#125;</span><br><span class="line">           System.out.println(<span class="string">""</span>);<span class="comment">//输出换行</span></span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果 :</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*****<span class="strong">*</span></span><br><span class="line"><span class="strong">*</span>****<span class="strong">*</span></span><br><span class="line"><span class="strong">*</span>****<span class="strong">*</span></span><br><span class="line"><span class="strong">*</span>****<span class="strong">*</span></span><br><span class="line"><span class="strong">*</span>****<span class="strong">*</span></span><br></pre></td></tr></table></figure>
+
+<p>分析 :</p>
+<ol>
+<li>外层for循环 用来控制矩形的行数 <strong>int i = 1;i &lt;=5 5行</strong>..</li>
+<li>内层for循环 用来控制矩形的列数 <strong>int j = 1; j &lt;= 6 6列</strong></li>
+<li>内层for循环 每输出一列不能换行,内层循环输出完一行后,才换行</li>
+<li><strong>总结</strong> : 外层循环执行一次,内层循环全部执行一次.</li>
+</ol>
+<h4 id="例-8-打印6行的三角形"><a href="#例-8-打印6行的三角形" class="headerlink" title="例 8 : 打印6行的三角形"></a>例 8 : 打印6行的三角形</h4><p>代码 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo09</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= <span class="number">6</span>;i++)&#123;</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i;j++)&#123;</span><br><span class="line">              System.out.print(<span class="string">"*"</span>);<span class="comment">//输出 * 注意不能换行</span></span><br><span class="line">           &#125;</span><br><span class="line">           System.out.println(<span class="string">""</span>);<span class="comment">//输出换行</span></span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果 :</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">*</span></span><br><span class="line"><span class="strong">*</span><span class="strong">*</span></span><br><span class="line"><span class="strong">*</span>*<span class="strong">*</span></span><br><span class="line"><span class="strong">*</span>**<span class="strong">*</span></span><br><span class="line"><span class="strong">*</span>***<span class="strong">*</span></span><br><span class="line"><span class="strong">*</span>****<span class="strong">*</span></span><br></pre></td></tr></table></figure>
+
+<p>分析 : 和上例一样,外层循环控制行数,内层循环控制列数.</p>
+<h4 id="练习-以下图形"><a href="#练习-以下图形" class="headerlink" title="练习 以下图形 :"></a>练习 以下图形 :</h4><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">*****<span class="strong">*</span></span><br><span class="line"><span class="strong">*</span>***<span class="strong">*</span></span><br><span class="line"><span class="strong">*</span>**<span class="strong">*</span></span><br><span class="line"><span class="strong">*</span>*<span class="strong">*</span></span><br><span class="line"><span class="strong">*</span><span class="strong">*</span></span><br><span class="line"><span class="strong">*</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">     *</span></span><br><span class="line"><span class="code">    ***</span></span><br><span class="line">   <span class="strong">*****</span></span><br><span class="line">  <span class="strong">*****</span>**</span><br><span class="line"> <span class="strong">*****</span><span class="emphasis">***</span>*</span><br><span class="line"><span class="strong">*****</span><span class="strong">*****</span>*</span><br></pre></td></tr></table></figure>
+
+<h4 id="例-9-99乘法表"><a href="#例-9-99乘法表" class="headerlink" title="例 9 : 99乘法表"></a>例 9 : 99乘法表</h4><p>代码 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo10</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">9</span>; i++) &#123;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++) &#123;</span><br><span class="line">    System.out.print(j + <span class="string">" * "</span> + i + <span class="string">" = "</span> + i*j + <span class="string">"\t"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   System.out.println();</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 输出结果 :</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> * <span class="number">1</span> = <span class="number">1</span> </span><br><span class="line"><span class="number">1</span> * <span class="number">2</span> = <span class="number">2</span> <span class="number">2</span> * <span class="number">2</span> = <span class="number">4</span> </span><br><span class="line"><span class="number">1</span> * <span class="number">3</span> = <span class="number">3</span> <span class="number">2</span> * <span class="number">3</span> = <span class="number">6</span> <span class="number">3</span> * <span class="number">3</span> = <span class="number">9</span> </span><br><span class="line"><span class="number">1</span> * <span class="number">4</span> = <span class="number">4</span> <span class="number">2</span> * <span class="number">4</span> = <span class="number">8</span> <span class="number">3</span> * <span class="number">4</span> = <span class="number">12</span> <span class="number">4</span> * <span class="number">4</span> = <span class="number">16</span> </span><br><span class="line"><span class="number">1</span> * <span class="number">5</span> = <span class="number">5</span> <span class="number">2</span> * <span class="number">5</span> = <span class="number">10</span> <span class="number">3</span> * <span class="number">5</span> = <span class="number">15</span> <span class="number">4</span> * <span class="number">5</span> = <span class="number">20</span> <span class="number">5</span> * <span class="number">5</span> = <span class="number">25</span> </span><br><span class="line"><span class="number">1</span> * <span class="number">6</span> = <span class="number">6</span> <span class="number">2</span> * <span class="number">6</span> = <span class="number">12</span> <span class="number">3</span> * <span class="number">6</span> = <span class="number">18</span> <span class="number">4</span> * <span class="number">6</span> = <span class="number">24</span> <span class="number">5</span> * <span class="number">6</span> = <span class="number">30</span> <span class="number">6</span> * <span class="number">6</span> = <span class="number">36</span> </span><br><span class="line"><span class="number">1</span> * <span class="number">7</span> = <span class="number">7</span> <span class="number">2</span> * <span class="number">7</span> = <span class="number">14</span> <span class="number">3</span> * <span class="number">7</span> = <span class="number">21</span> <span class="number">4</span> * <span class="number">7</span> = <span class="number">28</span> <span class="number">5</span> * <span class="number">7</span> = <span class="number">35</span> <span class="number">6</span> * <span class="number">7</span> = <span class="number">42</span> <span class="number">7</span> * <span class="number">7</span> = <span class="number">49</span> </span><br><span class="line"><span class="number">1</span> * <span class="number">8</span> = <span class="number">8</span> <span class="number">2</span> * <span class="number">8</span> = <span class="number">16</span> <span class="number">3</span> * <span class="number">8</span> = <span class="number">24</span> <span class="number">4</span> * <span class="number">8</span> = <span class="number">32</span> <span class="number">5</span> * <span class="number">8</span> = <span class="number">40</span> <span class="number">6</span> * <span class="number">8</span> = <span class="number">48</span> <span class="number">7</span> * <span class="number">8</span> = <span class="number">56</span> <span class="number">8</span> * <span class="number">8</span> = <span class="number">64</span> </span><br><span class="line"><span class="number">1</span> * <span class="number">9</span> = <span class="number">9</span> <span class="number">2</span> * <span class="number">9</span> = <span class="number">18</span> <span class="number">3</span> * <span class="number">9</span> = <span class="number">27</span> <span class="number">4</span> * <span class="number">9</span> = <span class="number">36</span> <span class="number">5</span> * <span class="number">9</span> = <span class="number">45</span> <span class="number">6</span> * <span class="number">9</span> = <span class="number">54</span> <span class="number">7</span> * <span class="number">9</span> = <span class="number">63</span> <span class="number">8</span> * <span class="number">9</span> = <span class="number">72</span> <span class="number">9</span> * <span class="number">9</span> = <span class="number">81</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>建议大家直接在控制台上运行查看输出结果</strong></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
+<li>while循环(<strong>重点,重点,重点</strong>)</li>
+<li>do…while循环(掌握)</li>
+<li>for循环(<strong>重点,重点,重点</strong>)</li>
+<li>break(<strong>重点,重点,重点</strong>),continue</li>
+<li>双重循环(<strong>重点,重点,重点,但是使用场景基本不会是让咱们去做什么三角形和矩形和九九乘法表..理解使用</strong>)</li>
+</ol>
+<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191230001906.png" alt="20191230001906.png" style="zoom: 67%;" />
+    </div>
+
+  <div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------Thank you for your Reading------</div>
+    
+</div>
+    
+ </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Lee
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://fightlee.fun/07-java.html" title="Part5·Java语法结构(二)(图文)">http://fightlee.fun/07-java.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/06-java.html" rel="prev" title="Part4·Java语法结构(一)(图文)">
+      <i class="fa fa-chevron-left"></i> Part4·Java语法结构(一)(图文)
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#循环结构-1-While"><span class="nav-number">1.</span> <span class="nav-text">循环结构 1 While</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#while-循环"><span class="nav-number">1.1.</span> <span class="nav-text">while 循环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法结构"><span class="nav-number">1.1.1.</span> <span class="nav-text">语法结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#例-1-在控制台中输出100次-“好好学习-天天向上”"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">例 1 : 在控制台中输出100次 “好好学习,天天向上”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小结"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">小结 :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例-2-求1-10的和"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">例 2 : 求1-10的和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习-求-1-10-的偶数和-奇数和"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">练习 : 求 1 - 10 的偶数和,奇数和</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#do…while循环"><span class="nav-number">1.2.</span> <span class="nav-text">do…while循环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法结构-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">语法结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#do…while循环和while循环的区别"><span class="nav-number">1.2.2.</span> <span class="nav-text">do…while循环和while循环的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#例-3"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">例 3</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#循环结构-2-For"><span class="nav-number">2.</span> <span class="nav-text">循环结构 2 For</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法结构-2"><span class="nav-number">2.0.1.</span> <span class="nav-text">语法结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#回顾-例-1"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">回顾 例 1 :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例-4-求1-100的和"><span class="nav-number">2.0.1.2.</span> <span class="nav-text">例 4 :  求1 - 100的和</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#break-amp-continue"><span class="nav-number">3.</span> <span class="nav-text">break&amp;continue</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#break"><span class="nav-number">3.1.</span> <span class="nav-text">break</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#例-5-小明和同学做游戏-小明在心中默念一个1-10中间的数字-同学如果猜中则游戏结束-小明受到惩罚-罚做100个俯卧撑-游戏只能猜5次-5次结束-同学受到惩罚-每个同学罚做50个俯卧撑"><span class="nav-number">3.1.0.1.</span> <span class="nav-text">例 5 : 小明和同学做游戏,小明在心中默念一个1-10中间的数字,同学如果猜中则游戏结束,小明受到惩罚,罚做100个俯卧撑,游戏只能猜5次,5次结束,同学受到惩罚.每个同学罚做50个俯卧撑</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#双重循环"><span class="nav-number">4.</span> <span class="nav-text">双重循环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法结构-3"><span class="nav-number">4.0.1.</span> <span class="nav-text">语法结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#例-7-打印5-6的矩形"><span class="nav-number">4.0.1.1.</span> <span class="nav-text">例 7 : 打印5*6的矩形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例-8-打印6行的三角形"><span class="nav-number">4.0.1.2.</span> <span class="nav-text">例 8 : 打印6行的三角形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习-以下图形"><span class="nav-number">4.0.1.3.</span> <span class="nav-text">练习 以下图形 :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例-9-99乘法表"><span class="nav-number">4.0.1.4.</span> <span class="nav-text">例 9 : 99乘法表</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lee"
+      src="/images/author.jpeg">
+  <p class="site-author-name" itemprop="name">Lee</p>
+  <div class="site-description" itemprop="description">面向小白的技术博客..</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lee</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'MCACXLHvNu3O6JofbCUqVbDr-gzGzoHsz',
+      appKey: 'EQbR0P0AmfPjdoUMn1dCfHM7',
+      placeholder: "疑问在此处留下...",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
