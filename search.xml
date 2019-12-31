@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Part1-5·补充(图文)</title>
+    <title>Part1-5·Java补充(图文)</title>
     <url>/08-java.html</url>
     <content><![CDATA[<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191231111023.png" alt="20191231111023.png" style="zoom:67%;" />
 
@@ -57,14 +57,14 @@
 
 <p><strong>结论 : 在做字符类型运算时,需要将对应字符根据对应的编码表转换成数字来进行运算</strong></p>
 <h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>这里也主要看一下 String 类型字符串的算术运算,在 Java 中字符串不同于字符 char,在做加法运算时,加法运算符转变成<strong>字符串连接符</strong>,其实在之前的学习之前我们已经练习过很多次了,一个字符串与其他数字或者字符或者多个字符串的相加,就等于字符串的拼接</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo05</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">      	System.out.println(<span class="string">"a = "</span> + <span class="number">1</span>);</span><br><span class="line">        System.out.println(<span class="string">"1"</span> + <span class="number">1</span>);</span><br><span class="line">        String name = <span class="string">"zhangsan"</span>;</span><br><span class="line">        System.out.println(<span class="string">"name = "</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo05</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">       System.out.println(<span class="string">"a = "</span> + <span class="number">1</span>);</span><br><span class="line">        System.out.println(<span class="string">"1"</span> + <span class="number">1</span>);</span><br><span class="line">        String name = <span class="string">"zhangsan"</span>;</span><br><span class="line">        System.out.println(<span class="string">"name = "</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出结果 :</p>
 <figure class="highlight abnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">a</span> = <span class="number">1</span></span><br><span class="line"><span class="number">11</span></span><br><span class="line"><span class="attribute">name</span> = zhangsan</span><br></pre></td></tr></table></figure>
 
 <h3 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h3><h4 id="自动类型提升"><a href="#自动类型提升" class="headerlink" title="自动类型提升"></a>自动类型提升</h4><p>在 Java 中数字和数字之间进行算术运算时,会有着数据类型不同的数字进行运算,如 :</p>
 <p><strong>提示 : 字面量 整数 默认为 int 类型, 字面量 小数 默认为 double 类型</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo05</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">//相同数据类型的运算</span></span><br><span class="line">        System.out.println(<span class="number">2</span> / <span class="number">10</span>);</span><br><span class="line">        <span class="comment">//不同数据类型的运算</span></span><br><span class="line">      	System.out.println(<span class="number">2.0</span> / <span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo05</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">//相同数据类型的运算</span></span><br><span class="line">        System.out.println(<span class="number">2</span> / <span class="number">10</span>);</span><br><span class="line">        <span class="comment">//不同数据类型的运算</span></span><br><span class="line">       System.out.println(<span class="number">2.0</span> / <span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出结果 :</p>
 <figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">0.2</span></span><br></pre></td></tr></table></figure>
@@ -82,7 +82,7 @@
 <li>当 = 右边的数据类型大于 左边的数据类型, 就需要 强制类型转换 .</li>
 <li>当 = 右边的数据类型小于 左边的数据类型, 则自动提升为左边的数据类型 .</li>
 </ol>
-<h3 id="整型和浮点型大小"><a href="#整型和浮点型大小" class="headerlink" title="整型和浮点型大小 :"></a>整型和浮点型大小 :</h3><table>
+<h3 id="整型和浮点型大小"><a href="#整型和浮点型大小" class="headerlink" title="整型和浮点型大小"></a>整型和浮点型大小</h3><table>
 <thead>
 <tr>
 <th>数据类型</th>
@@ -127,14 +127,14 @@
 </tr>
 </tbody></table>
 <h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="和-的区别"><a href="#和-的区别" class="headerlink" title="= 和 += 的区别"></a>= 和 += 的区别</h3><p>数据类型转换的区别 : 看例子</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo07</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">  		<span class="keyword">byte</span> b = <span class="number">0</span>;</span><br><span class="line">  		b = b + a; <span class="comment">//报错</span></span><br><span class="line">  		b += a; <span class="comment">//正确</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo07</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">byte</span> b = <span class="number">0</span>;</span><br><span class="line">    b = b + a; <span class="comment">//报错</span></span><br><span class="line">    b += a; <span class="comment">//正确</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>分析 :</p>
 <ol>
 <li>报错 : byte 类型 b 和 int 类型 a 做 算术运算 类型自动提升为 int 类型 , 然后<strong>运算结束后 赋值给 byte 类型 b 报错</strong>.</li>
 <li>正确 : <strong>+= 自动进行类型转换</strong>.</li>
 </ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结 :"></a>总结 :</h1><ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
 <li>变量作用域 (<strong>重点</strong>)</li>
 <li>字符运算(<strong>掌握</strong>)和字符串拼接(<strong>重点</strong>)</li>
 <li>数据类型大小(<strong>记住谁大谁小就好</strong>)</li>
