@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fightlee.fun/"/>
-  <updated>2019-12-31T03:12:34.518Z</updated>
+  <updated>2019-12-31T14:14:56.932Z</updated>
   <id>http://fightlee.fun/</id>
   
   <author>
@@ -15,6 +15,55 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>01-other</title>
+    <link href="http://fightlee.fun/01-other.html"/>
+    <id>http://fightlee.fun/01-other.html</id>
+    <published>2019-12-31T14:02:03.000Z</published>
+    <updated>2019-12-31T14:14:56.932Z</updated>
+    
+    <content type="html"><![CDATA[<h1 style="color:red;text-align:center;font">人为什么要学习?</h1><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191231220252.png" alt="20191231220252.png" style="zoom: 67%;" /><p>来自一段 B 站 张雪峰老师的 视频 . 希望可以给每一个观看我博客的人学习的动力 . 点下面阅读进入观看</p><a id="more"></a><div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;"><iframe src="//player.bilibili.com/player.html?aid=26260219&cid=45094724&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute;width: 50%;height: 50%;left: 0;top: 0;"> </iframe></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 style=&quot;color:red;text-align:center;font&quot;&gt;人为什么要学习?&lt;/h1&gt;
+&lt;img src=&quot;https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191231220252.png&quot; alt=&quot;20191231220252.png&quot; style=&quot;zoom: 67%;&quot; /&gt;
+
+&lt;p&gt;来自一段 B 站 张雪峰老师的 视频 . 希望可以给每一个观看我博客的人学习的动力 . 点下面阅读进入观看&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="学习" scheme="http://fightlee.fun/categories/study/"/>
+    
+    
+      <category term="学习" scheme="http://fightlee.fun/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Part6.Vue速学(图文)</title>
+    <link href="http://fightlee.fun/06-vue.html"/>
+    <id>http://fightlee.fun/06-vue.html</id>
+    <published>2019-12-31T03:22:09.000Z</published>
+    <updated>2019-12-31T03:58:17.656Z</updated>
+    
+    <content type="html"><![CDATA[<img src="https://cn.vuejs.org/images/logo.png" alt="20191223092306.png" style="zoom: 67%;" /><a id="more"></a><h1 id="组件化开发"><a href="#组件化开发" class="headerlink" title="组件化开发"></a><b style="color:rgb(65,184,131)">组件化开发</b></h1><h2 id="为什么要使用组件"><a href="#为什么要使用组件" class="headerlink" title="为什么要使用组件?"></a><b style="color:rgb(65,184,131)">为什么要使用组件?</b></h2><p><strong>来自官网的解释 :</strong> 组件系统是 Vue 的另一个重要概念，因为它是一种抽象，允许我们使用小型、独立和通常可复用的组件构建大型应用。</p><p>这里我们来思考一下上一章的例子 , 在上一章的购物车小案例中,我们使用到了四个部分内容, <strong>头部登陆,商品列表,购物车 和 登陆表单 , 来总结一下之前我们的写法缺陷.</strong></p><ol><li>所有部分都在一个页面中,代码的编写和维护及其不方便,人类的思维都是喜欢将一个比较复杂或者困难的事情拆分成几个部分来完成,所以我们将一个完整的页面拆分成不同部分来进行编写和单独维护更为方便.</li><li>将页面的组成部分拆开后,更利于内容的复用,一个页面的组成部分可能在不同的页面多次使用,比如登陆表单,头部登陆,购物车 等 首页,商品详情页,订单页面,都可能会使用到这些内容.</li></ol><p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191231114539.png" alt="20191231114539.png"></p><p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20191231114952.png" alt="20191231114952.png"></p><h1 id="组件的基本使用"><a href="#组件的基本使用" class="headerlink" title="组件的基本使用"></a><b style="color:rgb(65,184,131)">组件的基本使用</b></h1><p>组件的使用一般分为3步 : </p><ol><li>定义组件内容</li><li>注册组件</li><li>使用组件</li></ol><p><strong>定义组件内容可以和注册组件合成一步.</strong></p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><h1 id="子父组件"><a href="#子父组件" class="headerlink" title="子父组件"></a><b style="color:rgb(65,184,131)">子父组件</b></h1><h1 id="子父组件传值"><a href="#子父组件传值" class="headerlink" title="子父组件传值"></a><b style="color:rgb(65,184,131)">子父组件传值</b></h1><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a><b style="color:rgb(65,184,131)">总结</b></h1>]]></content>
+    
+    <summary type="html">
+    
+      &lt;img src=&quot;https://cn.vuejs.org/images/logo.png&quot; alt=&quot;20191223092306.png&quot; style=&quot;zoom: 67%;&quot; /&gt;
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://fightlee.fun/categories/web/"/>
+    
+    
+      <category term="vue" scheme="http://fightlee.fun/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>Part1-5·Java补充(图文)</title>
