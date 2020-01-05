@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://fightlee.fun/09-java.html</loc>
+    
+    <lastmod>2020-01-05T07:17:31.245Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://fightlee.fun/08-java.html</loc>
+    
+    <lastmod>2020-01-05T03:29:09.138Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://fightlee.fun/07-vue.html</loc>
     
     <lastmod>2020-01-03T17:25:58.960Z</lastmod>
@@ -19,13 +33,6 @@
     <loc>http://fightlee.fun/01-other.html</loc>
     
     <lastmod>2019-12-31T14:53:01.259Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://fightlee.fun/08-java.html</loc>
-    
-    <lastmod>2019-12-31T03:12:34.518Z</lastmod>
     
   </url>
   
