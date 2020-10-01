@@ -1,6 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>javaweb篇-servlet2</title>
+    <url>/javaweb%E7%AF%87-servlet2.html</url>
+    <content><![CDATA[<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20200921110223.png" alt="20200921110223" style="zoom:67%;" />
+
+<a id="more"></a>
+
+
+<h1 id="JavaWeb-Servlet-二"><a href="#JavaWeb-Servlet-二" class="headerlink" title="JavaWeb-Servlet(二)"></a>JavaWeb-Servlet(二)</h1><h2 id="Web应用目录"><a href="#Web应用目录" class="headerlink" title="Web应用目录"></a>Web应用目录</h2><blockquote>
+<p>直接上图</p>
+</blockquote>
+<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20200926172925.png" alt="20200926172925" style="zoom:67%;" />
+
+<blockquote>
+<ul>
+<li>src目录 : 放置Java源代码目录</li>
+<li>WebContent目录 : 当前Web应用的资源目录,Web应用中的html,css,js,image等静态资源或者jsp文件等,当前目录下的内容会发布到tomcat安装目录中的webapps目录对应的项目名目录下,除了WEB-INF目录下的内容都可以通过路径直接访问.<ul>
+<li>WEB-INF目录 : 当前Web应用的配置信息目录,该目录下的内容对用户不可见,不能通过路径直接访问.<ul>
+<li>lib目录 : 当前Web工程需要的依赖jar包..</li>
+<li>web.xml文件 : Web工程的配置文件.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20200926173830.png" alt="20200926173830"></p>
+<blockquote>
+<p>上图为对应的Tomcat的发布路径,也就是说当我们通过Eclipse中的run as on server运行Web应用程序后,该程序中的字节码文件和静态资源文件html,css,js,或者动态资源文件jsp等会发布在Tomcat目录下的webapps目录对应的工程名所在的文件夹下.</p>
+<ul>
+<li>classes目录 : java源文件编译过后的class文件.</li>
+</ul>
+</blockquote>
+<h2 id="Http请求方式"><a href="#Http请求方式" class="headerlink" title="Http请求方式"></a>Http请求方式</h2><blockquote>
+<p>首先在深入学习Servlet之前,我们需要来回顾下表单的2种提交方式</p>
+<ol>
+<li><strong>GET</strong>     一般用于从服务器中获取数据,安全性低于GET,将传递给服务器的参数直接添加在action指定的url后,get提交的数据量非常小,一般不能超过2KB</li>
+<li><strong>POST</strong>   一般用于向服务提交数据,安全性较高于GET,传递给服务器的参数通过Http中的机制将参数封装在请求体内,post提交的数据一般默认无限制,但其实和选取的浏览器,操作系统,服务器等有关.</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&gt;<span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"#"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Submit"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在html中,通过表单里method属性可以确定表单提交的方式.</p>
+</blockquote>
+<h2 id="Servlet生命周期"><a href="#Servlet生命周期" class="headerlink" title="Servlet生命周期"></a>Servlet生命周期</h2><p>Servlet接口下的方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Servlet</span> </span>&#123;</span><br><span class="line">	<span class="comment">/*Servlet初始化时的回调*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig config)</span> <span class="keyword">throws</span> ServletException</span>;</span><br><span class="line">	<span class="comment">/*获取Servlet中的配置参数信息*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServletConfig <span class="title">getServletConfig</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="comment">/*获取Servlet一些相关信息*/</span>	</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getServletInfo</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="comment">/*Servlet销毁时的回调*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">/*接口中最重要的方法 : 每次客户端请求对应的Servlet都会调用service方法*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest req, ServletResponse res)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> ServletException, IOException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>HelloServlet.class</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloServlet</span> <span class="keyword">implements</span> <span class="title">Servlet</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig config)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"service was initialized..."</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> ServletConfig <span class="title">getServletConfig</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest req, ServletResponse res)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"service is running now..."</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getServletInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"service was destroyed..."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20200926160516.png" alt="20200926160516" style="zoom:80%;" />
+
+<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20200926160411.png" alt="20200926160411" style="zoom:67%;" />
+
+
+
+<blockquote>
+<p>从上图可以看出,当我们启动服务器后,输入Servlet中配置好的虚拟路径对其进行访问,Servlet中的init方法和service方法会自动调用.</p>
+</blockquote>
+<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20200926160751.png" alt="20200926160751" style="zoom:67%;" />
+
+<blockquote>
+<p>从上图可以看出当我们对服务器进行关闭时,Servlet中的destroy()方法会自动调用.</p>
+</blockquote>
+<h3 id="init-ServletConfig-config"><a href="#init-ServletConfig-config" class="headerlink" title="init(ServletConfig config)"></a>init(ServletConfig config)</h3><blockquote>
+<p>从上面测试中可以得知,init会在Servlet创建时进行回调,那么我们可以在此方法中对该Servlet完成一些初始化的工作,它是由Servlet的容器所控制的,并且该方法只会调用一次,但是我们可以通过对Servlet中的配置文件对其调用的时机进行修改.</p>
+</blockquote>
+<blockquote>
+<p>找到配置HelloServlet的web.xml文件,在对应的<servlet>标签下添加<load-on-startup>标签,注意需要添加到<servlet-class>之后.</p>
+</blockquote>
+<p>web.xml</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line">...</span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>HelloServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.web.servlet.HelloServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 标签中的数字必须是一个整数,代表加载优先级,数字越小,优先级越高 --&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>3<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>HelloServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/hello<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>根据标签的翻译即可得知,该标签的作用为让servlet在服务器启动时即加载.再起启动服务器,观察运行结果.</p>
+</blockquote>
+<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20200926162017.png" alt="20200926162017" style="zoom:50%;" />
+
+<blockquote>
+<p>从上图和之前的运行结果进行比对,得出在Server startup…之时, HelloServlet中的init方法即被调用.然后继续访问该Servlet,init方法不会再次调用,直接调用service方法.</p>
+</blockquote>
+<h4 id="ServletConfig"><a href="#ServletConfig" class="headerlink" title="ServletConfig"></a>ServletConfig</h4><blockquote>
+<p>在Servlet中传入了一个ServletConfig对象,该对象有以下几个方法</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig config)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">    <span class="comment">//获取Servlet名称</span></span><br><span class="line">    String servletName = config.getServletName();</span><br><span class="line">    System.out.println(<span class="string">"servletName : "</span> + servletName);</span><br><span class="line">    <span class="comment">//获取Servlet的初始化参数</span></span><br><span class="line">    String encoding = config.getInitParameter(<span class="string">"encoding"</span>);</span><br><span class="line">    System.out.println(<span class="string">"----getInitParameter---"</span>);</span><br><span class="line">    System.out.println(<span class="string">"encoding : "</span> + encoding);</span><br><span class="line">    <span class="comment">//获取所有的初始化参数</span></span><br><span class="line">    Enumeration&lt;String&gt; params = config.getInitParameterNames();</span><br><span class="line">    System.out.println(<span class="string">"----getInitParameterNames---"</span>);</span><br><span class="line">    <span class="keyword">while</span> (params.hasMoreElements()) &#123;</span><br><span class="line">        String key = (String) params.nextElement();</span><br><span class="line">        String value = config.getInitParameter(key);</span><br><span class="line">        System.out.println(key + <span class="string">" : "</span> + value);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//获取ServletContext对象</span></span><br><span class="line">    ServletContext servletContext = config.getServletContext();</span><br><span class="line">    </span><br><span class="line">    System.out.println(<span class="string">"service was initialized..."</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="getServletName"><a href="#getServletName" class="headerlink" title="getServletName()"></a>getServletName()</h5><blockquote>
+<p>获取当前Servlet的名称,从下方运行结果图片可以看到,输出的是web.xml中<servlet-name>标签中的内容.<br><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20200926163326.png" alt="20200926163326" style="zoom:67%;" /></p>
+</blockquote>
+<h5 id="getInitParameter-String-name-amp-getInitParameterNames"><a href="#getInitParameter-String-name-amp-getInitParameterNames" class="headerlink" title="getInitParameter(String name)&amp;getInitParameterNames()"></a>getInitParameter(String name)&amp;getInitParameterNames()</h5><blockquote>
+<p>获取当前Servlet中的初始化参数值,或者键值对信息</p>
+<p>需要在<servlet>标签中添加<init-param>标签,<param-name>和<param-value></p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>HelloServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.web.servlet.HelloServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 注意标签添加的顺序 --&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">  		<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">  		<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>utf-8<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>3<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>启动服务器后,观察结果<br><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20200926164323.png" alt="20200926164323" style="zoom:67%;" /></p>
+</blockquote>
+<h5 id="getServletContext"><a href="#getServletContext" class="headerlink" title="getServletContext()"></a>getServletContext()</h5><blockquote>
+<p>通过该方法会返回一个ServletContext对象.ServletContext是Servlet中一个十分重要的对象,代表当前环境上下文.尤其要注意的是,ServletContext代表的是当前整个Web应用,并不是当前这个Servlet.</p>
+<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20200926165810.png" alt="20200926165810" style="zoom:67%;" />
+
+<p>对于ServletContext对象我们放在Servlet最后进行详细分析.那么到此init()方法的作用,以及ServletConfig其用法我们已经清楚,</p>
+</blockquote>
+<h3 id="destroy"><a href="#destroy" class="headerlink" title="destroy()"></a>destroy()</h3><blockquote>
+<p>destroy方法会在服务器关闭时调用,对servlet进行销毁.在调用时,可以手动在destroy方法中释放一些资源,或者在服务器关闭时将某些内存中的数据序列化到本地进行存储等等…</p>
+</blockquote>
+<h3 id="service-ServletRequest-req-ServletResponse-res"><a href="#service-ServletRequest-req-ServletResponse-res" class="headerlink" title="service(ServletRequest req, ServletResponse res)"></a>service(ServletRequest req, ServletResponse res)</h3><blockquote>
+<p>从运行结果来看,每一次当我们请求到该Servlet时,service方法都会调用一次.方法中的俩个参数 ServletRequest &amp; ServletResponse 都是我们后面要学习的重点对象.</p>
+</blockquote>
+<h3 id="getServletConfig"><a href="#getServletConfig" class="headerlink" title="getServletConfig()"></a>getServletConfig()</h3><blockquote>
+<p>此方法返回一个ServletConfig对象..</p>
+</blockquote>
+<h3 id="getServletInfo"><a href="#getServletInfo" class="headerlink" title="getServletInfo()"></a>getServletInfo()</h3><blockquote>
+<p>此方法返回Servlet的作者等信息..</p>
+</blockquote>
+<h2 id="web-xml配置文件"><a href="#web-xml配置文件" class="headerlink" title="web.xml配置文件"></a>web.xml配置文件</h2><blockquote>
+<p>再来瞅一眼之前的web.xml文件,正好也不用向上翻了.</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xmlns</span>=<span class="string">"http://java.sun.com/xml/ns/javaee"</span> <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</span> <span class="attr">id</span>=<span class="string">"WebApp_ID"</span> <span class="attr">version</span>=<span class="string">"2.5"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">display-name</span>&gt;</span>01_Servlet<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">welcome-file-list</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">welcome-file</span>&gt;</span>index.html<span class="tag">&lt;/<span class="name">welcome-file</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">welcome-file</span>&gt;</span>default.html<span class="tag">&lt;/<span class="name">welcome-file</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">welcome-file-list</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>HelloServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.web.servlet.HelloServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">  		<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">  		<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>utf-8<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>3<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>HelloServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/hello<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="welcome-file-list标签"><a href="#welcome-file-list标签" class="headerlink" title="welcome-file-list标签"></a>welcome-file-list标签</h3><blockquote>
+<p>该标签定义了当前Web应用在访问时的欢迎页面,在项目中我们需要在WebContent中创建首页或者欢迎页面,并将其页面名称配置到<welcome-file-list>标签中的<welcome-file>中.配置好后,当直接访问Web应用根目录时就会自动跳转到该页面<br><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20200926172242.png" alt="20200926172242" style="zoom:80%;" /></p>
+</blockquote>
+<h3 id="servlet-amp-servlet-mapping标签"><a href="#servlet-amp-servlet-mapping标签" class="headerlink" title="servlet&amp;servlet-mapping标签"></a>servlet&amp;servlet-mapping标签</h3><blockquote>
+<p><servlet-name> : 配置当前Servlet的名称</p>
+<p><servlet-class> : 配置当前Servlet的全路径.</p>
+<p><servlet-mapping> : 配置访问当前Servlet的匹配规则.</p>
+<p><url-pattern> : 配置访问Servlet的虚拟路径</p>
+</blockquote>
+<h3 id="url-pattern标签"><a href="#url-pattern标签" class="headerlink" title="url-pattern标签"></a>url-pattern标签</h3><blockquote>
+<p>作用 : 在客户端可以通过url-pattern配置的路径来对对应的服务器下的Servlet资源进行访问.</p>
+<p>例 : 如果web.xml中配置 <url-pattern>/hello</url-pattern> 那么在访问该Servlet时只需要在客户端浏览器上输入    /工程名/hello 就可以进行访问</p>
+<p>对于虚拟路径的配置有几种方式</p>
+<ol>
+<li>完全匹配  :  /hello , /abc , /order ..等</li>
+<li>目录匹配  :  /abc/* , /order/* 等</li>
+<li>后缀名匹配 : *.do , *.action等</li>
+<li>缺省值 :  / </li>
+</ol>
+</blockquote>
+<h2 id="Servlet体系"><a href="#Servlet体系" class="headerlink" title="Servlet体系"></a>Servlet体系</h2><h3 id="继承HttpServlet"><a href="#继承HttpServlet" class="headerlink" title="继承HttpServlet"></a>继承HttpServlet</h3><blockquote>
+<p>在实际操作时,我们应当在创建Servlet时避免直接实现Servlet接口,在服务器环境中给我们提供了其他更加便捷的类给我们继承,避免重写太多方法.</p>
+<ol>
+<li>我们在创建Servlet时可以直接继承HttpServlet.重写doGet方法和doPost方法即可.</li>
+<li>使用Eclipse等开发工具直接使用图形化界面创建Servlet,好处就是自动帮助我们对web.xml进行补全</li>
+</ol>
+<p>在使用工具创建时我们还可以对生成的代码,进行简化,应用simple版的servlet模板即可.</p>
+<p>对应步骤如下 : </p>
+<ol>
+<li>先点击上方window – Preferences 然后输入 template按箭头选择</li>
+</ol>
+<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201001140446.png" alt="20201001140446" style="zoom:67%;" />
+
+<ol start="2">
+<li>输入Name,然后复制下方的模板内容,点击OK即可.</li>
+</ol>
+<img src="C:/Users/potti/AppData/Roaming/Typora/typora-user-images/1601532642317.png" alt="1601532642317" style="zoom:67%;" />
+</blockquote>
+<p> Servlet.template</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> $&#123;enclosing_package&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> $</span>&#123;primary_type_name&#125; extends HttpServlet &#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    	$&#123;cursor&#125;  </span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        doGet(request, response);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>操作演示 : <strong>创建好Servlet后,全选删除所有内容,输入s提示即可填入模板内容</strong></p>
+<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/fffffff.gif" alt="fffffff" style="zoom:80%;" />
+
+<h3 id="剖析HttpServlet"><a href="#剖析HttpServlet" class="headerlink" title="剖析HttpServlet"></a>剖析HttpServlet</h3><blockquote>
+<p>在前文中,我们已经对Servlet接口中的内容进行了完整的学习,如果我们想要对对应的Servlet进行访问就应该进入Servlet中的service方法.那么在继承了HttpServlet后,只有doGet和doPost方法,service方法去哪了呢?</p>
+<p>带着问题我们来看一下HttpServlet中的体系结构</p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201001141721.png" alt="20201001141721"></p>
+<p>从上图可以看出,HttpServlet的父类是GenericServlet,继续打开父类,发现GenericServlet实现了Servlet接口,那么service方法去哪了?</p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201001141856.png" alt="20201001141856"></p>
+<p>打开预览视图,我们发现在GenericServlet中,service方法还是抽象方法,所以还是应该由其子类来实现.</p>
+<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201001142203.png" alt="20201001142203" style="zoom:67%;" />
+
+<p>那么我们继续观察HttpServlet</p>
+<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201001142402.png" alt="20201001142402" style="zoom: 67%;" />
+
+<p>从上图可以看出,在HttpServlet中有service方法的实现,并且还有service的重载方法.我们继续往下看</p>
+<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201001142505.png" alt="20201001142505" style="zoom:67%;" />
+
+<p>在service方法中,将ServletRequest和ServletResponse 2个参数对象强转为 HttpServletRequest,HttpServletResponse对象继续交给重载的service方法调用.</p>
+<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201001142811.png" alt="20201001142811" style="zoom: 67%;" />
+
+<p>在此service方法中,从截取的部分代码可以读出,通过HttpServletRequest对象获取当前请求的方式</p>
+<p><strong>String method = req.getMethod();</strong></p>
+<p>如果当前的请求方式为GET,则执行<strong>doGet(req,resp);</strong></p>
+<p>如果当前为POST,则执行<strong>doPost(req,resp);</strong></p>
+<p>…</p>
+<p>至此我们就知道了为什么我们继承后应该去实现对应doGet或者doPost方法.</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>后台</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>javaweb篇-servlet(一)</title>
     <url>/javaweb%E7%AF%87-servlet.html</url>
     <content><![CDATA[ <img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20200919092820.png" alt="20200919092820" style="zoom:67%;" />

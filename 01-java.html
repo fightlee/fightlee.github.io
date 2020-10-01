@@ -46,6 +46,21 @@
   };
 </script>
 
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
   <meta name="description" content="Hello,各位小朋友,不知道在前面的网页制作课程中有没有提升大家对编程的兴趣和信心?从现在开始我们将要进入到Java的学习中来了.废话不多说,直接上手. Java 环境搭建相信大家在学校的课程中,已经通过老师的讲解已经知道 Java 是什么?用来干嘛的?在这里我将直接从 Java 的环境搭建开始.这里主要以 windows10 为例: jdk&amp;jre&amp;jvm 在安装 jdk 之前">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Part1·初识Java(图文)">
@@ -544,7 +559,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
