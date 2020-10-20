@@ -1,6 +1,324 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>java基础增强篇01</title>
+    <url>/java%E5%9F%BA%E7%A1%80%E5%A2%9E%E5%BC%BA%E7%AF%8701.html</url>
+    <content><![CDATA[<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/wallhaven-vg862p.jpg" alt="wallhaven-vg862p" style="zoom:80%;" />
+
+<a id="more"></a>
+
+<h1 id="Java基础增强"><a href="#Java基础增强" class="headerlink" title="Java基础增强"></a>Java基础增强</h1><h2 id="前文概述"><a href="#前文概述" class="headerlink" title="前文概述"></a>前文概述</h2><blockquote>
+<p>本文主要针对于Java8的新特性进行部分讲解,在大部分大学和一些机构的教学过程中发现Java8的新特性很少有老师提起,但是现阶段的实际开发中Java8的新特性是必不可少的一部分,尤其是本文要提到的<strong>Lambda表达式</strong>以及<strong>函数式接口</strong>和一些其他内容.</p>
+</blockquote>
+<h2 id="内容概览"><a href="#内容概览" class="headerlink" title="内容概览"></a>内容概览</h2><ol>
+<li>函数式接口&amp;Lambda表达式</li>
+<li>default关键字</li>
+<li>Stream流</li>
+<li>Optional</li>
+</ol>
+<h2 id="1-函数式接口-amp-Lambda表达式"><a href="#1-函数式接口-amp-Lambda表达式" class="headerlink" title="1) 函数式接口 &amp; Lambda表达式"></a>1) 函数式接口 &amp; Lambda表达式</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><blockquote>
+<p><strong>函数式接口</strong> : 在Java8中,一个接口中只有一个需要被实现的方法,我们就可以认为其是一个函数式接口 . 比如一些常见的 线程中的 <strong>Runnable</strong> , 比较排序使用的<strong>Comparator</strong> 等接口.</p>
+<p>当我们在自定义函数式接口时,为了避免自己或者其他人以后在此接口中加上其他接口方法,导致此接口变为<strong>非函数式接口</strong>,我们可以在此接口上加上<strong>@FunctionalInterface</strong>注解,加上后如果再向此接口中添加新的接口函数,编译会出错.</p>
+<p><strong>Runnable接口的定义</strong> : </p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201017135620.png" alt="20201017135620"></p>
+<p><strong>Comparator接口的定义</strong> : </p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201017135635.png" alt="20201017135635"></p>
+<p>Java8之前,我们经常对Runnable或者Comparator这种单方法实现的接口使用匿名内部类的形式来使用,这种使用方式相对而言比较繁琐,从Java8之后,我们可以使用Lambda表达式来对这些操作进行简化.</p>
+</blockquote>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//使用匿名内部类的形式创建Runnable</span></span><br><span class="line">    Runnable r = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"线程要执行的任务"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//使用Lambda表达式创建Runnable</span></span><br><span class="line">    Runnable r1 = () -&gt; System.out.println(<span class="string">"线程要执行的任务"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Lambda表达式的演化过程"><a href="#Lambda表达式的演化过程" class="headerlink" title="Lambda表达式的演化过程"></a>Lambda表达式的演化过程</h3><blockquote>
+<p> 我们可以从JavaScript中的声明式函数来推演出Java中的函数式接口的Lambda语法,JavaScript同理.</p>
+</blockquote>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201017150802.png" alt="20201017150802"></p>
+<h3 id="Lambda表达式的使用方式"><a href="#Lambda表达式的使用方式" class="headerlink" title="Lambda表达式的使用方式"></a>Lambda表达式的使用方式</h3><blockquote>
+<p>Lambda表达式的使用方式主要从这几点考虑,接口的实现方法有没有形参?形参有几个?方法体中有几行代码?有没有返回值?不需要考虑返回值类型和参数类型</p>
+<ul>
+<li><p>只有1个或者没有形参,没有返回值,方法体中只有1行代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//没有形参</span></span><br><span class="line">Runnable r1 = () -&gt; System.out.println(<span class="string">"线程要执行的任务"</span>);</span><br><span class="line"><span class="comment">//只有1个形参,小括号可以省略</span></span><br><span class="line">TestInterface ti = x -&gt; System.out.println(x);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>有多个形参,有返回值,方法体中有多行代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">TestInterface ti = (x,y) -&gt; &#123;</span><br><span class="line">    System.out.println(<span class="string">"test"</span>);</span><br><span class="line">    System.out.println(<span class="string">"test"</span>);</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>有返回值,方法提中只有一个return的话可以省略return.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">TestInterface ti = (x,y) -&gt; x + y;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h3 id="小练习"><a href="#小练习" class="headerlink" title="小练习"></a>小练习</h3><p><strong>现有若干个Student(int age , String name)保存在集合中,使用Collections对集合Student进行排序</strong></p>
+<p><strong>案例</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Student stu1 = <span class="keyword">new</span> Student(<span class="string">"zhangsan"</span>, <span class="number">12</span>);</span><br><span class="line">    Student stu2 = <span class="keyword">new</span> Student(<span class="string">"lisi"</span>, <span class="number">13</span>);</span><br><span class="line">    Student stu3 = <span class="keyword">new</span> Student(<span class="string">"wangwu"</span>, <span class="number">14</span>);</span><br><span class="line">    Student stu4 = <span class="keyword">new</span> Student(<span class="string">"wangba"</span>, <span class="number">14</span>);</span><br><span class="line">    List&lt;Student&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    list.add(stu1);</span><br><span class="line">    list.add(stu2);</span><br><span class="line">    list.add(stu3);</span><br><span class="line">    list.add(stu4);</span><br><span class="line">    <span class="comment">//使用匿名内部类</span></span><br><span class="line">    Collections.sort(list, <span class="keyword">new</span> Comparator&lt;Student&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Student o1, Student o2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> temp = o1.getAge() - o2.getAge();</span><br><span class="line">            <span class="keyword">return</span> temp == <span class="number">0</span> ? o1.getName().compareTo(o2.getName()) : temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//使用lambda表达式</span></span><br><span class="line">Collections.sort(list,(o1,o2) -&gt; &#123;</span><br><span class="line">    <span class="keyword">int</span> temp = o1.getAge() - o2.getAge();</span><br><span class="line">    <span class="keyword">return</span> temp == <span class="number">0</span> ? o1.getName().compareTo(o2.getName()) : temp;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Java8的函数式接口"><a href="#Java8的函数式接口" class="headerlink" title="Java8的函数式接口"></a>Java8的函数式接口</h3><blockquote>
+<p>在lambda的表达式的实际使用中,我们不可能仅仅只对Java中的Comparator或者Runnable等现有函数式接口进行简化操作,我们还需要操作一些自定义的函数式接口,但是每一次使用时我们完成某一个逻辑实现时都需要自己定义一个函数式接口来操作,未免显得不太方便,如以下</p>
+<p><strong>自定义函数式接口</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">TestFunctionInterface</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//如果要使用的方法需要传参</span></span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">TestFunctionInterface</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//如果有返回值....等等</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><strong>所以Java8中给我们提供了大量的函数式接口给我们在各种场景配合使用.</strong></p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>接口</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>Consumer&lt; T &gt;</strong></td>
+<td>代表了接受一个输入参数并且无返回的操作</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Predicate&lt; T &gt;</strong></td>
+<td>接受一个输入参数，返回一个布尔值结果。</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Function&lt; T, R &gt;</strong></td>
+<td>接受一个输入参数，返回一个结果。</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Supplier&lt; T &gt;</strong></td>
+<td>无参数，返回一个结果。</td>
+</tr>
+</tbody></table>
+<p>…剩下还有39个,我们先讲这4个.</p>
+<h4 id="Consumer-lt-T-gt"><a href="#Consumer-lt-T-gt" class="headerlink" title="Consumer&lt; T &gt;"></a>Consumer&lt; T &gt;</h4><blockquote>
+<p>Consumer : 消费者,顾客 . 代表了接受一个输入参数并且无返回的操作.</p>
+<p>接口定义 : </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Consumer</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">accept</span><span class="params">(T t)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">default</span> Consumer&lt;T&gt; <span class="title">andThen</span><span class="params">(Consumer&lt;? <span class="keyword">super</span> T&gt; after)</span> </span>&#123;</span><br><span class="line">        Objects.requireNonNull(after);</span><br><span class="line">        <span class="keyword">return</span> (T t) -&gt; &#123; accept(t); after.accept(t); &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里接口中还有方法体是不是很神奇?这个和default这个关键字我们放到后面讲解.</p>
+<p>使用场景 : 当我们需要使用Lambda表达式来操作一个传入一个参数但不需要返回值的方法,这里一般使用在forEach中对集合内部迭代对传入的参数做一些操作.后面会介绍.</p>
+</blockquote>
+<p><strong>使用小案例</strong> : </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test02</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Consumer&lt;Integer&gt; consumer = x -&gt; &#123;</span><br><span class="line">        x = x + <span class="number">10</span>;</span><br><span class="line">        System.out.println(x);</span><br><span class="line">    &#125;;</span><br><span class="line">    consumer.accept(<span class="number">10</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Predicate-lt-T-gt"><a href="#Predicate-lt-T-gt" class="headerlink" title="Predicate&lt; T &gt;"></a>Predicate&lt; T &gt;</h4><blockquote>
+<p>Predicate :  表明,阐明,断言,判断 . 接受一个输入参数，返回一个布尔值结果.</p>
+<p>接口定义 : </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Predicate</span>&lt;<span class="title">T</span>&gt; </span>&#123; </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">test</span><span class="params">(T t)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">default</span> Predicate&lt;T&gt; <span class="title">and</span><span class="params">(Predicate&lt;? <span class="keyword">super</span> T&gt; other)</span> </span>&#123;</span><br><span class="line">        Objects.requireNonNull(other);</span><br><span class="line">        <span class="keyword">return</span> (t) -&gt; test(t) &amp;&amp; other.test(t);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> Predicate&lt;T&gt; <span class="title">negate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (t) -&gt; !test(t);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> Predicate&lt;T&gt; <span class="title">or</span><span class="params">(Predicate&lt;? <span class="keyword">super</span> T&gt; other)</span> </span>&#123;</span><br><span class="line">        Objects.requireNonNull(other);</span><br><span class="line">        <span class="keyword">return</span> (t) -&gt; test(t) || other.test(t);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> &lt;T&gt; <span class="function">Predicate&lt;T&gt; <span class="title">isEqual</span><span class="params">(Object targetRef)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">null</span> == targetRef)</span><br><span class="line">                ? Objects::isNull</span><br><span class="line">                : object -&gt; targetRef.equals(object);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用场景 : 当我们需要使用Lambda表达式来操作一个传入一个参数但需要返回布尔类型值的方法.</p>
+</blockquote>
+<p><strong>使用小案例</strong> : </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test03</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Predicate&lt;Integer&gt; predicate = x -&gt; &#123;</span><br><span class="line">        <span class="keyword">return</span> x &gt; <span class="number">0</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    System.out.println(predicate.test(<span class="number">30</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用Predicate来完成一些判断的功能</strong></p>
+<p>1.判断传入的字符串的长度是不是大于5?</p>
+<p>2.判断传入的数值是不是偶数?</p>
+<p>3.判断传入的字符串是不是包含‘@’符号?</p>
+<p><strong>传统做法</strong> : </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">testStringLength</span><span class="params">(String value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value.length() &gt; <span class="number">5</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">testValueisEven</span><span class="params">(String value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Integer.parseInt(value) % <span class="number">2</span> == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">testValueisContains</span><span class="params">(String value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value.contains(<span class="string">"@"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test04</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(testStringLength(<span class="string">"asd"</span>));;</span><br><span class="line">    System.out.println(testValueisEven(<span class="string">"122"</span>));;</span><br><span class="line">    System.out.println(testValueisContains(<span class="string">"asd"</span>));;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用Lambda表达式</strong> : </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">testMethod</span><span class="params">(String value,Predicate&lt;String&gt; predicate)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> predicate.test(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test05</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(testMethod(<span class="string">"asd"</span>,value -&gt; value.length() &gt; <span class="number">5</span>));</span><br><span class="line">    System.out.println(testMethod(<span class="string">"122"</span>,value -&gt; Integer.parseInt(value) % <span class="number">2</span> == <span class="number">0</span>));</span><br><span class="line">    System.out.println(testMethod(<span class="string">"asd@"</span>,value -&gt; value.contains(<span class="string">"@"</span>)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Function-lt-T-R-gt"><a href="#Function-lt-T-R-gt" class="headerlink" title="Function&lt; T, R &gt;"></a>Function&lt; T, R &gt;</h4><blockquote>
+<p>Function : 这个顾名思义 函数 , 接受一个输入参数，返回一个结果.</p>
+<p>接口定义 : </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Function</span>&lt;<span class="title">T</span>, <span class="title">R</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">R <span class="title">apply</span><span class="params">(T t)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">default</span> &lt;V&gt; <span class="function">Function&lt;V, R&gt; <span class="title">compose</span><span class="params">(Function&lt;? <span class="keyword">super</span> V, ? extends T&gt; before)</span> </span>&#123;</span><br><span class="line">        Objects.requireNonNull(before);</span><br><span class="line">        <span class="keyword">return</span> (V v) -&gt; apply(before.apply(v));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">default</span> &lt;V&gt; <span class="function">Function&lt;T, V&gt; <span class="title">andThen</span><span class="params">(Function&lt;? <span class="keyword">super</span> R, ? extends V&gt; after)</span> </span>&#123;</span><br><span class="line">        Objects.requireNonNull(after);</span><br><span class="line">        <span class="keyword">return</span> (T t) -&gt; after.apply(apply(t));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> &lt;T&gt; <span class="function">Function&lt;T, T&gt; <span class="title">identity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> t -&gt; t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用场景 : 当我们需要使用Lambda表达式来操作一个传入一个参数但需要返回一个特定类型值的方法.</p>
+</blockquote>
+<p><strong>使用小案例</strong> : </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test06</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Function&lt;String, String[]&gt; function = value -&gt; value.split(<span class="string">"-"</span>);</span><br><span class="line">    System.out.println(Arrays.asList(function.apply(<span class="string">"123-456-789"</span>)));;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用Function来完成一些字符串处理的操作</strong></p>
+<p>1.将传入的字符串首字母大写然后在字符串前加上”set”返回</p>
+<p>2.将传入的字符串从 “:” 切割后再去除两端空格返回</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">testMethod1</span><span class="params">(String value,Function&lt;String, String&gt; function)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> function.apply(value);</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test07</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//1.将传入的字符串首字母大写然后在字符串前加上"set"返回</span></span><br><span class="line">    System.out.println(testMethod1(<span class="string">"age"</span>,value -&gt; &#123;</span><br><span class="line">        <span class="keyword">char</span>[] charArray = value.toCharArray();</span><br><span class="line">        charArray[<span class="number">0</span>] = (<span class="keyword">char</span>) (charArray[<span class="number">0</span>] - <span class="number">32</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"set"</span> + <span class="keyword">new</span> String(charArray);</span><br><span class="line">    &#125;));</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//2.将传入的字符串从 ":" 切割后再去除两端空格返回</span></span><br><span class="line">    System.out.println(testMethod1(<span class="string">"redirect:login.jsp"</span>, value -&gt; &#123;</span><br><span class="line">        <span class="keyword">int</span> index = value.indexOf(<span class="string">":"</span>);</span><br><span class="line">        <span class="keyword">return</span> value.substring(index + <span class="number">1</span>);</span><br><span class="line">    &#125;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Supplier-lt-T-gt"><a href="#Supplier-lt-T-gt" class="headerlink" title="Supplier&lt; T &gt;"></a>Supplier&lt; T &gt;</h4><blockquote>
+<p>Supplier :  供应者; 供货商; 供货方; 无参数,返回一个结果。</p>
+<p>接口定义  : </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Supplier</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">T <span class="title">get</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用场景 :  当我们需要使用Lambda表达式来操作不需要传入参数但能返回一个特定类型值的方法.</p>
+</blockquote>
+<p><strong>使用小案例</strong> : </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test08</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Supplier&lt;Double&gt; supplier = () -&gt; Math.PI; </span><br><span class="line">    System.out.println(supplier.get());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用Supplier来完成获取一些值的操作</strong></p>
+<p>1.获取一个UUID随机字符串值,只获取最后一个 “-“ 后的字符串.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test09</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(testMethod2(() -&gt; &#123;</span><br><span class="line">        String uuidStr = UUID.randomUUID().toString();</span><br><span class="line">        <span class="keyword">return</span> uuidStr.substring(uuidStr.lastIndexOf(<span class="string">"-"</span>) + <span class="number">1</span>);</span><br><span class="line">    &#125;));</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">testMethod2</span><span class="params">(Supplier&lt;String&gt; supplier)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> supplier.get();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后再来提几个</p>
+<h4 id="BiConsumer-lt-T-R-gt"><a href="#BiConsumer-lt-T-R-gt" class="headerlink" title="BiConsumer&lt;T,R&gt;"></a>BiConsumer&lt;T,R&gt;</h4><blockquote>
+<p>和<strong>Consumer</strong>类似,唯一不同就是 Consumer 传入一个参数,BiConsumer传入2个参数</p>
+<p>使用场景 : 迭代Map</p>
+</blockquote>
+<p><strong>这里补充一下Consumer的迭代操作</strong></p>
+<p>1.使用Consumer迭代List集合</p>
+<p>2.使用BiConsumer迭代Map集合</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test10</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    list.add(<span class="string">"aaa"</span>);</span><br><span class="line">    list.add(<span class="string">"bbb"</span>);</span><br><span class="line">    list.add(<span class="string">"ccc"</span>);</span><br><span class="line">    list.add(<span class="string">"ddd"</span>);</span><br><span class="line">    list.forEach(x -&gt; System.out.print(x + <span class="string">" "</span>));</span><br><span class="line">    System.out.println();</span><br><span class="line">    System.out.println(<span class="string">"----------"</span>);</span><br><span class="line">    Map&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    map.put(<span class="string">"username"</span>, <span class="string">"zhangsan"</span>);</span><br><span class="line">    map.put(<span class="string">"password"</span>, <span class="string">"123456"</span>);</span><br><span class="line">    map.put(<span class="string">"gender"</span>, <span class="string">"male"</span>);</span><br><span class="line">    map.put(<span class="string">"email"</span>, <span class="string">"zhangsan@qq.com"</span>);</span><br><span class="line">    map.forEach((key,value) -&gt; System.out.println(key + <span class="string">" : "</span> + value));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight console"><table><tr><td class="code"><pre><span class="line">aaa bbb ccc ddd </span><br><span class="line">----------</span><br><span class="line">password : 123456</span><br><span class="line">gender : male</span><br><span class="line">email : zhangsan@qq.com</span><br><span class="line">username : zhangsan</span><br></pre></td></tr></table></figure>
+
+<p><strong>从这里可以看出使用Lambda表达式迭代集合不要太爽好不好?</strong></p>
+<h4 id="UnaryOperator-lt-T-gt"><a href="#UnaryOperator-lt-T-gt" class="headerlink" title="UnaryOperator&lt; T &gt;"></a>UnaryOperator&lt; T &gt;</h4><blockquote>
+<p>此接口继承了<strong>Function</strong>接口 , 与其不同的就是,Function是传入一个T类型,返回R类型.而UnaryOperator则是传入T类型返回T类型</p>
+</blockquote>
+<p><strong>案例</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test11</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(testMethod3(<span class="number">100</span>,x -&gt; x * <span class="number">2</span>));</span><br><span class="line">    System.out.println(testMethod3(<span class="number">100</span>,x -&gt; x + <span class="number">1</span>));</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> Integer <span class="title">testMethod3</span><span class="params">(Integer value,UnaryOperator&lt;Integer&gt; unaryOperator)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> unaryOperator.apply(value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>剩下还有很多函数式接口不一一列举,可以自行在表格中查看用法</strong></p>
+<table>
+<thead>
+<tr>
+<th>接口</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ToDoubleBiFunction&amp;ToIntBiFunction&amp;ToLongBiFunction</td>
+<td align="center">接收2个输入参数,返回double,int,long类型结果</td>
+</tr>
+<tr>
+<td>ToDoubleFunction&amp;ToIntFunction&amp;ToLongFunction</td>
+<td align="center">接受1个输入参数,返回double,int,long类型结果</td>
+</tr>
+<tr>
+<td>ObjDoubleConsumer&amp;ObjIntConsumer&amp;ObjLongConsumer</td>
+<td align="center">接受1个object类型和一个doube,int,long的输入参数，无返回值。</td>
+</tr>
+<tr>
+<td>BiFunction&lt;T,U,R&gt;</td>
+<td align="center">代表了一个接受两个输入参数的方法，并且返回一个结果</td>
+</tr>
+<tr>
+<td>BinaryOperator&lt; T &gt;</td>
+<td align="center">代表了一个作用于于两个同类型操作符的操作，并且返回了操作符同类型的结果</td>
+</tr>
+<tr>
+<td>BiPredicate&lt;T,U&gt;</td>
+<td align="center">代表了一个两个参数的boolean值方法</td>
+</tr>
+</tbody></table>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>带Bi的就多一个参数.</li>
+<li>带Function接收一个输入参数,返回一个特定类型.</li>
+<li>带Consumer接收一个输入参数,无返回值.</li>
+<li>带Predicate接收一个输入参数,返回boolean类型值.</li>
+<li>带Supplier无输入参数,返回一个特定类型.</li>
+</ol>
+]]></content>
+      <categories>
+        <category>后台</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>javaee-spring01</title>
+    <url>/javaee-spring01.html</url>
+    <content><![CDATA[<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/wallhaven-6k91p6.png" alt="wallhaven-6k91p6" style="zoom:80%;" />
+
+<a id="more"></a>
+
+<h1 id="Javaee-Spring01"><a href="#Javaee-Spring01" class="headerlink" title="Javaee-Spring01"></a>Javaee-Spring01</h1><h2 id="概念阐述"><a href="#概念阐述" class="headerlink" title="概念阐述"></a>概念阐述</h2><h3 id="什么是Spring框架"><a href="#什么是Spring框架" class="headerlink" title="什么是Spring框架?"></a>什么是Spring框架?</h3><blockquote>
+<p>来自维基百科的解释 : <strong>Spring框架</strong>是Java平台的一个开源的全栈(Full-stack)应用程序框架和控制反转容器实现,一般被直接称为 Spring,是针对bean的生命周期进行管理的轻量级容器(lightweight container).</p>
+<p>那么简单来说 : <strong>Spring就是一个管理bean的容器,作为控制反转的容器实现</strong></p>
+</blockquote>
+<h3 id="为什么要使用Spring-Spring解决了什么问题"><a href="#为什么要使用Spring-Spring解决了什么问题" class="headerlink" title="为什么要使用Spring?Spring解决了什么问题?"></a>为什么要使用Spring?Spring解决了什么问题?</h3><blockquote>
+<p>在解释为什么要使用Spring之前,我们不妨先来了解一种设计模式原则 : <strong>依赖倒置原则(Dependency Inversion Principle)</strong>.</p>
+<p>那什么是<strong>依赖倒置原则</strong>呢?该原则包含如下2个原则 : </p>
+<ul>
+<li>上层模块不应该依赖底层模块，两者都应依赖于抽象</li>
+<li>抽象不应该依赖细节,细节应该依赖抽象</li>
+</ul>
+<p>厚礼蟹!听起来有点厉害的样子,那么在Java中我们如何来描述这些含义呢?</p>
+<p><strong>上层和底层</strong> : </p>
+<p>无论哪一个实现逻辑下都是由表现层(上层)到底层,比如我们已经学过的JavaWeb的小案例中,在传统的MVC架构模式里,上层我们可以认为是Controller层,也就是我们的Servlet,在Servlet我们获取客户端中用户的输入对数据进行处理,通常我们处理的方式都是调用下层的代码来对该业务进行实现.比如在Servlet中调用Service层的实现,而在Service层中调用Dao层的实现.</p>
+<p><strong>细节和抽象</strong> : </p>
+<p>在Java中抽象代表抽象类或者接口,那么细节就代表抽象类或者接口对应的实现类,那么对应第二个含义的解释就为,抽象类和接口不应该依赖于其实现类,而实现类应该依赖其接口或抽象类.</p>
+<p><strong>依赖倒置原则的中心思想为 : 面向接口编程</strong></p>
+<p>瓦特法克?面向对象已经够难了?那么什么是面向接口呢?我们通过一个小案例来进行阐述.</p>
+</blockquote>
+<h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><p>三年二班有位小周同学沉迷于电脑游戏,最近迷上了一款网游,于是迫不及待的登录游戏,创建角色开始游戏.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*网络游戏*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NetGame</span></span>&#123;</span><br><span class="line">	<span class="comment">//开始游戏</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startGame</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"单机游戏开始"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*人*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="comment">//玩网络游戏</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playGame</span><span class="params">(NetGame game)</span> </span>&#123;</span><br><span class="line">		game.startGame();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Person xiaoZhou = <span class="keyword">new</span> Person();</span><br><span class="line">		xiaoZhou.playGame(<span class="keyword">new</span> NetGame());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>小周经过同学的介绍又迷上了另一款单机游戏,于是又连忙找到资源down下来开始玩耍,从此从早到晚玩的不亦乐乎.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*单机游戏*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleGame</span></span>&#123;</span><br><span class="line">	<span class="comment">//开始游戏</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startGame</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"单机游戏开始"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*网络游戏*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NetGame</span></span>&#123;</span><br><span class="line">	<span class="comment">//开始游戏</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startGame</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"网络游戏开始"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*人*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="comment">//玩网络游戏</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playGame</span><span class="params">(NetGame game)</span> </span>&#123;</span><br><span class="line">		game.startGame();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//玩单机游戏</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playGame</span><span class="params">(SingleGame game)</span> </span>&#123;</span><br><span class="line">		game.startGame();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Person xiaoZhou = <span class="keyword">new</span> Person();</span><br><span class="line">		xiaoZhou.playGame(<span class="keyword">new</span> NetGame());</span><br><span class="line">		xiaoZhou.playGame(<span class="keyword">new</span> SingleGame());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>好家伙,每当小周同学找到一款新类型的游戏,我们的程序将会越来越臃肿,那么问题在哪呢?我们看人物类Person是一个上层模块,并且是一个细节实现类,而Person类中的代码实现又依赖于NetGame&amp;SingleGame2个细节实现类,因此导致小周同学每一次开始玩新类型游戏都需要修改上层模块Person类的代码.很明显这有悖于我们上文提到的依赖倒置的原则.那么如何去修改呢?</p>
+<h5 id="细节转抽象"><a href="#细节转抽象" class="headerlink" title="细节转抽象"></a>细节转抽象</h5><p>我们发现在NetGame和SingleGame中都具备开始游戏(startGame)的功能,那么我们可以将该功能抽取至接口IGame中,让NetGame和SingleGame实现该接口,在Person中的playGame方法中修改参数类型为该接口类型.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*游戏接口*/</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IGame</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">startGame</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*单机游戏*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleGame</span> <span class="keyword">implements</span> <span class="title">IGame</span></span>&#123;</span><br><span class="line">	<span class="comment">//开始游戏</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startGame</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"单机游戏开始"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*网络游戏*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NetGame</span> <span class="keyword">implements</span> <span class="title">IGame</span></span>&#123;</span><br><span class="line">	<span class="comment">//开始游戏</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startGame</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"网络游戏开始"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*人*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="comment">//玩游戏</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playGame</span><span class="params">(IGame game)</span> </span>&#123;</span><br><span class="line">		game.startGame();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Person xiaoZhou = <span class="keyword">new</span> Person();</span><br><span class="line">		xiaoZhou.playGame(<span class="keyword">new</span> NetGame());</span><br><span class="line">		xiaoZhou.playGame(<span class="keyword">new</span> SingleGame());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>经过细节转抽象后,即时小周同学下次再发现了新游戏,我们上层模块(Person类)也不再需要修改.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*游戏接口*/</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IGame</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">startGame</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*手机游戏*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MobileGame</span> <span class="keyword">implements</span> <span class="title">IGame</span></span>&#123;</span><br><span class="line">	<span class="comment">//开始游戏</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startGame</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"手机游戏开始"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*单机游戏*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleGame</span> <span class="keyword">implements</span> <span class="title">IGame</span></span>&#123;</span><br><span class="line">	<span class="comment">//开始游戏</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startGame</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"单机游戏开始"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*网络游戏*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NetGame</span> <span class="keyword">implements</span> <span class="title">IGame</span></span>&#123;</span><br><span class="line">	<span class="comment">//开始游戏</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startGame</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"网络游戏开始"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*人*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="comment">//玩游戏</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playGame</span><span class="params">(IGame game)</span> </span>&#123;</span><br><span class="line">		game.startGame();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Person xiaoZhou = <span class="keyword">new</span> Person();</span><br><span class="line">		xiaoZhou.playGame(<span class="keyword">new</span> NetGame());</span><br><span class="line">		xiaoZhou.playGame(<span class="keyword">new</span> SingleGame());</span><br><span class="line">		xiaoZhou.playGame(<span class="keyword">new</span> MobileGame());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在依赖倒置原则中,依赖关系的传递有三种方式 : </p>
+<ul>
+<li>通过接口传递关系(就如上面的例子)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playGame</span><span class="params">(IGame game)</span> </span>&#123;</span><br><span class="line">		game.startGame();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Person xiaoZhou = <span class="keyword">new</span> Person();</span><br><span class="line">    xiaoZhou.playGame(<span class="keyword">new</span> NetGame());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过构造函数传递关系</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> IGame game;	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(IGame game)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.game = game; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playGame</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		game.startGame();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Person xiaoZhou = <span class="keyword">new</span> Person(<span class="keyword">new</span> NetGame());</span><br><span class="line">    xiaoZhou.playGame();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过Setter方法传递关系</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;	</span><br><span class="line">	<span class="keyword">private</span> IGame game;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setGame</span><span class="params">(IGame game)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.game = game;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playGame</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		game.startGame();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Person xiaoZhou = <span class="keyword">new</span> Person();</span><br><span class="line">    xiaoZhou.setGame(<span class="keyword">new</span> NetGame());</span><br><span class="line">    xiaoZhou.playGame();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="上层不依赖底层"><a href="#上层不依赖底层" class="headerlink" title="上层不依赖底层"></a>上层不依赖底层</h5><p>解决了细节转抽象后,那么依赖倒置呢?我们继续修改代码.</p>
+<p>小周同学接触了网络游戏后,创建游戏角色,然后操作游戏角色拿起武器攻击怪物,怪物的掉血量根据武器的攻击来决定.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*武器类*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Weapon</span></span>&#123;</span><br><span class="line">	<span class="comment">//武器攻击</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> ad = <span class="number">30</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"怪物掉"</span> + ad + <span class="string">"滴血!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*英雄类*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hero</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Weapon weapon;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Hero</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		weapon = <span class="keyword">new</span> Weapon();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		weapon.show();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*网络游戏*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NetGame</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Hero hero;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">NetGame</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		hero = <span class="keyword">new</span> Hero();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//开始游戏</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startGame</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		hero.attack();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*人*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> NetGame game;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		game = <span class="keyword">new</span> NetGame();</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//玩游戏</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playGame</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		game.startGame();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*测试类*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Person xiaoZhou = <span class="keyword">new</span> Person();</span><br><span class="line">		xiaoZhou.playGame();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>上面的代码我用图片来给大家解释</strong></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201019021441.png" alt="20201019021441"></p>
+<p>这类型的代码结构就是典型的上层依赖下层,那么这种结构有什么问题呢?假设我们将Weapon类修改一下,由原先的默认ad = 30攻击,改为通过构造函数的形式传入具体的攻击力.</p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201019023211.png" alt="20201019023211"></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201019023348.png" alt="20201019023348"></p>
+<p>从上图可以看出,当仅仅修改了底层Weapon类的结构时,上层的每一层的构造函数都需要重新编写,这种设计在后期维护中简直就是灾难.如果在实际开发中,这样的类结构可能是成百上千个,如果每次为了修改一个类而导致依赖他的每个类都要进行修改,维护的成本未免太大.</p>
+<p><strong>那么如何进行修改呢?</strong></p>
+<p>既然我们不能上层依赖下层,那么将依赖的关系反转过来,由下层依赖上层,换种说法就是让上层控制下层.这里我们用<strong>依赖注入</strong>来实现控制反转.<strong>所谓的依赖注入,就是将下层类作为参数传入到上层类,从而实现上层对下层的控制</strong>.重新编写各层级代码.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*武器类*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Weapon</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> ad;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Weapon</span><span class="params">(<span class="keyword">int</span> ad)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.ad = ad;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"怪物掉"</span> + ad + <span class="string">"滴血!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*英雄类*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hero</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Weapon weapon;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Hero</span><span class="params">(Weapon weapon)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.weapon = weapon;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		weapon.show();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*网络游戏*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NetGame</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Hero hero;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">NetGame</span><span class="params">(Hero hero)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.hero = hero;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startGame</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		hero.attack();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*人*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> NetGame game;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(NetGame game)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.game = game;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playGame</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		game.startGame();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*测试类*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Weapon weapon = <span class="keyword">new</span> Weapon(<span class="number">50</span>);</span><br><span class="line">		Hero hero = <span class="keyword">new</span> Hero(weapon);</span><br><span class="line">		NetGame game = <span class="keyword">new</span> NetGame(hero);</span><br><span class="line">		Person xiaoZhou = <span class="keyword">new</span> Person(game);</span><br><span class="line">		xiaoZhou.playGame();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>看图</strong></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201019025713.png" alt="20201019025713"></p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><blockquote>
+<p>案例来到这里我们来进行简单的总结,其实由以上的案例我们不仅解释了什么是<strong>依赖倒置原则</strong>,还顺带讲解了2个概念.</p>
+<ul>
+<li><p><strong>控制反转</strong>:  <strong>Inversion of Control</strong>   , 我们可以通过控制反转的思路来实现依赖倒置.</p>
+</li>
+<li><p><strong>依赖注入</strong>:  <strong>Dependency Injection</strong>  , 要想实现控制反转,可以通过依赖注入的形式将低层的对象注入到上层,由上层管理下层.</p>
+</li>
+</ul>
+<p>那么这些又和Spring有什么关系呢?接着往下看咯</p>
+</blockquote>
+<h4 id="延伸"><a href="#延伸" class="headerlink" title="延伸"></a>延伸</h4><blockquote>
+<p>从上个案例中我们使用控制反转的思路,利用依赖注入的方式实现了依赖倒置.但是在测试类中我们在方法体内创建了大量的对象.看测试类代码</p>
+</blockquote>
+<p><strong>测试类</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Weapon weapon = <span class="keyword">new</span> Weapon(<span class="number">50</span>);</span><br><span class="line">		Hero hero = <span class="keyword">new</span> Hero(weapon);</span><br><span class="line">		NetGame game = <span class="keyword">new</span> NetGame(hero);</span><br><span class="line">		Person xiaoZhou = <span class="keyword">new</span> Person(game);</span><br><span class="line">		xiaoZhou.playGame();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个测试类中的体现就是 , 小周同学为了玩这个网络游戏,不仅要自己创建网络游戏,还得创建英雄,还得创建一把武器.</p>
+<p>再好比,今天客户(Customer)想要买条内裤,结果首先跑去市场(Market)然后去了店铺(Store),接着找到店员(Salesman),最后买了一条内裤(Underware).</p>
+<p>但是在现在的信息化和互联网时代,这种操作是不是很费时间的操作?如果我们找一个”可靠”的<strong>第三方平台</strong>(TaoBao),在平台上搜索想要购买的商品,点击购买,最后内裤(Underware)邮寄到手上,尽管可能在<strong>第三方平台</strong>中会产生很多其他的对象,比如也有商铺(Store),客服(CustomerService),快递公司(Express)…等等对象,但Customer根本不需要操心这些对象是如何运行和操作的,只要内裤到手就OK!</p>
+<p>那么这个管理这些对象的<strong>第三方平台</strong>是什么?对了,就是今天要讲的Spring.</p>
+<p>再来回顾<strong>Spring</strong>的概念 : <strong>Spring就是一个管理bean的容器,作为控制反转的容器实现.</strong>也就是说Spring就是一个大的容器帮助我们管理一些bean对象,而这些bean对象一般都是为了实现控制反转所创建的.也就是这些.    </p>
+<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201019214510.png" alt="20201019214510" style="zoom: 80%;" />
+
+<p><strong>有了这个容器后,就可以自动对我们代码里的对象进行初始化</strong>,当然我们需要通过<strong>配置</strong>来对这些对象进行自动化处理,不再需要我们手动的在代码中去写大量的new来实现,<strong>并且我们在使用最上层的实例时也不需要去关心其实现细节</strong>.这就是<strong>控制反转容器</strong>,而其实现就是我们大名鼎鼎的<strong>Spring</strong>了.</p>
+<h4 id="最终总结"><a href="#最终总结" class="headerlink" title="最终总结"></a>最终总结</h4><p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201019220631.png" alt="20201019220631"></p>
+]]></content>
+      <categories>
+        <category>后台</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>javaweb篇-反射(二)</title>
     <url>/javaweb%E7%AF%87-reflection2.html</url>
     <content><![CDATA[<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/wallhaven-q61qg7.jpg" alt="wallhaven-q61qg7" style="zoom:80%;" />
@@ -137,6 +455,10 @@
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
 <p>本篇文章继续使用反射对前文的问题进行解析,并对之前案例进行改造.</p>
 </blockquote>
+<h2 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h2>
+<div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
+<iframe src="//player.bilibili.com/player.html?aid=669879000&bvid=BV1Na4y1L7jT&cid=246463513&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute;width: 100%;height: 100%;left: 0;top: 0;"> </iframe>
+</div>
 ]]></content>
       <categories>
         <category>后台</category>
@@ -226,7 +548,7 @@
 <li>第5步中的newInstance()方法和new Student()一样都是走的该类的空参构造函数</li>
 </ol>
 <h3 id="Constructor"><a href="#Constructor" class="headerlink" title="Constructor"></a>Constructor</h3><blockquote>
-<p>在 What is Reflection 中提到获取了Class对象后,我们可以获取该Class对象中的任意方法和属性.</p>
+<p>在上文中提到获取了Class对象后,我们可以获取该Class对象中的任意方法和属性.</p>
 </blockquote>
 <h4 id="Class中获取Constructor涉及的方法"><a href="#Class中获取Constructor涉及的方法" class="headerlink" title="Class中获取Constructor涉及的方法"></a>Class中获取Constructor涉及的方法</h4><table>
 <thead>
@@ -409,7 +731,7 @@
   <entry>
     <title>javaweb篇-servlet4</title>
     <url>/javaweb%E7%AF%87-servlet4.html</url>
-    <content><![CDATA[<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/wallhaven-5dpy89.jpg" alt="wallhaven-5dpy89" style="zoom:67%;" />
+    <content><![CDATA[<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/wallhaven-5dpy89.jpg" alt="wallhaven-5dpy89" style="zoom:80%;" />
 <a id="more"></a>
 
 <h1 id="JavaWeb-Servlet-四"><a href="#JavaWeb-Servlet-四" class="headerlink" title="JavaWeb-Servlet(四)"></a>JavaWeb-Servlet(四)</h1><h2 id="前文"><a href="#前文" class="headerlink" title="前文"></a>前文</h2><blockquote>
@@ -964,7 +1286,7 @@
       </tags>
   </entry>
   <entry>
-    <title>javaweb篇-servlet(一)</title>
+    <title>javaweb篇-servlet1</title>
     <url>/javaweb%E7%AF%87-servlet.html</url>
     <content><![CDATA[ <img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20200919092820.png" alt="20200919092820" style="zoom:67%;" />
 

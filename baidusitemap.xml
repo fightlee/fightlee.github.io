@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://fightlee.fun/javaweb%E7%AF%87-reflection.html</loc>
-    <lastmod>2020-10-16</lastmod>
+    <loc>http://fightlee.fun/java%E5%9F%BA%E7%A1%80%E5%A2%9E%E5%BC%BA%E7%AF%8701.html</loc>
+    <lastmod>2020-10-20</lastmod>
+  </url>
+  <url>
+    <loc>http://fightlee.fun/javaee-spring01.html</loc>
+    <lastmod>2020-10-19</lastmod>
+  </url>
+  <url>
+    <loc>http://fightlee.fun/javaweb%E7%AF%87-servlet.html</loc>
+    <lastmod>2020-10-18</lastmod>
   </url>
   <url>
     <loc>http://fightlee.fun/javaweb%E7%AF%87-reflection2.html</loc>
-    <lastmod>2020-10-16</lastmod>
+    <lastmod>2020-10-18</lastmod>
   </url>
   <url>
     <loc>http://fightlee.fun/javaweb%E7%AF%87-servlet4.html</loc>
-    <lastmod>2020-10-15</lastmod>
+    <lastmod>2020-10-17</lastmod>
+  </url>
+  <url>
+    <loc>http://fightlee.fun/javaweb%E7%AF%87-reflection.html</loc>
+    <lastmod>2020-10-17</lastmod>
   </url>
   <url>
     <loc>http://fightlee.fun/javaweb%E7%AF%87-servlet3.html</loc>
@@ -19,10 +31,6 @@
   <url>
     <loc>http://fightlee.fun/javaweb%E7%AF%87-servlet2.html</loc>
     <lastmod>2020-10-04</lastmod>
-  </url>
-  <url>
-    <loc>http://fightlee.fun/javaweb%E7%AF%87-servlet.html</loc>
-    <lastmod>2020-09-19</lastmod>
   </url>
   <url>
     <loc>http://fightlee.fun/09-java.html</loc>
