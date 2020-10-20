@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>javaweb篇-反射(三)</title>
+    <url>/javaweb%E7%AF%87-reflection3.html</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>反射</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>java基础增强篇01</title>
     <url>/java%E5%9F%BA%E7%A1%80%E5%A2%9E%E5%BC%BA%E7%AF%8701.html</url>
     <content><![CDATA[<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/wallhaven-vg862p.jpg" alt="wallhaven-vg862p" style="zoom:80%;" />
@@ -208,10 +219,10 @@
 </ol>
 ]]></content>
       <categories>
-        <category>后台</category>
+        <category>java</category>
       </categories>
       <tags>
-        <tag>java</tag>
+        <tag>java8新特性</tag>
       </tags>
   </entry>
   <entry>
@@ -312,10 +323,10 @@
 <h4 id="最终总结"><a href="#最终总结" class="headerlink" title="最终总结"></a>最终总结</h4><p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201019220631.png" alt="20201019220631"></p>
 ]]></content>
       <categories>
-        <category>后台</category>
+        <category>java</category>
       </categories>
       <tags>
-        <tag>java</tag>
+        <tag>spring</tag>
       </tags>
   </entry>
   <entry>
@@ -461,10 +472,10 @@
 </div>
 ]]></content>
       <categories>
-        <category>后台</category>
+        <category>java</category>
       </categories>
       <tags>
-        <tag>java</tag>
+        <tag>反射</tag>
       </tags>
   </entry>
   <entry>
@@ -722,10 +733,10 @@
 </ol>
 ]]></content>
       <categories>
-        <category>后台</category>
+        <category>java</category>
       </categories>
       <tags>
-        <tag>java</tag>
+        <tag>反射</tag>
       </tags>
   </entry>
   <entry>
@@ -853,10 +864,10 @@
 </ol>
 ]]></content>
       <categories>
-        <category>后台</category>
+        <category>java</category>
       </categories>
       <tags>
-        <tag>web</tag>
+        <tag>Servlet</tag>
       </tags>
   </entry>
   <entry>
@@ -1084,10 +1095,10 @@
 </blockquote>
 ]]></content>
       <categories>
-        <category>后台</category>
+        <category>java</category>
       </categories>
       <tags>
-        <tag>web</tag>
+        <tag>Servlet</tag>
       </tags>
   </entry>
   <entry>
@@ -1279,10 +1290,10 @@
 </blockquote>
 ]]></content>
       <categories>
-        <category>后台</category>
+        <category>java</category>
       </categories>
       <tags>
-        <tag>web</tag>
+        <tag>Servlet</tag>
       </tags>
   </entry>
   <entry>
@@ -1377,10 +1388,10 @@
 </blockquote>
 ]]></content>
       <categories>
-        <category>后台</category>
+        <category>java</category>
       </categories>
       <tags>
-        <tag>web</tag>
+        <tag>Servlet</tag>
       </tags>
   </entry>
   <entry>
