@@ -3,7 +3,130 @@
   <entry>
     <title>javaweb篇-反射(三)</title>
     <url>/javaweb%E7%AF%87-reflection3.html</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/wallhaven-xlx8ez.png" alt="wallhaven-xlx8ez"></p>
+<a id="more"></a>
+
+<h1 id="JavaWeb-反射-三"><a href="#JavaWeb-反射-三" class="headerlink" title="JavaWeb-反射(三)"></a>JavaWeb-反射(三)</h1><h2 id="Java内省机制"><a href="#Java内省机制" class="headerlink" title="Java内省机制"></a>Java内省机制</h2><blockquote>
+<p>维基百科解释 :  在计算机科学中，内省是指计算机程序在运行时（Runtime）检查对象（Object）类型的一种能力，通常也可以称作“运行时类型检查”。一些编程语言如C++、Java、Ruby、PHP、Objective-C、Perl等等具有这种特性。</p>
+<p>不应该将内省和反射混淆。相对于内省，反射更进一步，是指计算机程序在运行时（Runtime）可以访问、检测和修改它本身状态或行为的一种能力。</p>
+</blockquote>
+<blockquote>
+<p>Java内省机制和反射其实差不多,反射是在运行状态中动态的对任意已知路径的字节码文件中的信息进行获取,比如属性,构造,注解,方法等.而内省主要针对Java项目中比较特殊的一种类,JavaBean类的信息的获取.</p>
+<p>JavaBean是些什么类?这些类又有一些什么特征?</p>
+<ul>
+<li>在JavaBean中会提供一个默认的无参构造函数</li>
+<li>需要被序列化所以应实现<strong>Serializable</strong>接口</li>
+<li>应当有一系列的可读写的属性</li>
+<li>与其中属性对应的<strong>getter</strong>/<strong>setter</strong>方法</li>
+</ul>
+<p>例如 : </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.smbms.bean;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> Integer id;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> String email;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getEmail</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> email;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEmail</span><span class="params">(String email)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.email = email;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="内省机制中相关的类-接口"><a href="#内省机制中相关的类-接口" class="headerlink" title="内省机制中相关的类/接口"></a>内省机制中相关的类/接口</h2><blockquote>
+<p>跟内省机制相关的类都存放在<strong>java.beans</strong>包中,主要有以下几个类/接口 : </p>
+<ul>
+<li>Introspector类</li>
+<li>BeanInfo接口</li>
+<li>PropertyDescriptor类</li>
+</ul>
+</blockquote>
+<h3 id="Introspector类"><a href="#Introspector类" class="headerlink" title="Introspector类"></a>Introspector类</h3><blockquote>
+<p>The Introspector class provides a standard way for tools to learn about the properties, events, and methods supported by a target Java Bean.</p>
+<p>Introspector类提供了一种标准方法来了解目标javabean中的属性、事件和方法。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>static BeanInfo <strong>getBeanInfo</strong>(beanClass)</td>
+<td align="center">获取beanClass,以及其父类的字节码文件的基本信息</td>
+</tr>
+<tr>
+<td>static BeanInfo <strong>getBeanInfo</strong>(beanClass,stopClass)</td>
+<td align="center">获取beanClass到stopClass截止的字节码文件的基本信息,包含beanClass不包含stopClass</td>
+</tr>
+</tbody></table>
+<h3 id="BeanInfo接口"><a href="#BeanInfo接口" class="headerlink" title="BeanInfo接口"></a>BeanInfo接口</h3><blockquote>
+<p>Use the <code>BeanInfo</code> interface to create a <code>BeanInfo</code> class and provide explicit information about the methods, properties, events, and other features of your beans. </p>
+<p>使用BeanInfo接口创建BeanInfo类，并提供对应JavaBean中的方法、属性、事件和其他特征的明确信息。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">PropertyDescriptor[] getPropertyDescriptors()</td>
+<td align="center">获取属性描述器数组</td>
+</tr>
+</tbody></table>
+<h3 id="PropertyDescriptor类"><a href="#PropertyDescriptor类" class="headerlink" title="PropertyDescriptor类"></a>PropertyDescriptor类</h3><blockquote>
+<p>A PropertyDescriptor describes one property that a Java Bean exports via a pair of accessor methods.</p>
+<p>一个PropertyDescriptor描述一个属性，一个javabean的出口通过一对访问方法</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Method getWriteMethod()</td>
+<td align="center">获取这个属性可访问的setter方法</td>
+</tr>
+<tr>
+<td>Method getReadMethod()</td>
+<td align="center">获取这个属性可访问的getter方法</td>
+</tr>
+<tr>
+<td>String getDisplayName() / String getName()</td>
+<td align="center">获取这个属性的名称</td>
+</tr>
+<tr>
+<td>Class&lt;?&gt; getPropertyType()</td>
+<td align="center">获取这个属性的类型</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>总的归纳  : </p>
+<ol>
+<li>我们可以通过<code>Introspector</code>类中的<strong>getBeanInfo</strong>()方法来获取当前bean的基本信息<code>BeanInfo</code>对象</li>
+<li>通过<code>BeanInfo</code>对象中的<strong>getPropertyDescriptors</strong>()方法来获取当前bean中的<strong>每个属性</strong>的描述器<code>PropertyDescriptor</code></li>
+<li>通过<code>PropertyDescriptor</code>获取其属性所对应的<strong>getter</strong>/<strong>setter</strong>方法,来对属性进行赋值的操作.</li>
+<li>尤其注意通过<strong>getBeanInfo(Class beanClass)</strong>不仅能获取这个<strong>beanClass</strong>中的信息还有其父类的信息.如果只需要获取当前这个<strong>beanClass</strong>中的信息,应当使用<strong>getBeanInfo(Class beanClass,Class stopClass)</strong>,stopClass为其父类的字节码文件.</li>
+</ol>
+</blockquote>
+<h3 id="案例1"><a href="#案例1" class="headerlink" title="案例1"></a>案例1</h3><h4 id="获取Student类中的所有属性以及其类型和其getter-setter方法"><a href="#获取Student类中的所有属性以及其类型和其getter-setter方法" class="headerlink" title="获取Student类中的所有属性以及其类型和其getter/setter方法"></a>获取Student类中的所有属性以及其类型和其getter/setter方法</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> <span class="keyword">throws</span> IntrospectionException </span>&#123;</span><br><span class="line">    Class beanClass = Student<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">    BeanInfo beanInfo = Introspector.getBeanInfo(beanClass,beanClass.getSuperclass());</span><br><span class="line">    PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();</span><br><span class="line">    <span class="comment">//输出Student.class中所有的属性及其类型</span></span><br><span class="line">    Arrays.asList(propertyDescriptors).forEach(x -&gt; System.out.println(x.getName() + <span class="string">" : "</span> + x.getPropertyType()));</span><br><span class="line">    <span class="comment">//输出Student.class中所有的属性对应的getter/setter方法</span></span><br><span class="line">    Arrays.asList(propertyDescriptors).forEach(x -&gt; &#123;</span><br><span class="line">        System.out.println(x.getReadMethod());</span><br><span class="line">        System.out.println(x.getWriteMethod());</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出</strong>:</p>
+<figure class="highlight console"><table><tr><td class="code"><pre><span class="line">email : class java.lang.String</span><br><span class="line">id : class java.lang.Integer</span><br><span class="line">name : class java.lang.String</span><br><span class="line"></span><br><span class="line">public java.lang.String com.java.refleciton.Student.getEmail()</span><br><span class="line">public void com.java.refleciton.Student.setEmail(java.lang.String)</span><br><span class="line">public java.lang.Integer com.java.refleciton.Student.getId()</span><br><span class="line">public void com.java.refleciton.Student.setId(java.lang.Integer)</span><br><span class="line">public java.lang.String com.java.refleciton.Student.getName()</span><br><span class="line">public void com.java.refleciton.Student.setName(java.lang.String)</span><br></pre></td></tr></table></figure>
+
+<h3 id="案例2"><a href="#案例2" class="headerlink" title="案例2"></a>案例2</h3><h4 id="1-使用Java内省机制将Student中的属性和其属性值存入到map中"><a href="#1-使用Java内省机制将Student中的属性和其属性值存入到map中" class="headerlink" title="1) 使用Java内省机制将Student中的属性和其属性值存入到map中"></a>1) 使用Java内省机制将Student中的属性和其属性值存入到map中</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test02</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    Student student = <span class="keyword">new</span> Student();</span><br><span class="line">    student.setId(<span class="number">1</span>);</span><br><span class="line">    student.setName(<span class="string">"zhangsan"</span>);</span><br><span class="line">    student.setEmail(<span class="string">"zhangsan@qq.com"</span>);</span><br><span class="line">    Map&lt;String,Object&gt; map = bean2Map(student);</span><br><span class="line">    System.out.println(map);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> Map&lt;String, Object&gt; <span class="title">bean2Map</span><span class="params">(Student stu)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="comment">//获取当前对象的字节码文件</span></span><br><span class="line">    Class&lt;? extends Student&gt; clazz = stu.getClass();</span><br><span class="line">    <span class="comment">//1.获取当前字节码文件的BeanInfo对象</span></span><br><span class="line">    BeanInfo beanInfo = Introspector.getBeanInfo(clazz,clazz.getSuperclass());</span><br><span class="line">    <span class="comment">//2.获取beanInfo中的所有属性的描述器</span></span><br><span class="line">    PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();</span><br><span class="line">    <span class="comment">//3.遍历&amp;创建Map对象</span></span><br><span class="line">    Map&lt;String,Object&gt; map = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">    Arrays.asList(propertyDescriptors).forEach(pd -&gt; &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//获取属性的getter方法并调用得到属性的值</span></span><br><span class="line">            Method readMethod = pd.getReadMethod();</span><br><span class="line">            Object value = readMethod.invoke(stu);</span><br><span class="line">            <span class="comment">//获取属性的名称</span></span><br><span class="line">            String key = pd.getName();</span><br><span class="line">            <span class="comment">//map的key为 : 属性的名称, value为属性的值</span></span><br><span class="line">            map.put(key,value);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-使用Java内省机制将map中的值保存到Student的属性中"><a href="#2-使用Java内省机制将map中的值保存到Student的属性中" class="headerlink" title="2)  使用Java内省机制将map中的值保存到Student的属性中"></a>2)  使用Java内省机制将map中的值保存到Student的属性中</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test03</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    Map&lt;String,Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    map.put(<span class="string">"id"</span>, <span class="number">2</span>);</span><br><span class="line">    map.put(<span class="string">"name"</span>, <span class="string">"zhangsan"</span>);</span><br><span class="line">    map.put(<span class="string">"email"</span>, <span class="string">"zhangsan@qq.com"</span>);</span><br><span class="line">    Student stu = map2Bean(Student<span class="class">.<span class="keyword">class</span>,<span class="title">map</span>)</span>;</span><br><span class="line">    System.out.println(stu);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> &lt;T&gt; <span class="function">T <span class="title">map2Bean</span><span class="params">(Class&lt;T&gt; clazz, Map&lt;String, Object&gt; map)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="comment">//创建对象</span></span><br><span class="line">    T t = clazz.newInstance();</span><br><span class="line">    <span class="comment">//1.获取当前字节码文件的BeanInfo对象</span></span><br><span class="line">    BeanInfo beanInfo = Introspector.getBeanInfo(clazz, clazz.getSuperclass());</span><br><span class="line">    <span class="comment">//2.获取beanInfo中的所有属性的描述器</span></span><br><span class="line">    PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();</span><br><span class="line">    <span class="comment">//3.遍历</span></span><br><span class="line">    Arrays.asList(propertyDescriptors).forEach(pd -&gt; &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//获取每一个属性的setter方法</span></span><br><span class="line">            Method writeMethod = pd.getWriteMethod();</span><br><span class="line">            <span class="comment">//根据属性的名称获取值</span></span><br><span class="line">            Object value = map.get(pd.getName());</span><br><span class="line">            <span class="comment">//调用方法给t对象赋值</span></span><br><span class="line">            writeMethod.invoke(t, value);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-案例2-2的改造"><a href="#3-案例2-2的改造" class="headerlink" title="3) 案例2.2的改造"></a>3) 案例2.2的改造</h4><blockquote>
+<p>思考 : 在Map转Bean的过程中,我们Map中的对应key/属性的值的类型是一致,如果不一致,在调用对应的setter方法赋值时传入的参数类型不匹配就会有异常的出现,我们可以针对一些常见的类型进行显示的判断,再赋值</p>
+</blockquote>
+<p><strong>修改后的map2Bean</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test04</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    Map&lt;String,Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    map.put(<span class="string">"id"</span>, <span class="string">"2"</span>);</span><br><span class="line">    map.put(<span class="string">"name"</span>, <span class="string">"zhangsan"</span>);</span><br><span class="line">    map.put(<span class="string">"email"</span>, <span class="string">"zhangsan@qq.com"</span>);</span><br><span class="line">    Student stu = map2Bean(Student<span class="class">.<span class="keyword">class</span>,<span class="title">map</span>)</span>;</span><br><span class="line">    System.out.println(stu);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> &lt;T&gt; <span class="function">T <span class="title">map2Bean</span><span class="params">(Class&lt;T&gt; clazz, Map&lt;String, Object&gt; map)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="comment">//创建对象</span></span><br><span class="line">    T t = clazz.newInstance();</span><br><span class="line">    <span class="comment">//1.获取当前字节码文件的BeanInfo对象</span></span><br><span class="line">    BeanInfo beanInfo = Introspector.getBeanInfo(clazz, clazz.getSuperclass());</span><br><span class="line">    <span class="comment">//2.获取beanInfo中的所有属性的描述器</span></span><br><span class="line">    PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();</span><br><span class="line">    <span class="comment">//3.遍历</span></span><br><span class="line">    Arrays.asList(propertyDescriptors).forEach(pd -&gt; &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//获取每一个属性的setter方法</span></span><br><span class="line">            Method writeMethod = pd.getWriteMethod();</span><br><span class="line">            <span class="comment">//根据属性的名称获取值</span></span><br><span class="line">            Object value = map.get(pd.getName());</span><br><span class="line">            <span class="keyword">if</span>(value != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="comment">//先获取属性的类型</span></span><br><span class="line">                Class&lt;?&gt; type = pd.getPropertyType();</span><br><span class="line">                <span class="comment">//判断属性是什么类型,再将value转换成对应类型</span></span><br><span class="line">                <span class="keyword">if</span>(type.isAssignableFrom(String<span class="class">.<span class="keyword">class</span>)) </span>&#123;</span><br><span class="line">                    <span class="comment">//如果是字符串,转换成字符串赋值</span></span><br><span class="line">                    writeMethod.invoke(t, value.toString());</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(type.isAssignableFrom(<span class="keyword">int</span><span class="class">.<span class="keyword">class</span>) || <span class="title">type</span>.<span class="title">isAssignableFrom</span>(<span class="title">Integer</span>.<span class="title">class</span>)) </span>&#123;</span><br><span class="line">                    <span class="comment">//如果是int或者Integer,则转换后赋值</span></span><br><span class="line">                    writeMethod.invoke(t, Integer.parseInt(value.toString()));</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(type.isAssignableFrom(<span class="keyword">double</span><span class="class">.<span class="keyword">class</span>) || <span class="title">type</span>.<span class="title">isAssignableFrom</span>(<span class="title">Double</span>.<span class="title">class</span>)) </span>&#123;</span><br><span class="line">                    <span class="comment">//如果是double或者Double,则转换后赋值</span></span><br><span class="line">                    writeMethod.invoke(t, Double.parseDouble(value.toString()));</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(type.isAssignableFrom(<span class="keyword">boolean</span><span class="class">.<span class="keyword">class</span>) || <span class="title">type</span>.<span class="title">isAssignableFrom</span>(<span class="title">Boolean</span>.<span class="title">class</span>)) </span>&#123;</span><br><span class="line">                    <span class="comment">//如果是Boolean或者boolean,则转换后赋值</span></span><br><span class="line">                    writeMethod.invoke(t, Boolean.parseBoolean(value.toString()));</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(type.isAssignableFrom(Date<span class="class">.<span class="keyword">class</span>)) </span>&#123;</span><br><span class="line">                    <span class="comment">//如果是Date类型,则转换后赋值</span></span><br><span class="line">                    Date date = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>).parse(value.toString());</span><br><span class="line">                    writeMethod.invoke(t,date);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里特地在map中的id处,将int的值修改成String,运行后没有问题.</p>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>通过Introspector获取BeanInfo对象</li>
+<li>通过BeanInfo获取Bean中所有属性的属性描述器PropertyDescriptor[]</li>
+<li>遍历PropertyDescriptor数组,通过PropertyDescriptor对象获取属性的getter/setter方法,或者属性的类型和名称.</li>
+</ul>
+]]></content>
       <categories>
         <category>java</category>
       </categories>
