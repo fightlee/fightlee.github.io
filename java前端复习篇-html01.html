@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Luffys_flag_32px.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Luffys_flag_16px.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://fightlee.fun').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="java前端复习篇-html01">
+<meta property="og:url" content="http:&#x2F;&#x2F;fightlee.fun&#x2F;java%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E7%AF%87-html01.html">
+<meta property="og:site_name" content="Here is Lee Blog.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20201024230008.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20201025000435.png">
+<meta property="article:published_time" content="2020-10-24T14:58:01.000Z">
+<meta property="article:modified_time" content="2020-10-25T08:25:43.113Z">
+<meta property="article:author" content="Lee">
+<meta property="article:tag" content="html5">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20201024230008.png">
+
+<link rel="canonical" href="http://fightlee.fun/java%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E7%AF%87-html01.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>java前端复习篇-html01 | Here is Lee Blog.</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?355b8b54ffb9c345198a6ddf01768381";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Here is Lee Blog." type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Here is Lee Blog.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">Keep fighting,Keep your mind,Be patient,and Never give up!</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="请输入您要搜索的关键字..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://fightlee.fun/java%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E7%AF%87-html01.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpeg">
+      <meta itemprop="name" content="Lee">
+      <meta itemprop="description" content="面向小白的技术博客..">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Here is Lee Blog.">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          java前端复习篇-html01
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-24 22:58:01" itemprop="dateCreated datePublished" datetime="2020-10-24T22:58:01+08:00">2020-10-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-25 16:25:43" itemprop="dateModified" datetime="2020-10-25T16:25:43+08:00">2020-10-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/java%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E7%AF%87-html01.html" class="post-meta-item leancloud_visitors" data-flag-title="java前端复习篇-html01" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/java%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E7%AF%87-html01.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/java%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E7%AF%87-html01.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201024230008.png" alt="20201024230008"></p>
+<a id="more"></a>
+
+<h1 id="HTML5-一"><a href="#HTML5-一" class="headerlink" title="HTML5(一)"></a>HTML5(一)</h1><h4 id="html5兼容性"><a href="#html5兼容性" class="headerlink" title="html5兼容性"></a>html5兼容性</h4><blockquote>
+<p>一些浏览器可能对Html5并不友好,所以我们需要一些特殊手段来保证Html5在低版本浏览器上的运行</p>
+</blockquote>
+<h5 id="方法1-使用CSS"><a href="#方法1-使用CSS" class="headerlink" title="方法1 : 使用CSS"></a>方法1 : 使用CSS</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">section</span>, <span class="selector-tag">article</span>, <span class="selector-tag">aside</span>, <span class="selector-tag">footer</span>, <span class="selector-tag">header</span>, <span class="selector-tag">nav</span>, <span class="selector-tag">hgroup</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>:block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="方法2-使用script脚本"><a href="#方法2-使用script脚本" class="headerlink" title="方法2 : 使用script脚本"></a>方法2 : 使用script脚本</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--[if lt IE 9]&gt;</span></span><br><span class="line"><span class="comment">&lt;script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="comment">&lt;![endif]--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="方法3-添加noscript标签给与适当提示"><a href="#方法3-添加noscript标签给与适当提示" class="headerlink" title="方法3 : 添加noscript标签给与适当提示"></a>方法3 : 添加noscript标签给与适当提示</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--[if lt IE 9]&gt;</span></span><br><span class="line"><span class="comment"> &lt;script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="comment">  &lt;noscript&gt;</span></span><br><span class="line"><span class="comment">     &lt;strong&gt;Warning !&lt;/strong&gt;</span></span><br><span class="line"><span class="comment">     Because your browser does not support HTML5, some elements are simulated using JScript.</span></span><br><span class="line"><span class="comment">     Unfortunately your browser has disabled scripting. Please enable it in order to display this page.</span></span><br><span class="line"><span class="comment">  &lt;/noscript&gt;</span></span><br><span class="line"><span class="comment">&lt;![endif]--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="html5语义话标签"><a href="#html5语义话标签" class="headerlink" title="html5语义话标签"></a>html5语义话标签</h4><table>
+<thead>
+<tr>
+<th>标签名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>header</strong></td>
+<td>放在页面或布局的顶部，一般放置导航栏或标题.</td>
+</tr>
+<tr>
+<td><strong>nav</strong></td>
+<td>页面导航,一般在header或者aside中使用.</td>
+</tr>
+<tr>
+<td><strong>aside</strong></td>
+<td>放在网站侧边区域,比如侧边栏,广告,友情链接.</td>
+</tr>
+<tr>
+<td><strong>footer</strong></td>
+<td>底部信息,比如版权,联系方式等.</td>
+</tr>
+<tr>
+<td>article</td>
+<td>放在一个独立,完整的区域,比如一篇新闻,一个帖子,一条评论,可以认为是更强调独立性区域性的section.</td>
+</tr>
+<tr>
+<td>hgroup</td>
+<td>用来放置一组连续的标题.</td>
+</tr>
+<tr>
+<td><strong>section</strong></td>
+<td>表示一组或者一节内容,或者就是一块区域.</td>
+</tr>
+<tr>
+<td><strong>main</strong></td>
+<td>表示页面的主体内容区域,一个页面只能有一个main</td>
+</tr>
+<tr>
+<td>mark</td>
+<td>高亮文本</td>
+</tr>
+<tr>
+<td>figure&amp;figcaption</td>
+<td>规定独立的流内容(一些图片,图标,代码等)&amp;标题</td>
+</tr>
+<tr>
+<td>address</td>
+<td>个人邮箱地址信息</td>
+</tr>
+<tr>
+<td>progress</td>
+<td>进度,max最大值,value当前进度</td>
+</tr>
+</tbody></table>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201025000435.png" alt="20201025000435"></p>
+<h4 id="html5中新属性"><a href="#html5中新属性" class="headerlink" title="html5中新属性"></a>html5中新属性</h4><table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>contenteditable</td>
+<td>内容是否可编辑</td>
+</tr>
+<tr>
+<td>data-*</td>
+<td>嵌入自定义数据</td>
+</tr>
+<tr>
+<td>draggable</td>
+<td>内容是否可拖拽</td>
+</tr>
+<tr>
+<td>hidden</td>
+<td>隐藏元素</td>
+</tr>
+</tbody></table>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-name</span>=<span class="string">"zhangsan"</span> <span class="attr">id</span>=<span class="string">"labelDiv"</span>&gt;</span>名称<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"editDiv"</span> <span class="attr">contenteditable</span>=<span class="string">"true"</span> <span class="attr">style</span>=<span class="string">"border: 1px solid red; width: 150px;height: 50px;overflow: scroll;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">draggable</span>=<span class="string">"true"</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">hidden</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> labelDiv = <span class="built_in">document</span>.getElementById(<span class="string">"labelDiv"</span>)</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> editDiv = <span class="built_in">document</span>.getElementById(<span class="string">"editDiv"</span>)</span></span><br><span class="line">    editDiv.innerHTML = labelDiv.dataset.name</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="html5中表单新特性"><a href="#html5中表单新特性" class="headerlink" title="html5中表单新特性"></a>html5中表单新特性</h4><ul>
+<li>datalist</li>
+</ul>
+<blockquote>
+<p><code>datalist</code>标签规定了 <code>input</code>元素可能的选项列表。</p>
+<p><code>datalist</code>标签被用来在为<code>input</code>元素提供”自动完成”的特性。用户能看到一个下拉列表，里边的选项是预先定义好的，将作为用户的输入数据。</p>
+<p>请使用<code>input</code>元素的 list 属性来绑定<code>datalist</code>元素。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"#"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"keywords"</span> <span class="attr">list</span>=<span class="string">"keywordsList"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">datalist</span> <span class="attr">id</span>=<span class="string">"keywordsList"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"java"</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"python"</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"html"</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"javascript"</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">datalist</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="html5中表单-amp-输入框新属性"><a href="#html5中表单-amp-输入框新属性" class="headerlink" title="html5中表单&amp;输入框新属性"></a>html5中表单&amp;输入框新属性</h4><blockquote>
+<p>除了添加一些input中验证的新属性,如</p>
+<ul>
+<li>required</li>
+<li>pattern</li>
+<li>placeholder</li>
+</ul>
+<p>还有input中一些新的type类型</p>
+<ul>
+<li>email : 邮箱</li>
+<li>color : 取色器</li>
+<li>date : 日期</li>
+<li>range : 范围选择框 , 进度调节器</li>
+<li>tel : 电话</li>
+<li>time : 时间</li>
+<li>week : 周</li>
+<li>month : 月</li>
+<li>url : url地址</li>
+</ul>
+</blockquote>
+<h5 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h5><table>
+<thead>
+<tr>
+<th>form属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>autocomplete</td>
+<td>自动补全,默认开启 autocomplete = “on”</td>
+</tr>
+<tr>
+<td>novalidate</td>
+<td>不需要验证.</td>
+</tr>
+</tbody></table>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">autocomplete</span>=<span class="string">"on"</span> <span class="attr">novalidate</span>&gt;</span></span><br><span class="line">    用户名 : <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span></span><br><span class="line">    邮箱 : <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">name</span>=<span class="string">"email"</span> <span class="attr">id</span>=<span class="string">"email"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="输入框"><a href="#输入框" class="headerlink" title="输入框"></a>输入框</h5><table>
+<thead>
+<tr>
+<th>input属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>formmethod</td>
+<td>提交方式</td>
+</tr>
+<tr>
+<td>formenctype</td>
+<td>提交内容类型</td>
+</tr>
+<tr>
+<td>formaction</td>
+<td>提交路径</td>
+</tr>
+<tr>
+<td>formnovalidate</td>
+<td>提交不需要验证</td>
+</tr>
+<tr>
+<td>formtarget</td>
+<td>打开方式 , “_self”,”_blank”</td>
+</tr>
+<tr>
+<td>autofocus</td>
+<td>自动聚焦</td>
+</tr>
+</tbody></table>
+<h4 id="html5中DOM操作"><a href="#html5中DOM操作" class="headerlink" title="html5中DOM操作"></a>html5中DOM操作</h4><blockquote>
+<p>和jquery一样</p>
+</blockquote>
+<ul>
+<li>querySelector(‘选择器’) : 获取单个元素</li>
+<li>queryAllSelector(‘选择器’) : 获取多个元素</li>
+</ul>
+<h4 id="classList"><a href="#classList" class="headerlink" title="classList"></a>classList</h4><blockquote>
+<p>classList 属性返回元素的类名，作为 DOMTokenList 对象。</p>
+<p>该属性用于在元素中添加，移除及切换 CSS 类。</p>
+<p>classList 属性是只读的，但你可以使用 add() 和 remove() 方法修改它。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>add(<em>class1, class2, …</em>)</td>
+<td>添加一个或者多个类名</td>
+</tr>
+<tr>
+<td>boolean contains(<em>class</em>)</td>
+<td>判断是否存在指定类名</td>
+</tr>
+<tr>
+<td>remove(<em>class1, class2, …</em>)</td>
+<td>移除一个或者多个类名</td>
+</tr>
+<tr>
+<td>toggle(<em>class,</em>boolean flag)</td>
+<td>切换类名,第二个值代表是否强制添加或移除</td>
+</tr>
+</tbody></table>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line"><span class="css">			<span class="selector-class">.active</span>&#123;</span></span><br><span class="line">				background-color: lightblue;</span><br><span class="line">				color: brown;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"testDiv"</span> <span class="attr">class</span>=<span class="string">"active"</span>&gt;</span>演示DIV<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"toggleClass();"</span>&gt;</span>切换样式<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">			<span class="function"><span class="keyword">function</span> <span class="title">toggleClass</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> testDiv = <span class="built_in">document</span>.querySelector(<span class="string">'#testDiv'</span>);</span></span><br><span class="line"><span class="actionscript">				testDiv.classList.toggle(<span class="string">"active"</span>);</span></span><br><span class="line">			&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="data"><a href="#data" class="headerlink" title="data-*"></a>data-*</h4><blockquote>
+<p>data-* 属性用于存储页面或应用程序的私有自定义数据。</p>
+<p>data-* 属性赋予我们在所有 HTML 元素上嵌入自定义 data 属性的能力。</p>
+<p>存储的（自定义）数据能够被页面的 JavaScript 中利用，以创建更好的用户体验（不进行 Ajax 调用或服务器端数据库查询）。</p>
+<p>data-* 属性包括两部分：</p>
+<ul>
+<li>属性名不应该包含任何大写字母，并且在前缀 “data-“ 之后必须有至少一个字符</li>
+<li>属性值可以是任意字符串</li>
+<li>data-*后接入了多个字符串,调用时需去除-,并改为驼峰进行使用.</li>
+</ul>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h4</span>&gt;</span>获取data属性的值<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">data-user-name</span>=<span class="string">"zhangsan"</span> <span class="attr">id</span>=<span class="string">"divEle"</span>&gt;</span>名称<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"getData"</span>&gt;</span>GetData<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"p1"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">		<span class="tag">&lt;<span class="name">h4</span>&gt;</span>根据button中的data的值切换图片显示<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn"</span> <span class="attr">data-img-url</span> = <span class="string">"img/1.jpg"</span>&gt;</span>显示图片1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn"</span> <span class="attr">data-img-url</span> = <span class="string">"img/2.jpg"</span>&gt;</span>显示图片2<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn"</span> <span class="attr">data-img-url</span> = <span class="string">"img/3.jpg"</span>&gt;</span>显示图片3<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">		<span class="tag">&lt;<span class="name">img</span> <span class="attr">id</span>=<span class="string">"bgImg"</span> <span class="attr">src</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">"暂时没有图片信息"</span> <span class="attr">width</span>=<span class="string">"50px"</span> <span class="attr">height</span>=<span class="string">"50px"</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">		<span class="tag">&lt;<span class="name">h4</span>&gt;</span>设置data属性值<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"setDate"</span>&gt;</span>SetData<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"testDiv"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">			<span class="comment">//取出div中的data值显示到p标签中</span></span></span><br><span class="line"><span class="javascript">			<span class="built_in">document</span>.querySelector(<span class="string">'#getData'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="built_in">document</span>.querySelector(<span class="string">'#p1'</span>).innerHTML = <span class="built_in">document</span>.querySelector(<span class="string">'#divEle'</span>).dataset.userName;</span></span><br><span class="line">			&#125;</span><br><span class="line"><span class="actionscript">			<span class="comment">//获取所有按钮添加点击事件,并动态切换img图片</span></span></span><br><span class="line"><span class="javascript">			<span class="built_in">document</span>.querySelectorAll(<span class="string">'.btn'</span>).forEach(<span class="function"><span class="keyword">function</span>(<span class="params">x,y</span>)</span>&#123;</span></span><br><span class="line"><span class="actionscript">				x.onclick = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="javascript">					<span class="built_in">document</span>.querySelector(<span class="string">'#bgImg'</span>).src = x.dataset.imgUrl;</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line"><span class="actionscript">			<span class="comment">//设置testDiv的属性值</span></span></span><br><span class="line"><span class="javascript">			<span class="built_in">document</span>.querySelector(<span class="string">'#setDate'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="built_in">document</span>.querySelector(<span class="string">'#testDiv'</span>).dataset.url = <span class="string">'http://www.baidu.com'</span>;</span></span><br><span class="line">			&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h4><h5 id="File-介绍"><a href="#File-介绍" class="headerlink" title="File 介绍"></a>File 介绍</h5><blockquote>
+<p>文件<strong><code>File</code></strong>接口提供有关文件的信息，并允许网页中的 JavaScript 访问其内容</p>
+</blockquote>
+<h5 id="File-构造"><a href="#File-构造" class="headerlink" title="File 构造"></a>File 构造</h5><blockquote>
+<p>File() 返回一个文件对象.</p>
+</blockquote>
+<h5 id="File-属性"><a href="#File-属性" class="headerlink" title="File 属性"></a>File 属性</h5><table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>File.lastModified</td>
+<td>返回当前File对象的最后修改时间,返回类型为毫秒值</td>
+</tr>
+<tr>
+<td>File.lastModifiedDate</td>
+<td>返回当前File对象的最后修改时间,返回类型为<code>Date</code></td>
+</tr>
+<tr>
+<td>File.name</td>
+<td>File对象引用文件的名称</td>
+</tr>
+<tr>
+<td>File.size</td>
+<td>文件大小</td>
+</tr>
+<tr>
+<td>File.type</td>
+<td>MIME类型</td>
+</tr>
+<tr>
+<td>File.webkitRelativePath</td>
+<td>File相关的path或者URL</td>
+</tr>
+</tbody></table>
+<h5 id="FileReader-介绍"><a href="#FileReader-介绍" class="headerlink" title="FileReader 介绍"></a>FileReader 介绍</h5><blockquote>
+<p>对象允许Web应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容，使用 <code>File</code>或 <code>Blob</code> 对象指定要读取的文件或数据。 </p>
+</blockquote>
+<h5 id="FileReader-构造"><a href="#FileReader-构造" class="headerlink" title="FileReader 构造"></a>FileReader 构造</h5><blockquote>
+<p>FileReader() 返回一个文件读取对象</p>
+</blockquote>
+<h5 id="FileReader-属性"><a href="#FileReader-属性" class="headerlink" title="FileReader 属性"></a>FileReader 属性</h5><table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FileReader.error</td>
+<td>读取文件时发生的错误</td>
+</tr>
+<tr>
+<td>FileReader.readyState</td>
+<td>状态值, <code>0</code>:没有加载任何数据 <code>1</code>:数据正在加载 <code>2</code>:加载完成 ,对应的常量名 : <code>EMPTY</code>,<code>LOADING</code>,<code>DONE</code></td>
+</tr>
+<tr>
+<td>FileReader.result</td>
+<td>文件的内容.<strong>该属性必须在读取完成后才有效</strong></td>
+</tr>
+</tbody></table>
+<h5 id="FileReader中的事件"><a href="#FileReader中的事件" class="headerlink" title="FileReader中的事件"></a>FileReader中的事件</h5><table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FileReader.onabort</td>
+<td>读取操作被中断时触发</td>
+</tr>
+<tr>
+<td>FileReader.onerror</td>
+<td>读取操作发生错误时触发</td>
+</tr>
+<tr>
+<td>FileReader.onload</td>
+<td>读取操作完成时触发</td>
+</tr>
+<tr>
+<td>FileReader.onloadstart</td>
+<td>读取操作开始时触发</td>
+</tr>
+<tr>
+<td>FileReader.onloadend</td>
+<td>读取操作结束时（要么成功，要么失败）触发</td>
+</tr>
+<tr>
+<td>FileReader.onprogress</td>
+<td>在读取<code>Blob</code>时触发</td>
+</tr>
+</tbody></table>
+<h5 id="FileReader中的方法"><a href="#FileReader中的方法" class="headerlink" title="FileReader中的方法"></a>FileReader中的方法</h5><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FileReader.abort()</td>
+<td>中止操作,返回时,readyState属性为<code>DONE</code></td>
+</tr>
+<tr>
+<td>FileReader.readAsArrayBuffer()</td>
+<td>开始读取,读取完成后,result属性中<code>ArrayBuffer</code>对象.</td>
+</tr>
+<tr>
+<td>FileReader.readAsBinaryString)</td>
+<td>开始读取,读取完成后,result属性中为原始二进制数据内容.</td>
+</tr>
+<tr>
+<td>FileReader.readAsDataURL()</td>
+<td>开始读取,读取完成后,result属性中为一个<code>data</code>:URL格式的Base64字符串以表示所读取文件的内容</td>
+</tr>
+<tr>
+<td>FileReader.readAsText()</td>
+<td>开始读取,读取完成后,result属性中为字符串文本内容</td>
+</tr>
+</tbody></table>
+<h5 id="通过input中type为file来读取文件"><a href="#通过input中type为file来读取文件" class="headerlink" title="通过input中type为file来读取文件"></a>通过input中type为file来读取文件</h5><blockquote>
+<p>步骤 : </p>
+<ol>
+<li>监听上传文件框的<code>onchange</code>事件</li>
+<li>调用输入框中的<code>files</code>属性获取文件列表(<strong>可以通过multiple属性设置上传多个文件</strong>)</li>
+<li>遍历文件<code>FileList</code>获取上传的文件列表</li>
+<li>创建<code>FileReader</code>,调用<code>readAsText</code>方法读取文本内容</li>
+<li>监听<code>FileReader</code>的<code>onload</code>事件,当文件读取完成,调用<code>result</code>属性读取文件内容</li>
+</ol>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    上传文件 : <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"upload"</span> <span class="attr">id</span>=<span class="string">"upload"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.querySelector(<span class="string">'#upload'</span>).onchange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">if</span>(<span class="keyword">this</span>.files.length &gt; <span class="number">0</span>)&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; <span class="keyword">this</span>.files.length;i++)&#123;</span></span><br><span class="line"><span class="actionscript">                <span class="keyword">var</span> file = <span class="keyword">this</span>.files[i];</span></span><br><span class="line"><span class="actionscript">                <span class="keyword">var</span> fileReader = <span class="keyword">new</span> FileReader();</span></span><br><span class="line"><span class="actionscript">                fileReader.readAsText(file,<span class="string">'gbk'</span>);</span></span><br><span class="line"><span class="actionscript">                fileReader.onload = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="keyword">this</span>.result);</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="通过拖拽来读取文件"><a href="#通过拖拽来读取文件" class="headerlink" title="通过拖拽来读取文件"></a>通过拖拽来读取文件</h5><blockquote>
+<p>步骤 : </p>
+<ol>
+<li>监听div拖拽事件<code>ondragover</code>和<code>ondrop</code><ul>
+<li>ondragover : 当有被拖拽的元素在监听的元素上时</li>
+<li>ondrop : 当被拖拽的元素放下时</li>
+</ul>
+</li>
+<li>在<code>function</code>中的<code>event</code>参数中获取<code>DataTransfer</code>对象</li>
+<li>通过<code>DataTransfer</code>对象中的<code>files</code>属性获取文件列表</li>
+<li>同上</li>
+</ol>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"content"</span> <span class="attr">style</span>=<span class="string">"width: 150px;height: 150px; border: 1px solid red;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> contentDiv = <span class="built_in">document</span>.querySelector(<span class="string">'#content'</span>);</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">    contentDiv.ondragover = <span class="function"><span class="keyword">function</span><span class="params">(e)</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">        e.preventDefault();<span class="comment">//阻止默认行为</span></span></span><br><span class="line"><span class="actionscript">        e.stopPropagation();<span class="comment">//停止事件冒泡</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">//设置拖动后的操作效果的字符串</span></span></span><br><span class="line">        /*</span><br><span class="line">         cpoy : 在新位置生成源项的副本</span><br><span class="line">         move : 将项目移动到新位置</span><br><span class="line">         link : 在新位置建立源项目的链接</span><br><span class="line">        */</span><br><span class="line"><span class="actionscript">        e.dataTransfer.dropEffect = <span class="string">'copy'</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">    contentDiv.ondrop = <span class="function"><span class="keyword">function</span><span class="params">(e)</span></span>&#123;</span></span><br><span class="line">        e.preventDefault();</span><br><span class="line">        e.stopPropagation();</span><br><span class="line"></span><br><span class="line"><span class="actionscript">        <span class="comment">//获取文件</span></span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> fileList = e.dataTransfer.files;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">//遍历</span></span></span><br><span class="line"><span class="actionscript">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; fileList.length;i++)&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">var</span> file = fileList[i];</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">var</span> fileReader = <span class="keyword">new</span> FileReader();</span></span><br><span class="line"><span class="actionscript">            fileReader.readAsText(file,<span class="string">'gbk'</span>);</span></span><br><span class="line"><span class="actionscript">            fileReader.onload = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="built_in">console</span>.log(<span class="keyword">this</span>.result);</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="网络状态"><a href="#网络状态" class="headerlink" title="网络状态"></a>网络状态</h4><blockquote>
+<p>监听用户浏览器的网络状态 : <code>window.navigator.onLine</code></p>
+</blockquote>
+<h4 id="地理位置"><a href="#地理位置" class="headerlink" title="地理位置"></a>地理位置</h4><h5 id="geolocation-对象获取"><a href="#geolocation-对象获取" class="headerlink" title="geolocation 对象获取"></a>geolocation 对象获取</h5><blockquote>
+<p>通过 <code>window.navigator.geolocation</code> 返回</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断浏览器是否支持定位</span></span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">window</span>.navigator.geolocation)&#123;</span><br><span class="line">    <span class="comment">//如果支持,通过getCurrentPosition()函数获取地理位置</span></span><br><span class="line">    navigator.geolocation.getCurrentPosition(success)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'不支持'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">pos : 当前位置, coords : 当前坐标</span></span><br><span class="line"><span class="comment">latitude : 纬度</span></span><br><span class="line"><span class="comment">longitude : 经度</span></span><br><span class="line"><span class="comment">accuracy : 精度</span></span><br><span class="line"><span class="comment">speed : 速度 , 以 米/秒 计算</span></span><br><span class="line"><span class="comment">altitude : 海拔 , 以 米 计算</span></span><br><span class="line"><span class="comment">altitudeAccuracy : 海拔精度</span></span><br><span class="line"><span class="comment">...</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">success</span>(<span class="params">pos</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//获取</span></span><br><span class="line">    <span class="keyword">var</span> crd = pos.coords;</span><br><span class="line">    <span class="built_in">console</span>.log(crd.latitude);</span><br><span class="line">    <span class="built_in">console</span>.log(crd.longitude);</span><br><span class="line">    <span class="built_in">console</span>.log(crd.accuracy);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="百度地图"><a href="#百度地图" class="headerlink" title="百度地图"></a>百度地图</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=utf-8"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"initial-scale=1.0, user-scalable=no"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line"><span class="css">		<span class="selector-tag">body</span>, <span class="selector-tag">html</span>,<span class="selector-id">#allmap</span> &#123;<span class="attribute">width</span>: <span class="number">100%</span>;<span class="attribute">height</span>: <span class="number">100%</span>;<span class="attribute">overflow</span>: hidden;<span class="attribute">margin</span>:<span class="number">0</span>;<span class="attribute">font-family</span>:<span class="string">"微软雅黑"</span>;&#125;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"//api.map.baidu.com/api?v=2.0&amp;ak=bNF3YZLp4U3fe0tt8a8rZvoWYRWTtf0Y"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>浏览器定位<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"allmap"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">	<span class="comment">// 百度地图API功能</span></span></span><br><span class="line"><span class="actionscript">	<span class="keyword">var</span> map = <span class="keyword">new</span> BMap.Map(<span class="string">"allmap"</span>);</span></span><br><span class="line"><span class="actionscript">	<span class="keyword">var</span> point = <span class="keyword">new</span> BMap.Point(<span class="number">116.331398</span>,<span class="number">39.897445</span>);</span></span><br><span class="line">	map.centerAndZoom(point,12);</span><br><span class="line"><span class="actionscript">	map.enableScrollWheelZoom(<span class="literal">true</span>); </span></span><br><span class="line"><span class="actionscript">	<span class="keyword">var</span> geolocation = <span class="keyword">new</span> BMap.Geolocation();</span></span><br><span class="line"><span class="actionscript">	geolocation.getCurrentPosition(<span class="function"><span class="keyword">function</span><span class="params">(r)</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">		<span class="keyword">if</span>(<span class="keyword">this</span>.getStatus() == BMAP_STATUS_SUCCESS)&#123;</span></span><br><span class="line"><span class="actionscript">			<span class="keyword">var</span> mk = <span class="keyword">new</span> BMap.Marker(r.point);</span></span><br><span class="line">			map.addOverlay(mk);</span><br><span class="line">			map.panTo(r.point);</span><br><span class="line"><span class="actionscript">			alert(<span class="string">'您的位置：'</span>+r.point.lng+<span class="string">','</span>+r.point.lat);</span></span><br><span class="line">		&#125;</span><br><span class="line"><span class="actionscript">		<span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="actionscript">			alert(<span class="string">'failed'</span>+<span class="keyword">this</span>.getStatus());</span></span><br><span class="line">		&#125;        </span><br><span class="line"><span class="actionscript">	&#125;,&#123;enableHighAccuracy: <span class="literal">true</span>&#125;)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="本地存储"><a href="#本地存储" class="headerlink" title="本地存储"></a>本地存储</h4><h5 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h5><blockquote>
+<p>通过<code>window.localStorage</code>获取</p>
+</blockquote>
+<ul>
+<li>存储的数据一直有效</li>
+<li>多窗口共享</li>
+<li>存储数据容量约为20M</li>
+</ul>
+<h5 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h5><blockquote>
+<p>通过<code>window.sessionStorage</code>获取</p>
+</blockquote>
+<ul>
+<li>关闭浏览器之前有效</li>
+<li>同一窗口</li>
+<li>存储数据容量约为5M</li>
+</ul>
+<h5 id="通用API"><a href="#通用API" class="headerlink" title="通用API"></a>通用API</h5><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>setItem(<em>key</em>,<em>value</em>)</td>
+<td>存数据</td>
+</tr>
+<tr>
+<td>getItem(<em>key</em>)</td>
+<td>取数据</td>
+</tr>
+<tr>
+<td>removeItem(<em>key</em>)</td>
+<td>删除数据</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>清空数据</td>
+</tr>
+</tbody></table>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">			UserName : <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"userName"</span> <span class="attr">id</span>=<span class="string">"userName"</span>&gt;</span></span><br><span class="line">			Password : <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">id</span>=<span class="string">"password"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">id</span>=<span class="string">"user"</span> <span class="attr">style</span>=<span class="string">"display: none;"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"login"</span> <span class="attr">id</span>=<span class="string">"login"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"logout"</span> <span class="attr">id</span>=<span class="string">"logout"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line">			showUserInfo();</span><br><span class="line">		</span><br><span class="line"><span class="javascript">			<span class="built_in">document</span>.querySelector(<span class="string">'#login'</span>).onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="actionscript">				<span class="comment">//获取用户名和密码</span></span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> userName = <span class="built_in">document</span>.querySelector(<span class="string">'#userName'</span>).value;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> password = <span class="built_in">document</span>.querySelector(<span class="string">'#password'</span>).value;</span></span><br><span class="line"><span class="actionscript">				<span class="comment">//封装成json对象并转成字符串</span></span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> jsonString = <span class="built_in">JSON</span>.stringify(&#123;</span></span><br><span class="line">					userName:userName,</span><br><span class="line">					password:password</span><br><span class="line">				&#125;)</span><br><span class="line"><span class="actionscript">				<span class="comment">//保存用户信息</span></span></span><br><span class="line"><span class="javascript">				<span class="built_in">window</span>.localStorage.setItem(<span class="string">'userInfo'</span>,jsonString);</span></span><br><span class="line"><span class="actionscript">				<span class="comment">//显示用户信息</span></span></span><br><span class="line">				showUserInfo();</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="javascript">			<span class="built_in">document</span>.querySelector(<span class="string">'#logout'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="actionscript">				<span class="comment">//清空用户数据</span></span></span><br><span class="line"><span class="javascript">				<span class="built_in">window</span>.localStorage.clear();</span></span><br><span class="line">				showUserInfo();</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="actionscript">			<span class="function"><span class="keyword">function</span> <span class="title">showUserInfo</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> userInfo = <span class="built_in">window</span>.localStorage.getItem(<span class="string">'userInfo'</span>);</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> a_user = <span class="built_in">document</span>.querySelector(<span class="string">'#user'</span>);</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> input_login = <span class="built_in">document</span>.querySelector(<span class="string">'#login'</span>);</span></span><br><span class="line"><span class="javascript">				<span class="keyword">if</span>(<span class="built_in">JSON</span>.parse(userInfo))&#123;</span></span><br><span class="line"><span class="actionscript">					<span class="comment">//有用户信息</span></span></span><br><span class="line"><span class="javascript">					<span class="built_in">console</span>.log(<span class="string">'用户已登录'</span>);</span></span><br><span class="line"><span class="actionscript">					a_user.style.display = <span class="string">'inline'</span>;</span></span><br><span class="line"><span class="javascript">					a_user.innerHTML = <span class="built_in">JSON</span>.parse(<span class="built_in">window</span>.localStorage.getItem(<span class="string">'userInfo'</span>)).userName;</span></span><br><span class="line"><span class="actionscript">					input_login.style.display = <span class="string">'none'</span>;</span></span><br><span class="line"><span class="actionscript">				&#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="actionscript">					<span class="comment">//没有用户信息</span></span></span><br><span class="line"><span class="javascript">					<span class="built_in">console</span>.log(<span class="string">'用户未登陆'</span>);</span></span><br><span class="line"><span class="actionscript">					a_user.style.display = <span class="string">'none'</span>;</span></span><br><span class="line"><span class="actionscript">					input_login.style.display = <span class="string">'inline'</span>;</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+  <div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------Thank you for your Reading------</div>
+    
+</div>
+    
+ </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Lee
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://fightlee.fun/java%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E7%AF%87-html01.html" title="java前端复习篇-html01">http://fightlee.fun/java前端复习篇-html01.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/html5/" rel="tag"># html5</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/javaee-spring02.html" rel="prev" title="javaee-spring02">
+      <i class="fa fa-chevron-left"></i> javaee-spring02
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML5-一"><span class="nav-number">1.</span> <span class="nav-text">HTML5(一)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#html5兼容性"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">html5兼容性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#方法1-使用CSS"><span class="nav-number">1.0.0.1.1.</span> <span class="nav-text">方法1 : 使用CSS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方法2-使用script脚本"><span class="nav-number">1.0.0.1.2.</span> <span class="nav-text">方法2 : 使用script脚本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方法3-添加noscript标签给与适当提示"><span class="nav-number">1.0.0.1.3.</span> <span class="nav-text">方法3 : 添加noscript标签给与适当提示</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#html5语义话标签"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">html5语义话标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#html5中新属性"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">html5中新属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#html5中表单新特性"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">html5中表单新特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#html5中表单-amp-输入框新属性"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">html5中表单&amp;输入框新属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#表单"><span class="nav-number">1.0.0.5.1.</span> <span class="nav-text">表单</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#输入框"><span class="nav-number">1.0.0.5.2.</span> <span class="nav-text">输入框</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#html5中DOM操作"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">html5中DOM操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#classList"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">classList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data"><span class="nav-number">1.0.0.8.</span> <span class="nav-text">data-*</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件读取"><span class="nav-number">1.0.0.9.</span> <span class="nav-text">文件读取</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#File-介绍"><span class="nav-number">1.0.0.9.1.</span> <span class="nav-text">File 介绍</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#File-构造"><span class="nav-number">1.0.0.9.2.</span> <span class="nav-text">File 构造</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#File-属性"><span class="nav-number">1.0.0.9.3.</span> <span class="nav-text">File 属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FileReader-介绍"><span class="nav-number">1.0.0.9.4.</span> <span class="nav-text">FileReader 介绍</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FileReader-构造"><span class="nav-number">1.0.0.9.5.</span> <span class="nav-text">FileReader 构造</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FileReader-属性"><span class="nav-number">1.0.0.9.6.</span> <span class="nav-text">FileReader 属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FileReader中的事件"><span class="nav-number">1.0.0.9.7.</span> <span class="nav-text">FileReader中的事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FileReader中的方法"><span class="nav-number">1.0.0.9.8.</span> <span class="nav-text">FileReader中的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通过input中type为file来读取文件"><span class="nav-number">1.0.0.9.9.</span> <span class="nav-text">通过input中type为file来读取文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通过拖拽来读取文件"><span class="nav-number">1.0.0.9.10.</span> <span class="nav-text">通过拖拽来读取文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络状态"><span class="nav-number">1.0.0.10.</span> <span class="nav-text">网络状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#地理位置"><span class="nav-number">1.0.0.11.</span> <span class="nav-text">地理位置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#geolocation-对象获取"><span class="nav-number">1.0.0.11.1.</span> <span class="nav-text">geolocation 对象获取</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#百度地图"><span class="nav-number">1.0.0.11.2.</span> <span class="nav-text">百度地图</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地存储"><span class="nav-number">1.0.0.12.</span> <span class="nav-text">本地存储</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#localStorage"><span class="nav-number">1.0.0.12.1.</span> <span class="nav-text">localStorage</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#sessionStorage"><span class="nav-number">1.0.0.12.2.</span> <span class="nav-text">sessionStorage</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通用API"><span class="nav-number">1.0.0.12.3.</span> <span class="nav-text">通用API</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lee"
+      src="/images/author.jpeg">
+  <p class="site-author-name" itemprop="name">Lee</p>
+  <div class="site-description" itemprop="description">面向小白的技术博客..</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lee</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'MCACXLHvNu3O6JofbCUqVbDr-gzGzoHsz',
+      appKey: 'EQbR0P0AmfPjdoUMn1dCfHM7',
+      placeholder: "疑问在此处留下...",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
