@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>javaee-spring03</title>
+    <url>/javaee-spring03.html</url>
+    <content><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/wallhaven-455rr7.jpg" alt="wallhaven-455rr7"></p>
+<a id="more"></a>
+
+<h1 id="Javaee-Spring03"><a href="#Javaee-Spring03" class="headerlink" title="Javaee-Spring03"></a>Javaee-Spring03</h1><h2 id="本文概览"><a href="#本文概览" class="headerlink" title="本文概览"></a>本文概览</h2><ul>
+<li>回顾&amp;工厂模式</li>
+<li>代理模式<ul>
+<li>静态代理</li>
+<li>动态代理<ul>
+<li>jdk中的动态代理</li>
+<li>cglib动态代理</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>装饰设计模式</li>
+<li>AOP思想</li>
+</ul>
+<h2 id="回顾-amp-工厂模式"><a href="#回顾-amp-工厂模式" class="headerlink" title="回顾&amp;工厂模式"></a>回顾&amp;工厂模式</h2><blockquote>
+<p>在前2篇的文章中我们学习了Spring中的<strong>IOC(控制反转)</strong>和<strong>DI(依赖注入)</strong>,并分别使用<strong>xml</strong>和<strong>注解</strong>的形式对spring进行配置.</p>
+<p>再来思考几个问题?</p>
+<ul>
+<li>ApplicationContext是个什么东西?</li>
+<li>如何自己去构建一个BeanFactory?</li>
+</ul>
+</blockquote>
+<h3 id="ApplicationContext"><a href="#ApplicationContext" class="headerlink" title="ApplicationContext"></a>ApplicationContext</h3><h4 id="继承体系"><a href="#继承体系" class="headerlink" title="继承体系"></a>继承体系</h4><p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201027001942.png" alt="20201027001942"></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>前端复习篇-html02</title>
     <url>/%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E7%AF%87-html02.html</url>
     <content><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201024230008.png" alt="20201024230008"></p>
@@ -796,6 +833,27 @@
 
 <figure class="highlight console"><table><tr><td class="code"><pre><span class="line">输出 : </span><br><span class="line">addStu 成功执行</span><br></pre></td></tr></table></figure>
 
+<h3 id="使用JavaConfig来配置Spring"><a href="#使用JavaConfig来配置Spring" class="headerlink" title="使用JavaConfig来配置Spring"></a>使用JavaConfig来配置Spring</h3><blockquote>
+<p>Spring提供了一些新的注解,可以使用Java类来替代xml文件</p>
+</blockquote>
+<h4 id="Configuration"><a href="#Configuration" class="headerlink" title="@Configuration"></a>@Configuration</h4><blockquote>
+<p>指定当前类为配置类</p>
+</blockquote>
+<h4 id="Bean"><a href="#Bean" class="headerlink" title="@Bean"></a>@Bean</h4><blockquote>
+<p>将注解配置的方法的返回值存入IOC容器中,当没有指定@Bean的name值时,默使用方法名来获取该对象.</p>
+</blockquote>
+<h4 id="ComponentScan"><a href="#ComponentScan" class="headerlink" title="@ComponentScan"></a>@ComponentScan</h4><blockquote>
+<p>和xml中的component-scan标签作用一致</p>
+</blockquote>
+<h4 id="Scope"><a href="#Scope" class="headerlink" title="@Scope"></a>@Scope</h4><blockquote>
+<p>和xml中bean的scope属性作用一致</p>
+</blockquote>
+<h4 id="Import"><a href="#Import" class="headerlink" title="@Import"></a>@Import</h4><blockquote>
+<p>和xml中的import标签作用一致</p>
+</blockquote>
+<h4 id="PropertySource"><a href="#PropertySource" class="headerlink" title="@PropertySource"></a>@PropertySource</h4><blockquote>
+<p>和xml中的property-placeholder标签作用一致</p>
+</blockquote>
 <h3 id="idea控制台不输出错误具体信息"><a href="#idea控制台不输出错误具体信息" class="headerlink" title="idea控制台不输出错误具体信息"></a>idea控制台不输出错误具体信息</h3><blockquote>
 <p>pom.xml中添加插件</p>
 </blockquote>
