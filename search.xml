@@ -131,11 +131,11 @@
 <ul>
 <li>和JDK不同的是,需要增强的类,及被代理类不需要实现任何接口.</li>
 </ul>
-<h4 id="装饰设计模式"><a href="#装饰设计模式" class="headerlink" title="装饰设计模式"></a>装饰设计模式</h4><blockquote>
+<h3 id="装饰设计模式"><a href="#装饰设计模式" class="headerlink" title="装饰设计模式"></a>装饰设计模式</h3><blockquote>
 <p>装饰器模式（Decorator Pattern）允许向一个现有的对象添加新的功能，同时又不改变其结构。这种类型的设计模式属于结构型模式，它是作为现有的类的一个包装。</p>
 <p>这种模式创建了一个装饰类，用来包装原有的类，并在保持类方法签名完整性的前提下，提供了额外的功能。</p>
 </blockquote>
-<h5 id="装饰设计模式演示"><a href="#装饰设计模式演示" class="headerlink" title="装饰设计模式演示"></a>装饰设计模式演示</h5><blockquote>
+<h4 id="装饰设计模式演示"><a href="#装饰设计模式演示" class="headerlink" title="装饰设计模式演示"></a>装饰设计模式演示</h4><blockquote>
 <p>场景分析 : </p>
 <ul>
 <li>程序中已有读取功能接口<code>Reader</code>,接口中有<code>read()</code>方法</li>
