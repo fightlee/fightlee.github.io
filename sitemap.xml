@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://fightlee.fun/javaee-spring04.html</loc>
+    
+    <lastmod>2020-10-30</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://fightlee.fun/javaee-spring02.html</loc>
     
     <lastmod>2020-10-30</lastmod>
@@ -10,13 +17,6 @@
   
   <url>
     <loc>http://fightlee.fun/javaee-spring01.html</loc>
-    
-    <lastmod>2020-10-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://fightlee.fun/javaee-spring04.html</loc>
     
     <lastmod>2020-10-30</lastmod>
     
