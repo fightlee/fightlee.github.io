@@ -14,7 +14,16 @@
     <title>javaee-spring04</title>
     <url>/javaee-spring04.html</url>
     <content><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201030111805.png" alt="20201030111805"></p>
-]]></content>
+<h1 id="Javaee-Spring04"><a href="#Javaee-Spring04" class="headerlink" title="Javaee-Spring04"></a>Javaee-Spring04</h1><h2 id="本文概览"><a href="#本文概览" class="headerlink" title="本文概览"></a>本文概览</h2><ul>
+<li>SpringAOP<ul>
+<li>aop的xml配置</li>
+<li>aop的注解配置</li>
+</ul>
+</li>
+<li>SpringJDBC</li>
+<li>Spring事务管理</li>
+</ul>
+<h2 id="SpringAOP"><a href="#SpringAOP" class="headerlink" title="SpringAOP"></a>SpringAOP</h2>]]></content>
   </entry>
   <entry>
     <title>javascript高级(二)</title>
@@ -1221,7 +1230,21 @@
     <content><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201030111805.png" alt="20201030111805"></p>
 <a id="more"></a>
 
-<h1 id="Javaee-Spring02"><a href="#Javaee-Spring02" class="headerlink" title="Javaee-Spring02"></a>Javaee-Spring02</h1><h2 id="在Java中使用Spring"><a href="#在Java中使用Spring" class="headerlink" title="在Java中使用Spring"></a>在Java中使用Spring</h2><blockquote>
+<h1 id="Javaee-Spring02"><a href="#Javaee-Spring02" class="headerlink" title="Javaee-Spring02"></a>Javaee-Spring02</h1><h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><ul>
+<li>在Idea中开始第一个Spring项目</li>
+<li>依赖注入<ul>
+<li>构造注入</li>
+<li>setter注入</li>
+</ul>
+</li>
+<li>自动装配</li>
+<li>scope</li>
+<li>parent&amp;depends-on</li>
+<li>引用外部文件</li>
+<li>@Component等注解</li>
+<li>JavaConfig中的注解</li>
+</ul>
+<h2 id="在Java中使用Spring"><a href="#在Java中使用Spring" class="headerlink" title="在Java中使用Spring"></a>在Java中使用Spring</h2><blockquote>
 <p>上篇文章主要阐述了为什么在Java中需要使用Spring,使用Spring涉及到的依赖倒置原则,和控制反转,依赖注入等原理.</p>
 <p>这篇文章主要教大家如何在Java中使用和应用Spring来进行开发</p>
 </blockquote>
@@ -1783,7 +1806,12 @@
     <content><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201030111805.png" alt="20201030111805"></p>
 <a id="more"></a>
 
-<h1 id="Javaee-Spring01"><a href="#Javaee-Spring01" class="headerlink" title="Javaee-Spring01"></a>Javaee-Spring01</h1><h2 id="概念阐述"><a href="#概念阐述" class="headerlink" title="概念阐述"></a>概念阐述</h2><h3 id="什么是Spring框架"><a href="#什么是Spring框架" class="headerlink" title="什么是Spring框架?"></a>什么是Spring框架?</h3><blockquote>
+<h1 id="Javaee-Spring01"><a href="#Javaee-Spring01" class="headerlink" title="Javaee-Spring01"></a>Javaee-Spring01</h1><h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><ul>
+<li>What is Spring FrameWork?</li>
+<li>Why We Need Spring ?</li>
+<li><strong>DIP</strong>, <strong>IOC</strong> and <strong>DI</strong></li>
+</ul>
+<h2 id="概念阐述"><a href="#概念阐述" class="headerlink" title="概念阐述"></a>概念阐述</h2><h3 id="什么是Spring框架"><a href="#什么是Spring框架" class="headerlink" title="什么是Spring框架?"></a>什么是Spring框架?</h3><blockquote>
 <p>来自维基百科的解释 : <strong>Spring框架</strong>是Java平台的一个开源的全栈(Full-stack)应用程序框架和控制反转容器实现,一般被直接称为 Spring,是针对bean的生命周期进行管理的轻量级容器(lightweight container).</p>
 <p>那么简单来说 : <strong>Spring就是一个管理bean的容器,作为控制反转的容器实现</strong></p>
 </blockquote>

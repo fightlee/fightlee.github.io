@@ -74,7 +74,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20201019214510.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20201019220631.png">
 <meta property="article:published_time" content="2020-10-17T01:18:00.000Z">
-<meta property="article:modified_time" content="2020-10-30T03:18:30.224Z">
+<meta property="article:modified_time" content="2020-10-30T03:42:23.300Z">
 <meta property="article:author" content="Lee">
 <meta property="article:tag" content="spring">
 <meta name="twitter:card" content="summary">
@@ -274,7 +274,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-30 11:18:30" itemprop="dateModified" datetime="2020-10-30T11:18:30+08:00">2020-10-30</time>
+                <time title="修改时间：2020-10-30 11:42:23" itemprop="dateModified" datetime="2020-10-30T11:42:23+08:00">2020-10-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -330,7 +330,12 @@
         <p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201030111805.png" alt="20201030111805"></p>
 <a id="more"></a>
 
-<h1 id="Javaee-Spring01"><a href="#Javaee-Spring01" class="headerlink" title="Javaee-Spring01"></a>Javaee-Spring01</h1><h2 id="概念阐述"><a href="#概念阐述" class="headerlink" title="概念阐述"></a>概念阐述</h2><h3 id="什么是Spring框架"><a href="#什么是Spring框架" class="headerlink" title="什么是Spring框架?"></a>什么是Spring框架?</h3><blockquote>
+<h1 id="Javaee-Spring01"><a href="#Javaee-Spring01" class="headerlink" title="Javaee-Spring01"></a>Javaee-Spring01</h1><h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><ul>
+<li>What is Spring FrameWork?</li>
+<li>Why We Need Spring ?</li>
+<li><strong>DIP</strong>, <strong>IOC</strong> and <strong>DI</strong></li>
+</ul>
+<h2 id="概念阐述"><a href="#概念阐述" class="headerlink" title="概念阐述"></a>概念阐述</h2><h3 id="什么是Spring框架"><a href="#什么是Spring框架" class="headerlink" title="什么是Spring框架?"></a>什么是Spring框架?</h3><blockquote>
 <p>来自维基百科的解释 : <strong>Spring框架</strong>是Java平台的一个开源的全栈(Full-stack)应用程序框架和控制反转容器实现,一般被直接称为 Spring,是针对bean的生命周期进行管理的轻量级容器(lightweight container).</p>
 <p>那么简单来说 : <strong>Spring就是一个管理bean的容器,作为控制反转的容器实现</strong></p>
 </blockquote>
@@ -531,7 +536,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Javaee-Spring01"><span class="nav-number">1.</span> <span class="nav-text">Javaee-Spring01</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念阐述"><span class="nav-number">1.1.</span> <span class="nav-text">概念阐述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Spring框架"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是Spring框架?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要使用Spring-Spring解决了什么问题"><span class="nav-number">1.1.2.</span> <span class="nav-text">为什么要使用Spring?Spring解决了什么问题?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#案例"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">案例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#细节转抽象"><span class="nav-number">1.1.2.1.1.</span> <span class="nav-text">细节转抽象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#上层不依赖底层"><span class="nav-number">1.1.2.1.2.</span> <span class="nav-text">上层不依赖底层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#总结"><span class="nav-number">1.1.2.1.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#延伸"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">延伸</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最终总结"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">最终总结</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Javaee-Spring01"><span class="nav-number">1.</span> <span class="nav-text">Javaee-Spring01</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概览"><span class="nav-number">1.1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概念阐述"><span class="nav-number">1.2.</span> <span class="nav-text">概念阐述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Spring框架"><span class="nav-number">1.2.1.</span> <span class="nav-text">什么是Spring框架?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要使用Spring-Spring解决了什么问题"><span class="nav-number">1.2.2.</span> <span class="nav-text">为什么要使用Spring?Spring解决了什么问题?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#案例"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">案例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#细节转抽象"><span class="nav-number">1.2.2.1.1.</span> <span class="nav-text">细节转抽象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#上层不依赖底层"><span class="nav-number">1.2.2.1.2.</span> <span class="nav-text">上层不依赖底层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#总结"><span class="nav-number">1.2.2.1.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#延伸"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">延伸</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最终总结"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">最终总结</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
