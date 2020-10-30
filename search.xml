@@ -98,7 +98,7 @@
 <h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><blockquote>
 <p>场景描述 : 还是之前的动态代理中的计算器案例.</p>
 </blockquote>
-<p>*<em>因为要用到AOP相关实现AOL语言的AspectJ中的对象,所以需要导入AspectJ的依赖 : *</em></p>
+<p><strong>因为要用到AOP相关实现AOL语言的AspectJ中的对象,所以需要导入AspectJ的依赖</strong> :</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.aspectj<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aspectjweaver<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.9.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.aspectj<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aspectjrt<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.9.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="Spring-AOP-xml架构"><a href="#Spring-AOP-xml架构" class="headerlink" title="Spring AOP xml架构"></a>Spring AOP xml架构</h3><blockquote>
@@ -134,7 +134,7 @@
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><table>
 <thead>
 <tr>
-<th>l注解/对象</th>
+<th>注解/对象</th>
 <th>描述</th>
 </tr>
 </thead>
