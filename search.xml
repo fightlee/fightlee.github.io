@@ -1,6 +1,355 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>javaee-spring05</title>
+    <url>/javaee-spring05.html</url>
+    <content><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201030111805.png" alt="20201030111805"></p>
+<a id="more"></a>
+
+<h1 id="Javaee-Spring05"><a href="#Javaee-Spring05" class="headerlink" title="Javaee-Spring05"></a>Javaee-Spring05</h1><h2 id="本文概览"><a href="#本文概览" class="headerlink" title="本文概览"></a>本文概览</h2><ul>
+<li>事务回顾</li>
+<li>Spring事务<ul>
+<li>Spring编程式事务</li>
+<li>Spring声明式事务</li>
+</ul>
+</li>
+</ul>
+<h2 id="事务回顾"><a href="#事务回顾" class="headerlink" title="事务回顾"></a>事务回顾</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><blockquote>
+<p>一组SQL语句,要么全部执行,要么都不执行.</p>
+</blockquote>
+<h3 id="事务的特性-ACID"><a href="#事务的特性-ACID" class="headerlink" title="事务的特性(ACID)"></a>事务的特性(ACID)</h3><ul>
+<li><strong>原子性( Atomicity )：</strong>事务应该当作一个单独单元的操作，这意味着整个序列操作要么是成功，要么是失败的。</li>
+<li><strong>一致性( Consistency )：</strong>这表示数据库的引用完整性的一致性，表中唯一的主键等。</li>
+<li><strong>隔离性( Isolation )：</strong>可能同时处理很多有相同的数据集的事务，每个事务应该与其他事务隔离，以防止数据损坏。</li>
+<li><strong>持久性( Durability )：</strong>事务一旦完成全部操作后，这个事务的结果必须是永久性的，不能因系统故障而从数据库中删除。</li>
+</ul>
+<blockquote>
+<p>注意 : MySql事务都基于InnoDB引擎,MyISAM引擎不支持事务.</p>
+</blockquote>
+<h3 id="Spring事务"><a href="#Spring事务" class="headerlink" title="Spring事务"></a>Spring事务</h3><blockquote>
+<p>Spring事务的管理主要由 <strong>PlatformTransactionManager对象</strong>  来管理</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PlatformTransactionManager</span> </span>&#123;</span><br><span class="line">    <span class="comment">//获取事务管理状态</span></span><br><span class="line">    <span class="function">TransactionStatus <span class="title">getTransaction</span><span class="params">(TransactionDefinition definition)</span> <span class="keyword">throws</span> TransactionException</span>;</span><br><span class="line">    <span class="comment">//事务提交</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">commit</span><span class="params">(TransactionStatus status)</span> <span class="keyword">throws</span> TransactionException</span>;</span><br><span class="line">    <span class="comment">//事务回滚</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">rollback</span><span class="params">(TransactionStatus status)</span> <span class="keyword">throws</span> TransactionException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> 根据底层所使用的不同的持久化 API 或框架，PlatformTransactionManager 的主要实现类大致如下： </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>事务管理器</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DataSourceTransactionManager</td>
+<td>适用于使用JDBC和iBatis进行数据持久化操作的情况。</td>
+</tr>
+<tr>
+<td>HibernateTransactionManager</td>
+<td>适用于使用Hibernate进行数据持久化操作的情况。</td>
+</tr>
+<tr>
+<td>JpaTransactionManager</td>
+<td>适用于使用JPA进行数据持久化操作的情况</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Spring事务中的五大属性 , 在Spring中由 <strong>TransactionDefinition对象</strong>  来定义</p>
+</blockquote>
+<ul>
+<li><strong>隔离级别</strong> : isolation.</li>
+<li><strong>传播行为</strong> : propagation.</li>
+<li><strong>是否只读</strong> : readOnly.</li>
+<li><strong>事务超时</strong> : timeout.</li>
+<li><strong>回滚规则</strong> : rollbackFor|rollbackForClassName &amp; noRollbackFor | noRollbackForClassName</li>
+</ul>
+<h4 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h4><blockquote>
+<p>简单来说就是一个事物受到其他事务的影响的程度.也称之为事务的并发问题.</p>
+</blockquote>
+<ul>
+<li><strong>脏读</strong> : 事务A读取到事务B未经提交的数据,一旦事务B进行回滚操作,就意味着事务A读取到的数据是不存在的数据,就是”脏数据”,称之为脏读.</li>
+<li><strong>不可重复读</strong> : 事务A在做读取操作时,事务B正在对当前数据进行修改操作,当事务B结束后,事务A重新读取的数据和之前读取的数据不一致称之为不可重复度.</li>
+<li><strong>幻读/虚读</strong> : 事务A在做读取操作时得到N条数据结果,同时事务B对该表添加/删除了M条数据,事务A再次读取的时候发现数据为之前 N - M 或者 N + M 条数据,如幻觉一般,称之为幻读.</li>
+</ul>
+<p>在Spring事务属性中的隔离级别内提供了5种不同的事务隔离级别 : </p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TransactionDefinition.ISOLATION_<strong>DEFAULT</strong></td>
+<td>默认隔离级别,<br/>Mysql默认READ_REPEATABLE,<br>Oracle默认READ_COMMITTED</td>
+</tr>
+<tr>
+<td>TransactionDefinition.ISOLATION<strong>_READ_COMMITTED</strong></td>
+<td>读已提交数据,可以防止脏读</td>
+</tr>
+<tr>
+<td>TransactionDefinition.ISOLATION_<strong>READ_UNCOMMITTED</strong></td>
+<td>读未提交数据,以上三种问题都可能发生</td>
+</tr>
+<tr>
+<td>TransactionDefinition.ISOLATION_<strong>REPEATABLE_READ</strong></td>
+<td>防止脏读,不可重复读问题</td>
+</tr>
+<tr>
+<td>TransactionDefinition.ISOLATION_<strong>SERIALIZABLE</strong></td>
+<td>串行化,级别最高,效率最低.阻止以上三种问题</td>
+</tr>
+</tbody></table>
+<h4 id="丢失更新"><a href="#丢失更新" class="headerlink" title="丢失更新"></a>丢失更新</h4><blockquote>
+<p>以上事务隔离级别都是事务A读取事务B操作产生的问题.那么,如果事务A和事务B同时对某一数据产生修改会造成丢失更新的问题,如 在事务A修改user表中{id:1,name:’zhangsan’,age:20}的数据的同时,事务B同时对其数据进行修改,那么事务A更新的数据就会被事务B更新的结果给冲掉,这种现象就称之为丢失更新.</p>
+<p>丢失更新的问题一般通过数据库的锁机制解决</p>
+<ul>
+<li><p>排它锁,也称之为悲观琐</p>
+<p>假设事务的操作肯定会产生此问题,所以称之为悲观琐.那么事务A在对其进行修改操作时,需要阻止其他事务对当前数据的操作,可以在事务A操作时给表或者当前行加上锁.</p>
+<ul>
+<li><p>表锁 :  保证只有一个线程能对该表进行表结构更改。 (不常用,性能太低)</p>
+<ul>
+<li><strong><code>lock tables xxx read/write;</code></strong> </li>
+</ul>
+</li>
+<li><p>行级锁 </p>
+<ul>
+<li><p>共享锁(S锁)</p>
+<p>共享用于不更改或不更新数据的操作(只读操作),如 SELECT 语句.</p>
+<p>如果事务T对数据A加上共享锁后,则其他事务只能对A再加共享锁,不能加排他锁.获准共享锁的事务只能读数据,不能修改数据.</p>
+</li>
+<li><p>排它锁(X锁)</p>
+<p>用于数据修改操作,例如 INSERT,UPDATE 或 DELETE.确保不会同时同一资源进行多重更新.</p>
+<p>如果事务T对数据A加上排他锁后,则其他事务不能再对A加任任何类型的封锁.获准排他锁的事务既能读数据,又能修改数据。 </p>
+</li>
+<li><p>行锁带来的问题,死锁.</p>
+<p>比如 : 事务A给第1条数据加上行锁,事务B给第2条数据加上行锁,然后事务A对第2条数据进行修改操作,事务B同时对第1条数据进行修改操作,相互间等待成为死锁.</p>
+</li>
+</ul>
+</li>
+<li><p>间隙锁</p>
+<p>事务A对id &gt; 2 and id &lt; 5的数据进行修改并加上行锁 , 那么数据库就会对当前范围上锁,事务B在事务A未提交事务前对 id = 3的数据进行修改,就会阻塞等待,直到事务A提交结束后,事务B的修改操作才会执行</p>
+</li>
+</ul>
+</li>
+<li><p>乐观锁</p>
+<p>假设事务的操作不一定会产生此问题,不对事务进行锁定,随其修改.通过在表中增加一个标识字段(如 : 时间戳 timestamp或者更新版本 version)来检测当前数据的更新.在进行数据修改时判断此标识字段是否与原来一致,不一致则抛出异常.</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="传播行为"><a href="#传播行为" class="headerlink" title="传播行为"></a>传播行为</h4><table>
+<thead>
+<tr>
+<th>事务传播行为</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TransactionDefinition.PROPAGATION_<strong>REQUIRES_NEW</strong></td>
+<td>启动新事物,如果存在一个事务，则把当前事务挂起。</td>
+</tr>
+<tr>
+<td>TransactionDefinition.PROPAGATION_<strong>REQUIRED</strong></td>
+<td>支持当前事务；如果不存在事务，则创建一个新的事务。</td>
+</tr>
+<tr>
+<td>TransactionDefinition.PROPAGATION_MANDATORY</td>
+<td>支持当前事务；如果不存在当前事务，则抛出一个异常。</td>
+</tr>
+<tr>
+<td>TransactionDefinition.PROPAGATION_NESTED</td>
+<td>如果存在当前事务，则在一个嵌套的事务中执行。</td>
+</tr>
+<tr>
+<td>TransactionDefinition.PROPAGATION_NEVER</td>
+<td>不支持当前事务；如果存在当前事务，则抛出一个异常。</td>
+</tr>
+<tr>
+<td>TransactionDefinition.PROPAGATION_NOT_SUPPORTED</td>
+<td>不支持当前事务；而总是执行非事务性。</td>
+</tr>
+<tr>
+<td>TransactionDefinition.PROPAGATION_SUPPORTS</td>
+<td>支持当前事务；如果不存在，则执行非事务性。</td>
+</tr>
+<tr>
+<td>TransactionDefinition.TIMEOUT_DEFAULT</td>
+<td>使用默认超时的底层事务系统，或者如果不支持超时则没有。</td>
+</tr>
+</tbody></table>
+<h3 id="事务超时"><a href="#事务超时" class="headerlink" title="事务超时"></a>事务超时</h3><blockquote>
+<p>事务所允许执行的最长时间,超出则自动回滚,单位为秒</p>
+</blockquote>
+<h3 id="是否只读"><a href="#是否只读" class="headerlink" title="是否只读"></a>是否只读</h3><blockquote>
+<p>代表当前事务是否只执行读取操作,声明为只读来提升读取效率.</p>
+</blockquote>
+<h2 id="Spring事务案例"><a href="#Spring事务案例" class="headerlink" title="Spring事务案例"></a>Spring事务案例</h2><blockquote>
+<p>环境 : Idea + Mysql</p>
+<p>表 :  product(商品) + stock(库存表) + user(用户表)</p>
+<p>表结构</p>
+<p><strong>product</strong> : </p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>商品Id</td>
+</tr>
+<tr>
+<td>price</td>
+<td>商品价格</td>
+</tr>
+<tr>
+<td>name</td>
+<td>商品名称</td>
+</tr>
+</tbody></table>
+<p><strong>stock</strong> : </p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pro_id</td>
+<td>商品Id</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>商品数量</td>
+</tr>
+</tbody></table>
+<p><strong>user</strong> : </p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>用户Id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>用户名称</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>用户余额</td>
+</tr>
+</tbody></table>
+</blockquote>
+<p><strong>实体类</strong>(略)</p>
+<p><strong>Dao层</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dyh.dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ProductDao</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据商品的ID和购买的数量修改库存</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">updateStockByProId</span><span class="params">(Integer proId,Integer quantity)</span></span>;</span><br><span class="line">    <span class="comment">//根据商品编号查找商品价格</span></span><br><span class="line">    <span class="function">Integer <span class="title">findPriceByProId</span><span class="params">(Integer proId)</span></span>;</span><br><span class="line">    <span class="comment">//修改用户账户余额</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">updateUserInfo</span><span class="params">(Integer userId,Integer cost)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dyh.dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.core.JdbcTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Repository;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProductDaoImp</span> <span class="keyword">implements</span> <span class="title">ProductDao</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> JdbcTemplate jdbcTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateStockByProId</span><span class="params">(Integer proId, Integer quantity)</span> </span>&#123;</span><br><span class="line">        String sql = <span class="string">"update stock set quantity = quantity - ? where pro_id = ?"</span>;</span><br><span class="line">        jdbcTemplate.update(sql,quantity,proId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">findPriceByProId</span><span class="params">(Integer proId)</span> </span>&#123;</span><br><span class="line">        String sql = <span class="string">"select price from product where id = ?"</span>;</span><br><span class="line">        <span class="keyword">return</span> jdbcTemplate.queryForObject(sql,Integer<span class="class">.<span class="keyword">class</span>,<span class="title">proId</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateUserInfo</span><span class="params">(Integer userId, Integer cost)</span> </span>&#123;</span><br><span class="line">        String sql = <span class="string">"update user set balance = balance - ? where id = ?"</span>;</span><br><span class="line">        jdbcTemplate.update(sql,cost,userId);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Service层</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dyh.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ProductService</span> </span>&#123;</span><br><span class="line">	<span class="comment">//商品结算业务</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">purchase</span><span class="params">(Integer proId,Integer userId,Integer quantity)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dyh.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.dyh.dao.ProductDao;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span>(<span class="string">"productService"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProductServiceImp</span> <span class="keyword">implements</span> <span class="title">ProductService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ProductDao productDao;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">purchase</span><span class="params">(Integer proId, Integer userId,Integer quantity)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1.根据购买的商品ID查找商品</span></span><br><span class="line">        Integer price = productDao.findPriceByProId(proId);</span><br><span class="line">        <span class="comment">//2.更新商品库存信息</span></span><br><span class="line">        productDao.updateStockByProId(proId,quantity);</span><br><span class="line">        <span class="comment">//3.更新用户余额信息</span></span><br><span class="line">        productDao.updateUserInfo(userId,price * quantity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>测试类</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ApplicationContext context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"context-transaction.xml"</span>);</span><br><span class="line">    ProductService ps = context.getBean(<span class="string">"productService"</span>, ProductService<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    ps.purchase(<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>配置文件</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/cache"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--开启组件注解--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.dyh"</span>&gt;</span><span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--开启注入注解--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:annotation-config</span>&gt;</span><span class="tag">&lt;/<span class="name">context:annotation-config</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--扫描外部文件--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">location</span>=<span class="string">"classpath:db.properties"</span>&gt;</span><span class="tag">&lt;/<span class="name">context:property-placeholder</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--配置数据源--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"com.alibaba.druid.pool.DruidDataSource"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClassName"</span> <span class="attr">value</span>=<span class="string">"$&#123;druid.driverClassName&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"$&#123;druid.url&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"$&#123;druid.username&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;druid.password&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--配置JDBCtemplate--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"jdbcTemplate"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.core.JdbcTemplate"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>从测试结果看,当用户购买<code>quantity</code>个商品后,可以正确的进行结算.接下来考虑几个问题.</p>
+<ul>
+<li>如果用户购买的商品的个数大于库存</li>
+<li>如果用户购买的商品的总价大于余额</li>
+</ul>
+<p>解决办法 : </p>
+<ul>
+<li>在修改数量之前对商品的数量进行查询,判断数量是否满足,如果不满足则抛出异常,取消修改.</li>
+<li>在修改余额之前查询用户余额,如果用户余额不足,则抛出异常取消修改</li>
+</ul>
+<p><strong>修改后的Dao</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dyh.dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.core.JdbcTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Repository;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProductDaoImp</span> <span class="keyword">implements</span> <span class="title">ProductDao</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> JdbcTemplate jdbcTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateStockByProId</span><span class="params">(Integer proId, Integer quantity)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//查询商品数量判断库存是否足够</span></span><br><span class="line">        String sql1 = <span class="string">"select quantity from stock where pro_id = ? "</span>;</span><br><span class="line">        Integer stock = jdbcTemplate.queryForObject(sql1, Integer<span class="class">.<span class="keyword">class</span>, <span class="title">proId</span>)</span>;</span><br><span class="line">        <span class="comment">//判断商品库存是否足够</span></span><br><span class="line">        <span class="keyword">if</span>(quantity &gt; stock)&#123;</span><br><span class="line">            <span class="comment">//如果超出库存则抛出异常,不能执行下面的修改操作</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"库存不足.."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        String sql = <span class="string">"update stock set quantity = quantity - ? where pro_id = ?"</span>;</span><br><span class="line">        jdbcTemplate.update(sql,quantity,proId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">findPriceByProId</span><span class="params">(Integer proId)</span> </span>&#123;</span><br><span class="line">        String sql = <span class="string">"select price from product where id = ?"</span>;</span><br><span class="line">        <span class="keyword">return</span> jdbcTemplate.queryForObject(sql,Integer<span class="class">.<span class="keyword">class</span>,<span class="title">proId</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateUserInfo</span><span class="params">(Integer userId, Integer cost)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//先查询余额</span></span><br><span class="line">        String sql1 = <span class="string">"select balance from user where id = ?"</span>;</span><br><span class="line">        Integer balance = jdbcTemplate.queryForObject(sql1, Integer<span class="class">.<span class="keyword">class</span>, <span class="title">userId</span>)</span>;</span><br><span class="line">        <span class="comment">//如果购买的花费大于余额则抛出异常</span></span><br><span class="line">        <span class="keyword">if</span>(cost &gt; balance)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"用户余额不足"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        String sql = <span class="string">"update user set balance = balance - ? where id = ?"</span>;</span><br><span class="line">        jdbcTemplate.update(sql,cost,userId);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改过后的代码看似没有问题,但分析以下场景.</p>
+<ul>
+<li>在结算业务中我们是先更新商品库存,然后修改用户余额,那如果出现商品的库存足够,而用户余额不够的情况,就会执行库存的修改,而余额的修改则会抛出异常不会修改.就等于商品库存少了,但是用户钱没少.那么为了避免这种情况的发生,我们就需要事务来介入了.</li>
+</ul>
+<h3 id="编程式事务-了解"><a href="#编程式事务-了解" class="headerlink" title="编程式事务(了解)"></a>编程式事务(了解)</h3><blockquote>
+<p>在代码编程过程中添加事务管理</p>
+</blockquote>
+<p><strong>普通编程式事务</strong></p>
+<p><strong>修改Service类</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dyh.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.dyh.dao.ProductDao;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.PlatformTransactionManager;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.TransactionDefinition;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.TransactionStatus;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span>(<span class="string">"productService"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProductServiceImp</span> <span class="keyword">implements</span> <span class="title">ProductService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ProductDao productDao;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> PlatformTransactionManager ptm;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> TransactionDefinition td;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">purchase</span><span class="params">(Integer proId, Integer userId,Integer quantity)</span> </span>&#123;</span><br><span class="line">            <span class="comment">//获取事务状态,并开启事务</span></span><br><span class="line">            TransactionStatus status = ptm.getTransaction(td);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//1.根据购买的商品ID查找商品</span></span><br><span class="line">            Integer price = productDao.findPriceByProId(proId);</span><br><span class="line">            <span class="comment">//2.更新商品库存信息</span></span><br><span class="line">            productDao.updateStockByProId(proId,quantity);</span><br><span class="line">            <span class="comment">//3.更新用户余额信息</span></span><br><span class="line">            productDao.updateUserInfo(userId,price * quantity);</span><br><span class="line">            <span class="comment">//成功执行事务提交</span></span><br><span class="line">            ptm.commit(status);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="comment">//事务回滚</span></span><br><span class="line">            ptm.rollback(status);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>xml</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment">&lt;!--配置事务管理器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"pmt"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--配置默认事务定义--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"td"</span> <span class="attr">class</span>=<span class="string">"org.springframework.transaction.support.DefaultTransactionDefinition"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--使用property配置传播行为,隔离级别等属性--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>基于TransactionTemplate的编程式事务</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dyh.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.dyh.dao.ProductDao;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.TransactionStatus;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.support.TransactionCallback;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.support.TransactionTemplate;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span>(<span class="string">"productService"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProductServiceImp</span> <span class="keyword">implements</span> <span class="title">ProductService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ProductDao productDao;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> TransactionTemplate tt;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">purchase</span><span class="params">(Integer proId, Integer userId,Integer quantity)</span> </span>&#123;</span><br><span class="line">        tt.execute(<span class="keyword">new</span> TransactionCallback() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> Object <span class="title">doInTransaction</span><span class="params">(TransactionStatus transactionStatus)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="comment">//1.根据购买的商品ID查找商品</span></span><br><span class="line">                    Integer price = productDao.findPriceByProId(proId);</span><br><span class="line">                    <span class="comment">//2.更新商品库存信息</span></span><br><span class="line">                    productDao.updateStockByProId(proId,quantity);</span><br><span class="line">                    <span class="comment">//3.更新用户余额信息</span></span><br><span class="line">                    productDao.updateUserInfo(userId,price * quantity);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                    <span class="comment">//回滚</span></span><br><span class="line">                    transactionStatus.setRollbackOnly();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"tm"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"tt"</span> <span class="attr">class</span>=<span class="string">"org.springframework.transaction.support.TransactionTemplate"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"transactionManager"</span> <span class="attr">ref</span>=<span class="string">"tm"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>缺点</strong> : </p>
+<ul>
+<li>事务代码直接嵌入在业务代码中,不易维护.</li>
+</ul>
+<h3 id="声明式事务-重点"><a href="#声明式事务-重点" class="headerlink" title="声明式事务(重点)"></a>声明式事务(重点)</h3><p>优点</p>
+<ul>
+<li>通过AOP将事务嵌入到代码中,更为灵活,方便后期维护.</li>
+</ul>
+<h4 id="xml配置方式"><a href="#xml配置方式" class="headerlink" title="xml配置方式"></a>xml配置方式</h4><blockquote>
+<p>不需要修改任何代码</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--配置事务管理器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"tm"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--配置事务属性 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tx:advice</span> <span class="attr">id</span>=<span class="string">"txAdvice"</span> <span class="attr">transaction-manager</span>=<span class="string">"tm"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tx:attributes</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"purchase"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tx:attributes</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tx:advice</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--配置AOP的Pointcut --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:config</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">id</span>=<span class="string">"pc"</span> <span class="attr">expression</span>=<span class="string">"execution(* com.dyh.service.*.*(..))"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:advisor</span> <span class="attr">advice-ref</span>=<span class="string">"txAdvice"</span> <span class="attr">pointcut-ref</span>=<span class="string">"pc"</span>&gt;</span><span class="tag">&lt;/<span class="name">aop:advisor</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="注解方式"><a href="#注解方式" class="headerlink" title="注解方式"></a>注解方式</h4><blockquote>
+<p>使用<code>@Transactional</code>注解 , 更简单了… , 只需要在xml文件中配置事务注解驱动</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"tm"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--配置事务注解驱动--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tx:annotation-driven</span> <span class="attr">transaction-manager</span>=<span class="string">"tm"</span>&gt;</span><span class="tag">&lt;/<span class="name">tx:annotation-driven</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Transactional</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">purchase</span><span class="params">(Integer proId, Integer userId,Integer quantity)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//1.根据购买的商品ID查找商品</span></span><br><span class="line">    Integer price = productDao.findPriceByProId(proId);</span><br><span class="line">    <span class="comment">//2.更新商品库存信息</span></span><br><span class="line">    productDao.updateStockByProId(proId, quantity);</span><br><span class="line">    <span class="comment">//3.更新用户余额信息</span></span><br><span class="line">    productDao.updateUserInfo(userId, price * quantity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Spring传播行为"><a href="#Spring传播行为" class="headerlink" title="Spring传播行为"></a>Spring传播行为</h3><blockquote>
+<p>修改案例,添加结算多种商品</p>
+</blockquote>
+<p>思考 : </p>
+<ul>
+<li>当结算多个商品时,如果有第一个商品结算成功,第二个商品结算失败是单个回滚还是全部回滚?</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dyh.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ShopService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">payment</span><span class="params">(Map&lt;Integer , Integer&gt; maps, Integer userId)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dyh.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.annotation.Transactional;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span>(<span class="string">"shopService"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShopServiceImp</span> <span class="keyword">implements</span> <span class="title">ShopService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ProductService productService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Transactional</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">payment</span><span class="params">(Map&lt;Integer, Integer&gt; maps, Integer userId)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//遍历map集合结算多种商品</span></span><br><span class="line">        maps.forEach((key,value)-&gt;&#123;</span><br><span class="line">            productService.purchase(key,userId,value);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果没有修改事务传播行为,那么意味着为默认TransactionDefinition.PROPAGATION_<strong>REQUIRED</strong>级别.思考结果为 : 如果第一个商品结算成功,第二个商品结算失败,整个回滚</li>
+</ul>
+<p><strong>修改purchase()方法的@Transactional注解的传播行为为 : PROPAGATION_REQUIRES_NEW</strong>级别</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dyh.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.annotation.Propagation;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.annotation.Transactional;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span>(<span class="string">"shopService"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShopServiceImp</span> <span class="keyword">implements</span> <span class="title">ShopService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ProductService productService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Transactional</span>(propagation = Propagation.REQUIRES_NEW)</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">payment</span><span class="params">(Map&lt;Integer, Integer&gt; maps, Integer userId)</span> </span>&#123;</span><br><span class="line">        maps.forEach((key,value)-&gt;&#123;</span><br><span class="line">            productService.purchase(key,userId,value);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>结果为 第一个事务成功执行,第二个事务回滚.</li>
+</ul>
+<h4 id="传播行为总结"><a href="#传播行为总结" class="headerlink" title="传播行为总结"></a>传播行为总结</h4><p><strong>REQUIRED</strong></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201031235548.png" alt="20201031235548"></p>
+<p><strong>REQUIRES_NEW</strong></p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201031235712.png" alt="20201031235712"></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>javascript高级04</title>
     <url>/javascript%E9%AB%98%E7%BA%A704.html</url>
     <content><![CDATA[]]></content>
@@ -205,6 +554,12 @@
 
 <p><strong>测试</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test03</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ApplicationContext ac = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"applicationContext-jdbc.xml"</span>);</span><br><span class="line">    UserDaoImp userDaoImp = ac.getBean(<span class="string">"userDaoImp"</span>, UserDaoImp<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    <span class="comment">//添加</span></span><br><span class="line">    userDaoImp.addUser(<span class="keyword">new</span> User(<span class="string">"张三1"</span>,<span class="string">"长沙"</span>,<span class="string">"zhangsan1@qq.com"</span>,<span class="string">"123"</span>));</span><br><span class="line">    <span class="comment">//删除</span></span><br><span class="line">    userDaoImp.deleteUserById(<span class="number">3</span>);</span><br><span class="line">    <span class="comment">//修改</span></span><br><span class="line">    User user = <span class="keyword">new</span> User();</span><br><span class="line">    user.setUserId(<span class="number">1</span>);</span><br><span class="line">    user.setUserName(<span class="string">"老八"</span>);</span><br><span class="line">    user.setUserPassword(<span class="string">"666"</span>);</span><br><span class="line">    user.setUserEmail(<span class="string">"laba@qq.com"</span>);</span><br><span class="line">    user.setUserAddress(<span class="string">"厕所"</span>);</span><br><span class="line">    userDaoImp.updateUserById(user);</span><br><span class="line">    <span class="comment">//根据id查询</span></span><br><span class="line">    System.out.println(userDaoImp.getUserById(<span class="number">1</span>));</span><br><span class="line">    <span class="comment">//查询所有</span></span><br><span class="line">    System.out.println(userDaoImp.getAllUsers());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>spring</tag>
+      </tags>
   </entry>
   <entry>
     <title>javascript高级(二)</title>
