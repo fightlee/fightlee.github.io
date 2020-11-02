@@ -2,19 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://fightlee.fun/javascript%E9%AB%98%E7%BA%A703.html</loc>
+    <lastmod>2020-11-02</lastmod>
+  </url>
+  <url>
+    <loc>http://fightlee.fun/javaee-spring05.html</loc>
+    <lastmod>2020-11-02</lastmod>
+  </url>
+  <url>
+    <loc>http://fightlee.fun/javaee-spring04.html</loc>
+    <lastmod>2020-11-02</lastmod>
+  </url>
+  <url>
+    <loc>http://fightlee.fun/javascript%E9%AB%98%E7%BA%A704.html</loc>
     <lastmod>2020-11-01</lastmod>
   </url>
   <url>
     <loc>http://fightlee.fun/javascript%E9%AB%98%E7%BA%A702.html</loc>
     <lastmod>2020-11-01</lastmod>
-  </url>
-  <url>
-    <loc>http://fightlee.fun/javaee-spring05.html</loc>
-    <lastmod>2020-10-31</lastmod>
-  </url>
-  <url>
-    <loc>http://fightlee.fun/javaee-spring04.html</loc>
-    <lastmod>2020-10-31</lastmod>
   </url>
   <url>
     <loc>http://fightlee.fun/javaee-spring02.html</loc>
@@ -94,10 +98,6 @@
   </url>
   <url>
     <loc>http://fightlee.fun/javaee-spring03.html</loc>
-    <lastmod>2020-10-30</lastmod>
-  </url>
-  <url>
-    <loc>http://fightlee.fun/javascript%E9%AB%98%E7%BA%A704.html</loc>
     <lastmod>2020-10-30</lastmod>
   </url>
   <url>

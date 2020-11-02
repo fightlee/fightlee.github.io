@@ -118,12 +118,10 @@
 <li><p>共享锁(S锁)</p>
 <p>共享用于不更改或不更新数据的操作(只读操作),如 SELECT 语句.</p>
 <p>如果事务T对数据A加上共享锁后,则其他事务只能对A再加共享锁,不能加排他锁.获准共享锁的事务只能读数据,不能修改数据.</p>
-</li>
-<li><p>排它锁(X锁)</p>
+<p>1) <strong>排它锁(X锁)</strong></p>
 <p>用于数据修改操作,例如 INSERT,UPDATE 或 DELETE.确保不会同时同一资源进行多重更新.</p>
 <p>如果事务T对数据A加上排他锁后,则其他事务不能再对A加任任何类型的封锁.获准排他锁的事务既能读数据,又能修改数据。 </p>
-</li>
-<li><p>行锁带来的问题,死锁.</p>
+<p>2) <strong>行锁带来的问题,死锁.</strong></p>
 <p>比如 : 事务A给第1条数据加上行锁,事务B给第2条数据加上行锁,然后事务A对第2条数据进行修改操作,事务B同时对第1条数据进行修改操作,相互间等待成为死锁.</p>
 </li>
 </ul>
@@ -352,7 +350,16 @@
   <entry>
     <title>javascript高级04</title>
     <url>/javascript%E9%AB%98%E7%BA%A704.html</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201028004154.png" alt="20201028004154"></p>
+<a id="more"></a>
+
+<h1 id="javascript高级-四"><a href="#javascript高级-四" class="headerlink" title="javascript高级(四)"></a>javascript高级(四)</h1><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2>]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>js高级</tag>
+      </tags>
   </entry>
   <entry>
     <title>javascript高级03</title>
@@ -598,7 +605,7 @@
 <p><code>writable</code> : 是否可写</p>
 <p><code>get</code> : 属性的getter函数</p>
 <p><code>set</code> : 属性的setter函数</p>
-<p>*<em>特别注意 : *</em>要么有 writable,value. 要么有get,set.两者不能共存.</p>
+<p>*<em>特别注意 *</em> : 要么有 writable,value. 要么有get,set.两者不能共存.</p>
 <p><strong>修改单个属性Object.defineProperty()</strong></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    age: <span class="number">12</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">'name'</span>, &#123;</span><br><span class="line">    enumerable: <span class="literal">false</span>,</span><br><span class="line">    writable: <span class="literal">true</span>,</span><br><span class="line">    configurable: <span class="literal">true</span>,</span><br><span class="line">    value: <span class="string">'zhangsan'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//当enumerable:false时</span></span><br><span class="line"><span class="comment">//person.name无法通过for(in),Object.keys(),JSON.stringify().</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> person) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key);<span class="comment">//age</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(person));<span class="comment">//age</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(person));<span class="comment">//age</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//当writable : false时,修改person.name的属性无效</span></span><br><span class="line">person.name = <span class="string">'lisi'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//当configurable : true时,可以删除person.name属性</span></span><br><span class="line"><span class="comment">//当configurable : false时, 再次修改当前对象中的其他descriptor值无效.</span></span><br><span class="line"><span class="comment">//小妙用,当对象中的writable : false时,如果其configurable : true,我们可以通过重新定义属性的value来重新赋值</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">delete</span> person.name);</span><br></pre></td></tr></table></figure>
 
@@ -637,7 +644,7 @@
 <li>SpringJDBC</li>
 </ul>
 <h2 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring AOP"></a>Spring AOP</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><blockquote>
-<p>Spring 框架的一个关键组件是<strong>面向切面的编程</strong>(AOP)框架。面向方面的编程需要把程序逻辑分解成不同的部分称为所谓的关注点。跨一个应用程序的多个点的功能被称为<strong>横切关注点</strong>，这些横切关注点在概念上独立于应用程序的业务逻辑。有各种各样的常见的很好的方面的例子，如日志记录、审计、声明式事务、安全性和缓存等。</p>
+<p>Spring 框架的一个关键组件是<strong>面向切面的编程</strong>(AOP)框架。面向切面的编程需要把程序逻辑分解成不同的部分称为所谓的关注点。跨一个应用程序的多个点的功能被称为<strong>横切关注点</strong>，这些横切关注点在概念上独立于应用程序的业务逻辑。有各种各样的常见的很好的方面的例子，如日志记录、审计、声明式事务、安全性和缓存等。</p>
 <p>在 OOP 中，关键单元模块度是类，而在 AOP 中单元模块度是切面。依赖注入帮助你对应用程序对象相互解耦和 AOP 可以帮助你从它们所影响的对象中对横切关注点解耦。AOP 是像编程语言的触发物，如 Perl，.NET，Java 或者其他。</p>
 <p>Spring AOP 模块提供拦截器来拦截一个应用程序，例如，当执行一个方法时，你可以在方法执行之前或之后添加额外的功能。</p>
 </blockquote>
