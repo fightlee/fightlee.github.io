@@ -2,14 +2,63 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://fightlee.fun/es6-01.html</loc>
+    
+    <lastmod>2020-11-09</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://fightlee.fun/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7.html</loc>
+    
+    <lastmod>2020-11-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://fightlee.fun/javaee-mybatis01.html</loc>
+    
+    <lastmod>2020-11-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://fightlee.fun/javaee-springmvc01.html</loc>
+    
+    <lastmod>2020-11-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://fightlee.fun/javascript%E9%AB%98%E7%BA%A705.html</loc>
+    
+    <lastmod>2020-11-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://fightlee.fun/javascript%E9%AB%98%E7%BA%A704.html</loc>
+    
+    <lastmod>2020-11-04</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://fightlee.fun/javascript%E9%AB%98%E7%BA%A703.html</loc>
     
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-03</lastmod>
     
   </url>
   
   <url>
     <loc>http://fightlee.fun/javaee-spring05.html</loc>
+    
+    <lastmod>2020-11-03</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://fightlee.fun/javascript%E9%AB%98%E7%BA%A702.html</loc>
     
     <lastmod>2020-11-02</lastmod>
     
@@ -19,20 +68,6 @@
     <loc>http://fightlee.fun/javaee-spring04.html</loc>
     
     <lastmod>2020-11-02</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://fightlee.fun/javascript%E9%AB%98%E7%BA%A704.html</loc>
-    
-    <lastmod>2020-11-01</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://fightlee.fun/javascript%E9%AB%98%E7%BA%A702.html</loc>
-    
-    <lastmod>2020-11-01</lastmod>
     
   </url>
   
@@ -284,7 +319,7 @@
 
   <url>
     <loc>http://fightlee.fun/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -292,98 +327,126 @@
   
   <url>
     <loc>http://fightlee.fun/tags/next%E4%B8%BB%E9%A2%98/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://fightlee.fun/tags/%E7%89%88%E6%9D%83%E4%BF%A1%E6%81%AF/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://fightlee.fun/tags/java/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://fightlee.fun/tags/jdk/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://fightlee.fun/tags/eclipse/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://fightlee.fun/tags/study/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://fightlee.fun/tags/vue/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://fightlee.fun/tags/oops/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://fightlee.fun/tags/%E5%8F%8D%E5%B0%84/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://fightlee.fun/tags/spring/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://fightlee.fun/tags/Servlet/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://fightlee.fun/tags/java8%E6%96%B0%E7%89%B9%E6%80%A7/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://fightlee.fun/tags/html5/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://fightlee.fun/tags/js%E9%AB%98%E7%BA%A7/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://fightlee.fun/tags/mybatis/</loc>
+    <lastmod>2020-11-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://fightlee.fun/tags/springmvc/</loc>
+    <lastmod>2020-11-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://fightlee.fun/tags/idea/</loc>
+    <lastmod>2020-11-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://fightlee.fun/tags/es6/</loc>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -392,35 +455,35 @@
   
   <url>
     <loc>http://fightlee.fun/categories/next/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://fightlee.fun/categories/server/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://fightlee.fun/categories/study/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://fightlee.fun/categories/web/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://fightlee.fun/categories/java/</loc>
-    <lastmod>2020-11-02</lastmod>
+    <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

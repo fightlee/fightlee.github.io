@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Luffys_flag_32px.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Luffys_flag_16px.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://fightlee.fun').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="javascript高级05">
+<meta property="og:url" content="http:&#x2F;&#x2F;fightlee.fun&#x2F;javascript%E9%AB%98%E7%BA%A705.html">
+<meta property="og:site_name" content="Here is Lee Blog.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20201028004154.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20201105050117.png">
+<meta property="article:published_time" content="2020-11-03T08:41:09.000Z">
+<meta property="article:modified_time" content="2020-11-05T07:11:50.612Z">
+<meta property="article:author" content="Lee">
+<meta property="article:tag" content="js高级">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;fightlee-blog.oss-cn-shenzhen.aliyuncs.com&#x2F;img&#x2F;20201028004154.png">
+
+<link rel="canonical" href="http://fightlee.fun/javascript%E9%AB%98%E7%BA%A705.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>javascript高级05 | Here is Lee Blog.</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?355b8b54ffb9c345198a6ddf01768381";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Here is Lee Blog." type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Here is Lee Blog.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">Keep fighting,Keep your mind,Be patient,and Never give up!</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="请输入您要搜索的关键字..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://fightlee.fun/javascript%E9%AB%98%E7%BA%A705.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpeg">
+      <meta itemprop="name" content="Lee">
+      <meta itemprop="description" content="面向小白的技术博客..">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Here is Lee Blog.">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          javascript高级05
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-03 16:41:09" itemprop="dateCreated datePublished" datetime="2020-11-03T16:41:09+08:00">2020-11-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-05 15:11:50" itemprop="dateModified" datetime="2020-11-05T15:11:50+08:00">2020-11-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/javascript%E9%AB%98%E7%BA%A705.html" class="post-meta-item leancloud_visitors" data-flag-title="javascript高级05" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/javascript%E9%AB%98%E7%BA%A705.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/javascript%E9%AB%98%E7%BA%A705.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201028004154.png" alt="20201028004154"></p>
+<a id="more"></a>
+
+<h1 id="javascript高级-五"><a href="#javascript高级-五" class="headerlink" title="javascript高级(五)"></a>javascript高级(五)</h1><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>​    当函数可以记住并访问所在的词法作用域时,就产生了闭包,即使函数是在当前词法作用域之外执行.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fun;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fn = foo();</span><br><span class="line">fn();<span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="闭包的应用"><a href="#闭包的应用" class="headerlink" title="闭包的应用"></a>闭包的应用</h3><p>​    大家在玩Js之前,肯定接触过一个案例,checkbox全选/反选</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> checkAll = <span class="built_in">document</span>.querySelector(<span class="string">'#checkAll'</span>);</span><br><span class="line"><span class="keyword">var</span> checkItems = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.checkItems'</span>);</span><br><span class="line"><span class="comment">//全选</span></span><br><span class="line">checkAll.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; checkItems.length;i++)&#123;</span><br><span class="line">        checkItems[i].checked = !checkItems[i].checked;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//点击某一个checkItem时,取消全选</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; checkItems.length;i++)&#123;</span><br><span class="line">    checkItems[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i);<span class="comment">//5</span></span><br><span class="line">        <span class="built_in">console</span>.log(checkItems[i]);<span class="comment">//undefiend</span></span><br><span class="line">        <span class="keyword">if</span>(!checkItems[i].checked)&#123;<span class="comment">//既然是checkItems[i]undefined checked属性肯定就报错了</span></span><br><span class="line">            checkAll.checked = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    测试代码发现,无论点击哪个checkbox,最后log的结果都是5.因为div节点的onclick事件是异步触发的,当事件触发时,for循环早已经结束了,此时变量i的值已经是 5,所以checkbox的onclick的事件函数顺着作用域链向外找变量i时,查到的值已经为5.</p>
+<p>​    如何解决呢?我们可以通过闭包将每次循环的i值封闭起来,单独形成一个作用域,当事件函数顺着作用域向外找变量i时,会先找此时最近作用域中的i.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; checkItems.length;i++)&#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">        checkItems[j].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(j);<span class="comment">//5</span></span><br><span class="line">            <span class="built_in">console</span>.log(checkItems[j]);<span class="comment">//undefiend</span></span><br><span class="line">            <span class="keyword">if</span>(!checkItems[j].checked)&#123;</span><br><span class="line">                checkAll.checked = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;(i));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="延长变量生命周期"><a href="#延长变量生命周期" class="headerlink" title="延长变量生命周期"></a>延长变量生命周期</h4><p>​    实现一个简单的计数器案例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//传统实现方式</span></span><br><span class="line"><span class="comment">//定义计数器函数</span></span><br><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;<span class="comment">//定义计数器</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">count</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//每次调用函数count() i++一次</span></span><br><span class="line">    i++;</span><br><span class="line">    <span class="keyword">return</span> i;<span class="comment">//返回i</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(count());<span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(count());<span class="comment">//2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//定义全局作用域不安全</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">count</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">0</span>;<span class="comment">//定义计数器</span></span><br><span class="line">    <span class="comment">//每次调用函数count() i++一次</span></span><br><span class="line">    i++;</span><br><span class="line">    <span class="keyword">return</span> i;<span class="comment">//返回i</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(count());<span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(count());<span class="comment">//1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//局部变量i的值没有保存,每次重新调用count()函数,i的值被重新赋值为0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//使用闭包内保存变量i的值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">count</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> inner;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//简写</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">count</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> i++;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c = count();</span><br><span class="line"><span class="built_in">console</span>.log(c());<span class="comment">//0</span></span><br><span class="line"><span class="built_in">console</span>.log(c());<span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(c());<span class="comment">//2</span></span><br><span class="line"><span class="comment">//注意内存的释放</span></span><br><span class="line">c = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="闭包和对象"><a href="#闭包和对象" class="headerlink" title="闭包和对象"></a>闭包和对象</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//寄生工厂模式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = &#123;&#125;;</span><br><span class="line">    <span class="comment">//定义私有属性</span></span><br><span class="line">    <span class="keyword">var</span> age;</span><br><span class="line">    <span class="comment">//定义私有方法</span></span><br><span class="line">    a.setAge = <span class="function"><span class="keyword">function</span>(<span class="params">age</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    a.getAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person();</span><br><span class="line">p.setAge(<span class="number">12</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p.getAge());</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用闭包</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//定义私有属性</span></span><br><span class="line">    <span class="keyword">var</span> name;</span><br><span class="line">    <span class="comment">//定义私有方法</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">setName</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        setName:setName,</span><br><span class="line">        getName:getName</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> Student();</span><br><span class="line">s.setName(<span class="string">'zhangsan'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(s.getName());</span><br><span class="line"></span><br><span class="line"><span class="comment">//简写</span></span><br><span class="line">	<span class="comment">//使用闭包</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        setName:<span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name = name</span><br><span class="line">        &#125;,</span><br><span class="line">        getName:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="定时函数和闭包"><a href="#定时函数和闭包" class="headerlink" title="定时函数和闭包"></a>定时函数和闭包</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//和之前的onclick事件中的回调函数function一样,setTimeout中的function也是异步触发的</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showMsg</span>(<span class="params">msg</span>)</span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(msg)</span><br><span class="line">    &#125;,<span class="number">3000</span>);</span><br><span class="line">&#125;</span><br><span class="line">showMsg(<span class="string">'显示消息'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果写在了循环中遍历i的值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showMsg</span>(<span class="params">count</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;count;i++)&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(count);<span class="comment">//隔1秒输出10个10</span></span><br><span class="line">        &#125;,<span class="number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">showMsg(<span class="number">10</span>);</span><br><span class="line"><span class="comment">//使用闭包后</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showMsg</span>(<span class="params">count</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;count;i++)&#123;</span><br><span class="line">        (<span class="function"><span class="keyword">function</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">            setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(j);<span class="comment">//隔1秒输出0-9</span></span><br><span class="line">            &#125;,<span class="number">1000</span>)</span><br><span class="line">        &#125;(i))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">showMsg(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用闭包实现命令模式"><a href="#使用闭包实现命令模式" class="headerlink" title="使用闭包实现命令模式"></a>使用闭包实现命令模式</h4><blockquote>
+<p>什么是命令模式?</p>
+<p>将一个请求封装成一个对象，从而使你可用不同的请求把客户端参数化，对请求排队或者记录请求日志，以及支持可撤销和恢复操作。 </p>
+<p>它有什么用?</p>
+<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201105050117.png" alt="20201105050117"></p>
+<p>比如现在我们是遥控器的制造厂商,那么在设计遥控器时,我们可能并不知道遥控器上的按钮是要实现某种具体的功能,换句话说,遥控器上的面板上那些按钮的功能并不是按钮来实现的,按钮只是用来触发一个点击的事件,实际的操作是由遥控器的接收者完成,按钮只负责接收用户的点击,然后发送对应的命令请求交给主板发送给接收执行对应的操作.那么这种模式就称之为命令模式,同样的场景还有客户需要点餐,服务员将订单传递给厨师来做.那么这个订单其实就可以当成一个命令对象,在客户和服务员,服务员和厨师之间传递.</p>
+</blockquote>
+<p><strong>使用场景</strong> : 模拟电视机开关</p>
+<p><strong>传统做法</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设计电视机对象</span></span><br><span class="line"><span class="keyword">var</span> tv = &#123;</span><br><span class="line">    open:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'电视机打开了...'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    close:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'电视机关闭了...'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> openBtn = <span class="built_in">document</span>.querySelector(<span class="string">'#openBtn'</span>);</span><br><span class="line"><span class="keyword">var</span> closeBtn = <span class="built_in">document</span>.querySelector(<span class="string">'#closeBtn'</span>);</span><br><span class="line"></span><br><span class="line">openBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    tv.open();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">closeBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    tv.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>缺陷</strong></p>
+<ul>
+<li>电视机和按钮的耦合度非常高,后期不易维护.</li>
+</ul>
+<p><strong>使用命令模式</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设计电视机对象</span></span><br><span class="line"><span class="keyword">var</span> tv = &#123;</span><br><span class="line">    open:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'电视机打开了...'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    close:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'电视机关闭了...'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> openBtn = <span class="built_in">document</span>.querySelector(<span class="string">'#openBtn'</span>);</span><br><span class="line"><span class="keyword">var</span> closeBtn = <span class="built_in">document</span>.querySelector(<span class="string">'#closeBtn'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设计命令对象</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 参数 receiver : 命令接收者--电视机</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Command</span>(<span class="params">receiver</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.receiver = receiver;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//给命令对象中添加打开命令</span></span><br><span class="line">Command.prototype.openTv = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.receiver.open();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//给命令对象中添加关闭命令</span></span><br><span class="line">Command.prototype.closeTv = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.receiver.close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置遥控器按钮发送要操作的命令</span></span><br><span class="line"><span class="keyword">var</span> sendCommand = <span class="function"><span class="keyword">function</span>(<span class="params">command</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//打开按钮 发送打开命令</span></span><br><span class="line">    <span class="built_in">document</span>.querySelector(<span class="string">'#openBtn'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        command.openTv();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//关闭按钮 发送关闭命令</span></span><br><span class="line">    <span class="built_in">document</span>.querySelector(<span class="string">'#closeBtn'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        command.closeTv();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//发送命令</span></span><br><span class="line">sendCommand(<span class="keyword">new</span> Command(tv));</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用闭包来简化命令模式</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设计电视机对象</span></span><br><span class="line"><span class="keyword">var</span> tv = &#123;</span><br><span class="line">    open: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'电视机打开了...'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    close: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'电视机关闭了...'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> openBtn = <span class="built_in">document</span>.querySelector(<span class="string">'#openBtn'</span>);</span><br><span class="line"><span class="keyword">var</span> closeBtn = <span class="built_in">document</span>.querySelector(<span class="string">'#closeBtn'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设计命令对象</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">参数 receiver : 命令接收者--电视机</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Command</span>(<span class="params">receiver</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        openTv:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> receiver.open();</span><br><span class="line">        &#125;,</span><br><span class="line">        closeTv:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> receiver.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置遥控器按钮发送要操作的命令</span></span><br><span class="line"><span class="keyword">var</span> sendCommand = <span class="function"><span class="keyword">function</span>(<span class="params">command</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//打开按钮 发送打开命令</span></span><br><span class="line">    <span class="built_in">document</span>.querySelector(<span class="string">'#openBtn'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        command.openTv();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//关闭按钮 发送关闭命令</span></span><br><span class="line">    <span class="built_in">document</span>.querySelector(<span class="string">'#closeBtn'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        command.closeTv();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//发送命令</span></span><br><span class="line">sendCommand(<span class="keyword">new</span> Command(tv));</span><br></pre></td></tr></table></figure>
+
+<h4 id="闭包实现缓存"><a href="#闭包实现缓存" class="headerlink" title="闭包实现缓存"></a>闭包实现缓存</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一个求和的函数</span></span><br><span class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>,l = <span class="built_in">arguments</span>.length; i &lt; l; i++) &#123;</span><br><span class="line">        sum += <span class="built_in">arguments</span>[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果每一次传入的参数都是相同的参数,没有必要再进行一次运算,加入缓存对象</span></span><br><span class="line"><span class="keyword">var</span> cache = &#123;&#125;;<span class="comment">//定义缓存对象,全局作用域下,污染全局作用域</span></span><br><span class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//将arguments中的所有参数拼接成字符串当成缓存对象的属性</span></span><br><span class="line">    <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.join.call(<span class="built_in">arguments</span>,<span class="string">','</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(args);</span><br><span class="line">    <span class="comment">//如果对应参数的属性有值就返回该值</span></span><br><span class="line">    <span class="keyword">if</span>(cache[args])&#123;</span><br><span class="line">        <span class="keyword">return</span> cache[args];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//否则就重新计算</span></span><br><span class="line">    <span class="keyword">var</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>,l = <span class="built_in">arguments</span>.length; i &lt; l; i++) &#123;</span><br><span class="line">        sum += <span class="built_in">arguments</span>[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(add(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>));</span><br><span class="line"><span class="built_in">console</span>.log(add(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用闭包,将cache对象封装在add函数内部</span></span><br><span class="line"><span class="keyword">var</span> add = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> cache = &#123;&#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.join.call(<span class="built_in">arguments</span>,<span class="string">','</span>);</span><br><span class="line">        <span class="keyword">if</span>(args <span class="keyword">in</span> cache)&#123;</span><br><span class="line">            <span class="keyword">return</span> cache[args];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>,l = <span class="built_in">arguments</span>.length; i &lt; l; i++) &#123;</span><br><span class="line">            sum += <span class="built_in">arguments</span>[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cache[args] = sum;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;());</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(add(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>));</span><br><span class="line"><span class="built_in">console</span>.log(add(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>一个高阶函数至少要满足以下条件之一</p>
+<ul>
+<li>函数可以作为参数被传递</li>
+<li>函数可以作为返回值输出</li>
+</ul>
+<h4 id="函数作为参数传递"><a href="#函数作为参数传递" class="headerlink" title="函数作为参数传递"></a>函数作为参数传递</h4><p><strong>函数复用</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现隐藏所有元素</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">option</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> liItems = <span class="built_in">document</span>.querySelectorAll(<span class="string">'li'</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; liItems.length;i++)&#123;</span><br><span class="line">        liItems[i].style.display = <span class="string">'none'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">			</span><br><span class="line">option();</span><br></pre></td></tr></table></figure>
+
+<p><strong>修改后</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//修改后的代码看起来也是变复杂了,但是option函数的复用性变强了,如果需要修改元素其他样式只需要在option中传入回调函数即可.</span></span><br><span class="line"><span class="keyword">var</span> option = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> liItems = <span class="built_in">document</span>.querySelectorAll(<span class="string">'li'</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; liItems.length;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> callback === <span class="string">'function'</span>)&#123;</span><br><span class="line">            callback(liItems[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">option(<span class="function"><span class="keyword">function</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">    node.style.display = <span class="string">'none'</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>排序</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log([<span class="number">1</span>,<span class="number">11</span>,<span class="number">22</span>].sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b-a;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+
+<h4 id="函数作为返回值"><a href="#函数作为返回值" class="headerlink" title="函数作为返回值"></a>函数作为返回值</h4><h5 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h5><blockquote>
+<p>什么是单例模式?</p>
+<p>保证一个类仅有一个实例，并提供一个访问它的全局访问点.</p>
+<p>为什么要使用它?</p>
+<p>在实际开发中,有很多对象不需要创建多次,比如页面中有一个登录浮窗,无论点击多少次登录按钮,始终只会创建一次该浮窗.这种类似的例子在页面中有很多,都可以使用单例模式来创建.</p>
+<p>如何实现?</p>
+<p>用一个变量来标识当前是否已经为某个类创建过对象,如果已经创建过,则直接返回之前创建的对象.</p>
+</blockquote>
+<p><strong>普通方式</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建类</span></span><br><span class="line"><span class="keyword">var</span> Bank = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="comment">//给类添加getter方法</span></span><br><span class="line">Bank.prototype.transfer = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a+ <span class="string">'给'</span> + b + <span class="string">'转账成功'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//给构造函数添加类方法,来获取实例</span></span><br><span class="line">Bank.getSingleInstance = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="keyword">this</span>.instance)&#123;</span><br><span class="line">        <span class="comment">//如果实例不存在,则创建对象</span></span><br><span class="line">        <span class="keyword">this</span>.instance = <span class="keyword">new</span> Bank();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.instance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = Bank.getSingleInstance();</span><br><span class="line"><span class="keyword">var</span> b = Bank.getSingleInstance();</span><br><span class="line"><span class="built_in">console</span>.log(a === b);</span><br></pre></td></tr></table></figure>
+
+<p><strong>或者使用闭包</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//根据传入的函数来创建元素</span></span><br><span class="line"><span class="keyword">var</span> getSingle = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> instance = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance || (instance = fn.call(<span class="keyword">this</span>,<span class="built_in">arguments</span>)); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> getDiv = getSingle(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = getDiv();</span><br><span class="line"><span class="keyword">var</span> b = getDiv();</span><br><span class="line"><span class="built_in">console</span>.log(a === b);</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+  <div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------Thank you for your Reading------</div>
+    
+</div>
+    
+ </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Lee
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://fightlee.fun/javascript%E9%AB%98%E7%BA%A705.html" title="javascript高级05">http://fightlee.fun/javascript高级05.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/js%E9%AB%98%E7%BA%A7/" rel="tag"># js高级</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/javaee-spring05.html" rel="prev" title="javaee-spring05">
+      <i class="fa fa-chevron-left"></i> javaee-spring05
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/javaee-springmvc01.html" rel="next" title="javaee-springmvc01">
+      javaee-springmvc01 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript高级-五"><span class="nav-number">1.</span> <span class="nav-text">javascript高级(五)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">1.1.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包的应用"><span class="nav-number">1.1.1.</span> <span class="nav-text">闭包的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#延长变量生命周期"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">延长变量生命周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#闭包和对象"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">闭包和对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定时函数和闭包"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">定时函数和闭包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用闭包实现命令模式"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">使用闭包实现命令模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#闭包实现缓存"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">闭包实现缓存</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高阶函数"><span class="nav-number">1.2.</span> <span class="nav-text">高阶函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.2.1.</span> <span class="nav-text">定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数作为参数传递"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">函数作为参数传递</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数作为返回值"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">函数作为返回值</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单例模式"><span class="nav-number">1.2.1.2.1.</span> <span class="nav-text">单例模式</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lee"
+      src="/images/author.jpeg">
+  <p class="site-author-name" itemprop="name">Lee</p>
+  <div class="site-description" itemprop="description">面向小白的技术博客..</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lee</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'MCACXLHvNu3O6JofbCUqVbDr-gzGzoHsz',
+      appKey: 'EQbR0P0AmfPjdoUMn1dCfHM7',
+      placeholder: "疑问在此处留下...",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
