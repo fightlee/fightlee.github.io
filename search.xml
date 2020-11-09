@@ -23,11 +23,11 @@
 <li>ctrl + shift + f4 : 关闭类结构</li>
 <li><code>userId</code>.nn : 判断userId是否为null</li>
 <li><code>&quot;helloWorld&quot;</code>.sout : 打印输出HelloWorld</li>
-<li>100.fori : 遍历100次</li>
+<li><code>100</code>.fori : 遍历100次</li>
 <li>ctrl + f12 : 查看当前类中的方法,属性等.</li>
 </ul>
 <h2 id="Postwoman"><a href="#Postwoman" class="headerlink" title="Postwoman"></a>Postwoman</h2><p>Postman的开源版,现换名为<strong>hoppscotch</strong> </p>
-<p>*<em>使用步骤 : *</em></p>
+<p><strong>使用步骤</strong> : </p>
 <ol>
 <li><p>打开VS Code,从终端进入一个目录,比如H:\tools , 复制该连接<code>https://github.com/hoppscotch/hoppscotch.git</code>,然后输入 git clone 链接地址(右键就好)</p>
 </li>
@@ -51,7 +51,8 @@
   <entry>
     <title>javaee-mybatis01</title>
     <url>/javaee-mybatis01.html</url>
-    <content><![CDATA[<a id="more"></a>
+    <content><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201109162346.png" alt="20201109162346"></p>
+<a id="more"></a>
 
 <h1 id="javaee-Mybatis-一"><a href="#javaee-Mybatis-一" class="headerlink" title="javaee-Mybatis(一)"></a>javaee-Mybatis(一)</h1>]]></content>
       <categories>

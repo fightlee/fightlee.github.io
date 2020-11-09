@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fightlee.fun/"/>
-  <updated>2020-11-08T23:31:55.344Z</updated>
+  <updated>2020-11-09T08:22:26.247Z</updated>
   <id>http://fightlee.fun/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://fightlee.fun/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7.html"/>
     <id>http://fightlee.fun/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7.html</id>
     <published>2020-11-08T07:28:25.000Z</published>
-    <updated>2020-11-08T23:31:55.344Z</updated>
+    <updated>2020-11-09T08:22:26.247Z</updated>
     
-    <content type="html"><![CDATA[<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201108234057.png" alt="20201108234057" style="zoom:67%;" /><a id="more"></a><h2 id="IDEA快捷键"><a href="#IDEA快捷键" class="headerlink" title="IDEA快捷键"></a>IDEA快捷键</h2><ul><li>alt + 1 : 切换面板.</li><li>alt + [fn] + insert : 在打开的Project面板,新建包,文件夹和类.</li><li>ctrl  + e : 弹窗显示最近浏览文件</li><li>ctrl + shift + e : 弹窗显示最近修改文件</li><li>shift + enter : 无论在行的什么位置直接创建新行</li><li>ctrl + n : 只能搜索类</li><li>ctrl + shift + n : 可以搜索文件,类</li><li>ctrl + shift + alt + n : 搜索,文件,类,甚至能定位到方法</li><li>双击shift : 啥都搜索.</li><li>shift + f6 : 修改文件名</li><li>ctrl + f4 : 关闭当前页面</li><li>ctrl + h : 查看类层级结构</li><li>ctrl + shift + f4 : 关闭类结构</li><li><code>userId</code>.nn : 判断userId是否为null</li><li><code>&quot;helloWorld&quot;</code>.sout : 打印输出HelloWorld</li><li>100.fori : 遍历100次</li><li>ctrl + f12 : 查看当前类中的方法,属性等.</li></ul><h2 id="Postwoman"><a href="#Postwoman" class="headerlink" title="Postwoman"></a>Postwoman</h2><p>Postman的开源版,现换名为<strong>hoppscotch</strong> </p><p>*<em>使用步骤 : *</em></p><ol><li><p>打开VS Code,从终端进入一个目录,比如H:\tools , 复制该连接<code>https://github.com/hoppscotch/hoppscotch.git</code>,然后输入 git clone 链接地址(右键就好)</p></li><li><p>进度条走完后 , <code>npm install</code> , 讲到这里前提是要有node.js</p></li><li><p>进度条走完后, <code>npm run dev</code> 运行postwoman , 第一次运行需等待加载客户端内容.</p><p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201108234842.png" alt="20201108234842"></p></li><li><p>进度条走完后 , 打开上面链接网站即可使用.</p><p> <img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201108235036.png" alt="20201108235036"></p></li></ol>]]></content>
+    <content type="html"><![CDATA[<img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201108234057.png" alt="20201108234057" style="zoom:67%;" /><a id="more"></a><h2 id="IDEA快捷键"><a href="#IDEA快捷键" class="headerlink" title="IDEA快捷键"></a>IDEA快捷键</h2><ul><li>alt + 1 : 切换面板.</li><li>alt + [fn] + insert : 在打开的Project面板,新建包,文件夹和类.</li><li>ctrl  + e : 弹窗显示最近浏览文件</li><li>ctrl + shift + e : 弹窗显示最近修改文件</li><li>shift + enter : 无论在行的什么位置直接创建新行</li><li>ctrl + n : 只能搜索类</li><li>ctrl + shift + n : 可以搜索文件,类</li><li>ctrl + shift + alt + n : 搜索,文件,类,甚至能定位到方法</li><li>双击shift : 啥都搜索.</li><li>shift + f6 : 修改文件名</li><li>ctrl + f4 : 关闭当前页面</li><li>ctrl + h : 查看类层级结构</li><li>ctrl + shift + f4 : 关闭类结构</li><li><code>userId</code>.nn : 判断userId是否为null</li><li><code>&quot;helloWorld&quot;</code>.sout : 打印输出HelloWorld</li><li><code>100</code>.fori : 遍历100次</li><li>ctrl + f12 : 查看当前类中的方法,属性等.</li></ul><h2 id="Postwoman"><a href="#Postwoman" class="headerlink" title="Postwoman"></a>Postwoman</h2><p>Postman的开源版,现换名为<strong>hoppscotch</strong> </p><p><strong>使用步骤</strong> : </p><ol><li><p>打开VS Code,从终端进入一个目录,比如H:\tools , 复制该连接<code>https://github.com/hoppscotch/hoppscotch.git</code>,然后输入 git clone 链接地址(右键就好)</p></li><li><p>进度条走完后 , <code>npm install</code> , 讲到这里前提是要有node.js</p></li><li><p>进度条走完后, <code>npm run dev</code> 运行postwoman , 第一次运行需等待加载客户端内容.</p><p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201108234842.png" alt="20201108234842"></p></li><li><p>进度条走完后 , 打开上面链接网站即可使用.</p><p> <img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201108235036.png" alt="20201108235036"></p></li></ol>]]></content>
     
     <summary type="html">
     
@@ -44,18 +44,13 @@
     <link href="http://fightlee.fun/javaee-mybatis01.html"/>
     <id>http://fightlee.fun/javaee-mybatis01.html</id>
     <published>2020-11-08T07:27:58.000Z</published>
-    <updated>2020-11-08T23:26:56.918Z</updated>
+    <updated>2020-11-09T08:23:49.658Z</updated>
     
-    <content type="html"><![CDATA[<a id="more"></a><h1 id="javaee-Mybatis-一"><a href="#javaee-Mybatis-一" class="headerlink" title="javaee-Mybatis(一)"></a>javaee-Mybatis(一)</h1>]]></content>
+    <content type="html"><![CDATA[<p><img src="https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201109162346.png" alt="20201109162346"></p><a id="more"></a><h1 id="javaee-Mybatis-一"><a href="#javaee-Mybatis-一" class="headerlink" title="javaee-Mybatis(一)"></a>javaee-Mybatis(一)</h1>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-
-&lt;h1 id=&quot;javaee-Mybatis-一&quot;&gt;&lt;a href=&quot;#javaee-Mybatis-一&quot; class=&quot;headerlink&quot; title=&quot;javaee-Mybatis(一)&quot;&gt;&lt;/a&gt;javaee-Mybatis(一)&lt;
-      
+      &lt;p&gt;&lt;img src=&quot;https://fightlee-blog.oss-cn-shenzhen.aliyuncs.com/img/20201109162346.png&quot; alt=&quot;20201109162346&quot;&gt;&lt;/p&gt;
     
     </summary>
     
